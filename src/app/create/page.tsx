@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 type TaskType = "text" | "quiz" | "action";
 
@@ -34,6 +35,7 @@ interface QuestData {
  * @returns React component for creating quests
  */
 export default function CreateQuestPage() {
+  const router = useRouter();
   const [questData, setQuestData] = useState<QuestData>({
     title: "",
     description: "",
@@ -45,6 +47,43 @@ export default function CreateQuestPage() {
 
   const [currentTaskType, setCurrentTaskType] = useState<TaskType>("text");
   const [successMessage, setSuccessMessage] = useState<string>("");
+  const [showConfirmDialog, setShowConfirmDialog] = useState<boolean>(false);
+  const [formChanged, setFormChanged] = useState<boolean>(false);
+
+  /**
+   * Check if the form has been modified from its initial state
+   */
+  useEffect(() => {
+    const isFormEmpty =
+      questData.title === "" &&
+      questData.description === "" &&
+      questData.reward === "" &&
+      questData.tasks.length === 0;
+
+    setFormChanged(!isFormEmpty);
+  }, [questData]);
+
+  /**
+   * Handles back button click with confirmation if form has changes
+   */
+  const handleBackClick = () => {
+    if (formChanged) {
+      setShowConfirmDialog(true);
+    } else {
+      router.push("/");
+    }
+  };
+
+  /**
+   * Handles confirmation dialog response
+   * @param confirmed - Whether the user confirmed losing changes
+   */
+  const handleConfirmResponse = (confirmed: boolean) => {
+    setShowConfirmDialog(false);
+    if (confirmed) {
+      router.push("/");
+    }
+  };
 
   /**
    * Handles changes to the main quest form fields
@@ -175,8 +214,58 @@ export default function CreateQuestPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Create New Quest</h1>
+    <div className="max-w-4xl mx-auto px-4 py-8 relative">
+      {/* Back Button */}
+      <button
+        type="button"
+        onClick={handleBackClick}
+        className="absolute top-8 left-4 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+        aria-label="Go back"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fillRule="evenodd"
+            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </button>
+
+      {/* Confirmation Dialog */}
+      {showConfirmDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+            <h3 className="text-lg font-medium mb-4">Discard changes?</h3>
+            <p className="text-gray-600 mb-6">
+              You have unsaved changes. Are you sure you want to go back? All
+              your changes will be lost.
+            </p>
+            <div className="flex justify-end space-x-3">
+              <button
+                type="button"
+                onClick={() => handleConfirmResponse(false)}
+                className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => handleConfirmResponse(true)}
+                className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+              >
+                Discard
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <h1 className="text-3xl font-bold mb-6 pl-12">Create New Quest</h1>
 
       {successMessage && (
         <div className="mb-6 p-4 bg-green-100 text-green-800 rounded-md">

@@ -1,6 +1,17 @@
 import { render, screen, fireEvent, within } from "@testing-library/react";
 import CreateQuestPage from "../page";
 
+// Mock Next.js router
+jest.mock("next/navigation", () => ({
+  useRouter() {
+    return {
+      push: jest.fn(),
+      back: jest.fn(),
+      forward: jest.fn(),
+    };
+  },
+}));
+
 // Mock console.log
 const originalConsoleLog = console.log;
 let consoleOutput: string[] = [];
@@ -184,5 +195,29 @@ describe("CreateQuestPage", () => {
     expect(questData.tasks.length).toBe(1);
     expect(questData.tasks[0].title).toBe("Task Title");
     expect(questData.tasks[0].description).toBe("Task Description");
+  });
+
+  it("shows confirmation dialog when back button is clicked with changes", () => {
+    render(<CreateQuestPage />);
+
+    // Fill out a field to trigger form change
+    fireEvent.change(screen.getByLabelText("Title"), {
+      target: { value: "Test Quest" },
+    });
+
+    // Click the back button
+    fireEvent.click(screen.getByLabelText("Go back"));
+
+    // Confirmation dialog should appear
+    expect(screen.getByText("Discard changes?")).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "You have unsaved changes. Are you sure you want to go back? All your changes will be lost.",
+      ),
+    ).toBeInTheDocument();
+
+    // Check for Cancel and Discard buttons
+    expect(screen.getByText("Cancel")).toBeInTheDocument();
+    expect(screen.getByText("Discard")).toBeInTheDocument();
   });
 });

@@ -86,17 +86,17 @@ const Hero: React.FC = () => {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
               <Link
-                href="/projects"
+                href="/create"
                 className="w-full sm:w-auto bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg text-lg font-extrabold tracking-wide transition-colors shadow-lg"
                 style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.4)" }}
               >
-                Browse Projects
+                Create a Quest
               </Link>
               <Link
-                href="/create"
+                href="/projects"
                 className="w-full sm:w-auto bg-white dark:bg-dark-100 hover:bg-gray-50 dark:hover:bg-dark-200 text-gray-800 dark:text-white px-6 py-3 rounded-lg text-base font-medium border border-gray-200 dark:border-dark-200 transition-colors"
               >
-                Create a Quest
+                Browse Projects
               </Link>
             </div>
 
