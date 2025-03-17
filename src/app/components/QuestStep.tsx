@@ -19,11 +19,10 @@ interface QuestStepProps {
  * @returns QuestStep component
  */
 const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
-  const [inputValue, setInputValue] = useState("");
-  const [validationError, setValidationError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { address, isConnected } = useWallet();
   const [autoCompletedFirstStep, setAutoCompletedFirstStep] = useState(false);
+  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
 
   // Auto-complete first step when connected - but only once
   useEffect(() => {
@@ -35,7 +34,15 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
       !step.isCompleted
     ) {
       setAutoCompletedFirstStep(true);
-      onComplete(step.id, true);
+      // Show success animation
+      setShowSuccessAnimation(true);
+
+      // Complete the current step and flag that we want to advance to the next step
+      setTimeout(() => {
+        onComplete(step.id, true);
+        // Reset animation state after transition to next step
+        setTimeout(() => setShowSuccessAnimation(false), 300);
+      }, 1500); // Increased delay to match handleCompleteStep
     }
   }, [
     step.id,
@@ -51,41 +58,54 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
    */
   const handleCompleteStep = () => {
     setIsSubmitting(true);
-    setValidationError("");
 
-    // If step has a validation function, check input
-    if (step.validationFunction && inputValue) {
-      const result = step.validationFunction(inputValue);
-
-      if (!result.isValid) {
-        setValidationError(result.message);
-        setIsSubmitting(false);
-        return;
-      }
-    }
+    // Show success animation
+    setShowSuccessAnimation(true);
 
     // Simulate API call to verify step completion
     setTimeout(() => {
+      // Complete the step which will trigger navigation to next step
       onComplete(step.id, true);
       setIsSubmitting(false);
-    }, 1000);
+
+      // Reset animation state after transition to next step
+      setTimeout(() => setShowSuccessAnimation(false), 300);
+    }, 1500); // Increased delay to give user time to see the success animation
   };
 
   /**
    * Handle wallet connection success
-   * @param connectedAddress The connected wallet address
    */
-  const handleWalletConnected = (connectedAddress: string) => {
-    // For step 1-2, auto-fill the input with the connected address
-    if (connectedAddress) {
-      setInputValue(connectedAddress);
-    }
-
-    // Note: We're not calling onComplete here anymore as it's handled by the useEffect
+  const handleWalletConnected = () => {
+    // This method now only gets called when the wallet is connected
+    // No need to do anything specific as address verification step is removed
   };
 
   return (
-    <div className="bg-white dark:bg-dark-100 rounded-xl shadow-md p-6 w-full max-w-lg mx-auto">
+    <div
+      className={`bg-white dark:bg-dark-100 rounded-xl shadow-md p-6 w-full max-w-lg mx-auto relative transition-all duration-300 ${showSuccessAnimation ? "ring-4 ring-green-400 scale-[1.02]" : ""}`}
+    >
+      {showSuccessAnimation && (
+        <div className="absolute inset-0 bg-green-400/10 rounded-xl flex items-center justify-center z-10">
+          <div className="bg-white dark:bg-dark-200 rounded-full p-4 shadow-lg">
+            <svg
+              className="w-12 h-12 text-green-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 13l4 4L19 7"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      )}
+
       <div className="flex items-center mb-4">
         <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4">
           <span className="text-2xl">{step.iconUrl ? "🚀" : "📝"}</span>
@@ -131,33 +151,8 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
         </div>
       )}
 
-      {/* Your Aptos Address input for step 1-2 */}
-      {step.id === "1-2" && (
-        <div className="mb-4">
-          <label
-            htmlFor="aptosAddress"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-          >
-            Your Aptos Address
-          </label>
-          <input
-            type="text"
-            id="aptosAddress"
-            placeholder="0x..."
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-          />
-          {validationError && (
-            <p className="mt-2 text-sm text-red-600 dark:text-red-400">
-              {validationError}
-            </p>
-          )}
-        </div>
-      )}
-
       {/* Generic step completion */}
-      {step.id !== "1-1" && step.id !== "1-2" && (
+      {step.id !== "1-1" && (
         <div className="mb-4">
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
             Complete this task in your wallet or on the specified platform, then
@@ -169,7 +164,23 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
               id="complete"
               className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
               checked={step.isCompleted}
-              onChange={(e) => onComplete(step.id, e.target.checked)}
+              onChange={(e) => {
+                if (e.target.checked) {
+                  // Show animation first
+                  setShowSuccessAnimation(true);
+
+                  // Then complete the step after a delay
+                  setTimeout(() => {
+                    onComplete(step.id, e.target.checked);
+
+                    // Reset animation state after transition
+                    setTimeout(() => setShowSuccessAnimation(false), 300);
+                  }, 1500);
+                } else {
+                  // If unchecking, update immediately without animation
+                  onComplete(step.id, false);
+                }
+              }}
             />
             <label
               htmlFor="complete"
@@ -183,18 +194,7 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
 
       {/* Action buttons */}
       <div className="flex flex-col sm:flex-row gap-3">
-        {step.id === "1-2" && (
-          <Button
-            onClick={handleCompleteStep}
-            disabled={isSubmitting || !inputValue}
-            isLoading={isSubmitting}
-            fullWidth
-          >
-            {isSubmitting ? "Verifying..." : "Verify Address"}
-          </Button>
-        )}
-
-        {step.id !== "1-1" && step.id !== "1-2" && !step.isCompleted && (
+        {step.id !== "1-1" && !step.isCompleted && (
           <Button
             onClick={handleCompleteStep}
             isLoading={isSubmitting}
@@ -205,7 +205,7 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
         )}
 
         {/* External link button when relevant */}
-        {step.id === "1-3" && (
+        {step.id === "1-2" && (
           <LinkButton
             href="https://coinmarketcap.com/currencies/aptos/markets/"
             target="_blank"
@@ -217,7 +217,7 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
           </LinkButton>
         )}
 
-        {step.id === "1-4" && (
+        {step.id === "1-3" && (
           <LinkButton
             href="https://pontem.network/"
             target="_blank"

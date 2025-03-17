@@ -55,16 +55,6 @@ export const questStepsData: Record<string, QuestStep[]> = {
     },
     {
       id: "1-2",
-      title: "Verify Aptos Address",
-      description:
-        "Enter your Aptos wallet address to verify ownership and complete this step.",
-      iconUrl: "/images/quest-icons/verify.svg",
-      isCompleted: false,
-      isLocked: true,
-      validationFunction: validateAptosAddress,
-    },
-    {
-      id: "1-3",
       title: "Top Up With 10 APT",
       description:
         "Add 10 APT to your wallet. You can get APT from exchanges like Binance, Coinbase, or OKX.",
@@ -73,7 +63,7 @@ export const questStepsData: Record<string, QuestStep[]> = {
       isLocked: true,
     },
     {
-      id: "1-4",
+      id: "1-3",
       title: "Swap APT to USDT",
       description:
         "Exchange at least 1 APT for 10 USDT using Pontem Network or Liquid Swap on Aptos.",
@@ -82,7 +72,7 @@ export const questStepsData: Record<string, QuestStep[]> = {
       isLocked: true,
     },
     {
-      id: "1-5",
+      id: "1-4",
       title: "Provide Liquidity",
       description:
         "Add liquidity to an APT-USDT pool on a decentralized exchange to earn trading fees.",
@@ -91,7 +81,7 @@ export const questStepsData: Record<string, QuestStep[]> = {
       isLocked: true,
     },
     {
-      id: "1-6",
+      id: "1-5",
       title: "Stake Your APT",
       description:
         "Stake at least 1 APT on a staking platform like Tortuga Finance to earn staking rewards.",
@@ -100,7 +90,7 @@ export const questStepsData: Record<string, QuestStep[]> = {
       isLocked: true,
     },
     {
-      id: "1-7",
+      id: "1-6",
       title: "Mint an NFT",
       description:
         "Create and mint your first NFT on Topaz or BlueMove marketplace on Aptos.",
@@ -109,7 +99,7 @@ export const questStepsData: Record<string, QuestStep[]> = {
       isLocked: true,
     },
     {
-      id: "1-8",
+      id: "1-7",
       title: "Register a .apt Domain",
       description:
         "Register your own .apt domain name with Aptos Name Service (ANS).",
@@ -118,7 +108,7 @@ export const questStepsData: Record<string, QuestStep[]> = {
       isLocked: true,
     },
     {
-      id: "1-9",
+      id: "1-8",
       title: "Use Bridge",
       description:
         "Bridge at least 1 USDT from Aptos to another blockchain using LayerZero or Wormhole.",
@@ -127,7 +117,7 @@ export const questStepsData: Record<string, QuestStep[]> = {
       isLocked: true,
     },
     {
-      id: "1-10",
+      id: "1-9",
       title: "Complete Quest",
       description: "Finish all previous steps and claim your rewards!",
       iconUrl: "/images/quest-icons/reward.svg",

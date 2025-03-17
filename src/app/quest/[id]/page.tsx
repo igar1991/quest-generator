@@ -52,30 +52,36 @@ export default function QuestDetail() {
    * @param isComplete Whether the step is completed
    */
   const handleStepComplete = (stepId: string, isComplete: boolean) => {
-    const updatedSteps = steps.map((step, index) => {
-      // Update the current step's completion status
-      if (step.id === stepId) {
-        return { ...step, isCompleted: isComplete };
-      }
+    // Find the current step's index
+    const currentIndex = steps.findIndex((step) => step.id === stepId);
 
-      // If current step is completed, unlock the next step
-      if (step.id === stepId && isComplete && index < steps.length - 1) {
-        // Get the next step and unlock it
-        const nextStepIndex = index + 1;
-        if (nextStepIndex < steps.length) {
-          steps[nextStepIndex].isLocked = false;
-        }
-      }
+    if (currentIndex === -1) return;
 
-      return step;
-    });
+    // Create a copy of steps to update
+    const updatedSteps = [...steps];
 
+    // Update the current step's completion status
+    updatedSteps[currentIndex] = {
+      ...updatedSteps[currentIndex],
+      isCompleted: isComplete,
+    };
+
+    // If current step is completed and there's a next step, unlock it
+    if (isComplete && currentIndex < steps.length - 1) {
+      updatedSteps[currentIndex + 1] = {
+        ...updatedSteps[currentIndex + 1],
+        isLocked: false,
+      };
+    }
+
+    // Update steps immediately (updates the map)
     setSteps(updatedSteps);
 
-    // If current step is completed, set active step to next step
-    const currentIndex = steps.findIndex((step) => step.id === stepId);
+    // If completing a step and there's a next step, delay setting the active step to match animation
     if (isComplete && currentIndex < steps.length - 1) {
-      setActiveStep(steps[currentIndex + 1]);
+      setTimeout(() => {
+        setActiveStep(updatedSteps[currentIndex + 1]);
+      }, 1500);
     }
   };
 
@@ -126,7 +132,11 @@ export default function QuestDetail() {
           {/* Step details */}
           <div className="order-1 lg:order-2">
             {activeStep ? (
-              <QuestStep step={activeStep} onComplete={handleStepComplete} />
+              <QuestStep
+                key={activeStep.id}
+                step={activeStep}
+                onComplete={handleStepComplete}
+              />
             ) : (
               <div className="bg-white dark:bg-dark-100 rounded-xl shadow-md p-6">
                 <p className="text-gray-600 dark:text-gray-300">
