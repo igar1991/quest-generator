@@ -193,6 +193,10 @@ export default function QuestDetail() {
                   key={activeStep.id}
                   step={activeStep}
                   onComplete={handleStepComplete}
+                  currentStepIndex={steps.findIndex(
+                    (step) => step.id === activeStep.id,
+                  )}
+                  totalSteps={steps.length}
                 />
               ) : (
                 <div className="bg-white dark:bg-dark-100 rounded-xl shadow-md p-6">

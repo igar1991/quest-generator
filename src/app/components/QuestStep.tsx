@@ -10,15 +10,22 @@ import LinkButton from "./ui/LinkButton";
 interface QuestStepProps {
   step: QuestStepType;
   onComplete: (stepId: string, isComplete: boolean) => void;
+  currentStepIndex?: number;
+  totalSteps?: number;
 }
 
 /**
  * Component that displays details for a single quest step
  * and handles validation and completion
- * @param props Contains step data and completion handler
+ * @param props Contains step data, completion handler, and progress info
  * @returns QuestStep component
  */
-const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
+const QuestStep: React.FC<QuestStepProps> = ({
+  step,
+  onComplete,
+  currentStepIndex = 0,
+  totalSteps = 0,
+}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { address, isConnected } = useWallet();
   const [autoCompletedFirstStep, setAutoCompletedFirstStep] = useState(false);
@@ -96,6 +103,13 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
     <div
       className={`bg-white dark:bg-dark-100 rounded-xl shadow-md p-6 w-full max-w-lg mx-auto relative transition-all duration-300 ${showSuccessAnimation ? "ring-4 ring-green-400 scale-[1.02]" : isSubmitting ? "ring-4 ring-gray-400 scale-[1.02]" : ""}`}
     >
+      {/* Progress indicator */}
+      {totalSteps > 0 && (
+        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gray-500 dark:bg-gray-600 text-white px-4 py-1 rounded-full text-sm font-medium shadow-md">
+          Task {currentStepIndex + 1} of {totalSteps}
+        </div>
+      )}
+
       {/* Success animation overlay */}
       {showSuccessAnimation && (
         <div className="absolute inset-0 bg-green-400/10 rounded-xl flex items-center justify-center z-10">
