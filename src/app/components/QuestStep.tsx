@@ -33,6 +33,8 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
 
     if (step.isCompleted) {
       setShowSuccessAnimation(true);
+    } else {
+      setShowSuccessAnimation(false);
     }
   }, [step]);
 
@@ -46,12 +48,12 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
       !step.isCompleted
     ) {
       setAutoCompletedFirstStep(true);
-      // Show success animation
-      setShowSuccessAnimation(true);
+      setIsSubmitting(true);
 
       // Complete the current step and flag that we want to advance to the next step
       setTimeout(() => {
         onComplete(step.id, true);
+        setIsSubmitting(false);
       }, 1500); // Increased delay to match handleCompleteStep
     }
   }, [
@@ -73,9 +75,6 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
     setIsSubmitting(true);
     console.log(`Starting completion of step ${step.id}`);
 
-    // Show success animation
-    setShowSuccessAnimation(true);
-
     // Simulate API call to verify step completion
     setTimeout(() => {
       console.log(`Calling onComplete for step ${step.id}`);
@@ -95,8 +94,9 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
 
   return (
     <div
-      className={`bg-white dark:bg-dark-100 rounded-xl shadow-md p-6 w-full max-w-lg mx-auto relative transition-all duration-300 ${showSuccessAnimation ? "ring-4 ring-green-400 scale-[1.02]" : ""}`}
+      className={`bg-white dark:bg-dark-100 rounded-xl shadow-md p-6 w-full max-w-lg mx-auto relative transition-all duration-300 ${showSuccessAnimation ? "ring-4 ring-green-400 scale-[1.02]" : isSubmitting ? "ring-4 ring-gray-400 scale-[1.02]" : ""}`}
     >
+      {/* Success animation overlay */}
       {showSuccessAnimation && (
         <div className="absolute inset-0 bg-green-400/10 rounded-xl flex items-center justify-center z-10">
           <div className="bg-white dark:bg-dark-200 rounded-full p-4 shadow-lg">
@@ -116,12 +116,45 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
             </svg>
           </div>
           {step.isCompleted && (
-            <div className="absolute bottom-4 text-center">
-              <p className="text-green-600 dark:text-green-400 font-medium mb-2">
+            <div className="absolute bottom-4 left-0 right-0 text-center">
+              <p className="text-green-600 dark:text-green-400 font-medium">
                 Task completed successfully!
               </p>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Processing overlay */}
+      {isSubmitting && !showSuccessAnimation && (
+        <div className="absolute inset-0 bg-gray-400/10 rounded-xl flex items-center justify-center z-10">
+          <div className="bg-white dark:bg-dark-200 rounded-full p-4 shadow-lg">
+            <svg
+              className="w-12 h-12 text-gray-500 animate-spin"
+              fill="none"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+          </div>
+          <div className="absolute bottom-4 left-0 right-0 text-center">
+            <p className="text-gray-600 dark:text-gray-400 font-medium">
+              Processing...
+            </p>
+          </div>
         </div>
       )}
 
