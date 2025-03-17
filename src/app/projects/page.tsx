@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 /**
  * Type for project object
@@ -24,6 +25,9 @@ type Project = {
  * @returns Projects page
  */
 const ProjectsPage: React.FC = () => {
+  // State to track image load errors - server and client will be consistent
+  const [failedImages, setFailedImages] = useState<Record<number, boolean>>({});
+
   // Dummy data for projects - in a real app, this would come from an API
   const projects: Project[] = [
     {
@@ -98,6 +102,17 @@ const ProjectsPage: React.FC = () => {
     new Set(projects.map((project) => project.category)),
   );
 
+  /**
+   * Handles image load error by updating the failedImages state
+   * @param id - Project ID to mark as having a failed image
+   */
+  const handleImageError = (id: number) => {
+    setFailedImages((prev) => ({
+      ...prev,
+      [id]: true,
+    }));
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -146,16 +161,22 @@ const ProjectsPage: React.FC = () => {
               >
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-dark-100 overflow-hidden mr-4">
-                      <img
-                        src={project.logo}
-                        alt={project.name}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = "https://via.placeholder.com/150";
-                        }}
-                      />
+                    <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-dark-100 overflow-hidden mr-4 relative">
+                      {!failedImages[project.id] ? (
+                        <Image
+                          src={project.logo}
+                          alt={project.name}
+                          fill
+                          sizes="48px"
+                          className="object-cover"
+                          onError={() => handleImageError(project.id)}
+                        />
+                      ) : (
+                        // Static fallback that won't cause hydration mismatch
+                        <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
+                          {project.name.charAt(0).toUpperCase()}
+                        </div>
+                      )}
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white">

@@ -157,7 +157,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
           </div>
         </div>
       )}
-      
+
       {/* Progress indicator - integrated into the card header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center">
@@ -168,7 +168,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
             {step.title}
           </h2>
         </div>
-        
+
         {totalSteps > 0 && (
           <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">
             Task {currentStepIndex + 1} of {totalSteps}
@@ -192,9 +192,10 @@ const QuestStep: React.FC<QuestStepProps> = ({
             <div className="mt-3 text-green-600 dark:text-green-400 text-sm">
               {address ? (
                 <>
-                  Wallet connected: 
+                  Wallet connected:
                   <span className="font-mono text-xs break-all ml-1">
-                    {address.substring(0, 10)}...{address.substring(address.length - 8)}
+                    {address.substring(0, 10)}...
+                    {address.substring(address.length - 8)}
                   </span>
                 </>
               ) : (
@@ -249,11 +250,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
       {/* Action buttons - simplified */}
       <div className="flex flex-col sm:flex-row gap-3">
         {step.id !== "1-1" && !step.isCompleted && !isSubmitting && (
-          <Button
-            onClick={handleCompleteStep}
-            isLoading={false}
-            fullWidth
-          >
+          <Button onClick={handleCompleteStep} isLoading={false} fullWidth>
             Complete Step
           </Button>
         )}
