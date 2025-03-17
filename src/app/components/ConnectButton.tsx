@@ -7,6 +7,7 @@ import Button from "./ui/Button";
 interface ConnectButtonProps {
   onSuccess?: (address: string) => void;
   className?: string;
+  showWalletStatus?: boolean;
 }
 
 /**
@@ -17,6 +18,7 @@ interface ConnectButtonProps {
 const ConnectButton: React.FC<ConnectButtonProps> = ({
   onSuccess,
   className = "",
+  showWalletStatus = true,
 }) => {
   const {
     connect,
@@ -66,7 +68,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({
   const getButtonText = () => {
     if (isConnecting) return "Connecting...";
     if (isConnected) return `Disconnect ${formatAddress(address || "")}`;
-    if (!isAvailable) return "No Wallet Found";
+    if (!isAvailable && showWalletStatus) return "No Wallet Found";
     return `Connect Wallet`;
   };
 
@@ -85,7 +87,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({
 
       {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
 
-      {!isAvailable && !isConnected && (
+      {!isAvailable && !isConnected && showWalletStatus && (
         <div className="mt-2 text-sm text-center">
           <a
             href="https://petra.app/"

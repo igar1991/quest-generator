@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import ConnectButton from "./ConnectButton";
 
 /**
  * Header component with responsive navigation
@@ -50,11 +49,6 @@ const Header: React.FC = () => {
               About
             </Link>
           </nav>
-
-          {/* Connect Wallet Button */}
-          <div className="hidden md:flex">
-            <ConnectButton />
-          </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
@@ -126,9 +120,6 @@ const Header: React.FC = () => {
           >
             About
           </Link>
-          <div className="mt-3 px-3">
-            <ConnectButton />
-          </div>
         </div>
       </div>
     </header>
