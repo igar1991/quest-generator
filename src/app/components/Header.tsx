@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import ConnectButton from "./ConnectButton";
 
 /**
  * Header component with responsive navigation
@@ -52,9 +53,7 @@ const Header: React.FC = () => {
 
           {/* Connect Wallet Button */}
           <div className="hidden md:flex">
-            <button className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-              Connect Wallet
-            </button>
+            <ConnectButton />
           </div>
 
           {/* Mobile Menu Button */}
@@ -127,12 +126,9 @@ const Header: React.FC = () => {
           >
             About
           </Link>
-          <button
-            className="w-full text-left bg-primary hover:bg-primary/90 text-white px-3 py-2 rounded-lg text-base font-medium transition-colors mt-3"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Connect Wallet
-          </button>
+          <div className="mt-3 px-3">
+            <ConnectButton />
+          </div>
         </div>
       </div>
     </header>
