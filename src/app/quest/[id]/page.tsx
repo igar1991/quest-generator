@@ -84,6 +84,11 @@ export default function QuestDetail() {
 
     if (currentIndex === -1) return;
 
+    // For debugging
+    console.log(
+      `Completing step ${stepId} at index ${currentIndex}, isComplete: ${isComplete}`,
+    );
+
     // Create a copy of steps to update
     const updatedSteps = [...steps];
 
@@ -99,16 +104,19 @@ export default function QuestDetail() {
         ...updatedSteps[currentIndex + 1],
         isLocked: false,
       };
-    }
 
-    // Update steps immediately (updates the map)
-    setSteps(updatedSteps);
+      // Update steps immediately (updates the map)
+      setSteps(updatedSteps);
 
-    // If completing a step and there's a next step, delay setting the active step to match animation
-    if (isComplete && currentIndex < steps.length - 1) {
+      // Always advance to the next step after completion with a delay to match animation
       setTimeout(() => {
-        setActiveStep(updatedSteps[currentIndex + 1]);
+        const nextStep = updatedSteps[currentIndex + 1];
+        console.log(`Advancing to next step: ${nextStep.id}`);
+        setActiveStep(nextStep);
       }, 1500);
+    } else {
+      // Update steps immediately (updates the map)
+      setSteps(updatedSteps);
     }
   };
 

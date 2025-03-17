@@ -26,10 +26,15 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
 
   // Initialize success animation state based on step completion status
   useEffect(() => {
+    // Special logging for step 1-2
+    if (step.id === "1-2") {
+      console.log("Rendering step 1-2 (Top Up With 10 APT)", step);
+    }
+
     if (step.isCompleted) {
       setShowSuccessAnimation(true);
     }
-  }, [step.isCompleted]);
+  }, [step]);
 
   // Auto-complete first step when connected - but only once
   useEffect(() => {
@@ -62,13 +67,18 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
    * Handles validation and completion of the current step
    */
   const handleCompleteStep = () => {
+    // Already submitting, don't do anything
+    if (isSubmitting) return;
+
     setIsSubmitting(true);
+    console.log(`Starting completion of step ${step.id}`);
 
     // Show success animation
     setShowSuccessAnimation(true);
 
     // Simulate API call to verify step completion
     setTimeout(() => {
+      console.log(`Calling onComplete for step ${step.id}`);
       // Complete the step which will trigger navigation to next step
       onComplete(step.id, true);
       setIsSubmitting(false);
@@ -191,16 +201,8 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
               checked={step.isCompleted}
               onChange={(e) => {
                 if (e.target.checked) {
-                  // Show animation first
-                  setShowSuccessAnimation(true);
-
-                  // Then complete the step after a delay
-                  setTimeout(() => {
-                    onComplete(step.id, e.target.checked);
-                  }, 1500);
-                } else {
-                  // If unchecking, update immediately without animation
-                  // This is now disabled since we don't allow unchecking
+                  // Just call handleCompleteStep to use the same logic as the button
+                  handleCompleteStep();
                 }
               }}
             />
@@ -219,7 +221,7 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
         <div className="mb-4">
           <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-lg">
             <p className="text-green-700 dark:text-green-400 text-sm font-medium">
-              This task has been completed!
+              This task has been completed! Moving to next task...
             </p>
           </div>
         </div>
@@ -260,20 +262,6 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
           >
             Go to Pontem DEX
           </LinkButton>
-        )}
-
-        {/* Next step button for completed tasks */}
-        {step.isCompleted && (
-          <Button
-            onClick={() => {
-              // Trigger navigation to next task via parent component
-              onComplete(step.id, true);
-            }}
-            fullWidth
-            variant="primary"
-          >
-            Continue to Next Step
-          </Button>
         )}
       </div>
     </div>
