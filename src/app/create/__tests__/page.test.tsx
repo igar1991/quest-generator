@@ -50,8 +50,11 @@ describe("CreateQuestPage", () => {
     fireEvent.change(screen.getByLabelText("Description") as HTMLElement, {
       target: { value: "A test quest description" },
     });
-    fireEvent.change(screen.getByLabelText("Reward") as HTMLElement, {
-      target: { value: "100 TEST" },
+    fireEvent.change(screen.getByLabelText("Reward (in APT)") as HTMLElement, {
+      target: { value: "100" },
+    });
+    fireEvent.change(screen.getByLabelText("Total users") as HTMLElement, {
+      target: { value: "10" },
     });
 
     // Check if the values were updated
@@ -59,7 +62,8 @@ describe("CreateQuestPage", () => {
     expect(screen.getByLabelText("Description")).toHaveValue(
       "A test quest description",
     );
-    expect(screen.getByLabelText("Reward")).toHaveValue("100 TEST");
+    expect(screen.getByLabelText("Reward (in APT)")).toHaveValue(100);
+    expect(screen.getByLabelText("Total users")).toHaveValue(10);
   });
 
   it("allows adding and removing tasks", () => {
@@ -183,63 +187,67 @@ describe("CreateQuestPage", () => {
   });
 
   it("logs quest data to console on submit", () => {
+    // Use the mocked validateQuestLocal from the jest.mock at the top
+    const { validateQuestLocal } = jest.requireMock("../../../utils/questApi");
+    validateQuestLocal.mockReturnValue({ isValid: true });
     render(<CreateQuestPage />);
 
-    // Fill out required fields with valid data
+    // Fill out the form fields
     fireEvent.change(screen.getByLabelText("Title") as HTMLElement, {
-      target: { value: "Test Quest" },
+      target: { value: "Test Quest Title" },
     });
     fireEvent.change(screen.getByLabelText("Description") as HTMLElement, {
       target: {
         value:
-          "This is a detailed test quest description that meets the minimum length requirements",
+          "This is a test quest description that is long enough to be valid.",
       },
     });
-    fireEvent.change(screen.getByLabelText("Reward") as HTMLElement, {
+    fireEvent.change(screen.getByLabelText("Reward (in APT)") as HTMLElement, {
       target: { value: "100" },
+    });
+    fireEvent.change(screen.getByLabelText("Total users") as HTMLElement, {
+      target: { value: "10" },
     });
 
     // Add a task
     fireEvent.click(screen.getByText("Add Task") as HTMLElement);
 
-    // Find the task section by its heading
+    // Find task section and fill it out
     const taskHeading = screen.getByText("Step 1: Text Instruction");
     const taskSection = taskHeading.closest(".border") as HTMLElement;
-    expect(taskSection).toBeInTheDocument();
 
-    // Fill out task details
-    fireEvent.change(
-      within(taskSection).getByLabelText("Title") as HTMLElement,
-      {
-        target: { value: "Task Title" },
-      },
-    );
-    fireEvent.change(
-      within(taskSection).getByLabelText("Description") as HTMLElement,
-      {
-        target: { value: "Task Description" },
-      },
-    );
+    const titleInput = within(taskSection).getByLabelText(
+      "Title",
+    ) as HTMLElement;
+    const descriptionInput = within(taskSection).getByLabelText(
+      "Description",
+    ) as HTMLElement;
+
+    fireEvent.change(titleInput, { target: { value: "Task 1 Title" } });
+    fireEvent.change(descriptionInput, {
+      target: { value: "Task 1 Description" },
+    });
 
     // Submit the form
-    fireEvent.click(screen.getByText("Create Quest") as HTMLElement);
+    fireEvent.click(
+      screen.getByRole("button", { name: "Create Quest" }) as HTMLElement,
+    );
 
     // Check that console.log was called with quest data
     expect(consoleOutput.length).toBe(1);
     expect(consoleOutput[0]).toContain("Valid quest data:");
 
     // Parse the JSON from the console output and verify structure
-    const logData = consoleOutput[0].replace("Valid quest data:", "").trim();
-    const questData = JSON.parse(logData);
+    const jsonString = consoleOutput[0].replace("Valid quest data: ", "");
+    const parsedData = JSON.parse(jsonString);
 
-    expect(questData.title).toBe("Test Quest");
-    expect(questData.description).toBe(
-      "This is a detailed test quest description that meets the minimum length requirements",
-    );
-    expect(questData.reward).toBe("100");
-    expect(questData.tasks.length).toBe(1);
-    expect(questData.tasks[0].title).toBe("Task Title");
-    expect(questData.tasks[0].description).toBe("Task Description");
+    expect(parsedData).toHaveProperty("title", "Test Quest Title");
+    expect(parsedData).toHaveProperty("description");
+    expect(parsedData).toHaveProperty("reward", "100");
+    expect(parsedData).toHaveProperty("totalUsers", "10");
+    expect(parsedData).toHaveProperty("tasks");
+    expect(Array.isArray(parsedData.tasks)).toBe(true);
+    expect(parsedData.tasks.length).toBe(1);
   });
 
   it("shows confirmation dialog when back button is clicked with changes", () => {

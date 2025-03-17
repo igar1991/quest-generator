@@ -7,6 +7,7 @@ describe("validateQuest", () => {
     description:
       "A comprehensive introduction to writing smart contracts with Solidity",
     reward: "5",
+    totalUsers: "10",
     category: "learning",
     difficulty: "beginner",
     tasks: [
@@ -88,6 +89,55 @@ describe("validateQuest", () => {
     const result = validateQuest(invalidQuest);
     expect(result.isValid).toBe(false);
     expect(result.field).toBe("reward");
+  });
+
+  test("should reject negative reward", () => {
+    const invalidQuest = { ...validQuest, reward: "-5" };
+    const result = validateQuest(invalidQuest);
+    expect(result.isValid).toBe(false);
+    expect(result.field).toBe("reward");
+  });
+
+  test("should reject zero reward", () => {
+    const invalidQuest = { ...validQuest, reward: "0" };
+    const result = validateQuest(invalidQuest);
+    expect(result.isValid).toBe(false);
+    expect(result.field).toBe("reward");
+  });
+
+  test("should reject missing totalUsers", () => {
+    const invalidQuest = { ...validQuest, totalUsers: "" };
+    const result = validateQuest(invalidQuest);
+    expect(result.isValid).toBe(false);
+    expect(result.field).toBe("totalUsers");
+  });
+
+  test("should reject invalid totalUsers format", () => {
+    const invalidQuest = { ...validQuest, totalUsers: "not-a-number" };
+    const result = validateQuest(invalidQuest);
+    expect(result.isValid).toBe(false);
+    expect(result.field).toBe("totalUsers");
+  });
+
+  test("should reject negative totalUsers", () => {
+    const invalidQuest = { ...validQuest, totalUsers: "-5" };
+    const result = validateQuest(invalidQuest);
+    expect(result.isValid).toBe(false);
+    expect(result.field).toBe("totalUsers");
+  });
+
+  test("should reject zero totalUsers", () => {
+    const invalidQuest = { ...validQuest, totalUsers: "0" };
+    const result = validateQuest(invalidQuest);
+    expect(result.isValid).toBe(false);
+    expect(result.field).toBe("totalUsers");
+  });
+
+  test("should reject non-integer totalUsers", () => {
+    const invalidQuest = { ...validQuest, totalUsers: "5.5" };
+    const result = validateQuest(invalidQuest);
+    expect(result.isValid).toBe(false);
+    expect(result.field).toBe("totalUsers");
   });
 
   test("should reject invalid category", () => {

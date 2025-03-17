@@ -26,6 +26,7 @@ interface QuestData {
   title: string;
   description: string;
   reward: string;
+  totalUsers: string;
   category: string;
   difficulty: string;
   tasks: Task[];
@@ -41,6 +42,7 @@ export default function CreateQuestPage() {
     title: "",
     description: "",
     reward: "",
+    totalUsers: "",
     category: "learning",
     difficulty: "beginner",
     tasks: [],
@@ -211,10 +213,11 @@ export default function CreateQuestPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Convert reward to string if it's not already
+    // Convert values to string if they're not already
     const formattedQuestData = {
       ...questData,
       reward: questData.reward.toString(),
+      totalUsers: questData.totalUsers.toString(),
     };
 
     // Validate the quest data
@@ -234,6 +237,18 @@ export default function CreateQuestPage() {
     console.log("Valid quest data:", jsonData);
     setSuccessMessage("Quest data is valid and has been logged to the console");
     setErrorMessage("");
+  };
+
+  // Calculate total APT
+  const calculateTotalAPT = () => {
+    if (!questData.reward || !questData.totalUsers) return 0;
+
+    const rewardValue = parseFloat(questData.reward);
+    const totalUsersValue = parseInt(questData.totalUsers);
+
+    if (isNaN(rewardValue) || isNaN(totalUsersValue)) return 0;
+
+    return (rewardValue * totalUsersValue).toFixed(2);
   };
 
   return (
@@ -342,25 +357,58 @@ export default function CreateQuestPage() {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label
                 htmlFor="reward"
                 className="block text-sm font-medium mb-1"
               >
-                Reward
+                Reward (in APT)
               </label>
               <input
-                type="text"
+                type="number"
                 id="reward"
                 name="reward"
                 value={questData.reward}
                 onChange={handleQuestDataChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 required
+                step="0.01"
+                min="0"
+                placeholder="0.00"
               />
             </div>
 
+            <div>
+              <label
+                htmlFor="totalUsers"
+                className="block text-sm font-medium mb-1"
+              >
+                Total users
+              </label>
+              <input
+                type="number"
+                id="totalUsers"
+                name="totalUsers"
+                value={questData.totalUsers}
+                onChange={handleQuestDataChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                required
+                step="1"
+                min="1"
+                placeholder="0"
+              />
+            </div>
+          </div>
+
+          {/* Total APT calculation - always visible */}
+          <div className="mt-4 p-3 bg-purple-50 rounded-md border border-purple-200">
+            <p className="text-purple-800 font-medium">
+              Total APT to fund: {calculateTotalAPT()} APT
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label
                 htmlFor="category"

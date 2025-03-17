@@ -28,6 +28,7 @@ export interface QuestData {
   title: string;
   description: string;
   reward: string;
+  totalUsers: string;
   category: string;
   difficulty: string;
   tasks: Task[];
@@ -78,7 +79,19 @@ export function validateQuest(questJson: string | object): ValidationResult {
   }
 
   if (!quest.reward) {
-    return { isValid: false, error: "Reward is required", field: "reward" };
+    return {
+      isValid: false,
+      error: "Reward (in APT) is required",
+      field: "reward",
+    };
+  }
+
+  if (!quest.totalUsers) {
+    return {
+      isValid: false,
+      error: "Total users is required",
+      field: "totalUsers",
+    };
   }
 
   // Validate title length
@@ -103,8 +116,38 @@ export function validateQuest(questJson: string | object): ValidationResult {
   if (isNaN(Number(quest.reward))) {
     return {
       isValid: false,
-      error: "Reward must be a number",
+      error: "Reward (in APT) must be a number",
       field: "reward",
+    };
+  }
+
+  // Validate reward is positive
+  if (parseFloat(quest.reward) <= 0) {
+    return {
+      isValid: false,
+      error: "Reward (in APT) must be greater than zero",
+      field: "reward",
+    };
+  }
+
+  // Validate totalUsers format (numeric string)
+  if (isNaN(Number(quest.totalUsers))) {
+    return {
+      isValid: false,
+      error: "Total users must be a number",
+      field: "totalUsers",
+    };
+  }
+
+  // Validate totalUsers is a positive integer
+  if (
+    parseInt(quest.totalUsers) <= 0 ||
+    parseInt(quest.totalUsers) !== parseFloat(quest.totalUsers)
+  ) {
+    return {
+      isValid: false,
+      error: "Total users must be a positive integer",
+      field: "totalUsers",
     };
   }
 
