@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { validateQuestLocal } from "../../utils/questApi";
 
 type TaskType = "text" | "quiz" | "action";
 
@@ -49,6 +50,7 @@ export default function CreateQuestPage() {
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [showConfirmDialog, setShowConfirmDialog] = useState<boolean>(false);
   const [formChanged, setFormChanged] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   /**
    * Check if the form has been modified from its initial state
@@ -203,14 +205,35 @@ export default function CreateQuestPage() {
   };
 
   /**
-   * Handles form submission - converts quest data to JSON and logs to console
+   * Handles form submission - validates quest data before proceeding
    * @param e - Form submission event
    */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const jsonData = JSON.stringify(questData, null, 2);
-    console.log("Quest data:", jsonData);
-    setSuccessMessage("Quest data has been logged to the console");
+
+    // Convert reward to string if it's not already
+    const formattedQuestData = {
+      ...questData,
+      reward: questData.reward.toString(),
+    };
+
+    // Validate the quest data
+    const validationResult = validateQuestLocal(formattedQuestData);
+
+    if (!validationResult.isValid) {
+      setErrorMessage(validationResult.error || "Invalid quest data");
+      // Highlight the field with error if available
+      if (validationResult.field) {
+        // You may want to add logic to highlight the field with error
+        console.error(`Field with error: ${validationResult.field}`);
+      }
+      return;
+    }
+
+    const jsonData = JSON.stringify(formattedQuestData, null, 2);
+    console.log("Valid quest data:", jsonData);
+    setSuccessMessage("Quest data is valid and has been logged to the console");
+    setErrorMessage("");
   };
 
   return (
@@ -265,11 +288,19 @@ export default function CreateQuestPage() {
         </div>
       )}
 
-      <h1 className="text-3xl font-bold mb-6 pl-12">Create New Quest</h1>
+      <h1 className="text-3xl font-bold text-center mb-8">Create New Quest</h1>
 
+      {/* Success Message */}
       {successMessage && (
-        <div className="mb-6 p-4 bg-green-100 text-green-800 rounded-md">
+        <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
           {successMessage}
+        </div>
+      )}
+
+      {/* Error Message */}
+      {errorMessage && (
+        <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+          {errorMessage}
         </div>
       )}
 
