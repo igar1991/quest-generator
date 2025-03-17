@@ -1,8 +1,8 @@
-import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import QuestGrid from './components/QuestGrid';
-import Footer from './components/Footer';
+import React from "react";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import QuestGrid from "./components/QuestGrid";
+import Footer from "./components/Footer";
 
 /**
  * Main page component that displays hero section and popular quests

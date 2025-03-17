@@ -20,17 +20,20 @@ A platform for creating educational crypto quests that reward users for learning
 ## Getting Started
 
 1. Clone the repo
+
 ```bash
 git clone https://github.com/igar1991/quest-generator.git
 cd quest-generator
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 ```
 
 3. Start development
+
 ```bash
 npm run dev
 ```

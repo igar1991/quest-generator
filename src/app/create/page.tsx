@@ -1,0 +1,526 @@
+"use client";
+
+import { useState } from "react";
+
+type TaskType = "text" | "quiz" | "action";
+
+interface Task {
+  id: string;
+  type: TaskType;
+  title: string;
+  description: string;
+
+  // For quiz type
+  question?: string;
+  options?: string[];
+  correctAnswer?: string;
+
+  // For action type
+  actionUrl?: string;
+  successCondition?: string;
+}
+
+interface QuestData {
+  title: string;
+  description: string;
+  reward: string;
+  category: string;
+  difficulty: string;
+  tasks: Task[];
+}
+
+/**
+ * Creates a new quest with dynamic task management
+ * @returns React component for creating quests
+ */
+export default function CreateQuestPage() {
+  const [questData, setQuestData] = useState<QuestData>({
+    title: "",
+    description: "",
+    reward: "",
+    category: "learning",
+    difficulty: "beginner",
+    tasks: [],
+  });
+
+  const [currentTaskType, setCurrentTaskType] = useState<TaskType>("text");
+  const [successMessage, setSuccessMessage] = useState<string>("");
+
+  /**
+   * Handles changes to the main quest form fields
+   * @param e - Change event from form inputs
+   */
+  const handleQuestDataChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+    setQuestData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  /**
+   * Adds a new task to the quest based on the current selected task type
+   */
+  const addTask = () => {
+    const newTask: Task = {
+      id: Date.now().toString(),
+      type: currentTaskType,
+      title: "",
+      description: "",
+    };
+
+    setQuestData((prev) => ({
+      ...prev,
+      tasks: [...prev.tasks, newTask],
+    }));
+  };
+
+  /**
+   * Removes a task from the quest
+   * @param taskId - ID of the task to remove
+   */
+  const removeTask = (taskId: string) => {
+    setQuestData((prev) => ({
+      ...prev,
+      tasks: prev.tasks.filter((task) => task.id !== taskId),
+    }));
+  };
+
+  /**
+   * Updates a specific task with new values
+   * @param taskId - ID of the task to update
+   * @param updates - Partial task object with updated values
+   */
+  const updateTask = (taskId: string, updates: Partial<Task>) => {
+    setQuestData((prev) => ({
+      ...prev,
+      tasks: prev.tasks.map((task) =>
+        task.id === taskId ? { ...task, ...updates } : task,
+      ),
+    }));
+  };
+
+  /**
+   * Handles changes to task form fields
+   * @param taskId - ID of the task being updated
+   * @param e - Change event from form inputs
+   */
+  const handleTaskChange = (
+    taskId: string,
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+    updateTask(taskId, { [name]: value });
+  };
+
+  /**
+   * Updates a specific option in a quiz task
+   * @param taskId - ID of the task being updated
+   * @param index - Index of the option to update
+   * @param value - New value for the option
+   */
+  const handleOptionChange = (taskId: string, index: number, value: string) => {
+    const task = questData.tasks.find((t) => t.id === taskId);
+    if (!task) return;
+
+    const options = [...(task.options || [])];
+    options[index] = value;
+
+    updateTask(taskId, { options });
+  };
+
+  /**
+   * Adds a new empty option to a quiz task
+   * @param taskId - ID of the task to add an option to
+   */
+  const addOption = (taskId: string) => {
+    const task = questData.tasks.find((t) => t.id === taskId);
+    if (!task) return;
+
+    updateTask(taskId, {
+      options: [...(task.options || []), ""],
+    });
+  };
+
+  /**
+   * Removes an option from a quiz task
+   * @param taskId - ID of the task
+   * @param index - Index of the option to remove
+   */
+  const removeOption = (taskId: string, index: number) => {
+    const task = questData.tasks.find((t) => t.id === taskId);
+    if (!task || !task.options) return;
+
+    const options = [...task.options];
+    options.splice(index, 1);
+
+    updateTask(taskId, { options });
+  };
+
+  /**
+   * Handles form submission - converts quest data to JSON and logs to console
+   * @param e - Form submission event
+   */
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const jsonData = JSON.stringify(questData, null, 2);
+    console.log("Quest data:", jsonData);
+    setSuccessMessage("Quest data has been logged to the console");
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-6">Create New Quest</h1>
+
+      {successMessage && (
+        <div className="mb-6 p-4 bg-green-100 text-green-800 rounded-md">
+          {successMessage}
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-8">
+        {/* Quest Information */}
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6 space-y-4">
+          <h2 className="text-xl font-semibold">Quest Information</h2>
+
+          <div>
+            <label htmlFor="title" className="block text-sm font-medium mb-1">
+              Title
+            </label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={questData.title}
+              onChange={handleQuestDataChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium mb-1"
+            >
+              Description
+            </label>
+            <textarea
+              id="description"
+              name="description"
+              value={questData.description}
+              onChange={handleQuestDataChange}
+              rows={3}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label
+                htmlFor="reward"
+                className="block text-sm font-medium mb-1"
+              >
+                Reward
+              </label>
+              <input
+                type="text"
+                id="reward"
+                name="reward"
+                value={questData.reward}
+                onChange={handleQuestDataChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="category"
+                className="block text-sm font-medium mb-1"
+              >
+                Category
+              </label>
+              <select
+                id="category"
+                name="category"
+                value={questData.category}
+                onChange={handleQuestDataChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                required
+              >
+                <option value="learning">Learning</option>
+                <option value="development">Development</option>
+                <option value="testing">Testing</option>
+                <option value="engagement">Engagement</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                htmlFor="difficulty"
+                className="block text-sm font-medium mb-1"
+              >
+                Difficulty
+              </label>
+              <select
+                id="difficulty"
+                name="difficulty"
+                value={questData.difficulty}
+                onChange={handleQuestDataChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                required
+              >
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Task Management */}
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+            <h2 className="text-xl font-semibold">Tasks</h2>
+            <div className="flex flex-wrap gap-2">
+              <select
+                value={currentTaskType}
+                onChange={(e) => setCurrentTaskType(e.target.value as TaskType)}
+                className="px-3 py-2 border border-gray-300 rounded-md text-sm sm:text-base w-full sm:w-auto"
+              >
+                <option value="text">Text Instruction</option>
+                <option value="quiz">Quiz Question</option>
+                <option value="action">Action Verification</option>
+              </select>
+              <button
+                type="button"
+                onClick={addTask}
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 w-full sm:w-auto"
+              >
+                Add Task
+              </button>
+            </div>
+          </div>
+
+          {questData.tasks.length === 0 && (
+            <div className="text-center py-8 text-gray-500">
+              No tasks added yet. Use the button above to add tasks.
+            </div>
+          )}
+
+          <div className="space-y-6">
+            {questData.tasks.map((task, index) => (
+              <div
+                key={task.id}
+                className="border border-gray-200 rounded-lg p-3 sm:p-4 space-y-4"
+              >
+                <div className="flex flex-wrap justify-between items-center gap-2">
+                  <h3 className="text-lg font-medium">
+                    Step {index + 1}:{" "}
+                    {task.type === "text"
+                      ? "Text Instruction"
+                      : task.type === "quiz"
+                        ? "Quiz Question"
+                        : "Action Verification"}
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={() => removeTask(task.id)}
+                    className="text-red-600 hover:text-red-800"
+                  >
+                    Remove
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <label
+                      htmlFor={`task-${task.id}-title`}
+                      className="block text-sm font-medium mb-1"
+                    >
+                      Title
+                    </label>
+                    <input
+                      type="text"
+                      id={`task-${task.id}-title`}
+                      name="title"
+                      value={task.title}
+                      onChange={(e) => handleTaskChange(task.id, e)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor={`task-${task.id}-description`}
+                      className="block text-sm font-medium mb-1"
+                    >
+                      Description
+                    </label>
+                    <textarea
+                      id={`task-${task.id}-description`}
+                      name="description"
+                      value={task.description}
+                      onChange={(e) => handleTaskChange(task.id, e)}
+                      rows={2}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                      required
+                    />
+                  </div>
+
+                  {task.type === "quiz" && (
+                    <div className="space-y-4">
+                      <div>
+                        <label
+                          htmlFor={`task-${task.id}-question`}
+                          className="block text-sm font-medium mb-1"
+                        >
+                          Question
+                        </label>
+                        <input
+                          type="text"
+                          id={`task-${task.id}-question`}
+                          name="question"
+                          value={task.question || ""}
+                          onChange={(e) => handleTaskChange(task.id, e)}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium mb-1">
+                          Options
+                        </label>
+                        {(task.options || []).map((option, optionIndex) => (
+                          <div
+                            key={optionIndex}
+                            className="flex mb-2 flex-wrap sm:flex-nowrap"
+                          >
+                            <input
+                              type="text"
+                              value={option}
+                              onChange={(e) =>
+                                handleOptionChange(
+                                  task.id,
+                                  optionIndex,
+                                  e.target.value,
+                                )
+                              }
+                              className="flex-1 px-3 py-2 border border-gray-300 rounded-md sm:rounded-l-md sm:rounded-r-none w-full sm:w-auto"
+                              placeholder={`Option ${optionIndex + 1}`}
+                              required
+                            />
+                            <button
+                              type="button"
+                              onClick={() => removeOption(task.id, optionIndex)}
+                              className="px-3 py-2 bg-red-100 text-red-600 rounded-md sm:rounded-l-none sm:rounded-r-md hover:bg-red-200 mt-1 sm:mt-0 w-full sm:w-auto"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        ))}
+                        <button
+                          type="button"
+                          onClick={() => addOption(task.id)}
+                          className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-100 w-full sm:w-auto"
+                        >
+                          Add Option
+                        </button>
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor={`task-${task.id}-correct-answer`}
+                          className="block text-sm font-medium mb-1"
+                        >
+                          Correct Answer
+                        </label>
+                        <select
+                          id={`task-${task.id}-correct-answer`}
+                          name="correctAnswer"
+                          value={task.correctAnswer || ""}
+                          onChange={(e) => handleTaskChange(task.id, e)}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          required
+                        >
+                          <option value="">Select correct answer</option>
+                          {(task.options || []).map((option, optionIndex) => (
+                            <option key={optionIndex} value={option}>
+                              {option}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  )}
+
+                  {task.type === "action" && (
+                    <div className="space-y-4">
+                      <div>
+                        <label
+                          htmlFor={`task-${task.id}-action-url`}
+                          className="block text-sm font-medium mb-1"
+                        >
+                          Action URL
+                        </label>
+                        <input
+                          type="url"
+                          id={`task-${task.id}-action-url`}
+                          name="actionUrl"
+                          value={task.actionUrl || ""}
+                          onChange={(e) => handleTaskChange(task.id, e)}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          placeholder="https://example.com"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor={`task-${task.id}-success-condition`}
+                          className="block text-sm font-medium mb-1"
+                        >
+                          Success Condition
+                        </label>
+                        <input
+                          type="text"
+                          id={`task-${task.id}-success-condition`}
+                          name="successCondition"
+                          value={task.successCondition || ""}
+                          onChange={(e) => handleTaskChange(task.id, e)}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          placeholder="e.g., User completes transaction"
+                          required
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 font-medium w-full sm:w-auto"
+          >
+            Create Quest
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}

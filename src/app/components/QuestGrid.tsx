@@ -1,8 +1,8 @@
 "use client";
 
-import React from 'react';
-import QuestCard from './QuestCard';
-import { questsData } from '../data/questsData';
+import React from "react";
+import QuestCard from "./QuestCard";
+import { questsData } from "../data/questsData";
 
 /**
  * Grid component to display quest cards in a responsive layout
@@ -20,7 +20,7 @@ const QuestGrid: React.FC = () => {
             Discover the most popular quests in the Aptos ecosystem
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {questsData.map((quest) => (
             <QuestCard
@@ -36,22 +36,26 @@ const QuestGrid: React.FC = () => {
             />
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
-          <a 
-            href="/projects" 
+          <a
+            href="/projects"
             className="inline-flex items-center text-primary hover:text-primary/80 font-medium"
           >
             <span>View all projects</span>
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              strokeWidth={1.5} 
-              stroke="currentColor" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
               className="ml-2 w-5 h-5"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+              />
             </svg>
           </a>
         </div>
@@ -60,4 +64,4 @@ const QuestGrid: React.FC = () => {
   );
 };
 
-export default QuestGrid; 
+export default QuestGrid;
