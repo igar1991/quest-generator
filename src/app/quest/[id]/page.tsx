@@ -31,9 +31,23 @@ export default function QuestDetail() {
 
   // Initialize active step to the first unlocked step
   useEffect(() => {
-    const firstUnlockedStep = steps.find((step) => !step.isLocked);
-    if (firstUnlockedStep) {
-      setActiveStep(firstUnlockedStep);
+    // Find the first uncompleted unlocked step
+    const firstUncompletedStep = steps.find(
+      (step) => !step.isLocked && !step.isCompleted,
+    );
+
+    // Or if all steps are completed, show the last step
+    const lastStep = steps[steps.length - 1];
+
+    if (firstUncompletedStep) {
+      setActiveStep(firstUncompletedStep);
+    } else if (lastStep && lastStep.isCompleted) {
+      setActiveStep(lastStep);
+    } else {
+      const firstUnlockedStep = steps.find((step) => !step.isLocked);
+      if (firstUnlockedStep) {
+        setActiveStep(firstUnlockedStep);
+      }
     }
   }, [steps]);
 
@@ -42,7 +56,20 @@ export default function QuestDetail() {
    * @param step The step that was clicked
    */
   const handleStepClick = (step: QuestStepType) => {
+    // Prevent clicking if step is locked
     if (step.isLocked) return;
+
+    // Prevent navigating back to completed steps unless it's the last completed step
+    if (step.isCompleted) {
+      const completedSteps = steps.filter((s) => s.isCompleted);
+      const isLastCompletedStep =
+        completedSteps[completedSteps.length - 1]?.id === step.id;
+
+      if (!isLastCompletedStep) {
+        return; // Don't allow navigating to this completed step
+      }
+    }
+
     setActiveStep(step);
   };
 

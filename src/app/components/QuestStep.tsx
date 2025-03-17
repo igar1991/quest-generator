@@ -24,6 +24,13 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
   const [autoCompletedFirstStep, setAutoCompletedFirstStep] = useState(false);
   const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
 
+  // Initialize success animation state based on step completion status
+  useEffect(() => {
+    if (step.isCompleted) {
+      setShowSuccessAnimation(true);
+    }
+  }, [step.isCompleted]);
+
   // Auto-complete first step when connected - but only once
   useEffect(() => {
     if (
@@ -40,8 +47,6 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
       // Complete the current step and flag that we want to advance to the next step
       setTimeout(() => {
         onComplete(step.id, true);
-        // Reset animation state after transition to next step
-        setTimeout(() => setShowSuccessAnimation(false), 300);
       }, 1500); // Increased delay to match handleCompleteStep
     }
   }, [
@@ -67,9 +72,6 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
       // Complete the step which will trigger navigation to next step
       onComplete(step.id, true);
       setIsSubmitting(false);
-
-      // Reset animation state after transition to next step
-      setTimeout(() => setShowSuccessAnimation(false), 300);
     }, 1500); // Increased delay to give user time to see the success animation
   };
 
@@ -103,6 +105,13 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
               ></path>
             </svg>
           </div>
+          {step.isCompleted && (
+            <div className="absolute bottom-4 text-center">
+              <p className="text-green-600 dark:text-green-400 font-medium mb-2">
+                Task completed successfully!
+              </p>
+            </div>
+          )}
         </div>
       )}
 
@@ -120,7 +129,7 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
       </p>
 
       {/* Wallet Connect for first step */}
-      {step.id === "1-1" && (
+      {step.id === "1-1" && !step.isCompleted && (
         <div className="mb-6">
           <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800 shadow-sm">
             <p className="text-sm text-blue-700 dark:text-blue-300 mb-3 font-medium">
@@ -151,8 +160,24 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
         </div>
       )}
 
+      {/* Show completed message for first step if completed */}
+      {step.id === "1-1" && step.isCompleted && (
+        <div className="mb-6">
+          <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-lg">
+            <p className="text-green-700 dark:text-green-400 text-sm">
+              Wallet connected successfully!
+              {address && (
+                <span className="block mt-1 font-mono text-xs break-all">
+                  {address}
+                </span>
+              )}
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Generic step completion */}
-      {step.id !== "1-1" && (
+      {step.id !== "1-1" && !step.isCompleted && (
         <div className="mb-4">
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
             Complete this task in your wallet or on the specified platform, then
@@ -172,13 +197,10 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
                   // Then complete the step after a delay
                   setTimeout(() => {
                     onComplete(step.id, e.target.checked);
-
-                    // Reset animation state after transition
-                    setTimeout(() => setShowSuccessAnimation(false), 300);
                   }, 1500);
                 } else {
                   // If unchecking, update immediately without animation
-                  onComplete(step.id, false);
+                  // This is now disabled since we don't allow unchecking
                 }
               }}
             />
@@ -188,6 +210,17 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
             >
               I have completed this task
             </label>
+          </div>
+        </div>
+      )}
+
+      {/* Completion message for non-first steps */}
+      {step.id !== "1-1" && step.isCompleted && (
+        <div className="mb-4">
+          <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-lg">
+            <p className="text-green-700 dark:text-green-400 text-sm font-medium">
+              This task has been completed!
+            </p>
           </div>
         </div>
       )}
@@ -205,7 +238,7 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
         )}
 
         {/* External link button when relevant */}
-        {step.id === "1-2" && (
+        {step.id === "1-2" && !step.isCompleted && (
           <LinkButton
             href="https://coinmarketcap.com/currencies/aptos/markets/"
             target="_blank"
@@ -217,7 +250,7 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
           </LinkButton>
         )}
 
-        {step.id === "1-3" && (
+        {step.id === "1-3" && !step.isCompleted && (
           <LinkButton
             href="https://pontem.network/"
             target="_blank"
@@ -227,6 +260,20 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
           >
             Go to Pontem DEX
           </LinkButton>
+        )}
+
+        {/* Next step button for completed tasks */}
+        {step.isCompleted && (
+          <Button
+            onClick={() => {
+              // Trigger navigation to next task via parent component
+              onComplete(step.id, true);
+            }}
+            fullWidth
+            variant="primary"
+          >
+            Continue to Next Step
+          </Button>
         )}
       </div>
     </div>

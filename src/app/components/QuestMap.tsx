@@ -31,6 +31,29 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
     return colors[id as keyof typeof colors] || "from-gray-100 to-gray-200";
   };
 
+  /**
+   * Check if a step is accessible to navigate to
+   * @param step The step to check
+   * @returns Whether the step is accessible
+   */
+  const isStepAccessible = (step: QuestStep): boolean => {
+    // Step is not accessible if locked
+    if (step.isLocked) return false;
+
+    // Find all completed steps
+    const completedSteps = steps.filter((s) => s.isCompleted);
+
+    // If this step is completed and not the last completed step, it's not accessible
+    if (step.isCompleted) {
+      const isLastCompletedStep =
+        completedSteps[completedSteps.length - 1]?.id === step.id;
+      return isLastCompletedStep;
+    }
+
+    // All other unlocked steps are accessible
+    return true;
+  };
+
   return (
     <div
       className={`relative bg-gradient-to-b ${getBackgroundColor(questId)} p-6 rounded-xl min-h-[500px] w-full max-w-md mx-auto`}
@@ -52,6 +75,10 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
           // Creates a winding effect like in the reference images
           const isOnLeft = index % 2 === 0;
           const isHovered = hoveredStepId === step.id;
+          const accessible = isStepAccessible(step);
+
+          // Check if this is a completed non-accessible step
+          const isCompletedPast = step.isCompleted && !accessible;
 
           return (
             <div
@@ -68,7 +95,7 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
               >
                 <button
                   onClick={() => onStepClick(step)}
-                  disabled={step.isLocked}
+                  disabled={!accessible}
                   className={`
                     relative 
                     flex flex-col items-center justify-center 
@@ -76,13 +103,15 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
                     rounded-full shadow-lg 
                     transition-all duration-300
                     ${
-                      step.isLocked
-                        ? "bg-gray-300 cursor-not-allowed filter grayscale opacity-60"
+                      !accessible
+                        ? "cursor-not-allowed filter grayscale opacity-60"
                         : "cursor-pointer hover:scale-110"
                     }
                     ${
                       step.isCompleted
-                        ? "bg-green-500 ring-4 ring-green-200"
+                        ? isCompletedPast
+                          ? "bg-gray-400 ring-4 ring-gray-200"
+                          : "bg-green-500 ring-4 ring-green-200"
                         : "bg-indigo-500 hover:bg-indigo-600"
                     }
                   `}
@@ -94,7 +123,13 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
 
                   {/* Step icon */}
                   <div className="text-white text-2xl">
-                    {step.isLocked ? "🔒" : "🚀"}
+                    {!accessible && step.isLocked
+                      ? "🔒"
+                      : isCompletedPast
+                        ? "✓"
+                        : step.isCompleted
+                          ? "✓"
+                          : "🚀"}
                   </div>
                 </button>
 
@@ -111,7 +146,7 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
                     style={{
                       // Ensures tooltip stays in view on smaller screens
                       maxWidth: "calc(100vw - 100px)",
-                      transform: `translateY(-${step.isLocked ? "10" : "25"}%)`,
+                      transform: `translateY(-${!accessible ? "10" : "25"}%)`,
                     }}
                   >
                     <h4 className="font-bold text-sm text-gray-900">
@@ -127,19 +162,23 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
                         How to achieve:
                       </h5>
                       <p className="text-xs mt-1 text-gray-700">
-                        {step.isLocked
+                        {!accessible && step.isLocked
                           ? "Complete previous steps to unlock this achievement"
-                          : step.isCompleted
-                            ? "Completed! Great job on finishing this task."
-                            : `To complete this step, you need to ${
-                                step.description
-                                  .toLowerCase()
-                                  .startsWith("enter")
-                                  ? step.description.toLowerCase()
-                                  : step.description
-                                      .toLowerCase()
-                                      .replace(/^[a-z]/, (c) => c.toLowerCase())
-                              }`}
+                          : isCompletedPast
+                            ? "Task already completed. You cannot return to this step."
+                            : step.isCompleted
+                              ? "Completed! Great job on finishing this task."
+                              : `To complete this step, you need to ${
+                                  step.description
+                                    .toLowerCase()
+                                    .startsWith("enter")
+                                    ? step.description.toLowerCase()
+                                    : step.description
+                                        .toLowerCase()
+                                        .replace(/^[a-z]/, (c) =>
+                                          c.toLowerCase(),
+                                        )
+                                }`}
                       </p>
                     </div>
 
