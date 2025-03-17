@@ -150,11 +150,6 @@ const QuestStep: React.FC<QuestStepProps> = ({ step, onComplete }) => {
               ></path>
             </svg>
           </div>
-          <div className="absolute bottom-4 left-0 right-0 text-center">
-            <p className="text-gray-600 dark:text-gray-400 font-medium">
-              Processing...
-            </p>
-          </div>
         </div>
       )}
 
