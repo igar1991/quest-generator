@@ -46,9 +46,17 @@ const QuestCard: React.FC<QuestCardProps> = ({
 
   return (
     <div 
-      className="bg-white dark:bg-dark-100 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] flex flex-col h-full cursor-pointer"
+      className="group bg-white dark:bg-dark-100 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] flex flex-col h-full cursor-pointer relative"
       onClick={handleCardClick}
     >
+      {/* URL tooltip that appears on hover */}
+      <div className="absolute left-0 right-0 bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-20 px-4">
+        <div className="bg-gray-800 text-white text-xs py-1 px-2 rounded shadow-lg">
+          {`${typeof window !== 'undefined' ? window.location.origin : ''}/quest/${id}`}
+        </div>
+        <div className="w-3 h-3 bg-gray-800 transform rotate-45 mx-auto -mt-1.5"></div>
+      </div>
+
       <div className="relative h-40 w-full bg-gradient-to-r from-primary/20 to-aptos/20">
         <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-white mix-blend-overlay z-0">
           {projectName.substring(0, 1)}

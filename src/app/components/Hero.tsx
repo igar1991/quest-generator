@@ -67,10 +67,11 @@ const Hero: React.FC = () => {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
               <Link
-                href="/explore"
-                className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg text-base font-medium transition-colors"
+                href="/projects"
+                className="w-full sm:w-auto bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg text-lg font-extrabold tracking-wide transition-colors shadow-lg"
+                style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.4)' }}
               >
-                Explore Quests
+                Browse Projects
               </Link>
               <Link
                 href="/create"

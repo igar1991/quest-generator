@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { QuestStep } from '../data/questStepsData';
 
 interface QuestMapProps {
@@ -16,6 +16,9 @@ interface QuestMapProps {
  * @returns QuestMap component
  */
 const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
+  // State to track which step tooltip is currently visible
+  const [hoveredStepId, setHoveredStepId] = useState<string | null>(null);
+  
   // Get background color based on quest ID - for visual variety
   const getBackgroundColor = (id: string) => {
     const colors = {
@@ -49,54 +52,88 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
           // Calculate if step should be on left or right side of path
           // Creates a winding effect like in the reference images
           const isOnLeft = index % 2 === 0;
+          const isHovered = hoveredStepId === step.id;
           
           return (
             <div 
               key={step.id} 
               className={`w-full flex ${isOnLeft ? 'justify-end' : 'justify-start'} items-center`}
             >
-              <button
-                onClick={() => onStepClick(step)}
-                disabled={step.isLocked}
-                className={`
-                  relative 
-                  flex flex-col items-center justify-center 
-                  w-16 h-16 
-                  rounded-full shadow-lg 
-                  transition-all duration-300
-                  ${step.isLocked 
-                    ? 'bg-gray-300 cursor-not-allowed filter grayscale opacity-60' 
-                    : 'cursor-pointer hover:scale-110'}
-                  ${step.isCompleted 
-                    ? 'bg-green-500 ring-4 ring-green-200' 
-                    : 'bg-indigo-500 hover:bg-indigo-600'}
-                `}
+              <div 
+                className="relative"
+                onMouseEnter={() => setHoveredStepId(step.id)}
+                onMouseLeave={() => setHoveredStepId(null)}
+                onTouchStart={() => setHoveredStepId(step.id === hoveredStepId ? null : step.id)}
               >
-                {/* Step number badge */}
-                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-white flex items-center justify-center text-sm font-bold shadow">
-                  {index + 1}
-                </div>
-                
-                {/* Step icon */}
-                <div className="text-white text-2xl">
-                  {step.isLocked ? '🔒' : '🚀'}
-                </div>
-                
-                {/* Step tooltip */}
-                <div 
+                <button
+                  onClick={() => onStepClick(step)}
+                  disabled={step.isLocked}
                   className={`
-                    absolute ${isOnLeft ? 'right-20' : 'left-20'} 
-                    w-48 bg-white p-3 rounded-lg shadow-lg 
-                    opacity-0 group-hover:opacity-100 
-                    transition-opacity duration-300
-                    pointer-events-none
-                    z-20
+                    relative 
+                    flex flex-col items-center justify-center 
+                    w-16 h-16 
+                    rounded-full shadow-lg 
+                    transition-all duration-300
+                    ${step.isLocked 
+                      ? 'bg-gray-300 cursor-not-allowed filter grayscale opacity-60' 
+                      : 'cursor-pointer hover:scale-110'}
+                    ${step.isCompleted 
+                      ? 'bg-green-500 ring-4 ring-green-200' 
+                      : 'bg-indigo-500 hover:bg-indigo-600'}
                   `}
                 >
-                  <h4 className="font-bold text-sm">{step.title}</h4>
-                  <p className="text-xs text-gray-600 mt-1">{step.description}</p>
-                </div>
-              </button>
+                  {/* Step number badge */}
+                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-white flex items-center justify-center text-sm font-bold shadow">
+                    {index + 1}
+                  </div>
+                  
+                  {/* Step icon */}
+                  <div className="text-white text-2xl">
+                    {step.isLocked ? '🔒' : '🚀'}
+                  </div>
+                </button>
+
+                {/* Tooltip that appears on hover */}
+                {isHovered && (
+                  <div 
+                    className={`
+                      absolute ${isOnLeft ? 'right-20' : 'left-20'} top-0
+                      w-64 bg-white p-4 rounded-lg shadow-lg 
+                      z-20 transition-all duration-200 
+                      md:w-72
+                      text-left
+                    `}
+                    style={{
+                      // Ensures tooltip stays in view on smaller screens
+                      maxWidth: 'calc(100vw - 100px)',
+                      transform: `translateY(-${step.isLocked ? '10' : '25'}%)`
+                    }}
+                  >
+                    <h4 className="font-bold text-sm text-gray-900">{step.title}</h4>
+                    <p className="text-xs text-gray-600 mt-1">{step.description}</p>
+                    
+                    {/* Achievement requirement explanation */}
+                    <div className="mt-3 pt-2 border-t border-gray-200">
+                      <h5 className="text-xs font-semibold text-indigo-600">How to achieve:</h5>
+                      <p className="text-xs mt-1 text-gray-700">
+                        {step.isLocked 
+                          ? "Complete previous steps to unlock this achievement"
+                          : step.isCompleted
+                            ? "Completed! Great job on finishing this task."
+                            : `To complete this step, you need to ${step.description.toLowerCase().startsWith('enter') 
+                                ? step.description.toLowerCase() 
+                                : step.description.toLowerCase().replace(/^[a-z]/, (c) => c.toLowerCase())}`
+                        }
+                      </p>
+                    </div>
+                    
+                    {/* Small triangle pointer for the tooltip */}
+                    <div 
+                      className={`absolute top-6 ${isOnLeft ? '-right-2' : '-left-2'} w-4 h-4 bg-white transform rotate-45`}
+                    ></div>
+                  </div>
+                )}
+              </div>
             </div>
           );
         })}

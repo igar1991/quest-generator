@@ -39,10 +39,10 @@ const QuestGrid: React.FC = () => {
         
         <div className="mt-12 text-center">
           <a 
-            href="/explore" 
+            href="/projects" 
             className="inline-flex items-center text-primary hover:text-primary/80 font-medium"
           >
-            <span>View all quests</span>
+            <span>View all projects</span>
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
               fill="none" 
