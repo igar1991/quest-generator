@@ -101,15 +101,8 @@ const QuestStep: React.FC<QuestStepProps> = ({
 
   return (
     <div
-      className={`bg-white dark:bg-dark-100 rounded-xl shadow-md p-6 w-full max-w-lg mx-auto relative transition-all duration-300 ${showSuccessAnimation ? "ring-4 ring-green-400 scale-[1.02]" : isSubmitting ? "ring-4 ring-gray-400 scale-[1.02]" : ""}`}
+      className={`bg-white dark:bg-dark-100 rounded-xl shadow-md p-6 w-full max-w-lg mx-auto relative transition-all duration-300 ${showSuccessAnimation ? "ring-2 ring-green-400" : isSubmitting ? "ring-2 ring-gray-400" : ""}`}
     >
-      {/* Progress indicator */}
-      {totalSteps > 0 && (
-        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gray-500 dark:bg-gray-600 text-white px-4 py-1 rounded-full text-sm font-medium shadow-md">
-          Task {currentStepIndex + 1} of {totalSteps}
-        </div>
-      )}
-
       {/* Success animation overlay */}
       {showSuccessAnimation && (
         <div className="absolute inset-0 bg-green-400/10 rounded-xl flex items-center justify-center z-10">
@@ -129,13 +122,11 @@ const QuestStep: React.FC<QuestStepProps> = ({
               ></path>
             </svg>
           </div>
-          {step.isCompleted && (
-            <div className="absolute bottom-4 left-0 right-0 text-center">
-              <p className="text-green-600 dark:text-green-400 font-medium">
-                Task completed successfully!
-              </p>
-            </div>
-          )}
+          <div className="absolute bottom-4 left-0 right-0 text-center">
+            <p className="text-green-600 dark:text-green-400 font-medium">
+              Task completed successfully!
+            </p>
+          </div>
         </div>
       )}
 
@@ -166,75 +157,66 @@ const QuestStep: React.FC<QuestStepProps> = ({
           </div>
         </div>
       )}
-
-      <div className="flex items-center mb-4">
-        <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4">
-          <span className="text-2xl">{step.iconUrl ? "🚀" : "📝"}</span>
+      
+      {/* Progress indicator - integrated into the card header */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center">
+          <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4">
+            <span className="text-2xl">{step.iconUrl ? "🚀" : "📝"}</span>
+          </div>
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            {step.title}
+          </h2>
         </div>
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-          {step.title}
-        </h2>
+        
+        {totalSteps > 0 && (
+          <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+            Task {currentStepIndex + 1} of {totalSteps}
+          </div>
+        )}
       </div>
 
       <p className="text-gray-600 dark:text-gray-300 mb-6">
         {step.description}
       </p>
 
-      {/* Wallet Connect for first step */}
+      {/* Wallet Connect for first step - simplified */}
       {step.id === "1-1" && !step.isCompleted && (
         <div className="mb-6">
-          <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800 shadow-sm">
-            <p className="text-sm text-blue-700 dark:text-blue-300 mb-3 font-medium">
-              Connect your wallet to begin this quest
-            </p>
-            <ConnectButton
-              onSuccess={handleWalletConnected}
-              className="w-full bg-blue-600 hover:bg-blue-700"
-            />
-          </div>
+          <ConnectButton
+            onSuccess={handleWalletConnected}
+            className="w-full bg-blue-600 hover:bg-blue-700"
+          />
 
           {isConnected && (
-            <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-lg">
-              <p className="text-green-700 dark:text-green-400 text-sm">
-                {address ? (
-                  <>
-                    Wallet connected!
-                    <span className="block mt-1 font-mono text-xs break-all">
-                      {address}
-                    </span>
-                  </>
-                ) : (
-                  "Wallet connected successfully!"
-                )}
-              </p>
+            <div className="mt-3 text-green-600 dark:text-green-400 text-sm">
+              {address ? (
+                <>
+                  Wallet connected: 
+                  <span className="font-mono text-xs break-all ml-1">
+                    {address.substring(0, 10)}...{address.substring(address.length - 8)}
+                  </span>
+                </>
+              ) : (
+                "Wallet connected successfully!"
+              )}
             </div>
           )}
         </div>
       )}
 
       {/* Show completed message for first step if completed */}
-      {step.id === "1-1" && step.isCompleted && (
+      {step.id === "1-1" && step.isCompleted && !showSuccessAnimation && (
         <div className="mb-6">
-          <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-lg">
-            <p className="text-green-700 dark:text-green-400 text-sm">
-              Wallet connected successfully!
-              {address && (
-                <span className="block mt-1 font-mono text-xs break-all">
-                  {address}
-                </span>
-              )}
-            </p>
+          <div className="text-green-600 dark:text-green-400 text-sm">
+            Wallet connected successfully
           </div>
         </div>
       )}
 
-      {/* Generic step completion */}
-      {step.id !== "1-1" && !step.isCompleted && (
+      {/* Generic step completion - simplified */}
+      {step.id !== "1-1" && !step.isCompleted && !isSubmitting && (
         <div className="mb-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-            Complete this task in your wallet or on the specified platform, then
-            mark as complete.
-          </p>
           <div className="flex items-center">
             <input
               type="checkbox"
@@ -243,7 +225,6 @@ const QuestStep: React.FC<QuestStepProps> = ({
               checked={step.isCompleted}
               onChange={(e) => {
                 if (e.target.checked) {
-                  // Just call handleCompleteStep to use the same logic as the button
                   handleCompleteStep();
                 }
               }}
@@ -259,30 +240,26 @@ const QuestStep: React.FC<QuestStepProps> = ({
       )}
 
       {/* Completion message for non-first steps */}
-      {step.id !== "1-1" && step.isCompleted && (
-        <div className="mb-4">
-          <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-lg">
-            <p className="text-green-700 dark:text-green-400 text-sm font-medium">
-              This task has been completed! Moving to next task...
-            </p>
-          </div>
+      {step.id !== "1-1" && step.isCompleted && !showSuccessAnimation && (
+        <div className="mb-4 text-green-600 dark:text-green-400 text-sm">
+          Task completed! Moving to next task...
         </div>
       )}
 
-      {/* Action buttons */}
+      {/* Action buttons - simplified */}
       <div className="flex flex-col sm:flex-row gap-3">
-        {step.id !== "1-1" && !step.isCompleted && (
+        {step.id !== "1-1" && !step.isCompleted && !isSubmitting && (
           <Button
             onClick={handleCompleteStep}
-            isLoading={isSubmitting}
+            isLoading={false}
             fullWidth
           >
-            {isSubmitting ? "Processing..." : "Complete Step"}
+            Complete Step
           </Button>
         )}
 
         {/* External link button when relevant */}
-        {step.id === "1-2" && !step.isCompleted && (
+        {step.id === "1-2" && !step.isCompleted && !isSubmitting && (
           <LinkButton
             href="https://coinmarketcap.com/currencies/aptos/markets/"
             target="_blank"
@@ -294,7 +271,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
           </LinkButton>
         )}
 
-        {step.id === "1-3" && !step.isCompleted && (
+        {step.id === "1-3" && !step.isCompleted && !isSubmitting && (
           <LinkButton
             href="https://pontem.network/"
             target="_blank"
