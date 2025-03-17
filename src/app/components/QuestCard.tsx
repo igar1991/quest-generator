@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface QuestCardProps {
   id: string;
@@ -29,14 +29,26 @@ const QuestCard: React.FC<QuestCardProps> = ({
   difficulty,
   estimatedTime,
 }) => {
+  const router = useRouter();
+  
   const difficultyColor = {
     Easy: 'bg-green-100 text-green-800',
     Medium: 'bg-yellow-100 text-yellow-800',
     Hard: 'bg-red-100 text-red-800',
   }[difficulty];
 
+  /**
+   * Navigate to quest detail page when card is clicked
+   */
+  const handleCardClick = () => {
+    router.push(`/quest/${id}`);
+  };
+
   return (
-    <div className="bg-white dark:bg-dark-100 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] flex flex-col h-full">
+    <div 
+      className="bg-white dark:bg-dark-100 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] flex flex-col h-full cursor-pointer"
+      onClick={handleCardClick}
+    >
       <div className="relative h-40 w-full bg-gradient-to-r from-primary/20 to-aptos/20">
         <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-white mix-blend-overlay z-0">
           {projectName.substring(0, 1)}
@@ -69,12 +81,15 @@ const QuestCard: React.FC<QuestCardProps> = ({
             ⏱️ {estimatedTime}
           </span>
           
-          <Link 
-            href={`/quest/${id}`}
+          <button 
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent card click from firing
+              router.push(`/quest/${id}`);
+            }}
             className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             Start Quest
-          </Link>
+          </button>
         </div>
       </div>
     </div>
