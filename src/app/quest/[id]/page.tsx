@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import QuestMap from "../../components/QuestMap";
 import QuestStep from "../../components/QuestStep";
+import QuestCompletion from "../../components/QuestCompletion";
 import { questsData } from "../../data/questsData";
 import {
   questStepsData,
@@ -28,6 +29,7 @@ export default function QuestDetail() {
     questStepsData[questId] || [],
   );
   const [activeStep, setActiveStep] = useState<QuestStepType | null>(null);
+  const [allStepsCompleted, setAllStepsCompleted] = useState(false);
 
   // Initialize active step to the first unlocked step
   useEffect(() => {
@@ -35,6 +37,11 @@ export default function QuestDetail() {
     const firstUncompletedStep = steps.find(
       (step) => !step.isLocked && !step.isCompleted,
     );
+
+    // Check if all steps are completed
+    const areAllStepsCompleted =
+      steps.length > 0 && steps.every((step) => step.isCompleted);
+    setAllStepsCompleted(areAllStepsCompleted);
 
     // Or if all steps are completed, show the last step
     const lastStep = steps[steps.length - 1];
@@ -117,6 +124,14 @@ export default function QuestDetail() {
     } else {
       // Update steps immediately (updates the map)
       setSteps(updatedSteps);
+
+      // Check if this was the last step completion
+      if (isComplete && currentIndex === steps.length - 1) {
+        // All steps are now completed, will trigger showing the completion screen
+        setTimeout(() => {
+          setAllStepsCompleted(true);
+        }, 1500);
+      }
     }
   };
 
@@ -154,33 +169,41 @@ export default function QuestDetail() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Quest map */}
-          <div className="order-2 lg:order-1">
-            <QuestMap
-              steps={steps}
-              questId={questId}
-              onStepClick={handleStepClick}
-            />
+        {allStepsCompleted ? (
+          // Full width completion screen without the map
+          <div className="mt-4">
+            <QuestCompletion questTitle={quest.title} reward={quest.reward} />
           </div>
-
-          {/* Step details */}
-          <div className="order-1 lg:order-2">
-            {activeStep ? (
-              <QuestStep
-                key={activeStep.id}
-                step={activeStep}
-                onComplete={handleStepComplete}
+        ) : (
+          // Regular grid layout with map and steps
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Quest map */}
+            <div className="order-2 lg:order-1">
+              <QuestMap
+                steps={steps}
+                questId={questId}
+                onStepClick={handleStepClick}
               />
-            ) : (
-              <div className="bg-white dark:bg-dark-100 rounded-xl shadow-md p-6">
-                <p className="text-gray-600 dark:text-gray-300">
-                  Select a step from the quest map to begin.
-                </p>
-              </div>
-            )}
+            </div>
+
+            {/* Step details */}
+            <div className="order-1 lg:order-2">
+              {activeStep ? (
+                <QuestStep
+                  key={activeStep.id}
+                  step={activeStep}
+                  onComplete={handleStepComplete}
+                />
+              ) : (
+                <div className="bg-white dark:bg-dark-100 rounded-xl shadow-md p-6">
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Select a step from the quest map to begin.
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </main>
 
       <Footer />
