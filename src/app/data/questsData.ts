@@ -15,6 +15,13 @@ export const questsData = [
     tasks: [
       {
         id: "1-1",
+        type: "connect-wallet",
+        title: "Connect Your Wallet",
+        description:
+          "Connect your Aptos wallet to start interacting with the blockchain",
+      },
+      {
+        id: "1-2",
         type: "quiz",
         title: "Understand Move Basics",
         description: "Test your knowledge about the Move programming language",
@@ -28,20 +35,13 @@ export const questsData = [
         correctAnswer: "Digital asset management and smart contracts",
       },
       {
-        id: "1-2",
+        id: "1-3",
         type: "quiz",
         title: "Aptos Architecture",
         description: "Learn about the Aptos blockchain architecture",
         question: "Which of the following is NOT a key component of Aptos?",
         options: ["Move VM", "Solidity Runtime", "Block-STM", "BFT Consensus"],
         correctAnswer: "Solidity Runtime",
-      },
-      {
-        id: "1-3",
-        type: "connect-wallet",
-        title: "Connect Your Wallet",
-        description:
-          "Connect your Aptos wallet to start interacting with the blockchain",
       },
       {
         id: "1-4",
@@ -387,6 +387,13 @@ export const questsData = [
     tasks: [
       {
         id: "7-1",
+        type: "connect-wallet",
+        title: "Connect Your Wallet",
+        description:
+          "Connect your Aptos wallet to explore DeFi concepts on the blockchain",
+      },
+      {
+        id: "7-2",
         type: "quiz",
         title: "DeFi Basics",
         description: "Understand the fundamental concepts of DeFi",
@@ -400,7 +407,7 @@ export const questsData = [
         correctAnswer: "Decentralized Finance",
       },
       {
-        id: "7-2",
+        id: "7-3",
         type: "quiz",
         title: "Lending and Borrowing",
         description: "Learn about DeFi lending protocols",
@@ -415,7 +422,7 @@ export const questsData = [
         correctAnswer: "Their collateral gets liquidated",
       },
       {
-        id: "7-3",
+        id: "7-4",
         type: "quiz",
         title: "Decentralized Exchanges",
         description: "Understanding how DEXs work on Aptos",
@@ -442,6 +449,14 @@ export const questsData = [
     reward: 8,
     difficulty: "Hard" as const,
     estimatedTime: "45 min",
+    tasks: [
+      {
+        id: "8-1",
+        type: "connect-wallet",
+        title: "Connect to Econia DEX",
+        description: "Connect your wallet to start trading on Econia DEX",
+      },
+    ],
   },
   {
     id: "9",
@@ -453,6 +468,14 @@ export const questsData = [
     reward: 9,
     difficulty: "Hard" as const,
     estimatedTime: "50 min",
+    tasks: [
+      {
+        id: "9-1",
+        type: "connect-wallet",
+        title: "Connect to BlueMove",
+        description: "Connect your wallet to start developing with BlueMove",
+      },
+    ],
   },
   {
     id: "10",
@@ -464,5 +487,14 @@ export const questsData = [
     reward: 7,
     difficulty: "Medium" as const,
     estimatedTime: "35 min",
+    tasks: [
+      {
+        id: "10-1",
+        type: "connect-wallet",
+        title: "Connect to Ditto Finance",
+        description:
+          "Connect your wallet to explore yield farming on Ditto Finance",
+      },
+    ],
   },
 ];
