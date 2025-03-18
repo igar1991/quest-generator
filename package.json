@@ -10,7 +10,8 @@
     "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "test": "jest"
+    "test": "jest",
+    "check:all": "npm run lint:check && npm run format:check && npm run test"
   },
   "dependencies": {
     "next": "15.2.2",
@@ -22,7 +23,7 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.4.0",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "^16.2.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^20",
     "@types/react": "^19",
