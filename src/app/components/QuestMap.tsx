@@ -103,15 +103,15 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
                     rounded-full shadow-lg 
                     transition-all duration-300
                     ${
-                      !accessible
+                      !accessible && !step.isCompleted
                         ? "cursor-not-allowed filter grayscale opacity-60"
-                        : "cursor-pointer hover:scale-110"
+                        : accessible
+                          ? "cursor-pointer hover:scale-110"
+                          : "cursor-not-allowed"
                     }
                     ${
                       step.isCompleted
-                        ? isCompletedPast
-                          ? "bg-gray-400 ring-4 ring-gray-200"
-                          : "bg-green-500 ring-4 ring-green-200"
+                        ? "bg-green-500 ring-4 ring-green-200"
                         : "bg-indigo-500 hover:bg-indigo-600"
                     }
                   `}
@@ -164,21 +164,17 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
                       <p className="text-xs mt-1 text-gray-700">
                         {!accessible && step.isLocked
                           ? "Complete previous steps to unlock this achievement"
-                          : isCompletedPast
-                            ? "Task already completed. You cannot return to this step."
-                            : step.isCompleted
-                              ? "Completed! Great job on finishing this task."
-                              : `To complete this step, you need to ${
-                                  step.description
-                                    .toLowerCase()
-                                    .startsWith("enter")
-                                    ? step.description.toLowerCase()
-                                    : step.description
-                                        .toLowerCase()
-                                        .replace(/^[a-z]/, (c) =>
-                                          c.toLowerCase(),
-                                        )
-                                }`}
+                          : step.isCompleted
+                            ? "Completed! Great job on finishing this task."
+                            : `To complete this step, you need to ${
+                                step.description
+                                  .toLowerCase()
+                                  .startsWith("enter")
+                                  ? step.description.toLowerCase()
+                                  : step.description
+                                      .toLowerCase()
+                                      .replace(/^[a-z]/, (c) => c.toLowerCase())
+                              }`}
                       </p>
                     </div>
 
