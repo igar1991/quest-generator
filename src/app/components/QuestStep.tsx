@@ -83,11 +83,15 @@ const QuestStep: React.FC<QuestStepProps> = ({
       setAutoCompletedFirstStep(true);
       setIsSubmitting(true);
 
-      // Complete the current step and flag that we want to advance to the next step
+      // Immediately show success animation
+      setShowSuccessAnimation(true);
+
+      // Wait for animation to be visible before proceeding
       setTimeout(() => {
+        // Complete the step which will trigger navigation to next step
         onComplete(step.id, true);
         setIsSubmitting(false);
-      }, 1500); // Increased delay to match handleCompleteStep
+      }, 2000); // Longer delay to enjoy the success animation
     }
   }, [
     step.id,
@@ -159,6 +163,9 @@ const QuestStep: React.FC<QuestStepProps> = ({
 
     setIsSubmitting(true);
     console.log(`Starting completion of step ${step.id}`);
+
+    // Immediately show success animation
+    setShowSuccessAnimation(true);
 
     // Simulate API call to verify step completion
     setTimeout(() => {
@@ -417,11 +424,6 @@ const QuestStep: React.FC<QuestStepProps> = ({
                 d="M5 13l4 4L19 7"
               ></path>
             </svg>
-          </div>
-          <div className="absolute bottom-4 left-0 right-0 text-center">
-            <p className="text-green-600 dark:text-green-400 font-medium">
-              Task completed successfully!
-            </p>
           </div>
         </div>
       )}
