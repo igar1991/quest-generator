@@ -498,3 +498,8 @@ export const questsData = [
     ],
   },
 ];
+
+// Add CommonJS exports for the scripts
+if (typeof module !== "undefined") {
+  module.exports = { questsData };
+}

@@ -1,4 +1,4 @@
-import Redis from "ioredis";
+const Redis = require("ioredis");
 
 /**
  * Redis client instance for connecting to Redis
@@ -11,7 +11,7 @@ const redisClient = new Redis(
  * Connect to Redis and handle connection events
  * @returns Promise that resolves when Redis is connected
  */
-export async function connectToRedis(): Promise<void> {
+async function connectToRedis() {
   return new Promise((resolve, reject) => {
     redisClient.on("connect", () => {
       console.log("Connected to Redis");
@@ -29,14 +29,20 @@ export async function connectToRedis(): Promise<void> {
  * Get the Redis client instance
  * @returns Redis client instance
  */
-export function getRedisClient(): Redis {
+function getRedisClient() {
   return redisClient;
 }
 
 /**
  * Close the Redis connection
  */
-export async function closeRedisConnection(): Promise<void> {
+async function closeRedisConnection() {
   await redisClient.quit();
   console.log("Redis connection closed");
 }
+
+module.exports = {
+  connectToRedis,
+  getRedisClient,
+  closeRedisConnection,
+};

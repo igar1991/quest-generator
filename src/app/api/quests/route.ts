@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { validateQuest } from "../../../utils/validateQuest";
-import { createQuest } from "../../../../backend/services/questService";
+import {
+  createQuest,
+  getAllQuests,
+} from "../../../../backend/services/questService";
 import { connectToRedis } from "../../../../backend/utils/redis";
 
 // Ensure Redis is connected
@@ -67,10 +70,10 @@ export async function GET() {
     // Ensure Redis is connected
     await initRedis();
 
-    return NextResponse.json(
-      { message: "Quest retrieval not implemented" },
-      { status: 501 },
-    );
+    // Get all quests from Redis
+    const quests = await getAllQuests();
+
+    return NextResponse.json({ quests }, { status: 200 });
   } catch (error) {
     console.error("Error retrieving quests:", error);
     return NextResponse.json(

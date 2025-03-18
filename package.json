@@ -11,7 +11,9 @@
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "test": "jest",
-    "check:all": "npm run lint:check && npm run format:check && npm run test"
+    "check:all": "npm run lint:check && npm run format:check && npm run test",
+    "redis:import": "node scripts/importQuests.js",
+    "redis:clear": "node scripts/clearQuests.js"
   },
   "dependencies": {
     "@types/ioredis": "^4.28.10",
@@ -39,6 +41,8 @@
     "jest-environment-jsdom": "^29.7.0",
     "prettier": "^3.2.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
   }
 }
