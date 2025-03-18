@@ -1,14 +1,27 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { QuestStep as QuestStepType } from "../data/questStepsData";
 import ConnectButton from "./ConnectButton";
 import { useWallet } from "../context/WalletContext";
 import Button from "./ui/Button";
-import LinkButton from "./ui/LinkButton";
+
+// Define the interface to match QuestStepUI from the quest page
+interface QuestStepUI {
+  id: string;
+  title: string;
+  description: string;
+  iconUrl: string;
+  isCompleted?: boolean;
+  isLocked?: boolean;
+  type?: "connect-wallet" | "check-balance" | "quiz";
+  question?: string;
+  options?: string[];
+  correctAnswer?: string;
+  requiredAmount?: string;
+}
 
 interface QuestStepProps {
-  step: QuestStepType;
+  step: QuestStepUI;
   onComplete: (stepId: string, isComplete: boolean) => void;
   currentStepIndex?: number;
   totalSteps?: number;
@@ -27,17 +40,18 @@ const QuestStep: React.FC<QuestStepProps> = ({
   totalSteps = 0,
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { address, isConnected } = useWallet();
+  const { address, isConnected, balance } = useWallet();
   const [autoCompletedFirstStep, setAutoCompletedFirstStep] = useState(false);
   const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
+  const [initialBalance, setInitialBalance] = useState<number | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [quizAnswer, setQuizAnswer] = useState<{
+    isCorrect: boolean;
+    message: string;
+  } | null>(null);
 
   // Initialize success animation state based on step completion status
   useEffect(() => {
-    // Special logging for step 1-2
-    if (step.id === "1-2") {
-      console.log("Rendering step 1-2 (Top Up With 10 APT)", step);
-    }
-
     if (step.isCompleted) {
       setShowSuccessAnimation(true);
     } else {
@@ -45,10 +59,22 @@ const QuestStep: React.FC<QuestStepProps> = ({
     }
   }, [step]);
 
-  // Auto-complete first step when connected - but only once
+  // Store initial balance when connect-wallet task is completed
   useEffect(() => {
     if (
-      step.id === "1-1" &&
+      step.type === "connect-wallet" &&
+      isConnected &&
+      balance !== undefined &&
+      initialBalance === null
+    ) {
+      setInitialBalance(balance);
+    }
+  }, [step.type, isConnected, balance, initialBalance]);
+
+  // Auto-complete connect-wallet step when connected - but only once
+  useEffect(() => {
+    if (
+      step.type === "connect-wallet" &&
       isConnected &&
       address &&
       !autoCompletedFirstStep &&
@@ -65,12 +91,64 @@ const QuestStep: React.FC<QuestStepProps> = ({
     }
   }, [
     step.id,
+    step.type,
     isConnected,
     address,
     onComplete,
     autoCompletedFirstStep,
     step.isCompleted,
   ]);
+
+  /**
+   * Handles validation and completion of check-balance task
+   */
+  const handleCheckBalanceComplete = () => {
+    if (!isConnected || balance === undefined || initialBalance === null) {
+      return;
+    }
+
+    const requiredAmount = step.requiredAmount
+      ? Number(step.requiredAmount)
+      : 0;
+    const balanceIncrease = balance - initialBalance;
+
+    if (balanceIncrease >= requiredAmount) {
+      handleCompleteStep();
+    } else {
+      alert(
+        `Please add at least ${requiredAmount} APT to your wallet. Current increase: ${balanceIncrease} APT`,
+      );
+    }
+  };
+
+  /**
+   * Handles validation and completion of quiz task
+   */
+  const handleQuizSubmit = () => {
+    if (!selectedOption || !step.correctAnswer) return;
+
+    const isCorrect = selectedOption === step.correctAnswer;
+
+    setQuizAnswer({
+      isCorrect,
+      message: isCorrect
+        ? "Correct! Great job!"
+        : "Sorry, that's not correct. Try again.",
+    });
+
+    if (isCorrect) {
+      // Immediately show success animation
+      setShowSuccessAnimation(true);
+      setIsSubmitting(true);
+
+      // Wait for animation to be visible before proceeding
+      setTimeout(() => {
+        // Complete the step which will trigger navigation to next step
+        onComplete(step.id, true);
+        setIsSubmitting(false);
+      }, 2000); // Longer delay to enjoy the success animation
+    }
+  };
 
   /**
    * Handles validation and completion of the current step
@@ -92,11 +170,229 @@ const QuestStep: React.FC<QuestStepProps> = ({
   };
 
   /**
-   * Handle wallet connection success
+   * Renders the appropriate UI for the current task type
    */
-  const handleWalletConnected = () => {
-    // This method now only gets called when the wallet is connected
-    // No need to do anything specific as address verification step is removed
+  const renderTaskUI = () => {
+    if (step.isCompleted) {
+      return (
+        <div className="mb-4 text-green-600 dark:text-green-400 text-sm">
+          Task completed! Moving to next task...
+        </div>
+      );
+    }
+
+    switch (step.type) {
+      case "connect-wallet":
+        return (
+          <div className="mb-6">
+            <ConnectButton
+              onSuccess={() => {}} // Handled by useEffect
+              className="w-full bg-blue-600 hover:bg-blue-700"
+            />
+
+            {isConnected && (
+              <div className="mt-3 text-green-600 dark:text-green-400 text-sm">
+                {address ? (
+                  <>
+                    Wallet connected:
+                    <span className="font-mono text-xs break-all ml-1">
+                      {address.substring(0, 10)}...
+                      {address.substring(address.length - 8)}
+                    </span>
+                    {balance !== undefined && (
+                      <div className="mt-1">Balance: {balance} APT</div>
+                    )}
+                  </>
+                ) : (
+                  "Wallet connected successfully!"
+                )}
+              </div>
+            )}
+          </div>
+        );
+
+      case "check-balance":
+        return (
+          <div className="mb-6">
+            <div className="mb-4">
+              {isConnected ? (
+                <>
+                  <div className="mb-4">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Initial balance:{" "}
+                      {initialBalance !== null
+                        ? `${initialBalance} APT`
+                        : "Not recorded yet"}
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Current balance:{" "}
+                      {balance !== undefined ? `${balance} APT` : "Unknown"}
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Required increase: {step.requiredAmount} APT
+                    </p>
+                  </div>
+
+                  <Button
+                    onClick={handleCheckBalanceComplete}
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    Verify Balance Increase
+                  </Button>
+                </>
+              ) : (
+                <div className="text-amber-600 dark:text-amber-400 mb-4">
+                  Please connect your wallet first to check balance.
+                  <div className="mt-2">
+                    <ConnectButton
+                      className="w-full bg-blue-600 hover:bg-blue-700"
+                      onSuccess={() => {}}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+
+      case "quiz":
+        return (
+          <div className="mb-6">
+            {step.question && step.options && (
+              <>
+                <div className="mb-4">
+                  <h3 className="font-medium text-gray-900 dark:text-white mb-2">
+                    {step.question}
+                  </h3>
+
+                  <div className="space-y-2">
+                    {step.options.map((option, index) => (
+                      <div key={index} className="flex items-center">
+                        <input
+                          type="radio"
+                          id={`option-${index}`}
+                          name="quiz-option"
+                          className="h-4 w-4 text-primary focus:ring-primary border-gray-300"
+                          checked={selectedOption === option}
+                          onChange={() => {
+                            setSelectedOption(option);
+                            // Only clear answer feedback when changing option
+                            if (selectedOption !== option) {
+                              setQuizAnswer(null);
+                            }
+                          }}
+                          disabled={isSubmitting && quizAnswer?.isCorrect}
+                        />
+                        <label
+                          htmlFor={`option-${index}`}
+                          className="ml-2 block text-sm text-gray-700 dark:text-gray-300"
+                        >
+                          {option}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {quizAnswer && (
+                  <div
+                    className={`mb-4 p-3 rounded-lg flex items-center ${
+                      quizAnswer.isCorrect
+                        ? "bg-green-50 border border-green-200"
+                        : "bg-red-50 border border-red-200"
+                    }`}
+                  >
+                    <div
+                      className={`mr-3 flex-shrink-0 ${
+                        quizAnswer.isCorrect ? "text-green-500" : "text-red-500"
+                      }`}
+                    >
+                      {quizAnswer.isCorrect ? (
+                        <svg
+                          className="h-5 w-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          className="h-5 w-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                    <div
+                      className={`text-sm font-medium ${
+                        quizAnswer.isCorrect ? "text-green-700" : "text-red-700"
+                      }`}
+                    >
+                      {quizAnswer.isCorrect
+                        ? "Correct! Great job! 🎉"
+                        : "Sorry, that's not correct. Please try again 🤔"}
+                    </div>
+                  </div>
+                )}
+
+                <div className="mt-4">
+                  <button
+                    onClick={handleQuizSubmit}
+                    disabled={
+                      !selectedOption || (isSubmitting && quizAnswer?.isCorrect)
+                    }
+                    className="w-full px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:bg-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                  >
+                    {quizAnswer?.isCorrect && isSubmitting
+                      ? "Proceeding..."
+                      : "Submit Answer"}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        );
+
+      default:
+        return (
+          <div className="mb-4">
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="complete"
+                className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                checked={step.isCompleted}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    handleCompleteStep();
+                  }
+                }}
+              />
+              <label
+                htmlFor="complete"
+                className="ml-2 block text-sm text-gray-700 dark:text-gray-300"
+              >
+                I have completed this task
+              </label>
+            </div>
+          </div>
+        );
+    }
   };
 
   return (
@@ -162,7 +458,14 @@ const QuestStep: React.FC<QuestStepProps> = ({
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center">
           <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4">
-            <span className="text-2xl">{step.iconUrl ? "🚀" : "📝"}</span>
+            {step.type === "connect-wallet" && (
+              <span className="text-2xl">👛</span>
+            )}
+            {step.type === "check-balance" && (
+              <span className="text-2xl">💰</span>
+            )}
+            {step.type === "quiz" && <span className="text-2xl">🎓</span>}
+            {!step.type && <span className="text-2xl">📝</span>}
           </div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-white">
             {step.title}
@@ -180,106 +483,8 @@ const QuestStep: React.FC<QuestStepProps> = ({
         {step.description}
       </p>
 
-      {/* Wallet Connect for first step - simplified */}
-      {step.id === "1-1" && !step.isCompleted && (
-        <div className="mb-6">
-          <ConnectButton
-            onSuccess={handleWalletConnected}
-            className="w-full bg-blue-600 hover:bg-blue-700"
-          />
-
-          {isConnected && (
-            <div className="mt-3 text-green-600 dark:text-green-400 text-sm">
-              {address ? (
-                <>
-                  Wallet connected:
-                  <span className="font-mono text-xs break-all ml-1">
-                    {address.substring(0, 10)}...
-                    {address.substring(address.length - 8)}
-                  </span>
-                </>
-              ) : (
-                "Wallet connected successfully!"
-              )}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Show completed message for first step if completed */}
-      {step.id === "1-1" && step.isCompleted && !showSuccessAnimation && (
-        <div className="mb-6">
-          <div className="text-green-600 dark:text-green-400 text-sm">
-            Wallet connected successfully
-          </div>
-        </div>
-      )}
-
-      {/* Generic step completion - simplified */}
-      {step.id !== "1-1" && !step.isCompleted && !isSubmitting && (
-        <div className="mb-4">
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="complete"
-              className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
-              checked={step.isCompleted}
-              onChange={(e) => {
-                if (e.target.checked) {
-                  handleCompleteStep();
-                }
-              }}
-            />
-            <label
-              htmlFor="complete"
-              className="ml-2 block text-sm text-gray-700 dark:text-gray-300"
-            >
-              I have completed this task
-            </label>
-          </div>
-        </div>
-      )}
-
-      {/* Completion message for non-first steps */}
-      {step.id !== "1-1" && step.isCompleted && !showSuccessAnimation && (
-        <div className="mb-4 text-green-600 dark:text-green-400 text-sm">
-          Task completed! Moving to next task...
-        </div>
-      )}
-
-      {/* Action buttons - simplified */}
-      <div className="flex flex-col sm:flex-row gap-3">
-        {step.id !== "1-1" && !step.isCompleted && !isSubmitting && (
-          <Button onClick={handleCompleteStep} isLoading={false} fullWidth>
-            Complete Step
-          </Button>
-        )}
-
-        {/* External link button when relevant */}
-        {step.id === "1-2" && !step.isCompleted && !isSubmitting && (
-          <LinkButton
-            href="https://coinmarketcap.com/currencies/aptos/markets/"
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="secondary"
-            fullWidth
-          >
-            Get APT
-          </LinkButton>
-        )}
-
-        {step.id === "1-3" && !step.isCompleted && !isSubmitting && (
-          <LinkButton
-            href="https://pontem.network/"
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="secondary"
-            fullWidth
-          >
-            Go to Pontem DEX
-          </LinkButton>
-        )}
-      </div>
+      {/* Task-specific UI */}
+      {renderTaskUI()}
     </div>
   );
 };

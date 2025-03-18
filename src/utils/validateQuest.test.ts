@@ -13,10 +13,10 @@ describe("validateQuest", () => {
     tasks: [
       {
         id: "1",
-        type: "text",
-        title: "Introduction to Solidity",
+        type: "connect-wallet",
+        title: "Connect Your Wallet",
         description:
-          "Learn about the basic syntax and structure of Solidity contracts",
+          "Connect your wallet to start interacting with the blockchain",
       },
       {
         id: "2",
@@ -29,11 +29,10 @@ describe("validateQuest", () => {
       },
       {
         id: "3",
-        type: "action",
-        title: "Deploy Your First Contract",
-        description: "Deploy a simple smart contract to a testnet",
-        actionUrl: "https://remix.ethereum.org",
-        successCondition: "Contract deployed successfully",
+        type: "check-balance",
+        title: "Add Funds to Your Wallet",
+        description: "Add some APT to your wallet to continue",
+        requiredAmount: "0.01",
       },
     ],
   };
@@ -202,7 +201,10 @@ describe("validateQuest", () => {
     const invalidTasks = [
       {
         ...validQuest.tasks[0],
-        type: "invalid-type" as unknown as "text" | "quiz" | "action",
+        type: "invalid-type" as unknown as
+          | "connect-wallet"
+          | "check-balance"
+          | "quiz",
       },
       ...validQuest.tasks.slice(1),
     ];
@@ -263,39 +265,39 @@ describe("validateQuest", () => {
     expect(result.field).toBe("tasks[1].correctAnswer");
   });
 
-  test("should reject action task with missing action URL", () => {
+  test("should reject check-balance task with missing required amount", () => {
     const invalidTasks = [
       validQuest.tasks[0],
       validQuest.tasks[1],
-      { ...validQuest.tasks[2], actionUrl: "" },
+      { ...validQuest.tasks[2], requiredAmount: "" },
     ];
     const invalidQuest = { ...validQuest, tasks: invalidTasks };
     const result = validateQuest(invalidQuest);
     expect(result.isValid).toBe(false);
-    expect(result.field).toBe("tasks[2].actionUrl");
+    expect(result.field).toBe("tasks[2].requiredAmount");
   });
 
-  test("should reject action task with invalid URL", () => {
+  test("should reject check-balance task with invalid amount format", () => {
     const invalidTasks = [
       validQuest.tasks[0],
       validQuest.tasks[1],
-      { ...validQuest.tasks[2], actionUrl: "not-a-valid-url" },
+      { ...validQuest.tasks[2], requiredAmount: "not-a-number" },
     ];
     const invalidQuest = { ...validQuest, tasks: invalidTasks };
     const result = validateQuest(invalidQuest);
     expect(result.isValid).toBe(false);
-    expect(result.field).toBe("tasks[2].actionUrl");
+    expect(result.field).toBe("tasks[2].requiredAmount");
   });
 
-  test("should reject action task with missing success condition", () => {
+  test("should reject check-balance task with negative or zero amount", () => {
     const invalidTasks = [
       validQuest.tasks[0],
       validQuest.tasks[1],
-      { ...validQuest.tasks[2], successCondition: "" },
+      { ...validQuest.tasks[2], requiredAmount: "0" },
     ];
     const invalidQuest = { ...validQuest, tasks: invalidTasks };
     const result = validateQuest(invalidQuest);
     expect(result.isValid).toBe(false);
-    expect(result.field).toBe("tasks[2].successCondition");
+    expect(result.field).toBe("tasks[2].requiredAmount");
   });
 });

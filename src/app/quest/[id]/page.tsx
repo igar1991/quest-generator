@@ -8,10 +8,22 @@ import QuestMap from "../../components/QuestMap";
 import QuestStep from "../../components/QuestStep";
 import QuestCompletion from "../../components/QuestCompletion";
 import { questsData } from "../../data/questsData";
-import {
-  questStepsData,
-  QuestStep as QuestStepType,
-} from "../../data/questStepsData";
+
+// Define a type for task steps in the UI that matches QuestStep
+interface QuestStepUI {
+  id: string;
+  title: string;
+  description: string;
+  iconUrl: string;
+  isCompleted?: boolean;
+  isLocked?: boolean;
+  // Additional properties for each task type
+  type?: "connect-wallet" | "check-balance" | "quiz";
+  question?: string;
+  options?: string[];
+  correctAnswer?: string;
+  requiredAmount?: string;
+}
 
 /**
  * Quest detail page that shows quest information, progress map and step details
@@ -24,11 +36,42 @@ export default function QuestDetail() {
   // Get quest data
   const quest = questsData.find((q) => q.id === questId);
 
-  // Get steps for this quest
-  const [steps, setSteps] = useState<QuestStepType[]>(
-    questStepsData[questId] || [],
-  );
-  const [activeStep, setActiveStep] = useState<QuestStepType | null>(null);
+  // Transform quest tasks into quest steps with UI state
+  const initializeSteps = (): QuestStepUI[] => {
+    if (!quest || !quest.tasks) return [];
+
+    return quest.tasks.map((task, index) => ({
+      id: task.id,
+      title: task.title,
+      description: task.description,
+      iconUrl: getIconForTaskType(task.type),
+      isCompleted: false,
+      isLocked: index > 0, // Only first step is unlocked initially
+      type: task.type,
+      question: task.question,
+      options: task.options,
+      correctAnswer: task.correctAnswer,
+      requiredAmount: task.requiredAmount,
+    }));
+  };
+
+  // Get an icon URL based on task type
+  const getIconForTaskType = (type: string): string => {
+    switch (type) {
+      case "connect-wallet":
+        return "/images/quest-icons/wallet.svg";
+      case "check-balance":
+        return "/images/quest-icons/topup.svg";
+      case "quiz":
+        return "/images/quest-icons/quiz.svg";
+      default:
+        return "/images/quest-icons/task.svg";
+    }
+  };
+
+  // Initialize steps state
+  const [steps, setSteps] = useState<QuestStepUI[]>(initializeSteps());
+  const [activeStep, setActiveStep] = useState<QuestStepUI | null>(null);
   const [allStepsCompleted, setAllStepsCompleted] = useState(false);
 
   // Initialize active step to the first unlocked step
@@ -62,7 +105,7 @@ export default function QuestDetail() {
    * Handle clicking on a step in the quest map
    * @param step The step that was clicked
    */
-  const handleStepClick = (step: QuestStepType) => {
+  const handleStepClick = (step: QuestStepUI) => {
     // Prevent clicking if step is locked
     if (step.isLocked) return;
 

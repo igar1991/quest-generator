@@ -7,7 +7,7 @@
  */
 export interface Task {
   id: string;
-  type: "text" | "quiz" | "action";
+  type: "connect-wallet" | "check-balance" | "quiz";
   title: string;
   description: string;
 
@@ -16,9 +16,8 @@ export interface Task {
   options?: string[];
   correctAnswer?: string;
 
-  // For action type
-  actionUrl?: string;
-  successCondition?: string;
+  // For check-balance type
+  requiredAmount?: string;
 }
 
 /**
@@ -122,7 +121,7 @@ export function validateQuest(questJson: string | object): ValidationResult {
   }
 
   // Validate reward is positive
-  if (parseFloat(quest.reward) <= 0) {
+  if (Number(quest.reward) <= 0) {
     return {
       isValid: false,
       error: "Reward (in APT) must be greater than zero",
@@ -140,10 +139,8 @@ export function validateQuest(questJson: string | object): ValidationResult {
   }
 
   // Validate totalUsers is a positive integer
-  if (
-    parseInt(quest.totalUsers) <= 0 ||
-    parseInt(quest.totalUsers) !== parseFloat(quest.totalUsers)
-  ) {
+  const totalUsersNum = Number(quest.totalUsers);
+  if (totalUsersNum <= 0 || Math.floor(totalUsersNum) !== totalUsersNum) {
     return {
       isValid: false,
       error: "Total users must be a positive integer",
@@ -217,10 +214,13 @@ export function validateQuest(questJson: string | object): ValidationResult {
       };
     }
 
-    if (!task.type || !["text", "quiz", "action"].includes(task.type)) {
+    if (
+      !task.type ||
+      !["connect-wallet", "check-balance", "quiz"].includes(task.type)
+    ) {
       return {
         isValid: false,
-        error: "Task type must be one of: text, quiz, action",
+        error: "Task type must be one of: connect-wallet, check-balance, quiz",
         field: `${taskField}.type`,
       };
     }
@@ -260,30 +260,28 @@ export function validateQuest(questJson: string | object): ValidationResult {
       }
     }
 
-    if (task.type === "action") {
-      if (!task.actionUrl) {
+    if (task.type === "check-balance") {
+      if (!task.requiredAmount) {
         return {
           isValid: false,
-          error: "Action URL is required for action tasks",
-          field: `${taskField}.actionUrl`,
+          error: "Required amount is needed for check-balance tasks",
+          field: `${taskField}.requiredAmount`,
         };
       }
 
-      try {
-        new URL(task.actionUrl);
-      } catch (error) {
+      if (isNaN(Number(task.requiredAmount))) {
         return {
           isValid: false,
-          error: `Action URL must be a valid URL: ${error instanceof Error ? error.message : "Invalid URL format"}`,
-          field: `${taskField}.actionUrl`,
+          error: "Required amount must be a number",
+          field: `${taskField}.requiredAmount`,
         };
       }
 
-      if (!task.successCondition) {
+      if (Number(task.requiredAmount) <= 0) {
         return {
           isValid: false,
-          error: "Success condition is required for action tasks",
-          field: `${taskField}.successCondition`,
+          error: "Required amount must be greater than zero",
+          field: `${taskField}.requiredAmount`,
         };
       }
     }

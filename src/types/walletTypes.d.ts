@@ -15,6 +15,8 @@ interface AptosWallet {
   signTransaction?: (transaction: unknown) => Promise<unknown>;
   signAndSubmitTransaction?: (transaction: unknown) => Promise<unknown>;
   isConnected: () => Promise<boolean>;
+  getBalance?: (address: string) => Promise<string | number>;
+  getResources?: (address: string) => Promise<unknown[]>;
   [key: string]: unknown;
 }
 

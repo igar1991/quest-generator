@@ -1,12 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
-import { QuestStep } from "../data/questStepsData";
+
+// Define the interface to match QuestStepUI from the quest page
+interface QuestStepUI {
+  id: string;
+  title: string;
+  description: string;
+  iconUrl: string;
+  isCompleted?: boolean;
+  isLocked?: boolean;
+  type?: "connect-wallet" | "check-balance" | "quiz";
+  question?: string;
+  options?: string[];
+  correctAnswer?: string;
+  requiredAmount?: string;
+}
 
 interface QuestMapProps {
-  steps: QuestStep[];
+  steps: QuestStepUI[];
   questId: string;
-  onStepClick: (step: QuestStep) => void;
+  onStepClick: (step: QuestStepUI) => void;
 }
 
 /**
@@ -36,7 +50,7 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
    * @param step The step to check
    * @returns Whether the step is accessible
    */
-  const isStepAccessible = (step: QuestStep): boolean => {
+  const isStepAccessible = (step: QuestStepUI): boolean => {
     // Step is not accessible if locked
     if (step.isLocked) return false;
 
@@ -52,6 +66,23 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
 
     // All other unlocked steps are accessible
     return true;
+  };
+
+  // Get step icon based on type and completion status
+  const getStepIcon = (step: QuestStepUI, accessible: boolean): string => {
+    if (!accessible && step.isLocked) return "🔒";
+    if (step.isCompleted) return "✓";
+
+    switch (step.type) {
+      case "connect-wallet":
+        return "👛";
+      case "check-balance":
+        return "💰";
+      case "quiz":
+        return "🎓";
+      default:
+        return "🚀";
+    }
   };
 
   return (
@@ -76,9 +107,6 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
           const isOnLeft = index % 2 === 0;
           const isHovered = hoveredStepId === step.id;
           const accessible = isStepAccessible(step);
-
-          // Check if this is a completed non-accessible step
-          const isCompletedPast = step.isCompleted && !accessible;
 
           return (
             <div
@@ -123,13 +151,7 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
 
                   {/* Step icon */}
                   <div className="text-white text-2xl">
-                    {!accessible && step.isLocked
-                      ? "🔒"
-                      : isCompletedPast
-                        ? "✓"
-                        : step.isCompleted
-                          ? "✓"
-                          : "🚀"}
+                    {getStepIcon(step, accessible)}
                   </div>
                 </button>
 
@@ -166,17 +188,18 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
                           ? "Complete previous steps to unlock this achievement"
                           : step.isCompleted
                             ? "Completed! Great job on finishing this task."
-                            : `To complete this step, you need to ${
-                                step.description
-                                  .toLowerCase()
-                                  .startsWith("enter")
-                                  ? step.description.toLowerCase()
-                                  : step.description
-                                      .toLowerCase()
-                                      .replace(/^[a-z]/, (c) => c.toLowerCase())
-                              }`}
+                            : `Complete this ${step.type} task to advance to the next step.`}
                       </p>
                     </div>
+
+                    {/* Task type indicator */}
+                    {step.type && (
+                      <div className="mt-2 flex items-center">
+                        <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                          {step.type.replace("-", " ")}
+                        </span>
+                      </div>
+                    )}
 
                     {/* Small triangle pointer for the tooltip */}
                     <div

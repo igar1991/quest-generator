@@ -6,12 +6,14 @@ import React, {
   useState,
   useEffect,
   ReactNode,
+  useCallback,
 } from "react";
 import {
   connectWallet,
   disconnectWallet,
   isWalletAvailable,
   detectWallet,
+  getWalletBalance,
   WalletError,
 } from "../../utils/walletUtils";
 
@@ -22,8 +24,10 @@ interface WalletContextType {
   isAvailable: boolean;
   isConnecting: boolean;
   error: string | null;
+  balance: number | undefined;
   connect: () => Promise<void>;
   disconnect: () => Promise<void>;
+  refreshBalance: () => Promise<void>;
 }
 
 const WalletContext = createContext<WalletContextType>({
@@ -33,8 +37,10 @@ const WalletContext = createContext<WalletContextType>({
   isAvailable: false,
   isConnecting: false,
   error: null,
+  balance: undefined,
   connect: async () => {},
   disconnect: async () => {},
+  refreshBalance: async () => {},
 });
 
 /**
@@ -59,6 +65,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
   const [isAvailable, setIsAvailable] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [balance, setBalance] = useState<number | undefined>(undefined);
 
   // Check if wallet is available on client
   useEffect(() => {
@@ -72,6 +79,33 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
 
     checkWalletAvailability();
   }, []);
+
+  /**
+   * Refresh the wallet balance
+   */
+  const refreshBalance = useCallback(async (): Promise<void> => {
+    if (!isConnected || !address) {
+      setBalance(undefined);
+      return;
+    }
+
+    try {
+      const walletBalance = await getWalletBalance(address);
+      setBalance(walletBalance);
+    } catch (error) {
+      console.error("Error fetching wallet balance:", error);
+      setBalance(undefined);
+    }
+  }, [isConnected, address]);
+
+  // Refresh balance whenever address changes or connection status changes
+  useEffect(() => {
+    if (isConnected && address) {
+      refreshBalance();
+    } else {
+      setBalance(undefined);
+    }
+  }, [isConnected, address, refreshBalance]);
 
   /**
    * Connect to wallet and get account info
@@ -92,6 +126,11 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
           setWalletName(detected);
         }
       }
+
+      // Get initial balance
+      if (walletInfo.address) {
+        await refreshBalance();
+      }
     } catch (error) {
       let message = "Failed to connect to wallet";
 
@@ -104,6 +143,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
       setError(message);
       setIsConnected(false);
       setAddress(null);
+      setBalance(undefined);
     } finally {
       setIsConnecting(false);
     }
@@ -117,6 +157,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
       await disconnectWallet();
       setIsConnected(false);
       setAddress(null);
+      setBalance(undefined);
     } catch (error) {
       console.error("Error disconnecting wallet:", error);
     }
@@ -131,8 +172,10 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
         isAvailable,
         isConnecting,
         error,
+        balance,
         connect,
         disconnect,
+        refreshBalance,
       }}
     >
       {children}
