@@ -67,3 +67,52 @@ export async function validateQuestComprehensive(
 export function validateQuestLocal(questData: QuestData): ValidationResult {
   return validateQuest(questData);
 }
+
+/**
+ * Creates a new quest using the API
+ * @param questData - The quest data to create
+ * @returns A promise that resolves to the created quest or rejects with an error
+ */
+export async function createQuest(questData: QuestData): Promise<{
+  id: string;
+  createdAt: string;
+  title: string;
+  description: string;
+  reward: string;
+  totalUsers: string;
+  category: string;
+  difficulty: string;
+  tasks: {
+    id: string;
+    type: "text" | "quiz" | "action";
+    title: string;
+    description: string;
+    question?: string;
+    options?: string[];
+    correctAnswer?: string;
+    actionUrl?: string;
+    successCondition?: string;
+  }[];
+}> {
+  try {
+    const response = await fetch(`${API_URL}/quests`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(questData),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Failed to create quest");
+    }
+
+    return result;
+  } catch (error) {
+    throw error instanceof Error
+      ? error
+      : new Error("Network or server error occurred");
+  }
+}

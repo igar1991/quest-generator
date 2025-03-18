@@ -1,4 +1,10 @@
-import { render, screen, fireEvent, within } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  within,
+  waitFor,
+} from "@testing-library/react";
 import CreateQuestPage from "../page";
 // Remove import since we're just mocking it
 // import { validateQuestLocal } from "../../../utils/questApi";
@@ -6,6 +12,12 @@ import CreateQuestPage from "../page";
 // Mock validateQuestLocal function
 jest.mock("../../../utils/questApi", () => ({
   validateQuestLocal: jest.fn().mockImplementation(() => ({ isValid: true })),
+  createQuest: jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      id: "mock-quest-id",
+      createdAt: "2023-01-01T00:00:00.000Z",
+    }),
+  ),
 }));
 
 // Mock Next.js router
@@ -186,10 +198,18 @@ describe("CreateQuestPage", () => {
     expect(options.length).toBe(3); // includes "Select correct answer" option
   });
 
-  it("logs quest data to console on submit", () => {
-    // Use the mocked validateQuestLocal from the jest.mock at the top
-    const { validateQuestLocal } = jest.requireMock("../../../utils/questApi");
+  it("creates a quest on submit", async () => {
+    // Use the mocked validateQuestLocal and createQuest from the jest.mock at the top
+    const { validateQuestLocal, createQuest } = jest.requireMock(
+      "../../../utils/questApi",
+    );
     validateQuestLocal.mockReturnValue({ isValid: true });
+    createQuest.mockResolvedValue({
+      id: "mock-quest-id",
+      createdAt: "2023-01-01T00:00:00.000Z",
+      title: "Test Quest Title",
+    });
+
     render(<CreateQuestPage />);
 
     // Fill out the form fields
@@ -233,21 +253,32 @@ describe("CreateQuestPage", () => {
       screen.getByRole("button", { name: "Create Quest" }) as HTMLElement,
     );
 
-    // Check that console.log was called with quest data
-    expect(consoleOutput.length).toBe(1);
-    expect(consoleOutput[0]).toContain("Valid quest data:");
+    // Wait for createQuest to be called and async operations to complete
+    await waitFor(() => {
+      expect(createQuest).toHaveBeenCalledWith(
+        expect.objectContaining({
+          title: "Test Quest Title",
+          description:
+            "This is a test quest description that is long enough to be valid.",
+          reward: "100",
+          totalUsers: "10",
+          tasks: expect.arrayContaining([
+            expect.objectContaining({
+              title: "Task 1 Title",
+              description: "Task 1 Description",
+              type: "text",
+            }),
+          ]),
+        }),
+      );
+    });
 
-    // Parse the JSON from the console output and verify structure
-    const jsonString = consoleOutput[0].replace("Valid quest data: ", "");
-    const parsedData = JSON.parse(jsonString);
-
-    expect(parsedData).toHaveProperty("title", "Test Quest Title");
-    expect(parsedData).toHaveProperty("description");
-    expect(parsedData).toHaveProperty("reward", "100");
-    expect(parsedData).toHaveProperty("totalUsers", "10");
-    expect(parsedData).toHaveProperty("tasks");
-    expect(Array.isArray(parsedData.tasks)).toBe(true);
-    expect(parsedData.tasks.length).toBe(1);
+    // Check for success message
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Quest created successfully/),
+      ).toBeInTheDocument();
+    });
   });
 
   it("shows confirmation dialog when back button is clicked with changes", () => {

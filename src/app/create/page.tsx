@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { validateQuestLocal } from "../../utils/questApi";
+import { validateQuestLocal, createQuest } from "../../utils/questApi";
 
 type TaskType = "text" | "quiz" | "action";
 
@@ -53,6 +53,7 @@ export default function CreateQuestPage() {
   const [showConfirmDialog, setShowConfirmDialog] = useState<boolean>(false);
   const [formChanged, setFormChanged] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   /**
    * Check if the form has been modified from its initial state
@@ -210,33 +211,48 @@ export default function CreateQuestPage() {
    * Handles form submission - validates quest data before proceeding
    * @param e - Form submission event
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Convert values to string if they're not already
-    const formattedQuestData = {
-      ...questData,
-      reward: questData.reward.toString(),
-      totalUsers: questData.totalUsers.toString(),
-    };
-
-    // Validate the quest data
-    const validationResult = validateQuestLocal(formattedQuestData);
-
-    if (!validationResult.isValid) {
-      setErrorMessage(validationResult.error || "Invalid quest data");
-      // Highlight the field with error if available
-      if (validationResult.field) {
-        // You may want to add logic to highlight the field with error
-        console.error(`Field with error: ${validationResult.field}`);
-      }
-      return;
-    }
-
-    const jsonData = JSON.stringify(formattedQuestData, null, 2);
-    console.log("Valid quest data:", jsonData);
-    setSuccessMessage("Quest data is valid and has been logged to the console");
+    setIsSubmitting(true);
     setErrorMessage("");
+    setSuccessMessage("");
+
+    try {
+      const formattedQuestData = {
+        ...questData,
+        reward: questData.reward.toString(),
+        totalUsers: questData.totalUsers.toString(),
+      };
+
+      // Validate the quest data
+      const validationResult = validateQuestLocal(formattedQuestData);
+
+      if (!validationResult.isValid) {
+        setErrorMessage(validationResult.error || "Invalid quest data");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Create the quest via API
+      const createdQuest = await createQuest(formattedQuestData);
+
+      console.log("Quest created successfully:", createdQuest);
+      setSuccessMessage(
+        `Quest created successfully with ID: ${createdQuest.id}`,
+      );
+
+      // Reset form after successful submission if needed
+      // resetForm();
+    } catch (error) {
+      console.error("Failed to create quest:", error);
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Failed to create quest. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Calculate total APT
@@ -680,12 +696,13 @@ export default function CreateQuestPage() {
         </div>
 
         {/* Submit Button */}
-        <div className="flex justify-end">
+        <div className="mt-6 flex justify-end">
           <button
             type="submit"
-            className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 font-medium w-full sm:w-auto"
+            className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 font-medium w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={!formChanged || isSubmitting}
           >
-            Create Quest
+            {isSubmitting ? "Creating Quest..." : "Create Quest"}
           </button>
         </div>
       </form>
