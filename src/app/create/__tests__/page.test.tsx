@@ -46,6 +46,9 @@ afterEach(() => {
   console.log = originalConsoleLog;
 });
 
+// Mock scrollIntoView
+Element.prototype.scrollIntoView = jest.fn();
+
 describe("CreateQuestPage", () => {
   it("renders the page title", () => {
     render(<CreateQuestPage />);
@@ -92,7 +95,7 @@ describe("CreateQuestPage", () => {
     fireEvent.click(screen.getByText("Add Task") as HTMLElement);
 
     // Find the task section by its heading text
-    const taskHeading = screen.getByText("Step 1: Text Instruction");
+    const taskHeading = screen.getByText("Step 1: Quiz Question");
     const taskSection = taskHeading.closest(".border") as HTMLElement;
     expect(taskSection).toBeInTheDocument();
 
@@ -177,21 +180,17 @@ describe("CreateQuestPage", () => {
     // Add another option
     fireEvent.click(addOptionButton);
 
-    // Should have two option inputs now
-    const updatedOptionInputs =
-      within(taskSection).getAllByPlaceholderText(/Option/);
-    expect(updatedOptionInputs.length).toBe(2);
-
     // Add text to the second option
-    fireEvent.change(updatedOptionInputs[1] as HTMLElement, {
-      target: { value: "Option 2" },
-    });
+    const secondOptionInput = within(taskSection).getByPlaceholderText(
+      "Option 2",
+    ) as HTMLElement;
+    fireEvent.change(secondOptionInput, { target: { value: "Wrong answer" } });
 
     // Select a correct answer
     const correctAnswerSelect = within(taskSection).getByLabelText(
       "Correct Answer",
     ) as HTMLElement;
-    fireEvent.change(correctAnswerSelect, { target: { value: "Option 2" } });
+    fireEvent.change(correctAnswerSelect, { target: { value: "Option 1" } });
 
     // Check that the options are saved in the dropdown
     const options = within(correctAnswerSelect).getAllByRole("option");
@@ -229,11 +228,19 @@ describe("CreateQuestPage", () => {
       target: { value: "10" },
     });
 
+    // Make sure quiz is selected
+    fireEvent.change(
+      screen.getByRole("combobox", { name: "" }) as HTMLElement,
+      {
+        target: { value: "quiz" },
+      },
+    );
+
     // Add a task
     fireEvent.click(screen.getByText("Add Task") as HTMLElement);
 
     // Find task section and fill it out
-    const taskHeading = screen.getByText("Step 1: Text Instruction");
+    const taskHeading = screen.getByText("Step 1: Quiz Question");
     const taskSection = taskHeading.closest(".border") as HTMLElement;
 
     const titleInput = within(taskSection).getByLabelText(
@@ -246,6 +253,43 @@ describe("CreateQuestPage", () => {
     fireEvent.change(titleInput, { target: { value: "Task One Title" } });
     fireEvent.change(descriptionInput, {
       target: { value: "Task 1 Description" },
+    });
+
+    // Fill out quiz fields
+    const questionInput = within(taskSection).getByLabelText(
+      "Question",
+    ) as HTMLElement;
+    fireEvent.change(questionInput, {
+      target: { value: "What is the answer?" },
+    });
+
+    // Add options
+    const addOptionButton = within(taskSection).getByText(
+      "Add Option",
+    ) as HTMLElement;
+    fireEvent.click(addOptionButton);
+
+    // Add option text
+    const optionInput = within(taskSection).getByPlaceholderText(
+      "Option 1",
+    ) as HTMLElement;
+    fireEvent.change(optionInput, { target: { value: "This is the answer" } });
+
+    // Add second option
+    fireEvent.click(addOptionButton);
+
+    // Add second option text
+    const secondOptionInput = within(taskSection).getByPlaceholderText(
+      "Option 2",
+    ) as HTMLElement;
+    fireEvent.change(secondOptionInput, { target: { value: "Wrong answer" } });
+
+    // Select correct answer
+    const correctAnswerSelect = within(taskSection).getByLabelText(
+      "Correct Answer",
+    ) as HTMLElement;
+    fireEvent.change(correctAnswerSelect, {
+      target: { value: "This is the answer" },
     });
 
     // Submit the form
@@ -266,7 +310,10 @@ describe("CreateQuestPage", () => {
             expect.objectContaining({
               title: "Task One Title",
               description: "Task 1 Description",
-              type: "connect-wallet",
+              type: "quiz",
+              question: "What is the answer?",
+              options: ["This is the answer", "Wrong answer"],
+              correctAnswer: "This is the answer",
             }),
           ]),
         }),
@@ -306,5 +353,47 @@ describe("CreateQuestPage", () => {
     // Check for Cancel and Discard buttons
     expect(screen.getByText("Cancel")).toBeInTheDocument();
     expect(screen.getByText("Discard")).toBeInTheDocument();
+  });
+
+  it("handles check-balance-increment task type with auto-set title and description", () => {
+    render(<CreateQuestPage />);
+
+    // Select check-balance-increment type and add a task
+    fireEvent.change(
+      screen.getByRole("combobox", { name: "" }) as HTMLElement,
+      {
+        target: { value: "check-balance-increment" },
+      },
+    );
+    fireEvent.click(screen.getByText("Add Task") as HTMLElement);
+
+    // Find the task section by its heading
+    const taskHeading = screen.getByText("Step 1: Check Balance Increment");
+    const taskSection = taskHeading.closest(".border") as HTMLElement;
+    expect(taskSection).toBeInTheDocument();
+
+    // Verify the default information box is shown
+    const infoBox = within(taskSection).getByText("Default Task Information");
+    expect(infoBox).toBeInTheDocument();
+
+    // Verify the title and description are displayed
+    expect(
+      within(taskSection).getByText(/Add APT to your wallet/),
+    ).toBeInTheDocument();
+    expect(
+      within(taskSection).getByText(
+        /Transfer APT to your wallet to complete this task/,
+      ),
+    ).toBeInTheDocument();
+
+    // Verify the Required APT Amount field is shown
+    const amountInput = within(taskSection).getByLabelText(
+      "Required APT Amount",
+    ) as HTMLInputElement;
+    expect(amountInput).toBeInTheDocument();
+
+    // Fill out the Required APT Amount
+    fireEvent.change(amountInput, { target: { value: "0.5" } });
+    expect(amountInput.value).toBe("0.5");
   });
 });

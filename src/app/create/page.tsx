@@ -25,10 +25,6 @@ import {
   QUIZ_OPTION_MIN_LENGTH,
   QUIZ_OPTION_MAX_LENGTH,
   QUIZ_MIN_OPTIONS,
-  ACTION_URL_MIN_LENGTH,
-  ACTION_URL_MAX_LENGTH,
-  ACTION_SUCCESS_CONDITION_MIN_LENGTH,
-  ACTION_SUCCESS_CONDITION_MAX_LENGTH,
   REWARD_MIN,
   REWARD_MAX,
   TOTAL_USERS_MIN,
@@ -36,18 +32,17 @@ import {
 } from "@/utils/validationConstants";
 
 // Define the task types used in the create page
-type TaskType = "text" | "quiz" | "action";
+type TaskType = "quiz" | "check-balance-increment";
 
 // Map our UI task types to the validated task types
 const mapTaskTypeToValidateType = (type: TaskType): ValidateTask["type"] => {
   switch (type) {
     case "quiz":
       return "quiz";
-    case "action":
-      return "connect-wallet"; // Map action to connect-wallet
-    case "text":
+    case "check-balance-increment":
+      return "check-balance"; // Map check-balance-increment to check-balance
     default:
-      return "connect-wallet"; // Map text to connect-wallet
+      return "connect-wallet";
   }
 };
 
@@ -62,9 +57,8 @@ interface Task {
   options?: string[];
   correctAnswer?: string;
 
-  // For action type
-  actionUrl?: string;
-  successCondition?: string;
+  // For check-balance-increment type
+  requiredAmount?: string;
 }
 
 interface QuestData {
@@ -94,7 +88,7 @@ export default function CreateQuestPage() {
     tasks: [],
   });
 
-  const [currentTaskType, setCurrentTaskType] = useState<TaskType>("text");
+  const [currentTaskType, setCurrentTaskType] = useState<TaskType>("quiz");
   const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
   const [createdQuestId, setCreatedQuestId] = useState<string>("");
   const [showConfirmDialog, setShowConfirmDialog] = useState<boolean>(false);
@@ -177,6 +171,13 @@ export default function CreateQuestPage() {
       title: "",
       description: "",
     };
+
+    // Set default title and description for check-balance-increment tasks
+    if (currentTaskType === "check-balance-increment") {
+      newTask.title = "Add APT to your wallet";
+      newTask.description =
+        "Transfer APT to your wallet to complete this task. The system will verify that your balance has increased by the required amount.";
+    }
 
     setQuestData((prev) => ({
       ...prev,
@@ -350,28 +351,16 @@ export default function CreateQuestPage() {
           }
         }
 
-        if (task.type === "action") {
-          if (!task.actionUrl) {
-            throw new Error(`Action URL for "${task.title}" is required`);
+        if (task.type === "check-balance-increment") {
+          // Only validate the requiredAmount field for check-balance-increment tasks
+          if (!task.requiredAmount) {
+            throw new Error(`Required amount for "${task.title}" is required`);
           }
 
-          if (task.actionUrl.length < ACTION_URL_MIN_LENGTH) {
+          const requiredAmount = Number(task.requiredAmount);
+          if (isNaN(requiredAmount) || requiredAmount <= 0) {
             throw new Error(
-              `Action URL for "${task.title}" must be at least ${ACTION_URL_MIN_LENGTH} characters long`,
-            );
-          }
-
-          if (!task.successCondition) {
-            throw new Error(
-              `Success condition for "${task.title}" is required`,
-            );
-          }
-
-          if (
-            task.successCondition.length < ACTION_SUCCESS_CONDITION_MIN_LENGTH
-          ) {
-            throw new Error(
-              `Success condition for "${task.title}" must be at least ${ACTION_SUCCESS_CONDITION_MIN_LENGTH} characters long`,
+              `Required amount for "${task.title}" must be greater than 0`,
             );
           }
         }
@@ -394,10 +383,10 @@ export default function CreateQuestPage() {
             options: task.options,
             correctAnswer: task.correctAnswer,
           };
-        } else if (task.type === "action") {
+        } else if (task.type === "check-balance-increment") {
           return {
             ...baseTask,
-            requiredAmount: "1", // Default required amount for action tasks
+            requiredAmount: task.requiredAmount || "0.1", // Use provided amount or default
           };
         } else {
           return {
@@ -511,10 +500,10 @@ export default function CreateQuestPage() {
             options: task.options,
             correctAnswer: task.correctAnswer,
           };
-        } else if (task.type === "action") {
+        } else if (task.type === "check-balance-increment") {
           return {
             ...baseTask,
-            requiredAmount: "1", // Default required amount for action tasks
+            requiredAmount: task.requiredAmount || "0.1", // Use provided amount or default
           };
         } else {
           return {
@@ -783,9 +772,10 @@ export default function CreateQuestPage() {
                 onChange={(e) => setCurrentTaskType(e.target.value as TaskType)}
                 className="px-3 py-2 border border-gray-300 rounded-md text-sm sm:text-base w-full sm:w-auto"
               >
-                <option value="text">Text Instruction</option>
                 <option value="quiz">Quiz Question</option>
-                <option value="action">Action Verification</option>
+                <option value="check-balance-increment">
+                  Check Balance Increment
+                </option>
               </select>
               <button
                 type="button"
@@ -812,11 +802,9 @@ export default function CreateQuestPage() {
                 <div className="flex flex-wrap justify-between items-center gap-2">
                   <h3 className="text-lg font-medium">
                     Step {index + 1}:{" "}
-                    {task.type === "text"
-                      ? "Text Instruction"
-                      : task.type === "quiz"
-                        ? "Quiz Question"
-                        : "Action Verification"}
+                    {task.type === "quiz"
+                      ? "Quiz Question"
+                      : "Check Balance Increment"}
                   </h3>
                   <button
                     type="button"
@@ -828,48 +816,49 @@ export default function CreateQuestPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <div>
-                    <label
-                      htmlFor={`task-${task.id}-title`}
-                      className="block text-sm font-medium mb-1"
-                    >
-                      Title
-                    </label>
-                    <input
-                      type="text"
-                      id={`task-${task.id}-title`}
-                      name="title"
-                      value={task.title}
-                      onChange={(e) => handleTaskChange(task.id, e)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      required
-                      minLength={TASK_TITLE_MIN_LENGTH}
-                      maxLength={TASK_TITLE_MAX_LENGTH}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor={`task-${task.id}-description`}
-                      className="block text-sm font-medium mb-1"
-                    >
-                      Description
-                    </label>
-                    <textarea
-                      id={`task-${task.id}-description`}
-                      name="description"
-                      value={task.description}
-                      onChange={(e) => handleTaskChange(task.id, e)}
-                      rows={2}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      required
-                      minLength={TASK_DESCRIPTION_MIN_LENGTH}
-                      maxLength={TASK_DESCRIPTION_MAX_LENGTH}
-                    />
-                  </div>
-
+                  {/* For check-balance-increment tasks, we don't show title and description fields */}
                   {task.type === "quiz" && (
-                    <div className="space-y-4">
+                    <>
+                      <div>
+                        <label
+                          htmlFor={`task-${task.id}-title`}
+                          className="block text-sm font-medium mb-1"
+                        >
+                          Title
+                        </label>
+                        <input
+                          type="text"
+                          id={`task-${task.id}-title`}
+                          name="title"
+                          value={task.title}
+                          onChange={(e) => handleTaskChange(task.id, e)}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          required
+                          minLength={TASK_TITLE_MIN_LENGTH}
+                          maxLength={TASK_TITLE_MAX_LENGTH}
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor={`task-${task.id}-description`}
+                          className="block text-sm font-medium mb-1"
+                        >
+                          Description
+                        </label>
+                        <textarea
+                          id={`task-${task.id}-description`}
+                          name="description"
+                          value={task.description}
+                          onChange={(e) => handleTaskChange(task.id, e)}
+                          rows={2}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                          required
+                          minLength={TASK_DESCRIPTION_MIN_LENGTH}
+                          maxLength={TASK_DESCRIPTION_MAX_LENGTH}
+                        />
+                      </div>
+
                       <div>
                         <label
                           htmlFor={`task-${task.id}-question`}
@@ -958,53 +947,67 @@ export default function CreateQuestPage() {
                           ))}
                         </select>
                       </div>
-                    </div>
+                    </>
                   )}
 
-                  {task.type === "action" && (
-                    <div className="space-y-4">
-                      <div>
-                        <label
-                          htmlFor={`task-${task.id}-action-url`}
-                          className="block text-sm font-medium mb-1"
-                        >
-                          Action URL
-                        </label>
-                        <input
-                          type="url"
-                          id={`task-${task.id}-action-url`}
-                          name="actionUrl"
-                          value={task.actionUrl || ""}
-                          onChange={(e) => handleTaskChange(task.id, e)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                          placeholder="https://example.com"
-                          required
-                          minLength={ACTION_URL_MIN_LENGTH}
-                          maxLength={ACTION_URL_MAX_LENGTH}
-                        />
+                  {task.type === "check-balance-increment" && (
+                    <>
+                      {/* Hidden title and description with default values */}
+                      <input
+                        type="hidden"
+                        id={`task-${task.id}-title`}
+                        name="title"
+                        value={task.title || "Add APT to your wallet"}
+                        onChange={(e) => handleTaskChange(task.id, e)}
+                      />
+                      <input
+                        type="hidden"
+                        id={`task-${task.id}-description`}
+                        name="description"
+                        value={
+                          task.description ||
+                          "Transfer APT to your wallet to complete this task. The system will verify that your balance has increased by the required amount."
+                        }
+                        onChange={(e) => handleTaskChange(task.id, e)}
+                      />
+
+                      <div className="p-3 bg-blue-50 rounded-md border border-blue-200 mb-4">
+                        <h4 className="font-medium text-blue-800">
+                          Default Task Information
+                        </h4>
+                        <p className="text-blue-700 text-sm mt-1">
+                          <strong>Title:</strong> {task.title}
+                        </p>
+                        <p className="text-blue-700 text-sm mt-1">
+                          <strong>Description:</strong> {task.description}
+                        </p>
                       </div>
 
                       <div>
                         <label
-                          htmlFor={`task-${task.id}-success-condition`}
+                          htmlFor={`task-${task.id}-required-amount`}
                           className="block text-sm font-medium mb-1"
                         >
-                          Success Condition
+                          Required APT Amount
                         </label>
                         <input
-                          type="text"
-                          id={`task-${task.id}-success-condition`}
-                          name="successCondition"
-                          value={task.successCondition || ""}
+                          type="number"
+                          id={`task-${task.id}-required-amount`}
+                          name="requiredAmount"
+                          value={task.requiredAmount || ""}
                           onChange={(e) => handleTaskChange(task.id, e)}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                          placeholder="e.g., User completes transaction"
+                          placeholder="0.1"
                           required
-                          minLength={ACTION_SUCCESS_CONDITION_MIN_LENGTH}
-                          maxLength={ACTION_SUCCESS_CONDITION_MAX_LENGTH}
+                          min="0.000001"
+                          step="0.000001"
                         />
+                        <p className="text-sm text-gray-500 mt-1">
+                          The amount of APT that user must send to their wallet
+                          to complete this task
+                        </p>
                       </div>
-                    </div>
+                    </>
                   )}
                 </div>
               </div>
@@ -1091,7 +1094,7 @@ export default function CreateQuestPage() {
                             type:
                               task.type === "quiz"
                                 ? "quiz"
-                                : task.type === "action"
+                                : task.type === "check-balance-increment"
                                   ? "check-balance"
                                   : "text",
                             isLocked: index > 0,
