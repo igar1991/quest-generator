@@ -40,19 +40,8 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
     // Step is not accessible if locked
     if (step.isLocked) return false;
 
-    // Find all completed steps
-    const completedSteps = steps.filter((s) => s.isCompleted);
-
-    // If this step is completed and not the last completed step, it's not accessible
-    if (step.isCompleted) {
-      const lastCompletedStep =
-        completedSteps.length > 0
-          ? completedSteps[completedSteps.length - 1]
-          : undefined;
-      const isLastCompletedStep =
-        lastCompletedStep !== undefined && lastCompletedStep.id === step.id;
-      return isLastCompletedStep;
-    }
+    // Step is not accessible if completed
+    if (step.isCompleted) return false;
 
     // All other unlocked steps are accessible
     return true;

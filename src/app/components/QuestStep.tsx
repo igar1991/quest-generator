@@ -78,7 +78,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
         // Complete the step which will trigger navigation to next step
         onComplete(step.id, true);
         setIsSubmitting(false);
-      }, 2000); // Longer delay to enjoy the success animation
+      }, 1000); // Shorter delay for better user experience
     }
   }, [
     step.id,

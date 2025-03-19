@@ -99,7 +99,27 @@ export default function QuestDetail() {
 
     if (!Array.isArray(tasks)) return [];
 
-    return tasks.map((task, index) => ({
+    // Check if the first task is already a connect-wallet task
+    const hasConnectWalletTask =
+      tasks.length > 0 && tasks[0] && tasks[0].type === "connect-wallet";
+
+    let allTasks = [...tasks];
+
+    // If no connect-wallet task exists as the first task, prepend one
+    if (!hasConnectWalletTask) {
+      allTasks = [
+        {
+          id: `${questId}-connect-wallet`,
+          title: "Connect Your Wallet",
+          description:
+            "Connect your Aptos-compatible wallet to begin the quest.",
+          type: "connect-wallet",
+        },
+        ...tasks,
+      ];
+    }
+
+    return allTasks.map((task, index) => ({
       id: task.id,
       title: task.title,
       description: task.description,
@@ -112,7 +132,7 @@ export default function QuestDetail() {
       correctAnswer: task.correctAnswer,
       requiredAmount: task.requiredAmount,
     }));
-  }, [quest]);
+  }, [quest, questId]);
 
   // Map backend task types to UI task types
   const mapTaskType = (type: string): QuestStepUI["type"] => {
@@ -194,16 +214,8 @@ export default function QuestDetail() {
     // Prevent clicking if step is locked
     if (step.isLocked) return;
 
-    // Prevent navigating back to completed steps unless it's the last completed step
-    if (step.isCompleted) {
-      const completedSteps = steps.filter((s) => s.isCompleted);
-      const isLastCompletedStep =
-        completedSteps[completedSteps.length - 1]?.id === step.id;
-
-      if (!isLastCompletedStep) {
-        return; // Don't allow navigating to this completed step
-      }
-    }
+    // Prevent navigating to any completed step
+    if (step.isCompleted) return;
 
     setActiveStep(step);
   };

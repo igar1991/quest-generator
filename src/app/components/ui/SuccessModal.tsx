@@ -47,6 +47,9 @@ export default function SuccessModal({
         stageTimers.forEach((timer) => clearTimeout(timer));
       };
     }
+
+    // Return empty cleanup function for when modal is not open
+    return () => {};
   }, [isOpen]);
 
   /**
