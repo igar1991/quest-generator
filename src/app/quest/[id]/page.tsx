@@ -389,9 +389,26 @@ export default function QuestDetail() {
             <span className="bg-gray-100 dark:bg-dark-200 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-medium">
               Reward: {quest.reward} APT
             </span>
-            <span className="bg-gray-100 dark:bg-dark-200 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-medium">
-              {quest.difficulty || "Beginner"}
-            </span>
+            {(() => {
+              const difficulty = quest.difficulty || "Beginner";
+              const difficultyColor =
+                {
+                  Easy: "bg-green-100 text-green-800",
+                  Medium: "bg-yellow-100 text-yellow-800",
+                  Hard: "bg-red-100 text-red-800",
+                  Beginner: "bg-green-100 text-green-800",
+                  Intermediate: "bg-yellow-100 text-yellow-800",
+                  Advanced: "bg-red-100 text-red-800",
+                }[difficulty] || "bg-gray-100 text-gray-800";
+
+              return (
+                <span
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${difficultyColor}`}
+                >
+                  {difficulty}
+                </span>
+              );
+            })()}
             <span className="bg-gray-100 dark:bg-dark-200 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-medium">
               ⏱️ {quest.estimatedTime ?? "15 min"}
             </span>

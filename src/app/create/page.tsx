@@ -458,16 +458,16 @@ export default function CreateQuestPage() {
    */
   const convertDifficultyToDisplay = (
     difficulty: string,
-  ): "Easy" | "Medium" | "Hard" => {
+  ): "Easy" | "Medium" | "Hard" | "Beginner" | "Intermediate" | "Advanced" => {
     switch (difficulty) {
       case "beginner":
-        return "Easy";
+        return "Beginner";
       case "intermediate":
-        return "Medium";
+        return "Intermediate";
       case "advanced":
-        return "Hard";
+        return "Advanced";
       default:
-        return "Easy";
+        return "Beginner";
     }
   };
 

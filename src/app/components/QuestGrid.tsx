@@ -104,7 +104,7 @@ const QuestGrid: React.FC = () => {
                 imageUrl={`/images/quests/${quest.title.toLowerCase().replace(/\s+/g, "-")}.jpg`}
                 projectName={quest.category}
                 reward={Number(quest.reward)}
-                difficulty={quest.difficulty as "Easy" | "Medium" | "Hard"}
+                difficulty={quest.difficulty}
                 estimatedTime={
                   quest.totalUsers ? `${quest.totalUsers} users` : "New"
                 }

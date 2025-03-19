@@ -11,7 +11,13 @@ interface QuestCardProps {
   imageUrl: string;
   projectName: string;
   reward: number;
-  difficulty: "Easy" | "Medium" | "Hard";
+  difficulty:
+    | "Easy"
+    | "Medium"
+    | "Hard"
+    | "Beginner"
+    | "Intermediate"
+    | "Advanced";
   estimatedTime: string;
 }
 
@@ -34,11 +40,22 @@ const QuestCard: React.FC<QuestCardProps> = ({
   const [showTooltip, setShowTooltip] = useState(false);
   const [imageError, setImageError] = useState(false);
 
-  const difficultyColor = {
-    Easy: "bg-green-100 text-green-800",
-    Medium: "bg-yellow-100 text-yellow-800",
-    Hard: "bg-red-100 text-red-800",
-  }[difficulty];
+  const difficultyColor = (() => {
+    // Normalize difficulty to handle both lowercase and capitalized values
+    const normalizedDifficulty =
+      difficulty.charAt(0).toUpperCase() + difficulty.slice(1).toLowerCase();
+
+    const colorMap = {
+      Easy: "bg-green-100 text-green-800",
+      Medium: "bg-yellow-100 text-yellow-800",
+      Hard: "bg-red-100 text-red-800",
+      Beginner: "bg-green-100 text-green-800",
+      Intermediate: "bg-yellow-100 text-yellow-800",
+      Advanced: "bg-red-100 text-red-800",
+    };
+
+    return colorMap[normalizedDifficulty] || "bg-gray-100 text-gray-800";
+  })();
 
   // Create a placeholder image url based on the quest ID for consistency
   const placeholderImage = useMemo(() => {
@@ -114,7 +131,8 @@ const QuestCard: React.FC<QuestCardProps> = ({
             {projectName}
           </span>
           <span className={`text-xs px-2 py-1 rounded-full ${difficultyColor}`}>
-            {difficulty}
+            {difficulty.charAt(0).toUpperCase() +
+              difficulty.slice(1).toLowerCase()}
           </span>
         </div>
 
