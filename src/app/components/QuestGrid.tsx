@@ -13,7 +13,13 @@ interface Quest {
   reward: string;
   totalUsers: string;
   category: string;
-  difficulty: string;
+  difficulty:
+    | "Easy"
+    | "Medium"
+    | "Hard"
+    | "Beginner"
+    | "Intermediate"
+    | "Advanced";
   estimatedTime: string;
   tasks: {
     id: string;
@@ -22,6 +28,13 @@ interface Quest {
     description: string;
   }[];
   createdAt: string;
+}
+
+/**
+ * Interface for the API response
+ */
+interface QuestsApiResponse {
+  quests: Quest[];
 }
 
 /**
@@ -42,11 +55,11 @@ const QuestGrid: React.FC = () => {
           throw new Error(`Error fetching quests: ${response.status}`);
         }
 
-        const data = await response.json();
+        const data = (await response.json()) as QuestsApiResponse;
 
         // Map quest data and ensure estimatedTime is set
         const questsWithTimes =
-          data.quests?.map((quest) => {
+          data.quests?.map((quest: Quest) => {
             // Set default estimatedTime if not provided
             return {
               ...quest,

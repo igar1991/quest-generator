@@ -27,13 +27,11 @@ async function initRedis() {
  * Get a quest by ID
  * GET /api/quests/:id
  * @param request - The request object
- * @param params - Object containing route parameters
+ * @param context - Object containing route parameters
  * @returns Response with quest data or error
  */
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } },
-) {
+export async function GET(request: Request, context: any) {
+  const { params } = context;
   console.log(`API: Fetching quest with ID: ${params.id}`);
 
   try {

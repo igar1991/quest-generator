@@ -208,7 +208,11 @@ export function QuizAiModal({
                 min={1}
                 max={20}
                 step={1}
-                onValueChange={(values) => setQuestionsCount(values[0])}
+                onValueChange={(values) => {
+                  if (values[0] !== undefined) {
+                    setQuestionsCount(values[0]);
+                  }
+                }}
                 disabled={isGenerating}
               />
               <div className="flex justify-between text-xs text-gray-500 mt-1">

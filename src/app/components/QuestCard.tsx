@@ -57,7 +57,7 @@ const QuestCard: React.FC<QuestCardProps> = ({
     const normalizedDifficulty =
       difficulty.charAt(0).toUpperCase() + difficulty.slice(1).toLowerCase();
 
-    const colorMap = {
+    const colorMap: Record<string, string> = {
       Easy: "bg-green-100 text-green-800",
       Medium: "bg-yellow-100 text-yellow-800",
       Hard: "bg-red-100 text-red-800",
