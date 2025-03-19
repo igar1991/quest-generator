@@ -92,12 +92,6 @@ const Hero: React.FC = () => {
               >
                 Create a Quest
               </Link>
-              <Link
-                href="/projects"
-                className="w-full sm:w-auto bg-white dark:bg-dark-100 hover:bg-gray-50 dark:hover:bg-dark-200 text-gray-800 dark:text-white px-6 py-3 rounded-lg text-base font-medium border border-gray-200 dark:border-dark-200 transition-colors"
-              >
-                Browse Projects
-              </Link>
             </div>
 
             <div className="mt-12 flex flex-wrap justify-center gap-6">
