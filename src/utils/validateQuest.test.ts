@@ -77,7 +77,7 @@ describe("validateQuest", () => {
   });
 
   test("should reject description that is too short", () => {
-    const invalidQuest = { ...validQuest, description: "Too short" };
+    const invalidQuest = { ...validQuest, description: "AB" };
     const result = validateQuest(invalidQuest);
     expect(result.isValid).toBe(false);
     expect(result.field).toBe("description");

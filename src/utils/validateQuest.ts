@@ -306,10 +306,11 @@ export function validateQuest(questJson: string | object): ValidationResult {
       }
 
       // Validate each option
-      for (let j = 0; j < task.options.length; j++) {
+      for (let j = 0; j < (task.options?.length || 0); j++) {
         if (
+          !task.options ||
           !task.options[j] ||
-          task.options[j].length < QUIZ_OPTION_MIN_LENGTH
+          (task.options[j]?.length || 0) < QUIZ_OPTION_MIN_LENGTH
         ) {
           return {
             isValid: false,
