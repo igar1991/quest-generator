@@ -75,13 +75,12 @@ async function connectToRedis() {
 }
 
 /**
- * Get the Redis client instance
- * @returns Redis client instance
- * @throws Error if Redis is not connected
+ * Get the Redis client instance, automatically connecting if needed
+ * @returns {Promise<Object>} Redis client instance
  */
-function getRedisClient() {
+async function getRedisClient() {
   if (!redisClient || redisClient.status !== "ready") {
-    throw new Error("Redis client not connected. Call connectToRedis() first.");
+    await connectToRedis();
   }
   return redisClient;
 }
