@@ -1,6 +1,23 @@
 /**
  * Types for quest validation
  */
+import {
+  QUEST_TITLE_MIN_LENGTH,
+  QUEST_TITLE_MAX_LENGTH,
+  QUEST_DESCRIPTION_MIN_LENGTH,
+  QUEST_DESCRIPTION_MAX_LENGTH,
+  TASK_TITLE_MIN_LENGTH,
+  TASK_DESCRIPTION_MIN_LENGTH,
+  QUIZ_QUESTION_MIN_LENGTH,
+  QUIZ_OPTION_MIN_LENGTH,
+  QUIZ_MIN_OPTIONS,
+  REWARD_MIN,
+  REWARD_MAX,
+  TOTAL_USERS_MIN,
+  TOTAL_USERS_MAX,
+  ACTION_URL_MIN_LENGTH,
+  ACTION_SUCCESS_CONDITION_MIN_LENGTH,
+} from "@/utils/validationConstants";
 
 /**
  * Represents a task in a quest
@@ -18,6 +35,10 @@ export interface Task {
 
   // For check-balance type
   requiredAmount?: string;
+
+  // For connect-wallet type
+  actionUrl?: string;
+  successCondition?: string;
 }
 
 /**
@@ -94,19 +115,25 @@ export function validateQuest(questJson: string | object): ValidationResult {
   }
 
   // Validate title length
-  if (quest.title.length < 5 || quest.title.length > 100) {
+  if (
+    quest.title.length < QUEST_TITLE_MIN_LENGTH ||
+    quest.title.length > QUEST_TITLE_MAX_LENGTH
+  ) {
     return {
       isValid: false,
-      error: "Title must be between 5 and 100 characters",
+      error: `Title must be between ${QUEST_TITLE_MIN_LENGTH} and ${QUEST_TITLE_MAX_LENGTH} characters`,
       field: "title",
     };
   }
 
   // Validate description length
-  if (quest.description.length < 20 || quest.description.length > 500) {
+  if (
+    quest.description.length < QUEST_DESCRIPTION_MIN_LENGTH ||
+    quest.description.length > QUEST_DESCRIPTION_MAX_LENGTH
+  ) {
     return {
       isValid: false,
-      error: "Description must be between 20 and 500 characters",
+      error: `Description must be between ${QUEST_DESCRIPTION_MIN_LENGTH} and ${QUEST_DESCRIPTION_MAX_LENGTH} characters`,
       field: "description",
     };
   }
@@ -120,11 +147,12 @@ export function validateQuest(questJson: string | object): ValidationResult {
     };
   }
 
-  // Validate reward is positive
-  if (Number(quest.reward) <= 0) {
+  // Validate reward is positive and within limits
+  const rewardNum = Number(quest.reward);
+  if (rewardNum < REWARD_MIN || rewardNum > REWARD_MAX) {
     return {
       isValid: false,
-      error: "Reward (in APT) must be greater than zero",
+      error: `Reward (in APT) must be between ${REWARD_MIN} and ${REWARD_MAX}`,
       field: "reward",
     };
   }
@@ -138,12 +166,16 @@ export function validateQuest(questJson: string | object): ValidationResult {
     };
   }
 
-  // Validate totalUsers is a positive integer
+  // Validate totalUsers is a positive integer within limits
   const totalUsersNum = Number(quest.totalUsers);
-  if (totalUsersNum <= 0 || Math.floor(totalUsersNum) !== totalUsersNum) {
+  if (
+    totalUsersNum < TOTAL_USERS_MIN ||
+    totalUsersNum > TOTAL_USERS_MAX ||
+    Math.floor(totalUsersNum) !== totalUsersNum
+  ) {
     return {
       isValid: false,
-      error: "Total users must be a positive integer",
+      error: `Total users must be a whole number between ${TOTAL_USERS_MIN} and ${TOTAL_USERS_MAX}`,
       field: "totalUsers",
     };
   }
@@ -205,10 +237,10 @@ export function validateQuest(questJson: string | object): ValidationResult {
         error: "Task title is required",
         field: `${taskField}.title`,
       };
-    } else if (task.title.length < 5) {
+    } else if (task.title.length < TASK_TITLE_MIN_LENGTH) {
       return {
         isValid: false,
-        error: "Task title must be at least 5 characters",
+        error: `Task title must be at least ${TASK_TITLE_MIN_LENGTH} characters`,
         field: `${taskField}.title`,
       };
     }
@@ -224,10 +256,10 @@ export function validateQuest(questJson: string | object): ValidationResult {
         error: "Task description is required",
         field: `${taskField}.description`,
       };
-    } else if (task.description.length < 10) {
+    } else if (task.description.length < TASK_DESCRIPTION_MIN_LENGTH) {
       return {
         isValid: false,
-        error: "Task description must be at least 10 characters",
+        error: `Task description must be at least ${TASK_DESCRIPTION_MIN_LENGTH} characters`,
         field: `${taskField}.description`,
       };
     }
@@ -248,17 +280,43 @@ export function validateQuest(questJson: string | object): ValidationResult {
       if (!task.question) {
         return {
           isValid: false,
-          error: "Question is required for quiz tasks",
+          error: "Quiz question is required",
+          field: `${taskField}.question`,
+        };
+      } else if (task.question.length < QUIZ_QUESTION_MIN_LENGTH) {
+        return {
+          isValid: false,
+          error: `Quiz question must be at least ${QUIZ_QUESTION_MIN_LENGTH} characters`,
           field: `${taskField}.question`,
         };
       }
 
-      if (!Array.isArray(task.options) || task.options.length < 2) {
+      if (!task.options || !Array.isArray(task.options)) {
         return {
           isValid: false,
-          error: "Quiz tasks must have at least 2 options",
+          error: "Quiz options must be an array",
           field: `${taskField}.options`,
         };
+      } else if (task.options.length < QUIZ_MIN_OPTIONS) {
+        return {
+          isValid: false,
+          error: `Quiz must have at least ${QUIZ_MIN_OPTIONS} options`,
+          field: `${taskField}.options`,
+        };
+      }
+
+      // Validate each option
+      for (let j = 0; j < task.options.length; j++) {
+        if (
+          !task.options[j] ||
+          task.options[j].length < QUIZ_OPTION_MIN_LENGTH
+        ) {
+          return {
+            isValid: false,
+            error: `Quiz option ${j + 1} must be at least ${QUIZ_OPTION_MIN_LENGTH} character`,
+            field: `${taskField}.options[${j}]`,
+          };
+        }
       }
 
       if (!task.correctAnswer) {
@@ -282,25 +340,63 @@ export function validateQuest(questJson: string | object): ValidationResult {
       if (!task.requiredAmount) {
         return {
           isValid: false,
-          error: "Required amount is required for check-balance tasks",
+          error: "Required amount is needed for check-balance tasks",
           field: `${taskField}.requiredAmount`,
         };
       }
 
-      if (isNaN(Number(task.requiredAmount))) {
+      if (
+        isNaN(Number(task.requiredAmount)) ||
+        Number(task.requiredAmount) <= 0
+      ) {
         return {
           isValid: false,
-          error: "Required amount must be a number",
+          error: "Required amount must be a positive number",
           field: `${taskField}.requiredAmount`,
         };
       }
+    }
 
-      if (Number(task.requiredAmount) <= 0) {
-        return {
-          isValid: false,
-          error: "Required amount must be greater than zero",
-          field: `${taskField}.requiredAmount`,
-        };
+    // Additional validation for connect-wallet tasks that are used as action verification
+    if (task.type === "connect-wallet") {
+      // Check for URL if it exists (for action type tasks in UI)
+      if (task.actionUrl !== undefined) {
+        if (task.actionUrl.trim() === "") {
+          return {
+            isValid: false,
+            error: "Action URL is required",
+            field: `${taskField}.actionUrl`,
+          };
+        }
+
+        if (task.actionUrl.length < ACTION_URL_MIN_LENGTH) {
+          return {
+            isValid: false,
+            error: `Action URL must be at least ${ACTION_URL_MIN_LENGTH} characters`,
+            field: `${taskField}.actionUrl`,
+          };
+        }
+      }
+
+      // Check for success condition if it exists (for action type tasks in UI)
+      if (task.successCondition !== undefined) {
+        if (task.successCondition.trim() === "") {
+          return {
+            isValid: false,
+            error: "Success condition is required",
+            field: `${taskField}.successCondition`,
+          };
+        }
+
+        if (
+          task.successCondition.length < ACTION_SUCCESS_CONDITION_MIN_LENGTH
+        ) {
+          return {
+            isValid: false,
+            error: `Success condition must be at least ${ACTION_SUCCESS_CONDITION_MIN_LENGTH} characters`,
+            field: `${taskField}.successCondition`,
+          };
+        }
       }
     }
   }

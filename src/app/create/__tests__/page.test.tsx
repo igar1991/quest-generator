@@ -56,7 +56,7 @@ describe("CreateQuestPage", () => {
     render(<CreateQuestPage />);
 
     // Fill out the form
-    fireEvent.change(screen.getByLabelText("Title") as HTMLElement, {
+    fireEvent.change(screen.getByLabelText("Quest Title") as HTMLElement, {
       target: { value: "Test Quest" },
     });
     fireEvent.change(screen.getByLabelText("Description") as HTMLElement, {
@@ -70,7 +70,7 @@ describe("CreateQuestPage", () => {
     });
 
     // Check if the values were updated
-    expect(screen.getByLabelText("Title")).toHaveValue("Test Quest");
+    expect(screen.getByLabelText("Quest Title")).toHaveValue("Test Quest");
     expect(screen.getByLabelText("Description")).toHaveValue(
       "A test quest description",
     );
@@ -105,7 +105,7 @@ describe("CreateQuestPage", () => {
     ) as HTMLElement;
 
     // Add text to the task
-    fireEvent.change(titleInput, { target: { value: "Task 1 Title" } });
+    fireEvent.change(titleInput, { target: { value: "Task One Title" } });
     fireEvent.change(descriptionInput, {
       target: { value: "Task 1 Description" },
     });
@@ -143,7 +143,7 @@ describe("CreateQuestPage", () => {
     const titleInput = within(taskSection).getByLabelText(
       "Title",
     ) as HTMLElement;
-    fireEvent.change(titleInput, { target: { value: "Quiz Title" } });
+    fireEvent.change(titleInput, { target: { value: "Quiz Title Test" } });
 
     const descriptionInput = within(taskSection).getByLabelText(
       "Description",
@@ -213,7 +213,7 @@ describe("CreateQuestPage", () => {
     render(<CreateQuestPage />);
 
     // Fill out the form fields
-    fireEvent.change(screen.getByLabelText("Title") as HTMLElement, {
+    fireEvent.change(screen.getByLabelText("Quest Title") as HTMLElement, {
       target: { value: "Test Quest Title" },
     });
     fireEvent.change(screen.getByLabelText("Description") as HTMLElement, {
@@ -243,7 +243,7 @@ describe("CreateQuestPage", () => {
       "Description",
     ) as HTMLElement;
 
-    fireEvent.change(titleInput, { target: { value: "Task 1 Title" } });
+    fireEvent.change(titleInput, { target: { value: "Task One Title" } });
     fireEvent.change(descriptionInput, {
       target: { value: "Task 1 Description" },
     });
@@ -264,7 +264,7 @@ describe("CreateQuestPage", () => {
           totalUsers: "10",
           tasks: expect.arrayContaining([
             expect.objectContaining({
-              title: "Task 1 Title",
+              title: "Task One Title",
               description: "Task 1 Description",
               type: "connect-wallet",
             }),
@@ -288,7 +288,7 @@ describe("CreateQuestPage", () => {
     render(<CreateQuestPage />);
 
     // Fill out a field to trigger form change
-    fireEvent.change(screen.getByLabelText("Title") as HTMLElement, {
+    fireEvent.change(screen.getByLabelText("Quest Title") as HTMLElement, {
       target: { value: "Test Quest" },
     });
 

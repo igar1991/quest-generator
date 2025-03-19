@@ -63,7 +63,7 @@ describe("validateQuest", () => {
   });
 
   test("should reject title that is too short", () => {
-    const invalidQuest = { ...validQuest, title: "ABC" };
+    const invalidQuest = { ...validQuest, title: "AB" };
     const result = validateQuest(invalidQuest);
     expect(result.isValid).toBe(false);
     expect(result.field).toBe("title");

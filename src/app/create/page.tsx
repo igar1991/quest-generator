@@ -11,6 +11,29 @@ import {
   QuestData as ValidateQuestData,
 } from "@/utils/validateQuest";
 import { QuestStepUI } from "../types/quest";
+import {
+  QUEST_TITLE_MIN_LENGTH,
+  QUEST_TITLE_MAX_LENGTH,
+  QUEST_DESCRIPTION_MIN_LENGTH,
+  QUEST_DESCRIPTION_MAX_LENGTH,
+  TASK_TITLE_MIN_LENGTH,
+  TASK_TITLE_MAX_LENGTH,
+  TASK_DESCRIPTION_MIN_LENGTH,
+  TASK_DESCRIPTION_MAX_LENGTH,
+  QUIZ_QUESTION_MIN_LENGTH,
+  QUIZ_QUESTION_MAX_LENGTH,
+  QUIZ_OPTION_MIN_LENGTH,
+  QUIZ_OPTION_MAX_LENGTH,
+  QUIZ_MIN_OPTIONS,
+  ACTION_URL_MIN_LENGTH,
+  ACTION_URL_MAX_LENGTH,
+  ACTION_SUCCESS_CONDITION_MIN_LENGTH,
+  ACTION_SUCCESS_CONDITION_MAX_LENGTH,
+  REWARD_MIN,
+  REWARD_MAX,
+  TOTAL_USERS_MIN,
+  TOTAL_USERS_MAX,
+} from "@/utils/validationConstants";
 
 // Define the task types used in the create page
 type TaskType = "text" | "quiz" | "action";
@@ -260,12 +283,98 @@ export default function CreateQuestPage() {
         throw new Error("Quest title is required");
       }
 
+      if (questData.title.length < QUEST_TITLE_MIN_LENGTH) {
+        throw new Error(
+          `Quest title must be between ${QUEST_TITLE_MIN_LENGTH} and ${QUEST_TITLE_MAX_LENGTH} characters long`,
+        );
+      }
+
       if (!questData.description) {
         throw new Error("Quest description is required");
       }
 
+      if (questData.description.length < QUEST_DESCRIPTION_MIN_LENGTH) {
+        throw new Error(
+          `Quest description must be at least ${QUEST_DESCRIPTION_MIN_LENGTH} characters long`,
+        );
+      }
+
       if (questData.tasks.length === 0) {
         throw new Error("At least one quest task is required");
+      }
+
+      // Validate tasks
+      for (const task of questData.tasks) {
+        if (task.title.length < TASK_TITLE_MIN_LENGTH) {
+          throw new Error(
+            `Task title "${task.title}" must be at least ${TASK_TITLE_MIN_LENGTH} characters long`,
+          );
+        }
+
+        if (task.description.length < TASK_DESCRIPTION_MIN_LENGTH) {
+          throw new Error(
+            `Task description for "${task.title}" must be at least ${TASK_DESCRIPTION_MIN_LENGTH} characters long`,
+          );
+        }
+
+        if (task.type === "quiz") {
+          if (
+            !task.question ||
+            task.question.length < QUIZ_QUESTION_MIN_LENGTH
+          ) {
+            throw new Error(
+              `Quiz question for "${task.title}" must be at least ${QUIZ_QUESTION_MIN_LENGTH} characters long`,
+            );
+          }
+
+          if (!task.options || task.options.length < QUIZ_MIN_OPTIONS) {
+            throw new Error(
+              `Quiz "${task.title}" must have at least ${QUIZ_MIN_OPTIONS} options`,
+            );
+          }
+
+          // Check if all options have at least 1 character
+          const invalidOptions = task.options.filter(
+            (option) => option.length < QUIZ_OPTION_MIN_LENGTH,
+          );
+          if (invalidOptions.length > 0) {
+            throw new Error(
+              `All quiz options for "${task.title}" must be at least ${QUIZ_OPTION_MIN_LENGTH} character long`,
+            );
+          }
+
+          if (!task.correctAnswer) {
+            throw new Error(
+              `Quiz "${task.title}" must have a correct answer selected`,
+            );
+          }
+        }
+
+        if (task.type === "action") {
+          if (!task.actionUrl) {
+            throw new Error(`Action URL for "${task.title}" is required`);
+          }
+
+          if (task.actionUrl.length < ACTION_URL_MIN_LENGTH) {
+            throw new Error(
+              `Action URL for "${task.title}" must be at least ${ACTION_URL_MIN_LENGTH} characters long`,
+            );
+          }
+
+          if (!task.successCondition) {
+            throw new Error(
+              `Success condition for "${task.title}" is required`,
+            );
+          }
+
+          if (
+            task.successCondition.length < ACTION_SUCCESS_CONDITION_MIN_LENGTH
+          ) {
+            throw new Error(
+              `Success condition for "${task.title}" must be at least ${ACTION_SUCCESS_CONDITION_MIN_LENGTH} characters long`,
+            );
+          }
+        }
       }
 
       // Format task data for validation
@@ -528,7 +637,7 @@ export default function CreateQuestPage() {
 
           <div>
             <label htmlFor="title" className="block text-sm font-medium mb-1">
-              Title
+              Quest Title
             </label>
             <input
               type="text"
@@ -538,6 +647,8 @@ export default function CreateQuestPage() {
               onChange={handleQuestDataChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
               required
+              minLength={QUEST_TITLE_MIN_LENGTH}
+              maxLength={QUEST_TITLE_MAX_LENGTH}
             />
           </div>
 
@@ -556,6 +667,8 @@ export default function CreateQuestPage() {
               rows={3}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
               required
+              minLength={QUEST_DESCRIPTION_MIN_LENGTH}
+              maxLength={QUEST_DESCRIPTION_MAX_LENGTH}
             />
           </div>
 
@@ -576,7 +689,8 @@ export default function CreateQuestPage() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 required
                 step="0.01"
-                min="0"
+                min={REWARD_MIN}
+                max={REWARD_MAX}
                 placeholder="0.00"
               />
             </div>
@@ -597,7 +711,8 @@ export default function CreateQuestPage() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 required
                 step="1"
-                min="1"
+                min={TOTAL_USERS_MIN}
+                max={TOTAL_USERS_MAX}
                 placeholder="0"
               />
             </div>
@@ -728,6 +843,8 @@ export default function CreateQuestPage() {
                       onChange={(e) => handleTaskChange(task.id, e)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md"
                       required
+                      minLength={TASK_TITLE_MIN_LENGTH}
+                      maxLength={TASK_TITLE_MAX_LENGTH}
                     />
                   </div>
 
@@ -746,6 +863,8 @@ export default function CreateQuestPage() {
                       rows={2}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md"
                       required
+                      minLength={TASK_DESCRIPTION_MIN_LENGTH}
+                      maxLength={TASK_DESCRIPTION_MAX_LENGTH}
                     />
                   </div>
 
@@ -768,6 +887,8 @@ export default function CreateQuestPage() {
                           onChange={(e) => handleTaskChange(task.id, e)}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md"
                           required
+                          minLength={QUIZ_QUESTION_MIN_LENGTH}
+                          maxLength={QUIZ_QUESTION_MAX_LENGTH}
                         />
                       </div>
 
@@ -793,6 +914,8 @@ export default function CreateQuestPage() {
                               className="flex-1 px-3 py-2 border border-gray-300 rounded-md sm:rounded-l-md sm:rounded-r-none w-full sm:w-auto"
                               placeholder={`Option ${optionIndex + 1}`}
                               required
+                              minLength={QUIZ_OPTION_MIN_LENGTH}
+                              maxLength={QUIZ_OPTION_MAX_LENGTH}
                             />
                             <button
                               type="button"
@@ -856,6 +979,8 @@ export default function CreateQuestPage() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-md"
                           placeholder="https://example.com"
                           required
+                          minLength={ACTION_URL_MIN_LENGTH}
+                          maxLength={ACTION_URL_MAX_LENGTH}
                         />
                       </div>
 
@@ -875,6 +1000,8 @@ export default function CreateQuestPage() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-md"
                           placeholder="e.g., User completes transaction"
                           required
+                          minLength={ACTION_SUCCESS_CONDITION_MIN_LENGTH}
+                          maxLength={ACTION_SUCCESS_CONDITION_MAX_LENGTH}
                         />
                       </div>
                     </div>
