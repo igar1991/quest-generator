@@ -69,6 +69,7 @@ interface QuestData {
   category: string;
   difficulty: string;
   tasks: Task[];
+  estimatedTime?: string;
 }
 
 /**
@@ -1058,11 +1059,8 @@ export default function CreateQuestPage() {
                     difficulty={convertDifficultyToDisplay(
                       questData.difficulty,
                     )}
-                    estimatedTime={
-                      questData.totalUsers
-                        ? `${questData.totalUsers} users`
-                        : "New"
-                    }
+                    estimatedTime={questData.estimatedTime || "15 min"}
+                    tasks={questData.tasks || []}
                   />
                 </div>
               </div>

@@ -14,6 +14,7 @@ interface Quest {
   totalUsers: string;
   category: string;
   difficulty: string;
+  estimatedTime?: string;
   tasks: {
     id: string;
     type: string;
@@ -102,7 +103,8 @@ const QuestGrid: React.FC = () => {
                 projectName={quest.category}
                 reward={Number(quest.reward)}
                 difficulty={quest.difficulty}
-                estimatedTime={`${Math.floor(Math.random() * (20 - 10 + 1)) + 10} minutes`}
+                estimatedTime={quest.estimatedTime || "15 min"}
+                tasks={quest.tasks}
               />
             ))}
           </div>
