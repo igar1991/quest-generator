@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 const Redis = require("ioredis");
-const fs = require("fs");
-const path = require("path");
 
 // Create Redis client
 const redisClient = new Redis(
-  process.env.REDIS_URL || "redis://localhost:6379"
+  process.env.REDIS_URL || "redis://localhost:6379",
 );
 
 // Directly define the quests data here to avoid complex parsing
@@ -192,7 +190,7 @@ const questsData = [
 async function importQuestsToRedis() {
   try {
     console.log("Starting import of quest data to Redis...");
-    
+
     // Clear existing data in Redis
     const keys = await redisClient.keys("quests:*");
     if (keys.length > 0) {
@@ -203,10 +201,10 @@ async function importQuestsToRedis() {
       await pipeline.exec();
       console.log(`Cleared ${keys.length} existing quest keys`);
     }
-    
+
     // Reset the quests:all set
     await redisClient.del("quests:all");
-    
+
     // Import each quest
     const pipeline = redisClient.pipeline();
     for (const quest of questsData) {
@@ -227,25 +225,27 @@ async function importQuestsToRedis() {
           question: task.question,
           options: task.options,
           correctAnswer: task.correctAnswer,
-          actionUrl: task.type === "connect-wallet" ? "/api/connect-wallet" : undefined,
-          successCondition: task.type === "check-balance" 
-            ? `amount>=${task.requiredAmount}`
-            : undefined,
+          actionUrl:
+            task.type === "connect-wallet" ? "/api/connect-wallet" : undefined,
+          successCondition:
+            task.type === "check-balance"
+              ? `amount>=${task.requiredAmount}`
+              : undefined,
         })),
         createdAt: new Date().toISOString(),
       };
-      
+
       // Store the quest in Redis
       pipeline.hset(
         `quests:${quest.id}`,
         "data",
         JSON.stringify(formattedQuest),
       );
-      
+
       // Add to the set of all quests
       pipeline.sadd("quests:all", quest.id);
     }
-    
+
     await pipeline.exec();
     console.log(`Successfully imported ${questsData.length} quests to Redis`);
     redisClient.quit();

@@ -4,21 +4,7 @@ import React, { useState, useEffect } from "react";
 import ConnectButton from "./ConnectButton";
 import { useWallet } from "../context/WalletContext";
 import Button from "./ui/Button";
-
-// Define the interface to match QuestStepUI from the quest page
-interface QuestStepUI {
-  id: string;
-  title: string;
-  description: string;
-  iconUrl: string;
-  isCompleted?: boolean;
-  isLocked?: boolean;
-  type?: "connect-wallet" | "check-balance" | "quiz";
-  question?: string;
-  options?: string[];
-  correctAnswer?: string;
-  requiredAmount?: string;
-}
+import { QuestStepUI } from "../types/quest";
 
 interface QuestStepProps {
   step: QuestStepUI;
@@ -76,7 +62,8 @@ const QuestStep: React.FC<QuestStepProps> = ({
     if (
       step.type === "connect-wallet" &&
       isConnected &&
-      address &&
+      address !== null &&
+      address !== "" &&
       !autoCompletedFirstStep &&
       !step.isCompleted
     ) {
@@ -111,9 +98,12 @@ const QuestStep: React.FC<QuestStepProps> = ({
       return;
     }
 
-    const requiredAmount = step.requiredAmount
-      ? Number(step.requiredAmount)
-      : 0;
+    const requiredAmount =
+      step.requiredAmount !== undefined &&
+      step.requiredAmount !== null &&
+      step.requiredAmount !== ""
+        ? Number(step.requiredAmount)
+        : 0;
     const balanceIncrease = balance - initialBalance;
 
     if (balanceIncrease >= requiredAmount) {
@@ -129,7 +119,15 @@ const QuestStep: React.FC<QuestStepProps> = ({
    * Handles validation and completion of quiz task
    */
   const handleQuizSubmit = () => {
-    if (!selectedOption || !step.correctAnswer) return;
+    if (
+      selectedOption === null ||
+      selectedOption === undefined ||
+      selectedOption === "" ||
+      step.correctAnswer === undefined ||
+      step.correctAnswer === null ||
+      step.correctAnswer === ""
+    )
+      return;
 
     const isCorrect = selectedOption === step.correctAnswer;
 
@@ -141,16 +139,18 @@ const QuestStep: React.FC<QuestStepProps> = ({
     });
 
     if (isCorrect) {
-      // Immediately show success animation
-      setShowSuccessAnimation(true);
+      // Handle successful answer
       setIsSubmitting(true);
 
-      // Wait for animation to be visible before proceeding
+      // Show success animation
+      setShowSuccessAnimation(true);
+
+      // Allow animation to show before proceeding
       setTimeout(() => {
         // Complete the step which will trigger navigation to next step
         onComplete(step.id, true);
         setIsSubmitting(false);
-      }, 2000); // Longer delay to enjoy the success animation
+      }, 2000); // Longer delay for animation
     }
   };
 
@@ -199,7 +199,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
 
             {isConnected && (
               <div className="mt-3 text-green-600 dark:text-green-400 text-sm">
-                {address ? (
+                {address !== null && address !== "" ? (
                   <>
                     Wallet connected:
                     <span className="font-mono text-xs break-all ml-1">
@@ -266,112 +266,122 @@ const QuestStep: React.FC<QuestStepProps> = ({
       case "quiz":
         return (
           <div className="mb-6">
-            {step.question && step.options && (
-              <>
-                <div className="mb-4">
-                  <h3 className="font-medium text-gray-900 dark:text-white mb-2">
-                    {step.question}
-                  </h3>
-
-                  <div className="space-y-2">
-                    {step.options.map((option, index) => (
-                      <div key={index} className="flex items-center">
-                        <input
-                          type="radio"
-                          id={`option-${index}`}
-                          name="quiz-option"
-                          className="h-4 w-4 text-primary focus:ring-primary border-gray-300"
-                          checked={selectedOption === option}
-                          onChange={() => {
-                            setSelectedOption(option);
-                            // Only clear answer feedback when changing option
-                            if (selectedOption !== option) {
-                              setQuizAnswer(null);
+            {step.question !== undefined &&
+              step.question !== null &&
+              step.question !== "" &&
+              step.options !== undefined &&
+              step.options.length > 0 && (
+                <>
+                  <div className="mb-4">
+                    <h3 className="text-lg font-medium mb-2">
+                      {step.question}
+                    </h3>
+                    <div className="space-y-2">
+                      {step.options.map((option, index) => (
+                        <div key={index} className="flex items-center">
+                          <input
+                            type="radio"
+                            id={`option-${index}`}
+                            name="quiz-option"
+                            className="h-4 w-4 text-primary focus:ring-primary border-gray-300"
+                            checked={selectedOption === option}
+                            onChange={() => {
+                              setSelectedOption(option);
+                              // Only clear answer feedback when changing option
+                              if (quizAnswer !== null) {
+                                setQuizAnswer(null);
+                              }
+                            }}
+                            disabled={
+                              isSubmitting === true &&
+                              quizAnswer?.isCorrect === true
                             }
-                          }}
-                          disabled={isSubmitting && quizAnswer?.isCorrect}
-                        />
-                        <label
-                          htmlFor={`option-${index}`}
-                          className="ml-2 block text-sm text-gray-700 dark:text-gray-300"
-                        >
-                          {option}
-                        </label>
+                          />
+                          <label
+                            htmlFor={`option-${index}`}
+                            className="ml-2 block text-sm text-gray-700 dark:text-gray-300"
+                          >
+                            {option}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {quizAnswer !== null && (
+                    <div
+                      className={`mb-4 p-3 rounded-lg flex items-center ${
+                        quizAnswer.isCorrect === true
+                          ? "bg-green-50 border border-green-200"
+                          : "bg-red-50 border border-red-200"
+                      }`}
+                    >
+                      <div
+                        className={`mr-3 flex-shrink-0 ${
+                          quizAnswer.isCorrect === true
+                            ? "text-green-500"
+                            : "text-red-500"
+                        }`}
+                      >
+                        {quizAnswer.isCorrect === true ? (
+                          <svg
+                            className="h-5 w-5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                              clipRule="evenodd"
+                            ></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            className="h-5 w-5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                              clipRule="evenodd"
+                            ></path>
+                          </svg>
+                        )}
                       </div>
-                    ))}
-                  </div>
-                </div>
-
-                {quizAnswer && (
-                  <div
-                    className={`mb-4 p-3 rounded-lg flex items-center ${
-                      quizAnswer.isCorrect
-                        ? "bg-green-50 border border-green-200"
-                        : "bg-red-50 border border-red-200"
-                    }`}
-                  >
-                    <div
-                      className={`mr-3 flex-shrink-0 ${
-                        quizAnswer.isCorrect ? "text-green-500" : "text-red-500"
-                      }`}
-                    >
-                      {quizAnswer.isCorrect ? (
-                        <svg
-                          className="h-5 w-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      ) : (
-                        <svg
-                          className="h-5 w-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                      )}
+                      <div
+                        className={`text-sm font-medium ${
+                          quizAnswer.isCorrect === true
+                            ? "text-green-700"
+                            : "text-red-700"
+                        }`}
+                      >
+                        {quizAnswer.isCorrect === true
+                          ? "Correct! Great job! 🎉"
+                          : "Sorry, that's not correct. Try again."}
+                      </div>
                     </div>
-                    <div
-                      className={`text-sm font-medium ${
-                        quizAnswer.isCorrect ? "text-green-700" : "text-red-700"
-                      }`}
-                    >
-                      {quizAnswer.isCorrect
-                        ? "Correct! Great job! 🎉"
-                        : "Sorry, that's not correct. Please try again 🤔"}
-                    </div>
-                  </div>
-                )}
+                  )}
 
-                <div className="mt-4">
-                  <button
-                    onClick={handleQuizSubmit}
-                    disabled={
-                      !selectedOption || (isSubmitting && quizAnswer?.isCorrect)
-                    }
-                    className="w-full px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:bg-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-                  >
-                    {quizAnswer?.isCorrect && isSubmitting
-                      ? "Proceeding..."
-                      : "Submit Answer"}
-                  </button>
-                </div>
-              </>
-            )}
+                  <div className="mt-4">
+                    <button
+                      onClick={handleQuizSubmit}
+                      disabled={
+                        selectedOption === null ||
+                        selectedOption === undefined ||
+                        selectedOption === "" ||
+                        (isSubmitting === true &&
+                          quizAnswer?.isCorrect === true)
+                      }
+                      className="w-full px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:bg-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                    >
+                      {quizAnswer?.isCorrect === true && isSubmitting === true
+                        ? "Proceeding..."
+                        : "Submit Answer"}
+                    </button>
+                  </div>
+                </>
+              )}
           </div>
         );
 

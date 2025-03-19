@@ -162,7 +162,7 @@ const ProjectsPage: React.FC = () => {
                 <div className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-dark-100 overflow-hidden mr-4 relative">
-                      {!failedImages[project.id] ? (
+                      {failedImages[project.id] !== true ? (
                         <Image
                           src={project.logo}
                           alt={project.name}

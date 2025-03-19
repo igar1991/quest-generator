@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 /**
  * Project submission form page component
@@ -73,7 +74,7 @@ const ProjectSubmitPage: React.FC = () => {
     if (e.target.files && e.target.files.length > 0) {
       setFormState((prev) => ({
         ...prev,
-        logo: e.target.files![0],
+        logo: e.target.files && e.target.files[0] ? e.target.files[0] : null,
       }));
     }
   };
@@ -319,10 +320,12 @@ const ProjectSubmitPage: React.FC = () => {
                   <div className="mt-1 flex items-center">
                     <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100 dark:bg-dark-100">
                       {formState.logo ? (
-                        <img
+                        <Image
                           src={URL.createObjectURL(formState.logo)}
                           alt="Preview"
                           className="h-full w-full object-cover"
+                          width={48}
+                          height={48}
                         />
                       ) : (
                         <svg

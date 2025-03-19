@@ -55,10 +55,10 @@ const Button: React.FC<ButtonProps> = ({
 
   // Handle loading and disabled states
   const currentVariant = isLoading ? "loading" : variant;
-  const isDisabled = disabled || isLoading;
+  const isDisabled = disabled === true || isLoading === true;
 
   // Width classes
-  const widthClasses = fullWidth ? "w-full" : "";
+  const widthClasses = fullWidth === true ? "w-full" : "";
 
   // Get the appropriate spinner color based on the button variant
   const spinnerColor =
@@ -80,7 +80,7 @@ const Button: React.FC<ButtonProps> = ({
       {...props}
     >
       <div className="flex items-center justify-center">
-        {isLoading && (
+        {isLoading === true && (
           <svg
             className={`animate-spin -ml-1 mr-2 h-4 w-4 ${spinnerColor}`}
             xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,9 @@ const Button: React.FC<ButtonProps> = ({
             ></path>
           </svg>
         )}
-        {!isLoading && icon && <span className="mr-2">{icon}</span>}
+        {isLoading !== true && icon !== undefined && icon !== null && (
+          <span className="mr-2">{icon}</span>
+        )}
         {children}
       </div>
     </button>

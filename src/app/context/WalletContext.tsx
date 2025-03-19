@@ -84,13 +84,13 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
    * Refresh the wallet balance
    */
   const refreshBalance = useCallback(async (): Promise<void> => {
-    if (!isConnected || !address) {
+    if (!(isConnected && address)) {
       setBalance(undefined);
       return;
     }
 
     try {
-      const walletBalance = await getWalletBalance(address);
+      const walletBalance = await getWalletBalance();
       setBalance(walletBalance);
     } catch (error) {
       console.error("Error fetching wallet balance:", error);
@@ -98,14 +98,22 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
     }
   }, [isConnected, address]);
 
-  // Refresh balance whenever address changes or connection status changes
+  // Refresh balance whenever address changes
   useEffect(() => {
-    if (isConnected && address) {
+    if (address !== undefined && address !== null && address !== "") {
       refreshBalance();
-    } else {
-      setBalance(undefined);
     }
-  }, [isConnected, address, refreshBalance]);
+  }, [address, refreshBalance]);
+
+  // Detect wallet if available but not connected
+  useEffect(() => {
+    if (isAvailable && !isConnected && walletName === null) {
+      const detected = detectWallet();
+      if (detected !== null && detected !== undefined && detected !== "") {
+        setWalletName(detected);
+      }
+    }
+  }, [isAvailable, isConnected, walletName]);
 
   /**
    * Connect to wallet and get account info
@@ -120,15 +128,19 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
       setIsConnected(walletInfo.isConnected);
 
       // Update wallet name if not already set
-      if (!walletName) {
+      if (walletName === null) {
         const detected = detectWallet();
-        if (detected) {
+        if (detected !== null) {
           setWalletName(detected);
         }
       }
 
       // Get initial balance
-      if (walletInfo.address) {
+      if (
+        walletInfo.address !== undefined &&
+        walletInfo.address !== null &&
+        walletInfo.address.length > 0
+      ) {
         await refreshBalance();
       }
     } catch (error) {

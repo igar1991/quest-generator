@@ -86,7 +86,12 @@ export const connectWallet = async (): Promise<WalletInfo> => {
     // Get account information
     const account = await wallet.account();
 
-    if (!account || !account.address) {
+    if (
+      account === undefined ||
+      account === null ||
+      account.address === undefined ||
+      account.address === null
+    ) {
       throw new WalletError("Failed to get wallet address");
     }
 

@@ -1,21 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-
-// Define the interface to match QuestStepUI from the quest page
-interface QuestStepUI {
-  id: string;
-  title: string;
-  description: string;
-  iconUrl: string;
-  isCompleted?: boolean;
-  isLocked?: boolean;
-  type?: "connect-wallet" | "check-balance" | "quiz";
-  question?: string;
-  options?: string[];
-  correctAnswer?: string;
-  requiredAmount?: string;
-}
+import { QuestStepUI } from "../types/quest";
 
 interface QuestMapProps {
   steps: QuestStepUI[];
@@ -59,8 +45,12 @@ const QuestMap: React.FC<QuestMapProps> = ({ steps, questId, onStepClick }) => {
 
     // If this step is completed and not the last completed step, it's not accessible
     if (step.isCompleted) {
+      const lastCompletedStep =
+        completedSteps.length > 0
+          ? completedSteps[completedSteps.length - 1]
+          : undefined;
       const isLastCompletedStep =
-        completedSteps[completedSteps.length - 1]?.id === step.id;
+        lastCompletedStep !== undefined && lastCompletedStep.id === step.id;
       return isLastCompletedStep;
     }
 

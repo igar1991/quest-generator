@@ -1,10 +1,32 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { validateQuestLocal, createQuest } from "../../utils/questApi";
+import { createQuest } from "@/utils/questApi";
+import SuccessModal from "../components/ui/SuccessModal";
+import QuestCard from "../components/QuestCard";
+import QuestMap from "../components/QuestMap";
+import {
+  Task as ValidateTask,
+  QuestData as ValidateQuestData,
+} from "@/utils/validateQuest";
+import { QuestStepUI } from "../types/quest";
 
+// Define the task types used in the create page
 type TaskType = "text" | "quiz" | "action";
+
+// Map our UI task types to the validated task types
+const mapTaskTypeToValidateType = (type: TaskType): ValidateTask["type"] => {
+  switch (type) {
+    case "quiz":
+      return "quiz";
+    case "action":
+      return "connect-wallet"; // Map action to connect-wallet
+    case "text":
+    default:
+      return "connect-wallet"; // Map text to connect-wallet
+  }
+};
 
 interface Task {
   id: string;
@@ -38,6 +60,7 @@ interface QuestData {
  */
 export default function CreateQuestPage() {
   const router = useRouter();
+  const errorMessageRef = useRef<HTMLDivElement>(null);
   const [questData, setQuestData] = useState<QuestData>({
     title: "",
     description: "",
@@ -49,11 +72,14 @@ export default function CreateQuestPage() {
   });
 
   const [currentTaskType, setCurrentTaskType] = useState<TaskType>("text");
-  const [successMessage, setSuccessMessage] = useState<string>("");
+  const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
+  const [createdQuestId, setCreatedQuestId] = useState<string>("");
   const [showConfirmDialog, setShowConfirmDialog] = useState<boolean>(false);
   const [formChanged, setFormChanged] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [isValidating, setIsValidating] = useState<boolean>(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   /**
    * Check if the form has been modified from its initial state
@@ -67,6 +93,18 @@ export default function CreateQuestPage() {
 
     setFormChanged(!isFormEmpty);
   }, [questData]);
+
+  /**
+   * Scroll to error message when it appears
+   */
+  useEffect(() => {
+    if (errorMessage && errorMessageRef.current) {
+      errorMessageRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [errorMessage]);
 
   /**
    * Handles back button click with confirmation if form has changes
@@ -208,51 +246,99 @@ export default function CreateQuestPage() {
   };
 
   /**
-   * Handles form submission - validates quest data before proceeding
-   * @param e - Form submission event
+   * Handle form submission
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage("");
-    setSuccessMessage("");
+    setSuccessMessage(null);
 
     try {
-      const formattedQuestData = {
-        ...questData,
-        reward: questData.reward.toString(),
-        totalUsers: questData.totalUsers.toString(),
-      };
-
-      // Validate the quest data
-      const validationResult = validateQuestLocal(formattedQuestData);
-
-      if (!validationResult.isValid) {
-        setErrorMessage(validationResult.error || "Invalid quest data");
-        setIsSubmitting(false);
-        return;
+      // client-side validation
+      if (!questData.title) {
+        throw new Error("Quest title is required");
       }
 
-      // Create the quest via API
-      const createdQuest = await createQuest(formattedQuestData);
+      if (!questData.description) {
+        throw new Error("Quest description is required");
+      }
 
-      console.log("Quest created successfully:", createdQuest);
-      setSuccessMessage(
-        `Quest created successfully with ID: ${createdQuest.id}`,
-      );
+      if (questData.tasks.length === 0) {
+        throw new Error("At least one quest task is required");
+      }
 
-      // Reset form after successful submission if needed
-      // resetForm();
+      // Format task data for validation
+      const formattedTasks = questData.tasks.map((task) => {
+        const baseTask = {
+          id: task.id,
+          title: task.title,
+          description: task.description,
+          type: mapTaskTypeToValidateType(task.type),
+        };
+
+        // Add type-specific fields
+        if (task.type === "quiz") {
+          return {
+            ...baseTask,
+            question: task.question,
+            options: task.options,
+            correctAnswer: task.correctAnswer,
+          };
+        } else if (task.type === "action") {
+          return {
+            ...baseTask,
+            requiredAmount: "1", // Default required amount for action tasks
+          };
+        } else {
+          return {
+            ...baseTask,
+            requiredAmount: "1", // Default required amount for text tasks
+          };
+        }
+      });
+
+      // Create a properly typed formatted quest data
+      const formattedQuestData: ValidateQuestData = {
+        title: questData.title,
+        description: questData.description,
+        reward: questData.reward,
+        totalUsers: questData.totalUsers,
+        category: questData.category,
+        difficulty: questData.difficulty,
+        tasks: formattedTasks as ValidateTask[],
+      };
+
+      // Create quest via API
+      const result = await createQuest(formattedQuestData);
+
+      // Set success message and createdQuestId, then show the success modal
+      setSuccessMessage(`Quest "${questData.title}" created successfully!`);
+      setCreatedQuestId(result.id);
+      setShowSuccessModal(true);
     } catch (error) {
-      console.error("Failed to create quest:", error);
+      console.error("Form submission error:", error);
       setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Failed to create quest. Please try again.",
+        error instanceof Error ? error.message : "Unknown error occurred",
       );
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  /**
+   * Non-async wrapper for handleSubmit
+   */
+  const handleSubmitWrapper = (e: React.FormEvent) => {
+    void handleSubmit(e);
+  };
+
+  /**
+   * Handles closing the success modal
+   */
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+    setCreatedQuestId("");
   };
 
   // Calculate total APT
@@ -265,6 +351,97 @@ export default function CreateQuestPage() {
     if (isNaN(rewardValue) || isNaN(totalUsersValue)) return 0;
 
     return (rewardValue * totalUsersValue).toFixed(2);
+  };
+
+  /**
+   * Converts internal difficulty value to display format
+   * @param difficulty - Internal difficulty string
+   * @returns Display difficulty string
+   */
+  const convertDifficultyToDisplay = (
+    difficulty: string,
+  ): "Easy" | "Medium" | "Hard" => {
+    switch (difficulty) {
+      case "beginner":
+        return "Easy";
+      case "intermediate":
+        return "Medium";
+      case "advanced":
+        return "Hard";
+      default:
+        return "Easy";
+    }
+  };
+
+  /**
+   * Handles form validation
+   */
+  const validateForm = async () => {
+    try {
+      setIsValidating(true);
+
+      // Validate the form
+      if (questData.tasks.length === 0) {
+        throw new Error("At least one task is required");
+      }
+
+      // Format task data for validation
+      const formattedTasks = questData.tasks.map((task) => {
+        const baseTask = {
+          id: task.id,
+          title: task.title,
+          description: task.description,
+          type: mapTaskTypeToValidateType(task.type),
+        };
+
+        // Add type-specific fields
+        if (task.type === "quiz") {
+          return {
+            ...baseTask,
+            question: task.question,
+            options: task.options,
+            correctAnswer: task.correctAnswer,
+          };
+        } else if (task.type === "action") {
+          return {
+            ...baseTask,
+            requiredAmount: "1", // Default required amount for action tasks
+          };
+        } else {
+          return {
+            ...baseTask,
+            requiredAmount: "1", // Default required amount for text tasks
+          };
+        }
+      });
+
+      // Create a properly typed formatted quest data that matches the validation type
+      const formattedQuestData: ValidateQuestData = {
+        title: questData.title,
+        description: questData.description,
+        reward: questData.reward,
+        totalUsers: questData.totalUsers,
+        category: questData.category,
+        difficulty: questData.difficulty,
+        tasks: formattedTasks as ValidateTask[],
+      };
+
+      // Create the quest via API
+      await createQuest(formattedQuestData);
+
+      console.log("Quest validation successful");
+    } catch (error) {
+      console.error("Validation error:", error);
+    } finally {
+      setIsValidating(false);
+    }
+  };
+
+  /**
+   * Non-async wrapper for validateForm
+   */
+  const validateFormWrapper = () => {
+    void validateForm();
   };
 
   return (
@@ -289,6 +466,13 @@ export default function CreateQuestPage() {
           />
         </svg>
       </button>
+
+      {/* Success Modal */}
+      <SuccessModal
+        questId={createdQuestId}
+        isOpen={showSuccessModal}
+        onClose={handleCloseSuccessModal}
+      />
 
       {/* Confirmation Dialog */}
       {showConfirmDialog && (
@@ -321,21 +505,23 @@ export default function CreateQuestPage() {
 
       <h1 className="text-3xl font-bold text-center mb-8">Create New Quest</h1>
 
-      {/* Success Message */}
+      {/* Error Message */}
+      {errorMessage && (
+        <div
+          ref={errorMessageRef}
+          className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded"
+        >
+          {errorMessage}
+        </div>
+      )}
+
       {successMessage && (
         <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
           {successMessage}
         </div>
       )}
 
-      {/* Error Message */}
-      {errorMessage && (
-        <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-          {errorMessage}
-        </div>
-      )}
-
-      <form onSubmit={handleSubmit} className="space-y-8">
+      <form onSubmit={handleSubmitWrapper} className="space-y-8">
         {/* Quest Information */}
         <div className="bg-white rounded-lg shadow p-4 sm:p-6 space-y-4">
           <h2 className="text-xl font-semibold">Quest Information</h2>
@@ -441,9 +627,11 @@ export default function CreateQuestPage() {
                 required
               >
                 <option value="learning">Learning</option>
-                <option value="development">Development</option>
-                <option value="testing">Testing</option>
-                <option value="engagement">Engagement</option>
+                <option value="defi">DeFi</option>
+                <option value="nft">NFT</option>
+                <option value="gaming">Gaming</option>
+                <option value="dao">DAO</option>
+                <option value="other">Other</option>
               </select>
             </div>
 
@@ -574,7 +762,9 @@ export default function CreateQuestPage() {
                           type="text"
                           id={`task-${task.id}-question`}
                           name="question"
-                          value={task.question || ""}
+                          value={
+                            task.question !== undefined ? task.question : ""
+                          }
                           onChange={(e) => handleTaskChange(task.id, e)}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md"
                           required
@@ -703,6 +893,106 @@ export default function CreateQuestPage() {
             disabled={!formChanged || isSubmitting}
           >
             {isSubmitting ? "Creating Quest..." : "Create Quest"}
+          </button>
+        </div>
+
+        {/* Quest Preview Section */}
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6 space-y-4">
+          <h2 className="text-xl font-semibold">Quest Preview</h2>
+          <p className="text-gray-600">
+            This is how your quest will appear to users.
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
+            {/* Card Preview */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-lg font-medium mb-4 self-start">
+                Card Preview
+              </h3>
+              <div className="max-w-[300px] w-full">
+                <div
+                  className="pointer-events-none relative"
+                  aria-label="Quest preview (not clickable)"
+                >
+                  <div className="absolute inset-0 z-10 bg-transparent"></div>
+                  <QuestCard
+                    id="preview"
+                    title={questData.title || "Your Quest Title"}
+                    description={
+                      questData.description ||
+                      "Your quest description will appear here. Make it engaging to attract users!"
+                    }
+                    imageUrl=""
+                    projectName={questData.category || "learning"}
+                    reward={Number(questData.reward) || 0}
+                    difficulty={convertDifficultyToDisplay(
+                      questData.difficulty,
+                    )}
+                    estimatedTime={
+                      questData.totalUsers
+                        ? `${questData.totalUsers} users`
+                        : "New"
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Map Preview */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-lg font-medium mb-4 self-start">
+                Map Preview
+              </h3>
+              {questData.tasks.length > 0 ? (
+                <div className="max-w-full w-full overflow-x-auto pb-4">
+                  <div
+                    className="pointer-events-none relative"
+                    aria-label="Map preview (not clickable)"
+                  >
+                    <div className="absolute inset-0 z-10 bg-transparent"></div>
+                    <QuestMap
+                      questId="preview"
+                      steps={questData.tasks.map(
+                        (task, index) =>
+                          ({
+                            id: task.id,
+                            title: task.title || `Step ${index + 1}`,
+                            description:
+                              task.description ||
+                              "Complete this step to advance",
+                            iconUrl: "",
+                            type:
+                              task.type === "quiz"
+                                ? "quiz"
+                                : task.type === "action"
+                                  ? "check-balance"
+                                  : "text",
+                            isLocked: index > 0,
+                            isCompleted: false,
+                          }) as QuestStepUI,
+                      )}
+                      onStepClick={() => {}}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-gray-100 rounded-xl p-6 text-center text-gray-500 w-full">
+                  <p>Add some tasks to see the quest map preview</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Validation Button */}
+        <div className="mt-4">
+          <button
+            type="button"
+            className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={validateFormWrapper}
+            disabled={isValidating || isSubmitting || !formChanged}
+          >
+            {isValidating ? "Validating..." : "Validate Quest"}
           </button>
         </div>
       </form>

@@ -266,7 +266,7 @@ describe("CreateQuestPage", () => {
             expect.objectContaining({
               title: "Task 1 Title",
               description: "Task 1 Description",
-              type: "text",
+              type: "connect-wallet",
             }),
           ]),
         }),
@@ -275,9 +275,12 @@ describe("CreateQuestPage", () => {
 
     // Check for success message
     await waitFor(() => {
-      expect(
-        screen.getByText(/Quest created successfully/),
-      ).toBeInTheDocument();
+      // Find the success message by its container class and verify the text
+      const successElements = screen.getAllByText(
+        /Quest "Test Quest Title" created successfully!/,
+      );
+      expect(successElements.length).toBeGreaterThan(0);
+      expect(successElements[0]).toBeInTheDocument();
     });
   });
 

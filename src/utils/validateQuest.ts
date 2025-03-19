@@ -190,7 +190,7 @@ export function validateQuest(questJson: string | object): ValidationResult {
     const task = quest.tasks[i];
     const taskField = `tasks[${i}]`;
 
-    if (!task.id) {
+    if (!task || !task.id) {
       return {
         isValid: false,
         error: "Task ID is required",
@@ -198,18 +198,36 @@ export function validateQuest(questJson: string | object): ValidationResult {
       };
     }
 
-    if (!task.title) {
+    // Check task title
+    if (task.title === undefined || task.title === null || task.title === "") {
       return {
         isValid: false,
         error: "Task title is required",
         field: `${taskField}.title`,
       };
+    } else if (task.title.length < 5) {
+      return {
+        isValid: false,
+        error: "Task title must be at least 5 characters",
+        field: `${taskField}.title`,
+      };
     }
 
-    if (!task.description) {
+    // Check task description
+    if (
+      task.description === undefined ||
+      task.description === null ||
+      task.description === ""
+    ) {
       return {
         isValid: false,
         error: "Task description is required",
+        field: `${taskField}.description`,
+      };
+    } else if (task.description.length < 10) {
+      return {
+        isValid: false,
+        error: "Task description must be at least 10 characters",
         field: `${taskField}.description`,
       };
     }
@@ -254,7 +272,7 @@ export function validateQuest(questJson: string | object): ValidationResult {
       if (!task.options.includes(task.correctAnswer)) {
         return {
           isValid: false,
-          error: "Correct answer must be one of the provided options",
+          error: "Correct answer must be one of the options",
           field: `${taskField}.correctAnswer`,
         };
       }
@@ -264,7 +282,7 @@ export function validateQuest(questJson: string | object): ValidationResult {
       if (!task.requiredAmount) {
         return {
           isValid: false,
-          error: "Required amount is needed for check-balance tasks",
+          error: "Required amount is required for check-balance tasks",
           field: `${taskField}.requiredAmount`,
         };
       }

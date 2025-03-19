@@ -42,7 +42,9 @@ const QuestGrid: React.FC = () => {
         }
 
         const data = await response.json();
-        setQuests(data.quests || []);
+        setQuests(
+          data.quests !== undefined && data.quests !== null ? data.quests : [],
+        );
       } catch (error) {
         console.error("Failed to fetch quests:", error);
         setError(
@@ -77,9 +79,11 @@ const QuestGrid: React.FC = () => {
           </div>
         )}
 
-        {error && <div className="text-center text-red-500 mb-6">{error}</div>}
+        {error !== null && error !== "" && (
+          <div className="text-center text-red-500 mb-6">{error}</div>
+        )}
 
-        {!loading && !error && quests.length === 0 && (
+        {!loading && error === null && quests.length === 0 && (
           <div className="text-center text-gray-500 dark:text-gray-400 py-12">
             No quests found. Run{" "}
             <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
@@ -89,7 +93,7 @@ const QuestGrid: React.FC = () => {
           </div>
         )}
 
-        {!loading && !error && quests.length > 0 && (
+        {!loading && error === null && quests.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {quests.map((quest) => (
               <QuestCard

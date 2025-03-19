@@ -35,7 +35,13 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({
 
   // Handle success callback only once per connection
   useEffect(() => {
-    if (isConnected && address && onSuccess && !successCalled.current) {
+    if (
+      isConnected &&
+      address !== null &&
+      address !== "" &&
+      onSuccess &&
+      !successCalled.current
+    ) {
       successCalled.current = true;
       onSuccess(address);
     }
@@ -58,16 +64,25 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({
     }
   };
 
+  /**
+   * Handles wallet connection or disconnection button click
+   * Non-async wrapper for the onClick handler
+   */
+  const handleConnectClickWrapper = () => {
+    void handleConnectClick();
+  };
+
   // Format address for display (truncate middle)
   const formatAddress = (addr: string) => {
-    if (!addr) return "";
+    if (addr === null || addr === undefined || addr === "") return "";
     return `${addr.substring(0, 6)}...${addr.substring(addr.length - 4)}`;
   };
 
   // Generate button text based on connection state
   const getButtonText = () => {
     if (isConnecting) return "Connecting...";
-    if (isConnected) return `Disconnect ${formatAddress(address || "")}`;
+    if (isConnected)
+      return `Disconnect ${formatAddress(address !== null ? address : "")}`;
     if (!isAvailable && showWalletStatus) return "No Wallet Found";
     return `Connect Wallet`;
   };
@@ -75,7 +90,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({
   return (
     <div className="flex flex-col">
       <Button
-        onClick={handleConnectClick}
+        onClick={handleConnectClickWrapper}
         disabled={isConnecting || (!isAvailable && !isConnected)}
         variant={isConnected ? "danger" : "primary"}
         isLoading={isConnecting}
@@ -85,9 +100,11 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({
         {getButtonText()}
       </Button>
 
-      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+      {error !== null && error !== "" && (
+        <p className="text-red-500 text-sm mt-2">{error}</p>
+      )}
 
-      {!isAvailable && !isConnected && showWalletStatus && (
+      {!isAvailable && !isConnected && showWalletStatus === true && (
         <div className="mt-2 text-sm text-center">
           <a
             href="https://petra.app/"

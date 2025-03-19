@@ -62,15 +62,30 @@ export async function createQuest(
  * @returns The quest data or null if not found
  */
 export async function getQuestById(questId: string): Promise<Quest | null> {
-  const client = getRedisClient();
+  console.log(`getQuestById: Fetching quest with ID: ${questId}`);
 
-  const questData = await client.hget(`quests:${questId}`, "data");
+  try {
+    const client = getRedisClient();
+    console.log(`Checking if quest ${questId} exists in Redis`);
 
-  if (!questData) {
-    return null;
+    // First check if the ID exists in the all quests set
+    const exists = await client.sismember("quests:all", questId);
+    console.log(`Quest ID in quests:all set: ${exists ? "Yes" : "No"}`);
+
+    const questData = await client.hget(`quests:${questId}`, "data");
+    console.log(`Raw quest data retrieved: ${questData ? "Yes" : "No"}`);
+
+    if (!questData) {
+      console.log(`Quest with ID ${questId} not found in Redis`);
+      return null;
+    }
+
+    console.log(`Parsing quest data for ID: ${questId}`);
+    return JSON.parse(questData) as Quest;
+  } catch (error) {
+    console.error(`Error retrieving quest ${questId}:`, error);
+    throw error; // Re-throw to be caught by the caller
   }
-
-  return JSON.parse(questData) as Quest;
 }
 
 /**
@@ -94,7 +109,9 @@ export async function getAllQuests(limit = 100, offset = 0): Promise<Quest[]> {
   }
 
   // Get all quests in parallel
-  const quests = await Promise.all(paginatedIds.map((id) => getQuestById(id)));
+  const quests = await Promise.all(
+    paginatedIds.map((id: string) => getQuestById(id)),
+  );
 
   // Filter out any null values (in case a quest was deleted)
   return quests.filter((quest): quest is Quest => quest !== null);

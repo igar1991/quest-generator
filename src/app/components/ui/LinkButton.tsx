@@ -48,7 +48,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({
   };
 
   // Width classes
-  const widthClasses = fullWidth ? "w-full" : "";
+  const widthClasses = fullWidth === true ? "w-full" : "";
 
   return (
     <a
@@ -61,7 +61,9 @@ const LinkButton: React.FC<LinkButtonProps> = ({
       `}
       {...props}
     >
-      {icon && <span className="mr-2">{icon}</span>}
+      {icon !== undefined && icon !== null && (
+        <span className="mr-2">{icon}</span>
+      )}
       {children}
     </a>
   );
