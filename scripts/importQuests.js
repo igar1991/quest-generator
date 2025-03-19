@@ -2,6 +2,7 @@
 const Redis = require("ioredis");
 const fs = require("fs");
 const path = require("path");
+require('dotenv').config();
 
 // Create Redis client
 const redisClient = new Redis(
