@@ -35,7 +35,7 @@ export interface Quest {
 export async function createQuest(
   questData: Omit<Quest, "id" | "createdAt">,
 ): Promise<Quest> {
-  const client = getRedisClient();
+  const client = await getRedisClient();
 
   // Generate a unique ID for the quest
   const questId = uuidv4();
@@ -66,7 +66,7 @@ export async function getQuestById(questId: string): Promise<Quest | null> {
   console.log(`getQuestById: Fetching quest with ID: ${questId}`);
 
   try {
-    const client = getRedisClient();
+    const client = await getRedisClient();
     console.log(`Checking if quest ${questId} exists in Redis`);
 
     // First check if the ID exists in the all quests set
@@ -96,7 +96,7 @@ export async function getQuestById(questId: string): Promise<Quest | null> {
  * @returns Array of quests
  */
 export async function getAllQuests(limit = 100, offset = 0): Promise<Quest[]> {
-  const client = getRedisClient();
+  const client = await getRedisClient();
 
   // Get all quest IDs
   const questIds = await client.smembers("quests:all");

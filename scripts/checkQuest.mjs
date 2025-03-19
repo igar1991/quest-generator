@@ -1,14 +1,14 @@
-const {
+import {
   connectToRedis,
   getRedisClient,
   closeRedisConnection,
-} = require("../backend/utils/redis");
+} from "../backend/utils/redis";
 
 async function checkQuest(questId) {
   try {
     // Connect to Redis
     await connectToRedis();
-    const client = getRedisClient();
+    const client = await getRedisClient();
 
     console.log(`Checking for quest with ID: ${questId}`);
 

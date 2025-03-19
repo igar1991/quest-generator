@@ -1,15 +1,15 @@
-const Redis = require("ioredis");
+import Redis from "ioredis";
 
 // Track connection state
-let redisClient = null;
+let redisClient: Redis | null = null;
 let isConnecting = false;
-let connectionPromise = null;
+let connectionPromise: Promise<void> | null = null;
 
 /**
  * Connect to Redis and handle connection events
  * @returns Promise that resolves when Redis is connected
  */
-async function connectToRedis() {
+async function connectToRedis(): Promise<void> {
   // If already connecting, return the existing promise
   if (isConnecting && connectionPromise) {
     return connectionPromise;
@@ -24,7 +24,7 @@ async function connectToRedis() {
   isConnecting = true;
 
   // Create connection promise
-  connectionPromise = new Promise((resolve, reject) => {
+  connectionPromise = new Promise<void>((resolve, reject) => {
     console.log("Creating new Redis connection");
 
     // Create new client with timeout
@@ -60,7 +60,9 @@ async function connectToRedis() {
       if (isConnecting) {
         console.error("Redis connection timeout");
         isConnecting = false;
-        redisClient.disconnect();
+        if (redisClient) {
+          redisClient.disconnect();
+        }
         redisClient = null;
         reject(new Error("Redis connection timeout"));
       }
@@ -76,19 +78,24 @@ async function connectToRedis() {
 
 /**
  * Get the Redis client instance, automatically connecting if needed
- * @returns {Promise<Object>} Redis client instance
+ * @returns Redis client instance
  */
-async function getRedisClient() {
+async function getRedisClient(): Promise<Redis> {
   if (!redisClient || redisClient.status !== "ready") {
     await connectToRedis();
   }
+  
+  if (!redisClient) {
+    throw new Error("Failed to establish Redis connection");
+  }
+  
   return redisClient;
 }
 
 /**
  * Close the Redis connection
  */
-async function closeRedisConnection() {
+async function closeRedisConnection(): Promise<void> {
   if (redisClient) {
     await redisClient.quit();
     redisClient = null;
@@ -98,7 +105,7 @@ async function closeRedisConnection() {
   }
 }
 
-module.exports = {
+export {
   connectToRedis,
   getRedisClient,
   closeRedisConnection,

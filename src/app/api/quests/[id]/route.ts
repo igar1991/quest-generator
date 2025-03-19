@@ -77,7 +77,7 @@ export async function GET(request: Request, context: any) {
       console.log("Special handling for known problematic quest ID");
       try {
         // Try to get the client first to ensure connection
-        const client = getRedisClient();
+        const client = await getRedisClient();
 
         // Try to get from quest:all set
         const exists = await client.sismember("quests:all", questId);

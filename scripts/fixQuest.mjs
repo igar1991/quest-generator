@@ -1,8 +1,8 @@
-const {
+import {
   connectToRedis,
   getRedisClient,
   closeRedisConnection,
-} = require("../backend/utils/redis");
+} from "../backend/utils/redis";
 
 async function fixQuest(questId) {
   try {
@@ -13,7 +13,7 @@ async function fixQuest(questId) {
     // Wait a moment to ensure connection is fully established
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    const client = getRedisClient();
+    const client = await getRedisClient();
     console.log("Redis client obtained successfully");
 
     console.log(`Fixing quest with ID: ${questId}`);

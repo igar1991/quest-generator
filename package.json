@@ -18,7 +18,9 @@
     "check:all:ci": "npm run lint:check && npm run format:check && npm run type:check:ci && npm run test",
     "fix:all": "npm run lint:fix && npm run format",
     "redis:import": "node scripts/importQuests.js",
-    "redis:clear": "node scripts/clearQuests.js"
+    "redis:clear": "node scripts/clearQuests.js",
+    "quest:check": "node scripts/checkQuest.mjs",
+    "quest:fix": "node scripts/fixQuest.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
