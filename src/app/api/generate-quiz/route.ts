@@ -79,7 +79,7 @@ IMPORTANT: Your entire response must be a valid JSON object. Start with { and en
         },
       ],
       temperature: 0.7,
-      max_tokens: 2500,
+      max_tokens: 9500,
     });
 
     // Parse the response
