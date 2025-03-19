@@ -31,6 +31,7 @@ import {
   TOTAL_USERS_MAX,
 } from "@/utils/validationConstants";
 import { QuizAiModal, QuizQuestion } from "../components/QuizAiModal";
+import { PlusCircle, Sparkles, CheckCircle, Trash } from "lucide-react";
 
 // Define the task types used in the create page
 type TaskType = "quiz" | "check-balance-increment";
@@ -816,16 +817,18 @@ export default function CreateQuestPage() {
               <button
                 type="button"
                 onClick={addTask}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 w-full sm:w-auto"
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 w-full sm:w-auto flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-md"
               >
-                Add Task
+                <PlusCircle size={18} />
+                <span>Add Task</span>
               </button>
               <button
                 type="button"
                 onClick={() => setShowQuizAiModal(true)}
-                className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 w-full sm:w-auto"
+                className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 w-full sm:w-auto flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-md"
               >
-                Quiz with AI
+                <Sparkles size={18} />
+                <span>Quiz with AI</span>
               </button>
             </div>
           </div>
@@ -859,9 +862,10 @@ export default function CreateQuestPage() {
                   <button
                     type="button"
                     onClick={() => removeTask(task.id)}
-                    className="text-red-600 hover:text-red-800"
+                    className="text-red-600 hover:text-red-800 flex items-center gap-1 hover:bg-red-50 px-2 py-1 rounded-md transition-colors duration-200"
                   >
-                    Remove
+                    <Trash size={16} />
+                    <span>Remove</span>
                   </button>
                 </div>
 
@@ -959,18 +963,20 @@ export default function CreateQuestPage() {
                             <button
                               type="button"
                               onClick={() => removeOption(task.id, optionIndex)}
-                              className="px-3 py-2 bg-red-100 text-red-600 rounded-md sm:rounded-l-none sm:rounded-r-md hover:bg-red-200 mt-1 sm:mt-0 w-full sm:w-auto"
+                              className="px-3 py-2 bg-red-50 text-red-600 rounded-md sm:rounded-l-none sm:rounded-r-md hover:bg-red-100 mt-1 sm:mt-0 w-full sm:w-auto flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-sm"
                             >
-                              Remove
+                              <Trash size={16} />
+                              <span>Remove</span>
                             </button>
                           </div>
                         ))}
                         <button
                           type="button"
                           onClick={() => addOption(task.id)}
-                          className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-100 w-full sm:w-auto"
+                          className="px-3 py-2 text-blue-600 border border-blue-200 bg-blue-50 rounded-md hover:bg-blue-100 w-full sm:w-auto flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-sm mt-2"
                         >
-                          Add Option
+                          <PlusCircle size={16} />
+                          <span>Add Option</span>
                         </button>
                       </div>
 
@@ -1069,9 +1075,10 @@ export default function CreateQuestPage() {
         <div className="mt-6 flex justify-end">
           <button
             type="submit"
-            className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 font-medium w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 font-medium w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-md"
             disabled={!formChanged || isSubmitting}
           >
+            <CheckCircle size={20} />
             {isSubmitting ? "Creating Quest..." : "Create Quest"}
           </button>
         </div>
@@ -1165,10 +1172,11 @@ export default function CreateQuestPage() {
         <div className="mt-4">
           <button
             type="button"
-            className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 hover:shadow-md"
             onClick={validateFormWrapper}
             disabled={isValidating || isSubmitting || !formChanged}
           >
+            <CheckCircle size={18} />
             {isValidating ? "Validating..." : "Validate Quest"}
           </button>
         </div>

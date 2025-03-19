@@ -9,8 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/app/components/ui/Dialog";
-import { Input } from "@/app/components/ui/Input";
 import { Slider } from "@/app/components/ui/Slider";
+// Import icons
+import { Sparkles, XCircle } from "lucide-react";
 
 // Fix Button import issue
 const Button = ({
@@ -19,25 +20,29 @@ const Button = ({
   onClick,
   disabled,
   className,
+  icon,
 }: {
   children: React.ReactNode;
   variant?: "outline" | "primary";
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
+  icon?: React.ReactNode;
 }) => {
-  const baseClass = "px-4 py-2 rounded-md font-medium transition-colors";
+  const baseClass =
+    "px-4 py-2 rounded-md font-medium transition-all duration-200";
   const variantClass =
     variant === "outline"
-      ? "border border-gray-300 hover:bg-gray-100 text-gray-700"
-      : "bg-blue-600 text-white hover:bg-blue-700";
+      ? "border border-gray-300 hover:bg-gray-100 text-gray-700 hover:shadow-sm"
+      : "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md";
 
   return (
     <button
-      className={`${baseClass} ${variantClass} ${className || ""} ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+      className={`${baseClass} ${variantClass} ${className || ""} ${disabled ? "opacity-50 cursor-not-allowed" : ""} flex items-center justify-center gap-2`}
       onClick={onClick}
       disabled={disabled}
     >
+      {icon}
       {children}
     </button>
   );
@@ -182,12 +187,12 @@ export function QuizAiModal({
             <label htmlFor="topic" className="text-sm font-medium">
               Topic <span className="text-red-500">*</span>
             </label>
-            <Input
+            <input
               id="topic"
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
               placeholder="Enter a topic (e.g., JavaScript basics, blockchain technology)"
-              className="col-span-3"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
               disabled={isGenerating}
             />
           </div>
@@ -215,17 +220,21 @@ export function QuizAiModal({
           </div>
         </div>
 
-        <DialogFooter>
+        <DialogFooter className="flex flex-col sm:flex-row gap-3 sm:gap-2">
           <Button
             variant="outline"
             onClick={() => onOpenChange(false)}
             disabled={isGenerating}
+            icon={<XCircle size={18} />}
+            className="w-full sm:w-auto"
           >
             Cancel
           </Button>
           <Button
             onClick={handleGenerate}
             disabled={!topic.trim() || isGenerating}
+            icon={<Sparkles size={18} />}
+            className="w-full sm:w-auto bg-purple-600 hover:bg-purple-700"
           >
             {isGenerating ? "Generating..." : "Generate Questions"}
           </Button>
