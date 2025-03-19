@@ -14,7 +14,7 @@ export interface Quest {
   difficulty: string;
   tasks: {
     id: string;
-    type: "text" | "quiz" | "action";
+    type: "text" | "quiz" | "action" | "connect-wallet" | "check-balance";
     title: string;
     description: string;
     question?: string;
@@ -22,6 +22,7 @@ export interface Quest {
     correctAnswer?: string;
     actionUrl?: string;
     successCondition?: string;
+    requiredAmount?: string;
   }[];
   createdAt: string;
 }

@@ -7,7 +7,6 @@ import Footer from "../../components/Footer";
 import QuestMap from "../../components/QuestMap";
 import QuestStep from "../../components/QuestStep";
 import QuestCompletion from "../../components/QuestCompletion";
-import { questsData } from "../../data/questsData";
 import { QuestStepUI, QuestUI } from "../../types/quest";
 
 /**
@@ -28,18 +27,9 @@ export default function QuestDetail() {
 
       try {
         console.log(`Loading quest with ID: ${questId}`);
-        // First check if it's a demo quest
-        const mockQuest = questsData.find((q) => q.id === questId);
-
-        if (mockQuest) {
-          console.log("Found quest in mock data");
-          setQuest(mockQuest as unknown as QuestUI);
-          setLoading(false);
-          return;
-        }
 
         console.log("Fetching quest from API...");
-        // If not a mock quest, try to fetch from API
+        // Fetch from API
         const response = await fetch(
           `/api/quests/${encodeURIComponent(questId)}`,
           {

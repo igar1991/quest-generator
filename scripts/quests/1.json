@@ -1,0 +1,107 @@
+{
+  "id": "e4f86d2c-1a5f-43c9-b9a0-10ee96ded75a",
+  "title": "Exploring Petra Wallet",
+  "description": "Get familiar with Petra Wallet, the official wallet for the Aptos blockchain that allows you to manage your assets, interact with dApps, and explore the Aptos ecosystem.",
+  "imageUrl": "/images/quests/petra.jpg",
+  "projectName": "Petra Wallet",
+  "reward": 5,
+  "difficulty": "Easy",
+  "estimatedTime": "25 min",
+  "tasks": [
+    {
+      "id": "e4f86d2c-a23b-48d9-b1c2-8ef56a8b30e1",
+      "type": "check-balance",
+      "title": "Fund Your Petra Wallet",
+      "description": "Add at least 0.01 APT to your wallet to begin the quest",
+      "requiredAmount": "0.01"
+    },
+    {
+      "id": "e4f86d2c-a23b-48d9-b1c2-8ef56a8b30e2",
+      "type": "quiz",
+      "title": "Petra Wallet Basics",
+      "description": "Test your knowledge about Petra Wallet fundamentals",
+      "question": "What organization developed Petra Wallet?",
+      "options": ["Binance", "Aptos Labs", "Solana Foundation", "Coinbase"],
+      "correctAnswer": "Aptos Labs"
+    },
+    {
+      "id": "e4f86d2c-a23b-48d9-b1c2-8ef56a8b30e3",
+      "type": "quiz",
+      "title": "Wallet Security",
+      "description": "Understanding the security features of Petra Wallet",
+      "question": "What is the best practice for securing your recovery phrase?",
+      "options": [
+        "Store it in a password manager",
+        "Take a screenshot of it",
+        "Write it down and store it in a secure location",
+        "Share it with trusted friends as backup"
+      ],
+      "correctAnswer": "Write it down and store it in a secure location"
+    },
+    {
+      "id": "e4f86d2c-a23b-48d9-b1c2-8ef56a8b30e4",
+      "type": "quiz",
+      "title": "Network Configuration",
+      "description": "Learn about the networks supported by Petra Wallet",
+      "question": "Which networks does Petra Wallet support?",
+      "options": [
+        "Only Aptos Mainnet",
+        "Aptos Mainnet and Testnet only",
+        "Aptos Mainnet, Testnet, and Devnet",
+        "Aptos and Ethereum networks"
+      ],
+      "correctAnswer": "Aptos Mainnet, Testnet, and Devnet"
+    },
+    {
+      "id": "e4f86d2c-a23b-48d9-b1c2-8ef56a8b30e5",
+      "type": "quiz",
+      "title": "Wallet Features",
+      "description": "Explore the features available in Petra Wallet",
+      "question": "Which of the following is NOT a feature of Petra Wallet?",
+      "options": [
+        "NFT support",
+        "dApp connections",
+        "Built-in DEX for trading",
+        "Transaction history"
+      ],
+      "correctAnswer": "Built-in DEX for trading"
+    },
+    {
+      "id": "e4f86d2c-a23b-48d9-b1c2-8ef56a8b30e6",
+      "type": "quiz",
+      "title": "Transaction Fees",
+      "description": "Understanding gas fees on Aptos using Petra Wallet",
+      "question": "What currency are transaction fees paid in on Aptos?",
+      "options": ["ETH", "APT", "USDC", "PETRA"],
+      "correctAnswer": "APT"
+    },
+    {
+      "id": "e4f86d2c-a23b-48d9-b1c2-8ef56a8b30e7",
+      "type": "quiz",
+      "title": "Integration Capabilities",
+      "description": "Learn how Petra Wallet integrates with the Aptos ecosystem",
+      "question": "Which API standard does Petra Wallet implement for dApp connections?",
+      "options": [
+        "Web3.js",
+        "Aptos Wallet Standard",
+        "MetaMask API",
+        "EIP-1193"
+      ],
+      "correctAnswer": "Aptos Wallet Standard"
+    },
+    {
+      "id": "e4f86d2c-a23b-48d9-b1c2-8ef56a8b30e8",
+      "type": "quiz",
+      "title": "Key Management",
+      "description": "Understanding key types in Petra Wallet",
+      "question": "What type of keys does Petra Wallet use?",
+      "options": [
+        "Ed25519 keys",
+        "Secp256k1 keys (like Ethereum)",
+        "RSA keys",
+        "Both Ed25519 and Secp256k1 keys"
+      ],
+      "correctAnswer": "Ed25519 keys"
+    }
+  ]
+} 

@@ -1,0 +1,116 @@
+{
+  "id": "f58a2d1b-6e4c-4826-9f52-7c9f15b8d547",
+  "title": "Mastering Aptosnames (ANS)",
+  "description": "Learn about Aptosnames, the first domain name service for the Aptos blockchain that allows you to register and manage .apt domains to replace long wallet addresses with human-readable names.",
+  "imageUrl": "/images/quests/ans.jpg",
+  "projectName": "Aptosnames",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "f58a2d1b-7fb3-43a1-95c8-12d4e8a67e01",
+      "type": "check-balance",
+      "title": "Prepare for Domain Registration",
+      "description": "Add at least 0.05 APT to your wallet to prepare for domain service usage",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "f58a2d1b-7fb3-43a1-95c8-12d4e8a67e02",
+      "type": "quiz",
+      "title": "ANS Basics",
+      "description": "Learn the fundamentals of the Aptosnames service",
+      "question": "What is the primary purpose of Aptosnames (ANS)?",
+      "options": [
+        "Create NFT collections",
+        "Secure wallet private keys",
+        "Replace wallet addresses with human-readable names",
+        "Track transaction history"
+      ],
+      "correctAnswer": "Replace wallet addresses with human-readable names"
+    },
+    {
+      "id": "f58a2d1b-7fb3-43a1-95c8-12d4e8a67e03",
+      "type": "quiz",
+      "title": "Domain Extensions",
+      "description": "Understanding domain extensions on Aptosnames",
+      "question": "What is the standard domain extension used by Aptosnames?",
+      "options": [".apto", ".apt", ".aptos", ".move"],
+      "correctAnswer": ".apt"
+    },
+    {
+      "id": "f58a2d1b-7fb3-43a1-95c8-12d4e8a67e04",
+      "type": "quiz",
+      "title": "Domain Registration",
+      "description": "Learn about the domain registration process",
+      "question": "What is the minimum registration period for an Aptosnames domain?",
+      "options": ["1 month", "3 months", "1 year", "2 years"],
+      "correctAnswer": "1 year"
+    },
+    {
+      "id": "f58a2d1b-7fb3-43a1-95c8-12d4e8a67e05",
+      "type": "quiz",
+      "title": "Domain Functionality",
+      "description": "Understanding what you can do with an Aptosnames domain",
+      "question": "Which of the following is NOT a feature of Aptosnames domains?",
+      "options": [
+        "Use as your username across Aptos dApps",
+        "Receive tokens to your domain name instead of address",
+        "Automatic staking rewards",
+        "Link to your social media profiles"
+      ],
+      "correctAnswer": "Automatic staking rewards"
+    },
+    {
+      "id": "f58a2d1b-7fb3-43a1-95c8-12d4e8a67e06",
+      "type": "quiz",
+      "title": "Subdomain Support",
+      "description": "Learn about subdomains in the ANS ecosystem",
+      "question": "What is a benefit of creating subdomains?",
+      "options": [
+        "They're always free",
+        "They provide higher transaction speeds",
+        "They allow domain owners to create specialized addresses under their domain",
+        "They automatically connect to Ethereum"
+      ],
+      "correctAnswer": "They allow domain owners to create specialized addresses under their domain"
+    },
+    {
+      "id": "f58a2d1b-7fb3-43a1-95c8-12d4e8a67e07",
+      "type": "quiz",
+      "title": "Technical Implementation",
+      "description": "Understanding the technical details of ANS",
+      "question": "How are Aptosnames domains stored on the Aptos blockchain?",
+      "options": [
+        "As Move resources with owner rights",
+        "As NFTs (non-fungible tokens)",
+        "As regular database entries",
+        "As fungible tokens"
+      ],
+      "correctAnswer": "As NFTs (non-fungible tokens)"
+    },
+    {
+      "id": "f58a2d1b-7fb3-43a1-95c8-12d4e8a67e08",
+      "type": "quiz",
+      "title": "Reverse Resolution",
+      "description": "Learn about reverse resolution in domain services",
+      "question": "What does 'reverse resolution' refer to in Aptosnames?",
+      "options": [
+        "Transferring a domain back to the marketplace",
+        "Converting a domain name back to a wallet address",
+        "Displaying your domain when someone looks up your wallet address",
+        "Canceling a domain registration"
+      ],
+      "correctAnswer": "Displaying your domain when someone looks up your wallet address"
+    },
+    {
+      "id": "f58a2d1b-7fb3-43a1-95c8-12d4e8a67e09",
+      "type": "quiz",
+      "title": "Domain Integration",
+      "description": "Understanding how ANS integrates with other services",
+      "question": "Which of these wallets has native support for Aptosnames?",
+      "options": ["MetaMask", "Petra Wallet", "Phantom", "Trust Wallet"],
+      "correctAnswer": "Petra Wallet"
+    }
+  ]
+} 
