@@ -1,0 +1,145 @@
+{
+  "id": "l2n73p48-5m3n-39m3-j5p1-m04p60l47n30",
+  "title": "Leverage Trading on Aptin",
+  "description": "Learn about Aptin, a decentralized perpetual exchange on Aptos that allows users to trade with leverage using a wide variety of crypto assets as collateral.",
+  "imageUrl": "/images/quests/aptin.jpg",
+  "projectName": "Aptin",
+  "reward": 8,
+  "difficulty": "Hard",
+  "estimatedTime": "35 min",
+  "tasks": [
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15p71m69q01",
+      "type": "check-balance",
+      "title": "Prepare for Leverage Trading",
+      "description": "Add at least 0.1 APT to your wallet to begin exploring Aptin's leverage trading platform",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15p71m69q02",
+      "type": "quiz",
+      "title": "Perpetual Exchange Basics",
+      "description": "Understand what a perpetual exchange is",
+      "question": "What is a perpetual exchange like Aptin?",
+      "options": [
+        "A platform for spot trading only",
+        "A platform for trading perpetual futures contracts with leverage",
+        "A platform for lending cryptocurrencies",
+        "A platform for trading traditional options"
+      ],
+      "correctAnswer": "A platform for trading perpetual futures contracts with leverage"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15p71m69q03",
+      "type": "quiz",
+      "title": "Leverage Trading",
+      "description": "Learn about trading with leverage",
+      "question": "What does trading with leverage on Aptin allow you to do?",
+      "options": [
+        "Remove all risk from trading",
+        "Open positions larger than your collateral by borrowing funds",
+        "Store tokens for long periods without fees",
+        "Automatically stake your tokens for yield"
+      ],
+      "correctAnswer": "Open positions larger than your collateral by borrowing funds"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15p71m69q04",
+      "type": "quiz",
+      "title": "Funding Rate",
+      "description": "Understanding perpetual funding rates",
+      "question": "What is the funding rate in perpetual futures trading?",
+      "options": [
+        "The rate at which new tokens are created",
+        "The interest rate paid to lenders",
+        "A periodic payment between long and short traders to keep perpetual prices aligned with spot prices",
+        "The fee charged for opening a position"
+      ],
+      "correctAnswer": "A periodic payment between long and short traders to keep perpetual prices aligned with spot prices"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15p71m69q05",
+      "type": "quiz",
+      "title": "Collateral Management",
+      "description": "Learn how collateral works on Aptin",
+      "question": "How does Aptin handle collateral for leveraged positions?",
+      "options": [
+        "Collateral is not required",
+        "Users can only use APT as collateral",
+        "Various cryptocurrencies can be used as collateral",
+        "Physical assets are required as collateral"
+      ],
+      "correctAnswer": "Various cryptocurrencies can be used as collateral"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15p71m69q06",
+      "type": "quiz",
+      "title": "Liquidation Mechanism",
+      "description": "Understanding how liquidations work",
+      "question": "What happens during a liquidation on Aptin?",
+      "options": [
+        "Your account is permanently blocked",
+        "Your position is forcibly closed when your maintenance margin falls below a threshold",
+        "You receive a warning and 24 hours to add more collateral",
+        "Liquidations never occur on Aptin"
+      ],
+      "correctAnswer": "Your position is forcibly closed when your maintenance margin falls below a threshold"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15p71m69q07",
+      "type": "quiz",
+      "title": "Price Oracle Integration",
+      "description": "Learn how Aptin determines asset prices",
+      "question": "How does Aptin determine prices for its trading pairs?",
+      "options": [
+        "Manual price updates by the team",
+        "Through integrated oracles like Pyth Network",
+        "Based solely on internal trading activity",
+        "Using centralized exchange APIs directly"
+      ],
+      "correctAnswer": "Through integrated oracles like Pyth Network"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15p71m69q08",
+      "type": "quiz",
+      "title": "Risk Management",
+      "description": "Understanding risk in leverage trading",
+      "question": "What is a primary risk of leverage trading on platforms like Aptin?",
+      "options": [
+        "No risks exist in leverage trading",
+        "Only the risk of platform hacks",
+        "Amplified losses due to leverage and potential liquidations",
+        "Risk of tokens being stolen by other users"
+      ],
+      "correctAnswer": "Amplified losses due to leverage and potential liquidations"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15p71m69q09",
+      "type": "quiz",
+      "title": "Order Types",
+      "description": "Learn about different order types on Aptin",
+      "question": "Which of these order types might be available on Aptin?",
+      "options": [
+        "Only market orders",
+        "Only limit orders",
+        "Market, limit, stop-loss, and take-profit orders",
+        "Only conditional orders"
+      ],
+      "correctAnswer": "Market, limit, stop-loss, and take-profit orders"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15p71m69q10",
+      "type": "quiz",
+      "title": "Implementation Technology",
+      "description": "Understand how Aptin is built on Aptos",
+      "question": "How is Aptin implemented on the Aptos blockchain?",
+      "options": [
+        "As an off-chain service with centralized settlement",
+        "Using Solidity smart contracts",
+        "Using Move modules for on-chain execution and settlement",
+        "Through a hybrid system with transactions processed off-chain"
+      ],
+      "correctAnswer": "Using Move modules for on-chain execution and settlement"
+    }
+  ]
+} 

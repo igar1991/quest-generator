@@ -1,0 +1,145 @@
+{
+  "id": "v2x73z48-5w3x-39w3-t5z1-w04z60v47x30",
+  "title": "Exploring AptosLaunch Token Platform",
+  "description": "Discover AptosLaunch, a decentralized launchpad on Aptos that helps new projects conduct fair token offerings, raise capital, and build communities through various launch models and participation tiers.",
+  "imageUrl": "/images/quests/aptoslaunch.jpg",
+  "projectName": "AptosLaunch",
+  "reward": 8,
+  "difficulty": "Medium",
+  "estimatedTime": "35 min",
+  "tasks": [
+    {
+      "id": "v2x73z48-6x4y-50y5-u6a2-x15z71w58a23",
+      "type": "check-balance",
+      "title": "Prepare for Token Launches",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring AptosLaunch",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "v2x73z48-6x4y-50y5-u6a2-x15z71w58a24",
+      "type": "quiz",
+      "title": "Launchpad Basics",
+      "description": "Understand what a token launchpad does",
+      "question": "What is AptosLaunch's primary function?",
+      "options": [
+        "A lending protocol",
+        "A decentralized exchange",
+        "A platform for launching new tokens and conducting token sales",
+        "A yield farming platform"
+      ],
+      "correctAnswer": "A platform for launching new tokens and conducting token sales"
+    },
+    {
+      "id": "v2x73z48-6x4y-50y5-u6a2-x15z71w58a25",
+      "type": "quiz",
+      "title": "Token Launch Models",
+      "description": "Learn about different ways to launch tokens",
+      "question": "Which token launch models might AptosLaunch offer?",
+      "options": [
+        "Only private sales",
+        "Only airdrops",
+        "Fair launches, IDOs (Initial DEX Offerings), public sales, and private rounds",
+        "Only through centralized exchanges"
+      ],
+      "correctAnswer": "Fair launches, IDOs (Initial DEX Offerings), public sales, and private rounds"
+    },
+    {
+      "id": "v2x73z48-6x4y-50y5-u6a2-x15z71w58a26",
+      "type": "quiz",
+      "title": "Participation Requirements",
+      "description": "Understanding how to participate in launches",
+      "question": "How might participation in AptosLaunch offerings be structured?",
+      "options": [
+        "Anyone can participate equally in all launches",
+        "Through tiered participation based on staked tokens or NFT holdings",
+        "Only through direct invitations",
+        "Only institutional investors can participate"
+      ],
+      "correctAnswer": "Through tiered participation based on staked tokens or NFT holdings"
+    },
+    {
+      "id": "v2x73z48-6x4y-50y5-u6a2-x15z71w58a27",
+      "type": "quiz",
+      "title": "Project Vetting",
+      "description": "Learn about project selection",
+      "question": "How are projects typically selected for launching on AptosLaunch?",
+      "options": [
+        "No vetting process, anyone can launch",
+        "Through thorough due diligence and project review by the platform team",
+        "Only through community voting",
+        "Only projects from the Aptos Foundation"
+      ],
+      "correctAnswer": "Through thorough due diligence and project review by the platform team"
+    },
+    {
+      "id": "v2x73z48-6x4y-50y5-u6a2-x15z71w58a28",
+      "type": "quiz",
+      "title": "Token Distribution",
+      "description": "Understanding token allocation",
+      "question": "How are tokens typically distributed after a successful launch on AptosLaunch?",
+      "options": [
+        "All tokens are immediately available",
+        "According to the project's tokenomics, which often includes vesting schedules",
+        "Only through airdrops",
+        "Only to the highest bidders"
+      ],
+      "correctAnswer": "According to the project's tokenomics, which often includes vesting schedules"
+    },
+    {
+      "id": "v2x73z48-6x4y-50y5-u6a2-x15z71w58a29",
+      "type": "quiz",
+      "title": "Fundraising Mechanisms",
+      "description": "Learn about capital raising methods",
+      "question": "What fundraising mechanisms might AptosLaunch support?",
+      "options": [
+        "Only fixed price sales",
+        "Only auctions",
+        "Fixed price pools, dutch auctions, fair launches, and batch auctions",
+        "Only through traditional venture capital"
+      ],
+      "correctAnswer": "Fixed price pools, dutch auctions, fair launches, and batch auctions"
+    },
+    {
+      "id": "v2x73z48-6x4y-50y5-u6a2-x15z71w58a30",
+      "type": "quiz",
+      "title": "Post-Launch Support",
+      "description": "Understanding ongoing project support",
+      "question": "What post-launch support might AptosLaunch offer to projects?",
+      "options": [
+        "No support after launch",
+        "Only technical support",
+        "Liquidity provision, marketing assistance, exchange listings, and development support",
+        "Only financial audits"
+      ],
+      "correctAnswer": "Liquidity provision, marketing assistance, exchange listings, and development support"
+    },
+    {
+      "id": "v2x73z48-6x4y-50y5-u6a2-x15z71w58a31",
+      "type": "quiz",
+      "title": "Platform Governance",
+      "description": "Learn about decision-making",
+      "question": "How might governance decisions be made on AptosLaunch?",
+      "options": [
+        "Only by the founding team",
+        "Through a DAO where token holders can vote on proposals",
+        "Only by Aptos Foundation",
+        "Only by project teams"
+      ],
+      "correctAnswer": "Through a DAO where token holders can vote on proposals"
+    },
+    {
+      "id": "v2x73z48-6x4y-50y5-u6a2-x15z71w58a32",
+      "type": "quiz",
+      "title": "Risk Management",
+      "description": "Understanding investment risks",
+      "question": "How might AptosLaunch help manage risks for participants?",
+      "options": [
+        "No risk management features",
+        "By guaranteeing returns",
+        "Through KYC requirements, project vetting, and sometimes token vesting",
+        "By only accepting stablecoins"
+      ],
+      "correctAnswer": "Through KYC requirements, project vetting, and sometimes token vesting"
+    }
+  ]
+} 

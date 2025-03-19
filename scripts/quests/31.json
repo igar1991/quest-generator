@@ -1,0 +1,145 @@
+{
+  "id": "l2n73p48-5m3n-39m3-j5p1-m04p60l58n30",
+  "title": "Lending with Tsunami Finance",
+  "description": "Discover Tsunami Finance, a lending and borrowing protocol on Aptos that enables users to earn interest on deposits and access liquidity by borrowing against collateralized assets.",
+  "imageUrl": "/images/quests/tsunami.jpg",
+  "projectName": "Tsunami Finance",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15q71m69q01",
+      "type": "check-balance",
+      "title": "Prepare for Lending Activities",
+      "description": "Add at least 0.1 APT to your wallet to begin exploring Tsunami Finance",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15q71m69q02",
+      "type": "quiz",
+      "title": "Tsunami Finance Basics",
+      "description": "Understand what Tsunami Finance offers in the Aptos ecosystem",
+      "question": "What is the primary function of Tsunami Finance?",
+      "options": [
+        "NFT marketplace",
+        "Lending and borrowing protocol",
+        "Decentralized exchange (DEX)",
+        "Yield farming aggregator"
+      ],
+      "correctAnswer": "Lending and borrowing protocol"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15q71m69q03",
+      "type": "quiz",
+      "title": "Lending Mechanism",
+      "description": "Learn how lending works on Tsunami Finance",
+      "question": "What happens when you deposit assets into Tsunami Finance?",
+      "options": [
+        "Your assets are locked permanently",
+        "You receive interest-bearing tokens representing your deposit",
+        "Your assets are converted to UST stablecoins",
+        "Your assets are staked in a validator node"
+      ],
+      "correctAnswer": "You receive interest-bearing tokens representing your deposit"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15q71m69q04",
+      "type": "quiz",
+      "title": "Borrowing Model",
+      "description": "Understand how borrowing works on Tsunami",
+      "question": "How is borrowing structured on Tsunami Finance?",
+      "options": [
+        "Unsecured loans based on credit score",
+        "Overcollateralized loans where you must deposit more value than you borrow",
+        "Fixed-term loans with defined repayment dates",
+        "Peer-to-peer loans directly between users"
+      ],
+      "correctAnswer": "Overcollateralized loans where you must deposit more value than you borrow"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15q71m69q05",
+      "type": "quiz",
+      "title": "Interest Rate Model",
+      "description": "Learn how interest rates are determined",
+      "question": "How are interest rates determined on Tsunami Finance?",
+      "options": [
+        "Fixed rates set by the team",
+        "Based on central bank rates",
+        "Dynamic rates based on utilization ratio of each market",
+        "Voted on by governance token holders"
+      ],
+      "correctAnswer": "Dynamic rates based on utilization ratio of each market"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15q71m69q06",
+      "type": "quiz",
+      "title": "Collateral and Liquidation",
+      "description": "Understanding risk management on Tsunami",
+      "question": "What happens if your collateral value drops too low relative to your borrowed amount?",
+      "options": [
+        "Nothing, you can keep your borrowed assets indefinitely",
+        "Your loan is automatically extended",
+        "Your position can be liquidated to repay the debt",
+        "You receive a warning and a 30-day grace period"
+      ],
+      "correctAnswer": "Your position can be liquidated to repay the debt"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15q71m69q07",
+      "type": "quiz",
+      "title": "Asset Types",
+      "description": "Learn about the assets supported on Tsunami",
+      "question": "What types of assets are typically available on Tsunami Finance?",
+      "options": [
+        "Only APT token",
+        "Only stablecoins",
+        "Major cryptocurrencies and stablecoins on Aptos",
+        "Only NFTs"
+      ],
+      "correctAnswer": "Major cryptocurrencies and stablecoins on Aptos"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15q71m69q08",
+      "type": "quiz",
+      "title": "Health Factor",
+      "description": "Understanding borrowing risk metrics",
+      "question": "What does the health factor represent in Tsunami Finance?",
+      "options": [
+        "The overall security rating of the protocol",
+        "A ratio showing how close a borrowing position is to liquidation",
+        "The user's credit score",
+        "The percentage of collateral that can be borrowed against"
+      ],
+      "correctAnswer": "A ratio showing how close a borrowing position is to liquidation"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15q71m69q09",
+      "type": "quiz",
+      "title": "Platform Security",
+      "description": "Learn about security measures in Tsunami",
+      "question": "What security measures does Tsunami Finance implement?",
+      "options": [
+        "Relies solely on the Aptos blockchain security",
+        "Has no security audits or measures",
+        "Code audits, economic security analysis, and risk parameters for each asset",
+        "Only relies on insurance policies"
+      ],
+      "correctAnswer": "Code audits, economic security analysis, and risk parameters for each asset"
+    },
+    {
+      "id": "l2n73p48-6n4o-50o5-k6q2-n15q71m69q10",
+      "type": "quiz",
+      "title": "Flash Loans",
+      "description": "Understanding advanced borrowing features",
+      "question": "What are flash loans in Tsunami Finance?",
+      "options": [
+        "Small loans with short repayment terms",
+        "Emergency loans during market crashes",
+        "Uncollateralized loans that must be borrowed and repaid in the same transaction",
+        "Loans with flashing notification alerts"
+      ],
+      "correctAnswer": "Uncollateralized loans that must be borrowed and repaid in the same transaction"
+    }
+  ]
+} 

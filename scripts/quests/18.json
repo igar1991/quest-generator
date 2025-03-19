@@ -1,0 +1,131 @@
+{
+  "id": "m3o84q59-6n4o-40n4-k6q2-n05q71m36o40",
+  "title": "Managing Assets with Martian Wallet",
+  "description": "Explore Martian Wallet, a popular non-custodial wallet for Aptos that offers a secure and intuitive way to manage your APT and other tokens, connect to dApps, and participate in the Aptos ecosystem.",
+  "imageUrl": "/images/quests/martian.jpg",
+  "projectName": "Martian Wallet",
+  "reward": 5,
+  "difficulty": "Easy",
+  "estimatedTime": "20 min",
+  "tasks": [
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o16q82n70r01",
+      "type": "check-balance",
+      "title": "Fund Your Martian Wallet",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring Martian Wallet features",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o16q82n70r02",
+      "type": "quiz",
+      "title": "Martian Wallet Basics",
+      "description": "Understand what Martian Wallet is",
+      "question": "What is Martian Wallet?",
+      "options": [
+        "A hardware wallet device",
+        "A centralized exchange wallet",
+        "A non-custodial browser extension and mobile wallet for Aptos",
+        "A paper wallet generator"
+      ],
+      "correctAnswer": "A non-custodial browser extension and mobile wallet for Aptos"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o16q82n70r03",
+      "type": "quiz",
+      "title": "Security Features",
+      "description": "Learn about securing your Martian Wallet",
+      "question": "What is a key security feature of Martian Wallet?",
+      "options": [
+        "Your private keys are stored on Martian's servers",
+        "Your private keys never leave your device and are encrypted",
+        "No password is required to access your wallet",
+        "Automatic sharing of keys with dApps"
+      ],
+      "correctAnswer": "Your private keys never leave your device and are encrypted"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o16q82n70r04",
+      "type": "quiz",
+      "title": "Asset Support",
+      "description": "Understanding which assets you can manage",
+      "question": "What types of digital assets can you manage with Martian Wallet?",
+      "options": [
+        "Only APT tokens",
+        "APT, other tokens on Aptos, and NFTs",
+        "Only Bitcoin and Ethereum",
+        "Only NFTs, not fungible tokens"
+      ],
+      "correctAnswer": "APT, other tokens on Aptos, and NFTs"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o16q82n70r05",
+      "type": "quiz",
+      "title": "DApp Connections",
+      "description": "Learn how Martian connects to dApps",
+      "question": "How does Martian Wallet allow you to interact with dApps on Aptos?",
+      "options": [
+        "It doesn't support dApp connections",
+        "Through secure wallet connect protocol and direct browser extension connections",
+        "By sharing your seed phrase with the dApp",
+        "Only through complicated manual signing processes"
+      ],
+      "correctAnswer": "Through secure wallet connect protocol and direct browser extension connections"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o16q82n70r06",
+      "type": "quiz",
+      "title": "Wallet Recovery",
+      "description": "Understanding how to recover access to your wallet",
+      "question": "How can you recover access to your Martian Wallet if you lose access to your device?",
+      "options": [
+        "It's impossible to recover",
+        "By contacting Martian support with your ID",
+        "Using your recovery phrase (seed phrase)",
+        "Only by using the same browser/device"
+      ],
+      "correctAnswer": "Using your recovery phrase (seed phrase)"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o16q82n70r07",
+      "type": "quiz",
+      "title": "Transaction Fees",
+      "description": "Learn about fees when using Martian",
+      "question": "How does Martian Wallet handle transaction fees?",
+      "options": [
+        "All transactions are free",
+        "Martian charges its own fee on top of network fees",
+        "Users pay standard Aptos network fees",
+        "Fees are paid in MARTIAN tokens only"
+      ],
+      "correctAnswer": "Users pay standard Aptos network fees"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o16q82n70r08",
+      "type": "quiz",
+      "title": "Martian vs. Other Wallets",
+      "description": "Understanding how Martian compares to other Aptos wallets",
+      "question": "What is a feature that might differentiate Martian from other Aptos wallets?",
+      "options": [
+        "It's the only wallet that supports Aptos",
+        "Its user-friendly interface and broad ecosystem integrations",
+        "It's controlled by the Aptos Foundation",
+        "It's the only wallet that allows token transfers"
+      ],
+      "correctAnswer": "Its user-friendly interface and broad ecosystem integrations"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o16q82n70r09",
+      "type": "quiz",
+      "title": "Multi-Device Support",
+      "description": "Learn about using Martian on multiple devices",
+      "question": "How can you use Martian Wallet on multiple devices?",
+      "options": [
+        "It's not possible to use on multiple devices",
+        "By creating separate wallets for each device",
+        "By importing your recovery phrase on each device",
+        "By transferring your tokens between wallets"
+      ],
+      "correctAnswer": "By importing your recovery phrase on each device"
+    }
+  ]
+} 

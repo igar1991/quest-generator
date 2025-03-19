@@ -1,0 +1,131 @@
+{
+  "id": "e7b58c29-1d9f-4a28-88c6-71f5d92c4e15",
+  "title": "PancakeSwap on Aptos",
+  "description": "Explore PancakeSwap on the Aptos blockchain and learn how to trade tokens, provide liquidity, stake, and earn rewards in this multi-chain DEX that expanded from BNB Chain to Aptos.",
+  "imageUrl": "/images/quests/pancakeswap.jpg",
+  "projectName": "PancakeSwap",
+  "reward": 8,
+  "difficulty": "Medium",
+  "estimatedTime": "40 min",
+  "tasks": [
+    {
+      "id": "e7b58c29-2e6a-5b39-99d7-82f6e03d5f01",
+      "type": "check-balance",
+      "title": "Prepare for Trading",
+      "description": "Add at least 0.1 APT to your wallet to begin trading on PancakeSwap",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "e7b58c29-2e6a-5b39-99d7-82f6e03d5f02",
+      "type": "quiz",
+      "title": "PancakeSwap Origins",
+      "description": "Learn about PancakeSwap's expansion to Aptos",
+      "question": "When did PancakeSwap launch on Aptos?",
+      "options": [
+        "At Aptos mainnet launch in 2022",
+        "In 2023",
+        "In 2021, before Aptos mainnet",
+        "In 2020 alongside BNB Chain"
+      ],
+      "correctAnswer": "At Aptos mainnet launch in 2022"
+    },
+    {
+      "id": "e7b58c29-2e6a-5b39-99d7-82f6e03d5f03",
+      "type": "quiz",
+      "title": "CAKE Token on Aptos",
+      "description": "Understand how CAKE works on Aptos",
+      "question": "How does CAKE exist on Aptos?",
+      "options": [
+        "As a native Aptos token",
+        "It doesn't exist on Aptos",
+        "As a bridged token from BNB Chain",
+        "As an APT derivative"
+      ],
+      "correctAnswer": "As a bridged token from BNB Chain"
+    },
+    {
+      "id": "e7b58c29-2e6a-5b39-99d7-82f6e03d5f04",
+      "type": "quiz",
+      "title": "Swap Mechanics",
+      "description": "Learn how token swaps work on PancakeSwap Aptos",
+      "question": "What is the maximum slippage setting recommended for most trades on PancakeSwap?",
+      "options": [
+        "0.1%",
+        "0.5%",
+        "1%",
+        "5%"
+      ],
+      "correctAnswer": "0.5%"
+    },
+    {
+      "id": "e7b58c29-2e6a-5b39-99d7-82f6e03d5f05",
+      "type": "quiz",
+      "title": "Liquidity Provision",
+      "description": "Understand how to provide liquidity on PancakeSwap Aptos",
+      "question": "What do you receive when providing liquidity to a PancakeSwap pool on Aptos?",
+      "options": [
+        "APT rewards directly",
+        "CAKE tokens directly",
+        "LP tokens representing your share of the pool",
+        "Nothing until you withdraw"
+      ],
+      "correctAnswer": "LP tokens representing your share of the pool"
+    },
+    {
+      "id": "e7b58c29-2e6a-5b39-99d7-82f6e03d5f06",
+      "type": "quiz",
+      "title": "Farms on PancakeSwap Aptos",
+      "description": "Learn about yield farming on PancakeSwap Aptos",
+      "question": "What do you stake in PancakeSwap farms?",
+      "options": [
+        "APT tokens only",
+        "CAKE tokens only",
+        "LP tokens from liquidity pools",
+        "Any token available on Aptos"
+      ],
+      "correctAnswer": "LP tokens from liquidity pools"
+    },
+    {
+      "id": "e7b58c29-2e6a-5b39-99d7-82f6e03d5f07",
+      "type": "quiz",
+      "title": "Syrup Pools",
+      "description": "Understand Syrup Pools on PancakeSwap Aptos",
+      "question": "What token do you stake in Syrup Pools on PancakeSwap?",
+      "options": [
+        "CAKE",
+        "APT",
+        "LP tokens",
+        "Various project tokens"
+      ],
+      "correctAnswer": "CAKE"
+    },
+    {
+      "id": "e7b58c29-2e6a-5b39-99d7-82f6e03d5f08",
+      "type": "quiz",
+      "title": "IFO (Initial Farm Offering)",
+      "description": "Learn about token launches on PancakeSwap",
+      "question": "What is required to participate in an IFO on PancakeSwap Aptos?",
+      "options": [
+        "APT tokens only",
+        "CAKE tokens or iCAKE",
+        "Specific LP tokens only",
+        "KYC verification"
+      ],
+      "correctAnswer": "CAKE tokens or iCAKE"
+    },
+    {
+      "id": "e7b58c29-2e6a-5b39-99d7-82f6e03d5f09",
+      "type": "quiz",
+      "title": "PancakeSwap Architecture on Aptos",
+      "description": "Understanding the technical implementation",
+      "question": "What programming language is PancakeSwap built with on Aptos?",
+      "options": [
+        "Solidity",
+        "Move",
+        "Rust",
+        "JavaScript"
+      ],
+      "correctAnswer": "Move"
+    }
+  ]
+} 

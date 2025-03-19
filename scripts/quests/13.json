@@ -1,0 +1,131 @@
+{
+  "id": "h8j39l04-1i9j-95i9-f1l7-i70l26h03j90",
+  "title": "Aptos Name Service Domains",
+  "description": "Discover Aptos Name Service (ANS), the decentralized domain name system for the Aptos blockchain that allows users to register human-readable .apt domains linked to their wallet addresses and on-chain identities.",
+  "imageUrl": "/images/quests/ans.jpg",
+  "projectName": "Aptos Name Service",
+  "reward": 6,
+  "difficulty": "Easy",
+  "estimatedTime": "25 min",
+  "tasks": [
+    {
+      "id": "h8j39l04-2j0k-16k1-g2m8-j91l37i25m01",
+      "type": "check-balance",
+      "title": "Prepare for Domain Registration",
+      "description": "Add at least 0.05 APT to your wallet to explore the Aptos Name Service",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "h8j39l04-2j0k-16k1-g2m8-j91l37i25m02",
+      "type": "quiz",
+      "title": "ANS Basics",
+      "description": "Understand what Aptos Name Service is and how it works",
+      "question": "What is the main purpose of Aptos Name Service (ANS)?",
+      "options": [
+        "To provide website hosting services",
+        "To convert Aptos addresses to human-readable domain names",
+        "To serve as an exchange for buying and selling APT",
+        "To secure the Aptos network through staking"
+      ],
+      "correctAnswer": "To convert Aptos addresses to human-readable domain names"
+    },
+    {
+      "id": "h8j39l04-2j0k-16k1-g2m8-j91l37i25m03",
+      "type": "quiz",
+      "title": "Domain Extensions",
+      "description": "Learn about ANS domain formats",
+      "question": "What is the standard domain extension for Aptos Name Service?",
+      "options": [
+        ".aptos",
+        ".apt",
+        ".move",
+        ".crypto"
+      ],
+      "correctAnswer": ".apt"
+    },
+    {
+      "id": "h8j39l04-2j0k-16k1-g2m8-j91l37i25m04",
+      "type": "quiz",
+      "title": "Domain Registration",
+      "description": "Understanding how to register an ANS domain",
+      "question": "How are ANS domains typically registered?",
+      "options": [
+        "For free with any Aptos wallet",
+        "Through a paid registration process with annual renewal fees",
+        "Through a one-time payment for permanent ownership",
+        "Only through invitations from existing domain owners"
+      ],
+      "correctAnswer": "Through a paid registration process with annual renewal fees"
+    },
+    {
+      "id": "h8j39l04-2j0k-16k1-g2m8-j91l37i25m05",
+      "type": "quiz",
+      "title": "Domain Utility",
+      "description": "Learn how ANS domains can be used",
+      "question": "How can you use your ANS domain in the Aptos ecosystem?",
+      "options": [
+        "Only as a profile display name",
+        "As a send/receive address, profile name, and website pointer",
+        "Only for receiving tokens, not sending",
+        "Only for accessing special Aptos dApps"
+      ],
+      "correctAnswer": "As a send/receive address, profile name, and website pointer"
+    },
+    {
+      "id": "h8j39l04-2j0k-16k1-g2m8-j91l37i25m06",
+      "type": "quiz",
+      "title": "Implementation Technology",
+      "description": "Understanding how ANS is built",
+      "question": "What blockchain technology is ANS built with?",
+      "options": [
+        "Solidity smart contracts",
+        "Move modules on Aptos",
+        "Traditional DNS servers with blockchain verification",
+        "Layer 2 solution on Ethereum"
+      ],
+      "correctAnswer": "Move modules on Aptos"
+    },
+    {
+      "id": "h8j39l04-2j0k-16k1-g2m8-j91l37i25m07",
+      "type": "quiz",
+      "title": "Domain Management",
+      "description": "Learn about managing your ANS domains",
+      "question": "What can domain owners do with their ANS domains?",
+      "options": [
+        "Only transfer to other wallets",
+        "Set text records, wallet addresses for different chains, and transfer ownership",
+        "Only use them as non-transferable identifiers",
+        "Only set a profile picture"
+      ],
+      "correctAnswer": "Set text records, wallet addresses for different chains, and transfer ownership"
+    },
+    {
+      "id": "h8j39l04-2j0k-16k1-g2m8-j91l37i25m08",
+      "type": "quiz",
+      "title": "Domain Trading",
+      "description": "Understanding the secondary market for ANS domains",
+      "question": "How can ANS domains be traded after registration?",
+      "options": [
+        "They can't be traded or transferred",
+        "Only through the official ANS marketplace",
+        "Through direct peer-to-peer transfers or NFT marketplaces that support them",
+        "Only to addresses that don't already have a domain"
+      ],
+      "correctAnswer": "Through direct peer-to-peer transfers or NFT marketplaces that support them"
+    },
+    {
+      "id": "h8j39l04-2j0k-16k1-g2m8-j91l37i25m09",
+      "type": "quiz",
+      "title": "ANS as NFTs",
+      "description": "Understanding the token nature of ANS domains",
+      "question": "How are ANS domains represented on the blockchain?",
+      "options": [
+        "As fungible tokens similar to APT",
+        "As non-fungible tokens (NFTs) with unique properties",
+        "As smart contract access rights only",
+        "As database entries not connected to tokens"
+      ],
+      "correctAnswer": "As non-fungible tokens (NFTs) with unique properties"
+    }
+  ]
+} 

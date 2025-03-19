@@ -1,0 +1,159 @@
+{
+  "id": "r8t39v04-1s9t-95s9-p1v7-s60v26r14t90",
+  "title": "Yield Optimization with Abel Finance",
+  "description": "Explore Abel Finance, a yield aggregator protocol on Aptos that automatically maximizes users' yield farming returns through optimized strategies, compounding, and cross-protocol opportunities.",
+  "imageUrl": "/images/quests/abel.jpg",
+  "projectName": "Abel Finance",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "35 min",
+  "tasks": [
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w01",
+      "type": "check-balance",
+      "title": "Prepare for Yield Farming",
+      "description": "Add at least 0.1 APT to your wallet to explore Abel Finance's yield opportunities",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w02",
+      "type": "quiz",
+      "title": "Abel Finance Basics",
+      "description": "Understand what Abel Finance offers in the Aptos ecosystem",
+      "question": "What is Abel Finance's primary function?",
+      "options": [
+        "NFT marketplace",
+        "Decentralized exchange (DEX)",
+        "Yield aggregator that optimizes DeFi returns",
+        "Lending and borrowing platform"
+      ],
+      "correctAnswer": "Yield aggregator that optimizes DeFi returns"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w03",
+      "type": "quiz",
+      "title": "Yield Vaults",
+      "description": "Learn about Abel's core product",
+      "question": "What are Yield Vaults in Abel Finance?",
+      "options": [
+        "Cold storage solutions for cryptocurrencies",
+        "Smart contracts that automatically implement yield strategies",
+        "Physical storage locations",
+        "Manual trading bots"
+      ],
+      "correctAnswer": "Smart contracts that automatically implement yield strategies"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w04",
+      "type": "quiz",
+      "title": "Auto-Compounding",
+      "description": "Understanding a key yield optimization technique",
+      "question": "What is auto-compounding in the context of Abel Finance?",
+      "options": [
+        "Manually reinvesting earnings",
+        "Automatically reinvesting earned rewards to generate compound returns",
+        "Compressing transaction data",
+        "Combining multiple tokens into one"
+      ],
+      "correctAnswer": "Automatically reinvesting earned rewards to generate compound returns"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w05",
+      "type": "quiz",
+      "title": "Strategy Types",
+      "description": "Learn about different yield strategies",
+      "question": "What types of yield strategies might Abel Finance employ?",
+      "options": [
+        "Only staking strategies",
+        "Only lending strategies",
+        "Various strategies including LP farming, staking, lending, and more",
+        "Only arbitrage strategies"
+      ],
+      "correctAnswer": "Various strategies including LP farming, staking, lending, and more"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w06",
+      "type": "quiz",
+      "title": "Yield Sources",
+      "description": "Understanding where yields come from",
+      "question": "What are common sources of yield in Abel Finance vaults?",
+      "options": [
+        "Only from Abel token rewards",
+        "Only from transaction fees",
+        "From trading fees, token rewards, lending interest, and more",
+        "Only from staking rewards"
+      ],
+      "correctAnswer": "From trading fees, token rewards, lending interest, and more"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w07",
+      "type": "quiz",
+      "title": "Protocol Integration",
+      "description": "Learn about Abel's ecosystem connections",
+      "question": "How does Abel Finance work with other Aptos protocols?",
+      "options": [
+        "It doesn't integrate with other protocols",
+        "Only with one specific partner DEX",
+        "By building strategies that leverage multiple DeFi protocols",
+        "Only through manual bridges"
+      ],
+      "correctAnswer": "By building strategies that leverage multiple DeFi protocols"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w08",
+      "type": "quiz",
+      "title": "Fee Structure",
+      "description": "Understanding Abel's sustainability model",
+      "question": "How does Abel Finance typically structure its fees?",
+      "options": [
+        "No fees are charged",
+        "Fixed fee regardless of performance",
+        "Performance fee on profits and/or management fee on deposits",
+        "Membership subscription only"
+      ],
+      "correctAnswer": "Performance fee on profits and/or management fee on deposits"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w09",
+      "type": "quiz",
+      "title": "Risk Management",
+      "description": "Learn about safety measures in Abel Finance",
+      "question": "How does Abel Finance help manage risk?",
+      "options": [
+        "Risk isn't managed; users are fully responsible",
+        "By offering insurance on all deposits",
+        "Through strategy diversification, code audits, and risk ratings for vaults",
+        "By only using the oldest protocols"
+      ],
+      "correctAnswer": "Through strategy diversification, code audits, and risk ratings for vaults"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w10",
+      "type": "quiz",
+      "title": "Governance",
+      "description": "Understanding decision-making in Abel Finance",
+      "question": "How are important protocol decisions typically made in Abel Finance?",
+      "options": [
+        "Only by the founding team",
+        "Through token-based governance voting",
+        "By random selection of users",
+        "By a centralized authority"
+      ],
+      "correctAnswer": "Through token-based governance voting"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t71w37s25w11",
+      "type": "quiz",
+      "title": "Yield Comparison",
+      "description": "Understanding Abel's value proposition",
+      "question": "Why might users choose Abel Finance over direct yield farming?",
+      "options": [
+        "Abel offers lower yields but more stability",
+        "There's no difference in returns",
+        "Abel automates compounding and strategy optimization for better net returns",
+        "Abel only accepts certain tokens"
+      ],
+      "correctAnswer": "Abel automates compounding and strategy optimization for better net returns"
+    }
+  ]
+} 

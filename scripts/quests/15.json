@@ -1,0 +1,145 @@
+{
+  "id": "j0l51n26-3k1l-17k1-h3n9-k82n48j25l10",
+  "title": "Oracle Data with Pyth Network",
+  "description": "Explore Pyth Network on Aptos, a first-party oracle that delivers accurate and real-time market data for cryptocurrencies, equities, and other financial products to the Aptos blockchain.",
+  "imageUrl": "/images/quests/pyth.jpg",
+  "projectName": "Pyth Network",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "j0l51n26-4l2m-38m3-i4o0-l93n59k47o01",
+      "type": "check-balance",
+      "title": "Prepare for Oracle Exploration",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring Pyth Network",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "j0l51n26-4l2m-38m3-i4o0-l93n59k47o02",
+      "type": "quiz",
+      "title": "Oracles Basics",
+      "description": "Understand what blockchain oracles are",
+      "question": "What is the main purpose of a blockchain oracle like Pyth Network?",
+      "options": [
+        "To validate transactions on the blockchain",
+        "To provide external real-world data to blockchains",
+        "To create new tokens",
+        "To store large amounts of data off-chain"
+      ],
+      "correctAnswer": "To provide external real-world data to blockchains"
+    },
+    {
+      "id": "j0l51n26-4l2m-38m3-i4o0-l93n59k47o03",
+      "type": "quiz",
+      "title": "Pyth Network Overview",
+      "description": "Learn what makes Pyth Network unique",
+      "question": "What type of data does Pyth Network primarily provide to Aptos?",
+      "options": [
+        "Weather data",
+        "Sports results",
+        "Price feeds for various financial assets",
+        "Random number generation"
+      ],
+      "correctAnswer": "Price feeds for various financial assets"
+    },
+    {
+      "id": "j0l51n26-4l2m-38m3-i4o0-l93n59k47o04",
+      "type": "quiz",
+      "title": "Data Sources",
+      "description": "Understanding where Pyth gets its data",
+      "question": "Where does Pyth Network source its price data from?",
+      "options": [
+        "Only from cryptocurrency exchanges",
+        "From a single centralized provider",
+        "From over 70 first-party data providers including exchanges, market makers, and trading firms",
+        "From other oracles like Chainlink"
+      ],
+      "correctAnswer": "From over 70 first-party data providers including exchanges, market makers, and trading firms"
+    },
+    {
+      "id": "j0l51n26-4l2m-38m3-i4o0-l93n59k47o05",
+      "type": "quiz",
+      "title": "Price Feed Updates",
+      "description": "Learn how frequently Pyth data updates",
+      "question": "How often are Pyth price feeds typically updated?",
+      "options": [
+        "Once per day",
+        "Once per hour",
+        "Multiple times per second",
+        "Only when requested by applications"
+      ],
+      "correctAnswer": "Multiple times per second"
+    },
+    {
+      "id": "j0l51n26-4l2m-38m3-i4o0-l93n59k47o06",
+      "type": "quiz",
+      "title": "Pyth on Aptos",
+      "description": "Understanding how Pyth is implemented on Aptos",
+      "question": "How is Pyth Network integrated with Aptos?",
+      "options": [
+        "Through an off-chain API only",
+        "Using Move modules that receive price updates from Pyth's cross-chain infrastructure",
+        "Through manual updates by the Pyth team",
+        "It isn't directly integrated with Aptos"
+      ],
+      "correctAnswer": "Using Move modules that receive price updates from Pyth's cross-chain infrastructure"
+    },
+    {
+      "id": "j0l51n26-4l2m-38m3-i4o0-l93n59k47o07",
+      "type": "quiz",
+      "title": "DeFi Applications",
+      "description": "Learn how Pyth is used in Aptos DeFi",
+      "question": "Which of these Aptos DeFi applications might use Pyth Network price feeds?",
+      "options": [
+        "Only NFT marketplaces",
+        "Only wallet applications",
+        "Lending protocols, DEXes, and derivatives platforms",
+        "Only governance platforms"
+      ],
+      "correctAnswer": "Lending protocols, DEXes, and derivatives platforms"
+    },
+    {
+      "id": "j0l51n26-4l2m-38m3-i4o0-l93n59k47o08",
+      "type": "quiz",
+      "title": "Price Feed Security",
+      "description": "Understanding security features of Pyth",
+      "question": "How does Pyth Network improve the security of its price feeds?",
+      "options": [
+        "By using a single trusted data source",
+        "Through aggregation of multiple independent data sources and confidence intervals",
+        "By updating very infrequently to avoid mistakes",
+        "By manually reviewing each price before publishing"
+      ],
+      "correctAnswer": "Through aggregation of multiple independent data sources and confidence intervals"
+    },
+    {
+      "id": "j0l51n26-4l2m-38m3-i4o0-l93n59k47o09",
+      "type": "quiz",
+      "title": "Confidence Intervals",
+      "description": "Learn about Pyth's unique confidence metric",
+      "question": "What is the confidence interval in Pyth price feeds?",
+      "options": [
+        "The time between price updates",
+        "A measure of uncertainty in the price indicating potential price ranges",
+        "The number of sources confirming the price",
+        "A guaranty of price accuracy"
+      ],
+      "correctAnswer": "A measure of uncertainty in the price indicating potential price ranges"
+    },
+    {
+      "id": "j0l51n26-4l2m-38m3-i4o0-l93n59k47o10",
+      "type": "quiz",
+      "title": "Price Feed Types",
+      "description": "Understanding various Pyth price feeds",
+      "question": "What types of assets can have price feeds on Pyth Network?",
+      "options": [
+        "Only cryptocurrencies",
+        "Only stablecoins and APT",
+        "Cryptocurrencies, forex, equities, commodities, and more",
+        "Only assets native to Aptos"
+      ],
+      "correctAnswer": "Cryptocurrencies, forex, equities, commodities, and more"
+    }
+  ]
+} 

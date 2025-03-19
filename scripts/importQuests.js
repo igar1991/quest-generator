@@ -27,8 +27,27 @@ function readQuestFiles() {
   
   for (const file of questFiles) {
     const filePath = path.join(questsDir, file);
-    const questData = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    questsData.push(questData);
+    try {
+      const fileContent = fs.readFileSync(filePath, "utf8");
+      try {
+        const questData = JSON.parse(fileContent);
+        questsData.push(questData);
+      } catch (parseError) {
+        console.error(`Error parsing JSON in file ${file}:`);
+        console.error(parseError.message);
+        // Log a snippet of the file content to help identify the issue
+        const contentPreview = fileContent.slice(0, 100) + '...';
+        console.error(`File content preview: ${contentPreview}`);
+        throw new Error(`Invalid JSON in file: ${file}`);
+      }
+    } catch (readError) {
+      if (readError.message.startsWith('Invalid JSON')) {
+        throw readError; // Rethrow our custom error
+      }
+      console.error(`Error reading file ${file}:`);
+      console.error(readError.message);
+      throw new Error(`Error reading file: ${file}`);
+    }
   }
   
   return questsData;

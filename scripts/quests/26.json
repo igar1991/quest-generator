@@ -1,0 +1,145 @@
+{
+  "id": "u1w62y37-4v2w-28v2-s4y0-v03y59u36w20",
+  "title": "Trading NFTs on BlueMove",
+  "description": "Explore BlueMove, a leading NFT marketplace on Aptos that enables users to create, buy, sell, and trade non-fungible tokens with a seamless user interface and comprehensive creator tools.",
+  "imageUrl": "/images/quests/bluemove.jpg",
+  "projectName": "BlueMove",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "u1w62y37-5w3x-49x4-t5z1-w14y60v57z12",
+      "type": "check-balance",
+      "title": "Prepare for NFT Trading",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring BlueMove",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "u1w62y37-5w3x-49x4-t5z1-w14y60v57z13",
+      "type": "quiz",
+      "title": "NFT Marketplace Basics",
+      "description": "Understand what an NFT marketplace does",
+      "question": "What is BlueMove's primary function?",
+      "options": [
+        "A token swapping platform",
+        "A lending protocol",
+        "A marketplace for creating and trading NFTs",
+        "A yield farming platform"
+      ],
+      "correctAnswer": "A marketplace for creating and trading NFTs"
+    },
+    {
+      "id": "u1w62y37-5w3x-49x4-t5z1-w14y60v57z14",
+      "type": "quiz",
+      "title": "Marketplace Fees",
+      "description": "Learn about the fee structure",
+      "question": "How do NFT marketplaces like BlueMove typically generate revenue?",
+      "options": [
+        "Through monthly subscription fees",
+        "By taking a percentage of sales as transaction fees",
+        "Through advertising only",
+        "They don't generate revenue"
+      ],
+      "correctAnswer": "By taking a percentage of sales as transaction fees"
+    },
+    {
+      "id": "u1w62y37-5w3x-49x4-t5z1-w14y60v57z15",
+      "type": "quiz",
+      "title": "NFT Standards",
+      "description": "Understanding NFT formats on Aptos",
+      "question": "Which NFT standard is typically used on BlueMove and other Aptos NFT marketplaces?",
+      "options": [
+        "ERC-721 from Ethereum",
+        "SPL tokens from Solana",
+        "Aptos Token Standard and Digital Asset Standard",
+        "BEP-721 from Binance Smart Chain"
+      ],
+      "correctAnswer": "Aptos Token Standard and Digital Asset Standard"
+    },
+    {
+      "id": "u1w62y37-5w3x-49x4-t5z1-w14y60v57z16",
+      "type": "quiz",
+      "title": "Collection Creation",
+      "description": "Learn about NFT collections",
+      "question": "How are collections typically created on BlueMove?",
+      "options": [
+        "Collections can only be created by BlueMove team members",
+        "Users need to submit applications that are manually approved",
+        "Any user can create a collection by deploying a Move module",
+        "Users can create collections using BlueMove's creator tools without coding"
+      ],
+      "correctAnswer": "Users can create collections using BlueMove's creator tools without coding"
+    },
+    {
+      "id": "u1w62y37-5w3x-49x4-t5z1-w14y60v57z17",
+      "type": "quiz",
+      "title": "Royalty Payments",
+      "description": "Understanding creator economics",
+      "question": "How are creator royalties typically handled on BlueMove?",
+      "options": [
+        "Creators receive royalties only from primary sales",
+        "Creators can set a royalty percentage that's paid on secondary sales",
+        "No royalties are possible on Aptos NFTs",
+        "Royalties are only paid in BlueMove's native token"
+      ],
+      "correctAnswer": "Creators can set a royalty percentage that's paid on secondary sales"
+    },
+    {
+      "id": "u1w62y37-5w3x-49x4-t5z1-w14y60v57z18",
+      "type": "quiz",
+      "title": "Listing Types",
+      "description": "Learn about different ways to sell NFTs",
+      "question": "Which selling methods might BlueMove offer?",
+      "options": [
+        "Only fixed price sales",
+        "Only auctions",
+        "Fixed price, auctions, and offers",
+        "Only direct peer-to-peer transfers"
+      ],
+      "correctAnswer": "Fixed price, auctions, and offers"
+    },
+    {
+      "id": "u1w62y37-5w3x-49x4-t5z1-w14y60v57z19",
+      "type": "quiz",
+      "title": "NFT Storage",
+      "description": "Understanding where NFT data is stored",
+      "question": "How is NFT metadata typically stored in BlueMove's ecosystem?",
+      "options": [
+        "Only on the Aptos blockchain",
+        "Only on BlueMove's centralized servers",
+        "On decentralized storage networks like IPFS, with references stored on-chain",
+        "On the creator's personal cloud storage"
+      ],
+      "correctAnswer": "On decentralized storage networks like IPFS, with references stored on-chain"
+    },
+    {
+      "id": "u1w62y37-5w3x-49x4-t5z1-w14y60v57z20",
+      "type": "quiz",
+      "title": "Marketplace Discovery",
+      "description": "Learn how to find NFTs",
+      "question": "What features might BlueMove offer to help users discover NFTs?",
+      "options": [
+        "Manual searching only",
+        "Recommendation engine, trending collections, categories, and search filters",
+        "Only alphabetical listings",
+        "NFTs can only be found via direct links"
+      ],
+      "correctAnswer": "Recommendation engine, trending collections, categories, and search filters"
+    },
+    {
+      "id": "u1w62y37-5w3x-49x4-t5z1-w14y60v57z21",
+      "type": "quiz",
+      "title": "NFT Types",
+      "description": "Understanding different NFT categories",
+      "question": "What types of NFTs might be traded on BlueMove?",
+      "options": [
+        "Only artwork",
+        "Only gaming items",
+        "Art, collectibles, domain names, virtual land, gaming items, and more",
+        "Only BlueMove-created items"
+      ],
+      "correctAnswer": "Art, collectibles, domain names, virtual land, gaming items, and more"
+    }
+  ]
+} 

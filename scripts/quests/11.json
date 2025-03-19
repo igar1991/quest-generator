@@ -1,0 +1,117 @@
+{
+  "id": "f6h17j82-9g7h-73g7-d9j5-g58j04f81h70",
+  "title": "Getting Started with Petra Wallet",
+  "description": "Learn about Petra Wallet, the official Aptos wallet developed by Aptos Labs that allows you to securely store, send, and interact with dApps in the Aptos ecosystem.",
+  "imageUrl": "/images/quests/petra.jpg",
+  "projectName": "Petra Wallet",
+  "reward": 5,
+  "difficulty": "Easy",
+  "estimatedTime": "20 min",
+  "tasks": [
+    {
+      "id": "f6h17j82-0h8i-94i9-e0k6-h79j15g03k01",
+      "type": "check-balance",
+      "title": "Fund Your Wallet",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring Petra's features",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "f6h17j82-0h8i-94i9-e0k6-h79j15g03k02",
+      "type": "quiz",
+      "title": "Petra Wallet Overview",
+      "description": "Learn the basics about Petra Wallet",
+      "question": "What is Petra Wallet?",
+      "options": [
+        "A hardware wallet device",
+        "A custodial exchange wallet",
+        "A non-custodial browser extension and mobile wallet for Aptos",
+        "A multi-chain wallet that doesn't support Aptos"
+      ],
+      "correctAnswer": "A non-custodial browser extension and mobile wallet for Aptos"
+    },
+    {
+      "id": "f6h17j82-0h8i-94i9-e0k6-h79j15g03k03",
+      "type": "quiz",
+      "title": "Wallet Security",
+      "description": "Understanding how to secure your Petra Wallet",
+      "question": "What is the most important thing to protect in your Petra Wallet?",
+      "options": [
+        "Your email address",
+        "Your APT balance",
+        "Your recovery phrase (seed phrase)",
+        "Your transaction history"
+      ],
+      "correctAnswer": "Your recovery phrase (seed phrase)"
+    },
+    {
+      "id": "f6h17j82-0h8i-94i9-e0k6-h79j15g03k04",
+      "type": "quiz",
+      "title": "DApp Connections",
+      "description": "Learn how Petra connects to decentralized applications",
+      "question": "How does Petra Wallet connect to dApps on Aptos?",
+      "options": [
+        "It doesn't support dApp connections",
+        "Only through QR codes",
+        "Through wallet connect protocol and direct browser extension connections",
+        "Only by copying and pasting your private key"
+      ],
+      "correctAnswer": "Through wallet connect protocol and direct browser extension connections"
+    },
+    {
+      "id": "f6h17j82-0h8i-94i9-e0k6-h79j15g03k05",
+      "type": "quiz",
+      "title": "Account Types",
+      "description": "Understanding different account types in Petra",
+      "question": "What types of accounts can Petra Wallet generate?",
+      "options": [
+        "Only single-signature accounts",
+        "Only multi-signature accounts",
+        "Both single-signature and multi-signature accounts",
+        "Only hardware wallet accounts"
+      ],
+      "correctAnswer": "Both single-signature and multi-signature accounts"
+    },
+    {
+      "id": "f6h17j82-0h8i-94i9-e0k6-h79j15g03k06",
+      "type": "quiz",
+      "title": "Network Management",
+      "description": "Learn about connecting to different Aptos networks",
+      "question": "Which networks does Petra Wallet support?",
+      "options": [
+        "Only Aptos Mainnet",
+        "Only Aptos Testnet",
+        "Mainnet, Testnet, and Devnet",
+        "Only Ethereum networks"
+      ],
+      "correctAnswer": "Mainnet, Testnet, and Devnet"
+    },
+    {
+      "id": "f6h17j82-0h8i-94i9-e0k6-h79j15g03k07",
+      "type": "quiz",
+      "title": "NFT Support",
+      "description": "Understanding NFT functionality in Petra",
+      "question": "How does Petra Wallet handle NFTs?",
+      "options": [
+        "It doesn't support NFTs",
+        "It can display and transfer NFTs on Aptos",
+        "It can only display NFTs but not transfer them",
+        "It supports only certain collections"
+      ],
+      "correctAnswer": "It can display and transfer NFTs on Aptos"
+    },
+    {
+      "id": "f6h17j82-0h8i-94i9-e0k6-h79j15g03k08",
+      "type": "quiz",
+      "title": "Transaction Verification",
+      "description": "Learn about transaction security in Petra",
+      "question": "What security feature does Petra provide when signing transactions?",
+      "options": [
+        "No verification is needed",
+        "Detailed transaction previews before signing",
+        "Automatic signing of all transactions",
+        "Required email confirmation"
+      ],
+      "correctAnswer": "Detailed transaction previews before signing"
+    }
+  ]
+} 

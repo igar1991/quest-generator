@@ -1,0 +1,173 @@
+{
+  "id": "p6r17t82-9q7r-73q7-n9t5-q48t04p92r70",
+  "title": "Understanding the Move Virtual Machine",
+  "description": "Explore the Move Virtual Machine (MoveVM), the execution engine that powers the Aptos blockchain, enabling secure and efficient smart contract execution through its unique resource-oriented programming model.",
+  "imageUrl": "/images/quests/movevm.jpg",
+  "projectName": "Move Virtual Machine",
+  "reward": 8,
+  "difficulty": "Hard",
+  "estimatedTime": "45 min",
+  "tasks": [
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u01",
+      "type": "check-balance",
+      "title": "Prepare for Learning",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring the Move Virtual Machine",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u02",
+      "type": "quiz",
+      "title": "MoveVM Basics",
+      "description": "Understand what the Move Virtual Machine is",
+      "question": "What is the Move Virtual Machine (MoveVM)?",
+      "options": [
+        "A physical hardware device",
+        "A cross-chain bridge",
+        "The execution engine that runs smart contracts on Aptos",
+        "A wallet application"
+      ],
+      "correctAnswer": "The execution engine that runs smart contracts on Aptos"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u03",
+      "type": "quiz",
+      "title": "Resource-Oriented Programming",
+      "description": "Learn about Move's key programming paradigm",
+      "question": "What is 'resource-oriented programming' in Move?",
+      "options": [
+        "Programming that focuses on memory optimization",
+        "A paradigm where digital assets are represented as resources that cannot be copied or implicitly destroyed",
+        "Programming that uses minimal CPU resources",
+        "A way to organize code into libraries"
+      ],
+      "correctAnswer": "A paradigm where digital assets are represented as resources that cannot be copied or implicitly destroyed"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u04",
+      "type": "quiz",
+      "title": "Move Modules",
+      "description": "Understanding the structure of Move code",
+      "question": "What is a module in the context of Move programming?",
+      "options": [
+        "Only a collection of functions",
+        "A UI component for dApps",
+        "A container for code that defines struct types and functions that operate on these types",
+        "A third-party library"
+      ],
+      "correctAnswer": "A container for code that defines struct types and functions that operate on these types"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u05",
+      "type": "quiz",
+      "title": "Type Safety",
+      "description": "Learn about Move's safety features",
+      "question": "How does the MoveVM ensure type safety?",
+      "options": [
+        "It doesn't check types at all",
+        "Through dynamic typing at runtime only",
+        "Through static type checking and bytecode verification",
+        "Only by manual code review"
+      ],
+      "correctAnswer": "Through static type checking and bytecode verification"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u06",
+      "type": "quiz",
+      "title": "Gas Model",
+      "description": "Understanding computational costs in MoveVM",
+      "question": "How does the Aptos MoveVM handle transaction execution costs?",
+      "options": [
+        "All transactions are free",
+        "Through a gas model where computational steps cost gas units",
+        "With a fixed fee per transaction regardless of complexity",
+        "By charging only the sender, not the contract"
+      ],
+      "correctAnswer": "Through a gas model where computational steps cost gas units"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u07",
+      "type": "quiz",
+      "title": "Formal Verification",
+      "description": "Learn about Move's approach to code correctness",
+      "question": "What is formal verification in the context of Move?",
+      "options": [
+        "Manual testing of smart contracts",
+        "Having multiple developers review code",
+        "Mathematical proofs that code behaves as expected",
+        "Deploying to testnet before mainnet"
+      ],
+      "correctAnswer": "Mathematical proofs that code behaves as expected"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u08",
+      "type": "quiz",
+      "title": "MoveVM vs EVM",
+      "description": "Understanding the differences from Ethereum",
+      "question": "How does the Move VM differ from Ethereum's EVM?",
+      "options": [
+        "They are identical in design",
+        "MoveVM is faster but less secure",
+        "MoveVM has resource-oriented programming and stronger type safety",
+        "MoveVM can only handle simple transactions"
+      ],
+      "correctAnswer": "MoveVM has resource-oriented programming and stronger type safety"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u09",
+      "type": "quiz",
+      "title": "Execution Model",
+      "description": "Learning how transactions execute",
+      "question": "How does the MoveVM execute transactions?",
+      "options": [
+        "One at a time in sequence",
+        "Using a parallel execution engine with Block-STM for parallelization",
+        "By randomly selecting transactions",
+        "Only in batches at the end of the day"
+      ],
+      "correctAnswer": "Using a parallel execution engine with Block-STM for parallelization"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u10",
+      "type": "quiz",
+      "title": "Ability System",
+      "description": "Understanding Move's permission model",
+      "question": "What is the 'ability' system in Move?",
+      "options": [
+        "A ranking system for developers",
+        "A way to grant permissions to users",
+        "A type annotation system that controls what operations can be performed on values",
+        "A system for measuring computational power"
+      ],
+      "correctAnswer": "A type annotation system that controls what operations can be performed on values"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u11",
+      "type": "quiz",
+      "title": "Storage Model",
+      "description": "Learn how data is stored in MoveVM",
+      "question": "How is data stored in the Aptos implementation of MoveVM?",
+      "options": [
+        "Only in temporary memory",
+        "In a SQL database off-chain",
+        "In a hierarchical structure under accounts in global storage",
+        "Only in JSON format"
+      ],
+      "correctAnswer": "In a hierarchical structure under accounts in global storage"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r59u15q03u12",
+      "type": "quiz",
+      "title": "Standard Library",
+      "description": "Understanding built-in functionality",
+      "question": "What does the Move standard library provide?",
+      "options": [
+        "Only basic arithmetic functions",
+        "Core data structures, crypto operations, and blockchain-specific functionality",
+        "Only external API connections",
+        "Nothing, all functions must be custom built"
+      ],
+      "correctAnswer": "Core data structures, crypto operations, and blockchain-specific functionality"
+    }
+  ]
+} 

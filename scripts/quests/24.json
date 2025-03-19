@@ -1,0 +1,145 @@
+{
+  "id": "s9u40w15-2t0u-06t0-q2w8-t01w37s14u00",
+  "title": "Synthetic Assets with Overmind",
+  "description": "Explore Overmind, a synthetic asset protocol on Aptos that enables users to create, trade, and manage tokenized synthetic assets that track the price of real-world assets without requiring ownership of the underlying asset.",
+  "imageUrl": "/images/quests/overmind.jpg",
+  "projectName": "Overmind",
+  "reward": 8,
+  "difficulty": "Hard",
+  "estimatedTime": "35 min",
+  "tasks": [
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u12w48t36x01",
+      "type": "check-balance",
+      "title": "Prepare for Synthetic Trading",
+      "description": "Add at least 0.1 APT to your wallet to begin exploring Overmind's synthetic assets",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u12w48t36x02",
+      "type": "quiz",
+      "title": "Synthetic Assets Basics",
+      "description": "Understand what synthetic assets are",
+      "question": "What are synthetic assets in the context of Overmind?",
+      "options": [
+        "Physical commodities stored in vaults",
+        "Tokenized derivatives that track the price of real-world assets without owning the underlying asset",
+        "Artificial tokens with no price correlation",
+        "Commodities available only in virtual reality"
+      ],
+      "correctAnswer": "Tokenized derivatives that track the price of real-world assets without owning the underlying asset"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u12w48t36x03",
+      "type": "quiz",
+      "title": "Asset Types",
+      "description": "Learn about the types of assets that can be synthesized",
+      "question": "What types of assets might be available as synthetics on Overmind?",
+      "options": [
+        "Only cryptocurrencies",
+        "Only stable assets pegged to USD",
+        "Stocks, commodities, forex, cryptocurrencies, and indices",
+        "Only NFTs"
+      ],
+      "correctAnswer": "Stocks, commodities, forex, cryptocurrencies, and indices"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u12w48t36x04",
+      "type": "quiz",
+      "title": "Collateralization",
+      "description": "Understanding how synthetics are backed",
+      "question": "How are synthetic assets typically collateralized on Overmind?",
+      "options": [
+        "They are not collateralized",
+        "With physical assets in custodial storage",
+        "With overcollateralization using cryptocurrencies or stablecoins",
+        "With personal credit scores"
+      ],
+      "correctAnswer": "With overcollateralization using cryptocurrencies or stablecoins"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u12w48t36x05",
+      "type": "quiz",
+      "title": "Price Oracles",
+      "description": "Learn how prices are determined",
+      "question": "How does Overmind determine the price of synthetic assets?",
+      "options": [
+        "Through user voting",
+        "Using price oracles like Pyth Network to get real-world asset prices",
+        "Based on supply and demand within Overmind only",
+        "Through manual price setting by the team"
+      ],
+      "correctAnswer": "Using price oracles like Pyth Network to get real-world asset prices"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u12w48t36x06",
+      "type": "quiz",
+      "title": "Minting Synthetics",
+      "description": "Understanding how to create synthetic assets",
+      "question": "How are synthetic assets typically created (minted) on Overmind?",
+      "options": [
+        "They are only created by the team",
+        "By buying them from centralized exchanges",
+        "By providing collateral and minting synthetics at current oracle prices",
+        "Through mining with computational power"
+      ],
+      "correctAnswer": "By providing collateral and minting synthetics at current oracle prices"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u12w48t36x07",
+      "type": "quiz",
+      "title": "Liquidation Mechanisms",
+      "description": "Learn about risk management",
+      "question": "What happens if collateral value falls below required levels in Overmind?",
+      "options": [
+        "Nothing, the protocol absorbs losses",
+        "The user's position can be liquidated to maintain system solvency",
+        "New synthetic assets are created to cover the shortfall",
+        "Trading is temporarily disabled"
+      ],
+      "correctAnswer": "The user's position can be liquidated to maintain system solvency"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u12w48t36x08",
+      "type": "quiz",
+      "title": "Trading Synthetic Assets",
+      "description": "Understanding how to trade synthetics",
+      "question": "How can users typically trade synthetic assets on Overmind?",
+      "options": [
+        "Only against the native Overmind token",
+        "Only peer-to-peer with other users",
+        "Against stablecoins and other synthetics on DEXes integrated with Overmind",
+        "Only through centralized exchanges"
+      ],
+      "correctAnswer": "Against stablecoins and other synthetics on DEXes integrated with Overmind"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u12w48t36x09",
+      "type": "quiz",
+      "title": "Benefits of Synthetics",
+      "description": "Learn about advantages of synthetic assets",
+      "question": "What is a key benefit of trading synthetic assets on Overmind?",
+      "options": [
+        "They are always less volatile than real assets",
+        "Access to global assets that might be difficult to trade in traditional markets, with 24/7 trading",
+        "Government insurance against losses",
+        "They always increase in value"
+      ],
+      "correctAnswer": "Access to global assets that might be difficult to trade in traditional markets, with 24/7 trading"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u12w48t36x10",
+      "type": "quiz",
+      "title": "Implementation Technology",
+      "description": "Understanding how Overmind is built",
+      "question": "How is Overmind implemented on the Aptos blockchain?",
+      "options": [
+        "Using Solidity smart contracts",
+        "As a fully centralized service with off-chain settlement",
+        "Using Move modules for on-chain execution and settlement",
+        "Through manual trading operations"
+      ],
+      "correctAnswer": "Using Move modules for on-chain execution and settlement"
+    }
+  ]
+} 

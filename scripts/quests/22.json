@@ -1,0 +1,145 @@
+{
+  "id": "q7s28u93-0r8s-84r8-o0u6-r09u15q92s80",
+  "title": "Optimizing Yield with Abel Finance",
+  "description": "Discover Abel Finance, a yield optimizer protocol on Aptos that helps users maximize their DeFi returns by automatically compounding rewards, optimizing gas costs, and implementing advanced yield farming strategies.",
+  "imageUrl": "/images/quests/abel.jpg",
+  "projectName": "Abel Finance",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s10u26r14v01",
+      "type": "check-balance",
+      "title": "Prepare for Yield Optimization",
+      "description": "Add at least 0.1 APT to your wallet to begin exploring Abel Finance",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s10u26r14v02",
+      "type": "quiz",
+      "title": "Abel Finance Basics",
+      "description": "Understand what Abel Finance does",
+      "question": "What is Abel Finance's primary function?",
+      "options": [
+        "A spot trading DEX",
+        "A yield optimizer that automates compounding and optimizes farming strategies",
+        "A lending protocol",
+        "A stablecoin issuer"
+      ],
+      "correctAnswer": "A yield optimizer that automates compounding and optimizes farming strategies"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s10u26r14v03",
+      "type": "quiz",
+      "title": "Auto-Compounding",
+      "description": "Learn about automated reward compounding",
+      "question": "What is auto-compounding in the context of Abel Finance?",
+      "options": [
+        "Manually selling rewards every day",
+        "Automatically reinvesting earned rewards to increase the principal amount",
+        "Adding more funds manually to your position",
+        "Switching between different tokens daily"
+      ],
+      "correctAnswer": "Automatically reinvesting earned rewards to increase the principal amount"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s10u26r14v04",
+      "type": "quiz",
+      "title": "Vaults",
+      "description": "Understanding Abel's yield vaults",
+      "question": "What are Abel Finance vaults?",
+      "options": [
+        "Physical storage for your cryptocurrencies",
+        "Smart contracts that implement specific yield farming strategies",
+        "Token lock-up mechanisms",
+        "Cold storage solutions"
+      ],
+      "correctAnswer": "Smart contracts that implement specific yield farming strategies"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s10u26r14v05",
+      "type": "quiz",
+      "title": "Performance Fees",
+      "description": "Learn about how Abel's fee structure works",
+      "question": "How does Abel Finance typically handle performance fees?",
+      "options": [
+        "No fees are charged",
+        "A percentage of the yield generated (not the principal)",
+        "Fixed monthly fees regardless of performance",
+        "Taking ownership of users' tokens"
+      ],
+      "correctAnswer": "A percentage of the yield generated (not the principal)"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s10u26r14v06",
+      "type": "quiz",
+      "title": "Integrated Protocols",
+      "description": "Understanding which protocols Abel works with",
+      "question": "Which Aptos protocols might Abel Finance integrate with for yield strategies?",
+      "options": [
+        "Only centralized exchanges",
+        "None - it operates completely independently",
+        "DEXes, lending protocols, and other DeFi platforms on Aptos",
+        "Only protocols created by the Abel team"
+      ],
+      "correctAnswer": "DEXes, lending protocols, and other DeFi platforms on Aptos"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s10u26r14v07",
+      "type": "quiz",
+      "title": "Yield Sources",
+      "description": "Learn where yields come from",
+      "question": "What are typical sources of yield in Abel Finance vaults?",
+      "options": [
+        "Only transaction fees from traders",
+        "Only new token emissions",
+        "Trading fees, token rewards, interest from lending, and other DeFi incentives",
+        "Only from staking APT"
+      ],
+      "correctAnswer": "Trading fees, token rewards, interest from lending, and other DeFi incentives"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s10u26r14v08",
+      "type": "quiz",
+      "title": "Vault Tokens",
+      "description": "Understanding how vault shares work",
+      "question": "How do users typically represent their share in an Abel Finance vault?",
+      "options": [
+        "Paper certificates",
+        "Receipt tokens that represent their proportional ownership of the vault",
+        "No representation is provided",
+        "Only by remembering their deposit amount"
+      ],
+      "correctAnswer": "Receipt tokens that represent their proportional ownership of the vault"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s10u26r14v09",
+      "type": "quiz",
+      "title": "Risk Management",
+      "description": "Learn about risks in yield optimization",
+      "question": "What types of risks might be associated with using Abel Finance?",
+      "options": [
+        "No risks exist",
+        "Smart contract risks, strategy risks, and underlying protocol risks",
+        "Only the risk of low returns",
+        "Only risks related to APT price fluctuations"
+      ],
+      "correctAnswer": "Smart contract risks, strategy risks, and underlying protocol risks"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s10u26r14v10",
+      "type": "quiz",
+      "title": "Implementation Technology",
+      "description": "Understanding how Abel is built on Aptos",
+      "question": "How is Abel Finance implemented on the Aptos blockchain?",
+      "options": [
+        "Using Solidity smart contracts",
+        "As a centralized service with off-chain management",
+        "Using Move modules for on-chain vault strategies",
+        "Through manual trader operations"
+      ],
+      "correctAnswer": "Using Move modules for on-chain vault strategies"
+    }
+  ]
+} 

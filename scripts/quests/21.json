@@ -1,0 +1,131 @@
+{
+  "id": "p6r17t82-9q7r-73q7-n9t5-q08t04p03r70",
+  "title": "Playing Pancake Games",
+  "description": "Explore Pancake Games, an engaging gaming platform by PancakeSwap on Aptos that offers various casual games where users can have fun, compete, and potentially earn rewards through gameplay and tournaments.",
+  "imageUrl": "/images/quests/pancakegames.jpg",
+  "projectName": "Pancake Games",
+  "reward": 6,
+  "difficulty": "Easy",
+  "estimatedTime": "25 min",
+  "tasks": [
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r19t15q03u01",
+      "type": "check-balance",
+      "title": "Prepare for Gaming",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring Pancake Games",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r19t15q03u02",
+      "type": "quiz",
+      "title": "Pancake Games Basics",
+      "description": "Understand what Pancake Games offers",
+      "question": "What is Pancake Games?",
+      "options": [
+        "A cryptocurrency exchange only",
+        "A platform offering casual blockchain games on Aptos",
+        "A physical gaming console",
+        "An NFT marketplace only"
+      ],
+      "correctAnswer": "A platform offering casual blockchain games on Aptos"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r19t15q03u03",
+      "type": "quiz",
+      "title": "Game Types",
+      "description": "Learn about the types of games available",
+      "question": "What types of games might be available on Pancake Games?",
+      "options": [
+        "Only complex role-playing games",
+        "Only first-person shooters",
+        "Casual games like puzzles, arcades, and simple strategy games",
+        "Only gambling games"
+      ],
+      "correctAnswer": "Casual games like puzzles, arcades, and simple strategy games"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r19t15q03u04",
+      "type": "quiz",
+      "title": "Gameplay Mechanics",
+      "description": "Understanding how the games work",
+      "question": "How do games on Pancake Games typically work?",
+      "options": [
+        "They require specialized gaming hardware",
+        "They are browser-based games that connect to your Aptos wallet",
+        "They require downloading large software packages",
+        "They are text-based games only"
+      ],
+      "correctAnswer": "They are browser-based games that connect to your Aptos wallet"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r19t15q03u05",
+      "type": "quiz",
+      "title": "Rewards and Tournaments",
+      "description": "Learn about potential incentives",
+      "question": "How might players earn rewards on Pancake Games?",
+      "options": [
+        "No rewards are offered",
+        "By winning tournaments, completing achievements, or participating in special events",
+        "Only by purchasing them directly",
+        "Only through random airdrops"
+      ],
+      "correctAnswer": "By winning tournaments, completing achievements, or participating in special events"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r19t15q03u06",
+      "type": "quiz",
+      "title": "Game Assets",
+      "description": "Understanding in-game items",
+      "question": "How might in-game assets be represented in Pancake Games?",
+      "options": [
+        "They are only temporary and can't be owned",
+        "As NFTs or tokens that can be collected, traded, or used in games",
+        "Only as visual elements with no blockchain representation",
+        "They don't exist in Pancake Games"
+      ],
+      "correctAnswer": "As NFTs or tokens that can be collected, traded, or used in games"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r19t15q03u07",
+      "type": "quiz",
+      "title": "Leaderboards and Competition",
+      "description": "Learn about competitive elements",
+      "question": "How might competition work in Pancake Games?",
+      "options": [
+        "There is no competitive element",
+        "Through leaderboards, tournaments, and player rankings",
+        "Only through direct one-on-one challenges",
+        "Only by comparing wallet balances"
+      ],
+      "correctAnswer": "Through leaderboards, tournaments, and player rankings"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r19t15q03u08",
+      "type": "quiz",
+      "title": "Integration with PancakeSwap",
+      "description": "Understanding the connection to PancakeSwap",
+      "question": "How is Pancake Games typically integrated with PancakeSwap on Aptos?",
+      "options": [
+        "There is no connection between the two",
+        "Shared token economy, user accounts, and potential cross-platform rewards",
+        "Only through promotional materials",
+        "Only for trading game assets"
+      ],
+      "correctAnswer": "Shared token economy, user accounts, and potential cross-platform rewards"
+    },
+    {
+      "id": "p6r17t82-0r8s-94s9-o0u6-r19t15q03u09",
+      "type": "quiz",
+      "title": "Game Development",
+      "description": "Learn about the creation of games",
+      "question": "Who typically creates games for the Pancake Games platform?",
+      "options": [
+        "Only individual users",
+        "The PancakeSwap team or partner developers",
+        "Only major gaming companies",
+        "Any developer can freely add games without approval"
+      ],
+      "correctAnswer": "The PancakeSwap team or partner developers"
+    }
+  ]
+} 

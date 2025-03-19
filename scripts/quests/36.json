@@ -1,0 +1,159 @@
+{
+  "id": "q7s28u93-0r8s-84r8-o0u6-r59u15q03s80",
+  "title": "BlueMove NFT Marketplace",
+  "description": "Explore BlueMove, a popular NFT marketplace on Aptos that allows users to mint, buy, sell, and trade digital collectibles with multi-chain support and advanced features.",
+  "imageUrl": "/images/quests/bluemove.jpg",
+  "projectName": "BlueMove",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v01",
+      "type": "check-balance",
+      "title": "Prepare for NFT Trading",
+      "description": "Add at least 0.1 APT to your wallet to explore BlueMove's marketplace features",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v02",
+      "type": "quiz",
+      "title": "BlueMove Basics",
+      "description": "Understand what BlueMove offers in the Aptos ecosystem",
+      "question": "What is BlueMove primarily used for?",
+      "options": [
+        "Decentralized exchange for tokens",
+        "NFT marketplace for buying, selling, and trading digital collectibles",
+        "Lending platform for APT",
+        "Staking service"
+      ],
+      "correctAnswer": "NFT marketplace for buying, selling, and trading digital collectibles"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v03",
+      "type": "quiz",
+      "title": "Multi-Chain Support",
+      "description": "Learn about BlueMove's cross-chain capabilities",
+      "question": "Besides Aptos, which other blockchain ecosystem does BlueMove support?",
+      "options": [
+        "Only Aptos",
+        "Ethereum only",
+        "Sui blockchain",
+        "Solana only"
+      ],
+      "correctAnswer": "Sui blockchain"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v04",
+      "type": "quiz",
+      "title": "NFT Minting",
+      "description": "Understanding creation features on BlueMove",
+      "question": "What NFT creation options does BlueMove provide?",
+      "options": [
+        "Only single NFT minting",
+        "Only importing existing NFTs",
+        "Both single NFTs and collections with customizable traits and royalties",
+        "Only video NFTs"
+      ],
+      "correctAnswer": "Both single NFTs and collections with customizable traits and royalties"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v05",
+      "type": "quiz",
+      "title": "Marketplace Fees",
+      "description": "Learn about the fee structure on BlueMove",
+      "question": "How are marketplace fees typically structured on BlueMove?",
+      "options": [
+        "No fees for any transactions",
+        "Fixed fee regardless of price",
+        "Percentage-based marketplace fee plus optional creator royalties",
+        "Subscription model only"
+      ],
+      "correctAnswer": "Percentage-based marketplace fee plus optional creator royalties"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v06",
+      "type": "quiz",
+      "title": "Listing Types",
+      "description": "Understanding selling options on BlueMove",
+      "question": "What NFT listing methods does BlueMove support?",
+      "options": [
+        "Fixed price only",
+        "Auctions only",
+        "Both fixed price listings and auctions",
+        "Only bundle sales"
+      ],
+      "correctAnswer": "Both fixed price listings and auctions"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v07",
+      "type": "quiz",
+      "title": "NFT Standards",
+      "description": "Learn about technical standards on BlueMove",
+      "question": "What NFT standard does BlueMove use on Aptos?",
+      "options": [
+        "ERC-721 (Ethereum standard)",
+        "SPL (Solana standard)",
+        "Aptos Token Standard",
+        "Custom BlueMove standard"
+      ],
+      "correctAnswer": "Aptos Token Standard"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v08",
+      "type": "quiz",
+      "title": "Collection Verification",
+      "description": "Understanding authenticity features",
+      "question": "How does BlueMove handle NFT collection verification?",
+      "options": [
+        "All collections are automatically verified",
+        "No verification process exists",
+        "Official collections can receive verified status after review",
+        "Only collections from specific creators are allowed"
+      ],
+      "correctAnswer": "Official collections can receive verified status after review"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v09",
+      "type": "quiz",
+      "title": "Launchpad Features",
+      "description": "Learn about NFT primary sales on BlueMove",
+      "question": "What is BlueMove's Launchpad used for?",
+      "options": [
+        "Launching new cryptocurrencies",
+        "NFT collection primary sales and minting events",
+        "Software development",
+        "Only for governance proposals"
+      ],
+      "correctAnswer": "NFT collection primary sales and minting events"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v10",
+      "type": "quiz",
+      "title": "Wallet Compatibility",
+      "description": "Understanding wallet connections on BlueMove",
+      "question": "Which wallets can typically be used with BlueMove on Aptos?",
+      "options": [
+        "Only Petra Wallet",
+        "Only hardware wallets",
+        "Multiple Aptos wallets including Petra, Martian, and others",
+        "No wallet connection is needed"
+      ],
+      "correctAnswer": "Multiple Aptos wallets including Petra, Martian, and others"
+    },
+    {
+      "id": "q7s28u93-1s9t-05t0-p1v7-s60v26r14v11",
+      "type": "quiz",
+      "title": "Community Features",
+      "description": "Learn about social aspects of BlueMove",
+      "question": "What social features does BlueMove offer?",
+      "options": [
+        "No social features",
+        "Only private messaging",
+        "User profiles, following creators, and collection watchlists",
+        "Only public forums"
+      ],
+      "correctAnswer": "User profiles, following creators, and collection watchlists"
+    }
+  ]
+} 

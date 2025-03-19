@@ -1,0 +1,159 @@
+{
+  "id": "n4p95r60-7o5p-51o5-l7r3-o26r82n70p50",
+  "title": "Trading Perpetuals on Orbit Markets",
+  "description": "Explore Orbit Markets, a decentralized perpetual futures protocol built on Aptos that enables traders to access leveraged trading with deep liquidity and advanced risk management systems.",
+  "imageUrl": "/images/quests/orbit.jpg",
+  "projectName": "Orbit Markets",
+  "reward": 8,
+  "difficulty": "Hard",
+  "estimatedTime": "40 min",
+  "tasks": [
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s01",
+      "type": "check-balance",
+      "title": "Prepare for Trading",
+      "description": "Add at least 0.1 APT to your wallet to explore Orbit Markets' trading platform",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s02",
+      "type": "quiz",
+      "title": "Perpetual Futures Basics",
+      "description": "Understand what perpetual futures contracts are",
+      "question": "What is a perpetual futures contract?",
+      "options": [
+        "A contract that expires at a specific date",
+        "A futures contract with no expiry date that can be held indefinitely",
+        "A spot trade with immediate delivery",
+        "A bond with fixed interest payments"
+      ],
+      "correctAnswer": "A futures contract with no expiry date that can be held indefinitely"
+    },
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s03",
+      "type": "quiz",
+      "title": "Orbit Markets Overview",
+      "description": "Learn about Orbit Markets' core offering",
+      "question": "What is the main product offered by Orbit Markets?",
+      "options": [
+        "Spot trading only",
+        "Decentralized perpetual futures trading",
+        "Options contracts",
+        "Physical commodity delivery"
+      ],
+      "correctAnswer": "Decentralized perpetual futures trading"
+    },
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s04",
+      "type": "quiz",
+      "title": "Leverage Trading",
+      "description": "Understanding leverage in derivatives trading",
+      "question": "What does trading with leverage mean on Orbit Markets?",
+      "options": [
+        "Borrowing assets to increase potential returns and risk",
+        "Using special trading tools",
+        "Trading only when market prices are high",
+        "Trading with multiple accounts simultaneously"
+      ],
+      "correctAnswer": "Borrowing assets to increase potential returns and risk"
+    },
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s05",
+      "type": "quiz",
+      "title": "Funding Rate",
+      "description": "Learning about perpetual swap mechanics",
+      "question": "What is the funding rate in perpetual futures trading?",
+      "options": [
+        "The interest rate for borrowing assets",
+        "The platform's transaction fee",
+        "A periodic payment between long and short traders that keeps perpetual prices aligned with the index price",
+        "The rate at which new tokens are minted"
+      ],
+      "correctAnswer": "A periodic payment between long and short traders that keeps perpetual prices aligned with the index price"
+    },
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s06",
+      "type": "quiz",
+      "title": "Liquidations",
+      "description": "Understanding risk management in leveraged trading",
+      "question": "What is a liquidation in the context of Orbit Markets?",
+      "options": [
+        "Converting cryptocurrencies to stablecoins",
+        "The forced closure of a position when it doesn't meet margin requirements",
+        "Removing liquidity from a pool",
+        "Selling an entire portfolio at once"
+      ],
+      "correctAnswer": "The forced closure of a position when it doesn't meet margin requirements"
+    },
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s07",
+      "type": "quiz",
+      "title": "Liquidity Pools",
+      "description": "Learning about the market structure of Orbit",
+      "question": "How is liquidity provided on Orbit Markets?",
+      "options": [
+        "Only by the Orbit team",
+        "Through a central limit order book only",
+        "By liquidity providers who deposit assets into pools and earn fees",
+        "Through direct peer-to-peer lending"
+      ],
+      "correctAnswer": "By liquidity providers who deposit assets into pools and earn fees"
+    },
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s08",
+      "type": "quiz",
+      "title": "Position Sizing",
+      "description": "Understanding risk management as a trader",
+      "question": "Why is position sizing important when trading on Orbit Markets?",
+      "options": [
+        "It doesn't matter as long as you have enough collateral",
+        "To manage risk by limiting exposure relative to your total portfolio",
+        "Only to qualify for trading rewards",
+        "Only to avoid platform fees"
+      ],
+      "correctAnswer": "To manage risk by limiting exposure relative to your total portfolio"
+    },
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s09",
+      "type": "quiz",
+      "title": "Available Markets",
+      "description": "Learning about tradable assets on Orbit",
+      "question": "What types of markets are typically available on Orbit Markets?",
+      "options": [
+        "Only APT perpetuals",
+        "Only stablecoin pairs",
+        "Major cryptocurrencies, forex pairs, and commodities",
+        "Only traditional stocks"
+      ],
+      "correctAnswer": "Major cryptocurrencies, forex pairs, and commodities"
+    },
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s10",
+      "type": "quiz",
+      "title": "Platform Security",
+      "description": "Understanding security measures on Orbit",
+      "question": "What security features does Orbit Markets implement?",
+      "options": [
+        "No specific security measures",
+        "Code audits, insurance funds, and proper risk parameters",
+        "Only reliance on Aptos blockchain security",
+        "Only manual review of large trades"
+      ],
+      "correctAnswer": "Code audits, insurance funds, and proper risk parameters"
+    },
+    {
+      "id": "n4p95r60-8p6q-72q7-m8s4-p37s93o81s11",
+      "type": "quiz",
+      "title": "Order Types",
+      "description": "Learning about trading options on Orbit",
+      "question": "What order types does Orbit Markets typically support?",
+      "options": [
+        "Only market orders",
+        "Only limit orders",
+        "Market, limit, stop-loss, and take-profit orders",
+        "Only conditional orders"
+      ],
+      "correctAnswer": "Market, limit, stop-loss, and take-profit orders"
+    }
+  ]
+} 

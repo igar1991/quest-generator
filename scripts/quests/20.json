@@ -1,0 +1,145 @@
+{
+  "id": "o5q06s71-8p6q-62p6-m8s4-p07s93o14q60",
+  "title": "Building with Movemate Framework",
+  "description": "Explore Movemate, a comprehensive development framework for building applications on Aptos with the Move language, offering tools, libraries, and abstractions to simplify smart contract development and testing.",
+  "imageUrl": "/images/quests/movemate.jpg",
+  "projectName": "Movemate",
+  "reward": 9,
+  "difficulty": "Hard",
+  "estimatedTime": "45 min",
+  "tasks": [
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q18s04p92t01",
+      "type": "check-balance",
+      "title": "Prepare Development Environment",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring Movemate",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q18s04p92t02",
+      "type": "quiz",
+      "title": "Movemate Basics",
+      "description": "Understand what Movemate is",
+      "question": "What is Movemate?",
+      "options": [
+        "A Move-based cryptocurrency",
+        "A development framework for building applications on Aptos",
+        "A decentralized exchange on Aptos",
+        "A gaming platform"
+      ],
+      "correctAnswer": "A development framework for building applications on Aptos"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q18s04p92t03",
+      "type": "quiz",
+      "title": "Movemate Components",
+      "description": "Learn about the main components of Movemate",
+      "question": "Which components might be included in the Movemate framework?",
+      "options": [
+        "Only a code editor",
+        "Libraries, smart contract templates, testing tools, and deployment utilities",
+        "Only blockchain validators",
+        "Only wallet interfaces"
+      ],
+      "correctAnswer": "Libraries, smart contract templates, testing tools, and deployment utilities"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q18s04p92t04",
+      "type": "quiz",
+      "title": "Move Language",
+      "description": "Understanding Move language basics",
+      "question": "What is Move in the context of Aptos development?",
+      "options": [
+        "A JavaScript framework",
+        "A Rust-based programming language designed for safe resource management in smart contracts",
+        "A database management system",
+        "A type of cryptocurrency"
+      ],
+      "correctAnswer": "A Rust-based programming language designed for safe resource management in smart contracts"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q18s04p92t05",
+      "type": "quiz",
+      "title": "Movemate Libraries",
+      "description": "Learn about pre-built libraries in Movemate",
+      "question": "What types of pre-built libraries might Movemate provide?",
+      "options": [
+        "Only graphical user interface libraries",
+        "Only database management libraries",
+        "Common DeFi primitives, tokenization standards, and security utilities",
+        "Only machine learning libraries"
+      ],
+      "correctAnswer": "Common DeFi primitives, tokenization standards, and security utilities"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q18s04p92t06",
+      "type": "quiz",
+      "title": "Testing in Movemate",
+      "description": "Understanding testing tools",
+      "question": "How does Movemate help with testing Move contracts?",
+      "options": [
+        "It doesn't include testing capabilities",
+        "Through unit testing frameworks, mocks, and test environments",
+        "Only through manual code review",
+        "Only by deploying to mainnet"
+      ],
+      "correctAnswer": "Through unit testing frameworks, mocks, and test environments"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q18s04p92t07",
+      "type": "quiz",
+      "title": "Resource Management",
+      "description": "Learn about Move's resource model",
+      "question": "How does Move's resource model work in Movemate?",
+      "options": [
+        "Resources can be freely copied and deleted",
+        "Resources are static and cannot be changed",
+        "Resources are linear types that can only be moved between storage locations, not copied or implicitly destroyed",
+        "Resources are automatically managed and require no explicit handling"
+      ],
+      "correctAnswer": "Resources are linear types that can only be moved between storage locations, not copied or implicitly destroyed"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q18s04p92t08",
+      "type": "quiz",
+      "title": "Deployment Tools",
+      "description": "Understanding how deployment works",
+      "question": "What deployment features might Movemate offer?",
+      "options": [
+        "Only manual deployment instructions",
+        "Automated deployment scripts for different Aptos environments (testnet, mainnet)",
+        "Only deployment to other blockchains",
+        "Deployment is not covered by Movemate"
+      ],
+      "correctAnswer": "Automated deployment scripts for different Aptos environments (testnet, mainnet)"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q18s04p92t09",
+      "type": "quiz",
+      "title": "Smart Contract Templates",
+      "description": "Learn about ready-to-use contract templates",
+      "question": "What types of smart contract templates might Movemate provide?",
+      "options": [
+        "No templates are available",
+        "Only basic token templates",
+        "Various templates including tokens, marketplaces, governance, and lending protocols",
+        "Only templates for games"
+      ],
+      "correctAnswer": "Various templates including tokens, marketplaces, governance, and lending protocols"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q18s04p92t10",
+      "type": "quiz",
+      "title": "Security Features",
+      "description": "Understanding security tools",
+      "question": "How might Movemate help improve contract security?",
+      "options": [
+        "It doesn't address security concerns",
+        "Through code analysis tools, security patterns, and formal verification helpers",
+        "Only by hiding the code from users",
+        "Only through third-party audits"
+      ],
+      "correctAnswer": "Through code analysis tools, security patterns, and formal verification helpers"
+    }
+  ]
+} 

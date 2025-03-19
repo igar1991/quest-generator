@@ -1,0 +1,145 @@
+{
+  "id": "k1m62o37-4l2m-28l2-i4o0-l83o59k36m20",
+  "title": "Bridging with Wormhole",
+  "description": "Learn about Wormhole, a cross-chain messaging protocol that enables secure bridges between Aptos and other major blockchains for token transfers, NFTs, and general message passing.",
+  "imageUrl": "/images/quests/wormhole.jpg",
+  "projectName": "Wormhole",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "35 min",
+  "tasks": [
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04p60l58p01",
+      "type": "check-balance",
+      "title": "Prepare for Cross-Chain Activities",
+      "description": "Add at least 0.1 APT to your wallet to explore Wormhole bridging capabilities",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04p60l58p02",
+      "type": "quiz",
+      "title": "Wormhole Basics",
+      "description": "Understand what Wormhole is and its role in blockchain interoperability",
+      "question": "What is Wormhole's primary function?",
+      "options": [
+        "A Layer 2 scaling solution",
+        "A cross-chain messaging and bridging protocol",
+        "A DEX aggregator",
+        "A centralized exchange"
+      ],
+      "correctAnswer": "A cross-chain messaging and bridging protocol"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04p60l58p03",
+      "type": "quiz",
+      "title": "Security Model",
+      "description": "Learn about Wormhole's security architecture",
+      "question": "How does Wormhole secure cross-chain messages?",
+      "options": [
+        "Through a single validator",
+        "Using a network of Guardian validators that observe and verify messages",
+        "By requiring manual approval for all transfers",
+        "Through a centralized server"
+      ],
+      "correctAnswer": "Using a network of Guardian validators that observe and verify messages"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04p60l58p04",
+      "type": "quiz",
+      "title": "Supported Blockchains",
+      "description": "Understand which chains can connect to Aptos via Wormhole",
+      "question": "Which of these blockchains can connect with Aptos through Wormhole?",
+      "options": [
+        "Only Ethereum and Solana",
+        "Only Sui and Ethereum",
+        "Over 20 chains including Ethereum, Solana, BNB Chain, Polygon, and more",
+        "None of the above"
+      ],
+      "correctAnswer": "Over 20 chains including Ethereum, Solana, BNB Chain, Polygon, and more"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04p60l58p05",
+      "type": "quiz",
+      "title": "Token Bridge",
+      "description": "Learn about moving tokens across chains",
+      "question": "How does Wormhole's token bridge work?",
+      "options": [
+        "By transferring the original token directly to the destination chain",
+        "By locking/burning tokens on the source chain and creating wrapped versions on the destination chain",
+        "By using atomic swaps between chains",
+        "By converting all tokens to a single intermediary token"
+      ],
+      "correctAnswer": "By locking/burning tokens on the source chain and creating wrapped versions on the destination chain"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04p60l58p06",
+      "type": "quiz",
+      "title": "NFT Bridge",
+      "description": "Understanding NFT transfers across chains",
+      "question": "What happens when you bridge an NFT using Wormhole?",
+      "options": [
+        "NFTs cannot be bridged across chains",
+        "The NFT is duplicated on both chains simultaneously",
+        "The original NFT is locked and a wrapped version is minted on the destination chain",
+        "The NFT is converted to a fungible token during transfer"
+      ],
+      "correctAnswer": "The original NFT is locked and a wrapped version is minted on the destination chain"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04p60l58p07",
+      "type": "quiz",
+      "title": "Aptos Integration",
+      "description": "Learn how Wormhole is implemented on Aptos",
+      "question": "How is Wormhole integrated with the Aptos blockchain?",
+      "options": [
+        "Through a centralized relay service",
+        "Through Move modules deployed on Aptos",
+        "Through a Layer 2 solution",
+        "It operates entirely off-chain"
+      ],
+      "correctAnswer": "Through Move modules deployed on Aptos"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04p60l58p08",
+      "type": "quiz",
+      "title": "Generic Messaging",
+      "description": "Understanding Wormhole's broader capabilities",
+      "question": "Beyond token transfers, what can Wormhole's generic messaging do?",
+      "options": [
+        "Only support basic token transfers",
+        "Enable cross-chain governance, liquidity, lending, and other custom applications",
+        "Send messages only to Ethereum and Solana",
+        "Only provide read-only data across chains"
+      ],
+      "correctAnswer": "Enable cross-chain governance, liquidity, lending, and other custom applications"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04p60l58p09",
+      "type": "quiz",
+      "title": "Bridge Fees",
+      "description": "Learn about the cost of using Wormhole bridges",
+      "question": "How are fees typically structured for Wormhole bridges?",
+      "options": [
+        "No fees are charged",
+        "Users pay gas fees on source chain plus relayer fees on destination chain",
+        "Fixed fee regardless of destination",
+        "Subscription model with unlimited transfers"
+      ],
+      "correctAnswer": "Users pay gas fees on source chain plus relayer fees on destination chain"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04p60l58p10",
+      "type": "quiz",
+      "title": "Portal Bridge",
+      "description": "Learn about Wormhole's main token bridge implementation",
+      "question": "What is Portal in the Wormhole ecosystem?",
+      "options": [
+        "A blockchain explorer",
+        "Wormhole's official token bridge for transferring assets between chains",
+        "A governance platform",
+        "A wallet for storing assets"
+      ],
+      "correctAnswer": "Wormhole's official token bridge for transferring assets between chains"
+    }
+  ]
+} 

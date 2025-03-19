@@ -1,0 +1,145 @@
+{
+  "id": "m3o84q59-6n4o-40n4-k6q2-n15q71m69o40",
+  "title": "Identity with AptosPassport",
+  "description": "Explore AptosPassport, a decentralized identity solution built on Aptos that allows users to create, manage, and verify digital identities while maintaining privacy and control over personal data.",
+  "imageUrl": "/images/quests/aptospassport.jpg",
+  "projectName": "AptosPassport",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "25 min",
+  "tasks": [
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o26r82n70r01",
+      "type": "check-balance",
+      "title": "Prepare Your Identity Wallet",
+      "description": "Add at least 0.05 APT to your wallet to explore AptosPassport features",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o26r82n70r02",
+      "type": "quiz",
+      "title": "AptosPassport Basics",
+      "description": "Understand what AptosPassport is and its core purpose",
+      "question": "What is the primary function of AptosPassport?",
+      "options": [
+        "A physical passport replacement",
+        "A travel document verification service",
+        "A decentralized identity solution for digital credentials",
+        "A KYC service for exchanges"
+      ],
+      "correctAnswer": "A decentralized identity solution for digital credentials"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o26r82n70r03",
+      "type": "quiz",
+      "title": "Self-Sovereign Identity",
+      "description": "Learning about the concept of self-sovereign identity",
+      "question": "What is self-sovereign identity as implemented in AptosPassport?",
+      "options": [
+        "Identity issued by a government",
+        "Identity fully controlled by a corporation",
+        "User-owned and controlled digital identity",
+        "Anonymous identity with no verification"
+      ],
+      "correctAnswer": "User-owned and controlled digital identity"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o26r82n70r04",
+      "type": "quiz",
+      "title": "Verifiable Credentials",
+      "description": "Understanding digital credentials in AptosPassport",
+      "question": "What are verifiable credentials in AptosPassport?",
+      "options": [
+        "Paper documents that can be scanned",
+        "Digital attestations issued by trusted entities that can be cryptographically verified",
+        "Password combinations",
+        "Randomly generated tokens"
+      ],
+      "correctAnswer": "Digital attestations issued by trusted entities that can be cryptographically verified"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o26r82n70r05",
+      "type": "quiz",
+      "title": "Data Privacy",
+      "description": "Learn how AptosPassport protects user data",
+      "question": "How does AptosPassport handle user data privacy?",
+      "options": [
+        "All data is public on the blockchain",
+        "Data is stored in a central database",
+        "Selective disclosure allows users to share only necessary information",
+        "All data is encrypted but accessible to AptosPassport admins"
+      ],
+      "correctAnswer": "Selective disclosure allows users to share only necessary information"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o26r82n70r06",
+      "type": "quiz",
+      "title": "Identity Verification",
+      "description": "Understanding verification processes",
+      "question": "How are identities typically verified in AptosPassport?",
+      "options": [
+        "Only through government ID submission",
+        "Through multiple methods including KYC providers, social verification, and on-chain activity",
+        "Only through crypto holdings",
+        "Identities are never verified"
+      ],
+      "correctAnswer": "Through multiple methods including KYC providers, social verification, and on-chain activity"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o26r82n70r07",
+      "type": "quiz",
+      "title": "Use Cases",
+      "description": "Learning about applications of AptosPassport",
+      "question": "Which of these is a use case for AptosPassport?",
+      "options": [
+        "Only for government identification",
+        "Only for gaming profiles",
+        "KYC for DeFi, reputation systems, access control, and social connections",
+        "Only for storing passwords"
+      ],
+      "correctAnswer": "KYC for DeFi, reputation systems, access control, and social connections"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o26r82n70r08",
+      "type": "quiz",
+      "title": "Technical Implementation",
+      "description": "Understanding how AptosPassport is built",
+      "question": "How is AptosPassport implemented on Aptos?",
+      "options": [
+        "As a centralized web service with API connections to Aptos",
+        "Using Move modules for credential issuance and verification",
+        "Through a Layer 2 solution",
+        "As a purely off-chain system"
+      ],
+      "correctAnswer": "Using Move modules for credential issuance and verification"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o26r82n70r09",
+      "type": "quiz",
+      "title": "Credential Revocation",
+      "description": "Learning about credential management",
+      "question": "How can credentials be revoked in AptosPassport?",
+      "options": [
+        "Credentials can never be revoked once issued",
+        "Only by destroying the entire identity",
+        "Issuers can revoke credentials they've issued, and users can revoke credentials they hold",
+        "Only through a lengthy court process"
+      ],
+      "correctAnswer": "Issuers can revoke credentials they've issued, and users can revoke credentials they hold"
+    },
+    {
+      "id": "m3o84q59-7o5p-61p6-l7r3-o26r82n70r10",
+      "type": "quiz",
+      "title": "Identity Recovery",
+      "description": "Understanding safety mechanisms",
+      "question": "What options exist for identity recovery in AptosPassport?",
+      "options": [
+        "No recovery is possible if access is lost",
+        "Only through customer support tickets",
+        "Social recovery through trusted contacts and multi-signature options",
+        "Only through a backup password"
+      ],
+      "correctAnswer": "Social recovery through trusted contacts and multi-signature options"
+    }
+  ]
+} 

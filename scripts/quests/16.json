@@ -1,0 +1,131 @@
+{
+  "id": "k1m62o37-4l2m-28l2-i4o0-l83o59k36m20",
+  "title": "Hippo DEX Aggregation",
+  "description": "Learn about Hippo DEX, a DEX aggregator on Aptos that sources liquidity from multiple exchanges to provide traders with the best possible rates and minimal slippage for their swaps.",
+  "imageUrl": "/images/quests/hippo.jpg",
+  "projectName": "Hippo DEX",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04o60l58p01",
+      "type": "check-balance",
+      "title": "Prepare for Optimal Swaps",
+      "description": "Add at least 0.1 APT to your wallet to begin exploring Hippo DEX",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04o60l58p02",
+      "type": "quiz",
+      "title": "DEX Aggregator Basics",
+      "description": "Understanding what a DEX aggregator is",
+      "question": "What is the main function of a DEX aggregator like Hippo?",
+      "options": [
+        "To create its own liquidity pools",
+        "To route trades through multiple DEXes to find the best price",
+        "To stake tokens for yield",
+        "To lend tokens to users"
+      ],
+      "correctAnswer": "To route trades through multiple DEXes to find the best price"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04o60l58p03",
+      "type": "quiz",
+      "title": "Hippo DEX Partners",
+      "description": "Learn about the DEXes Hippo aggregates",
+      "question": "Which of these DEXes might Hippo aggregate liquidity from?",
+      "options": [
+        "Only Liquidswap",
+        "Only PancakeSwap",
+        "Multiple DEXes including Liquidswap, PancakeSwap, and Econia",
+        "None - Hippo is a standalone DEX"
+      ],
+      "correctAnswer": "Multiple DEXes including Liquidswap, PancakeSwap, and Econia"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04o60l58p04",
+      "type": "quiz",
+      "title": "Price Improvement",
+      "description": "Understanding how Hippo improves swap prices",
+      "question": "How does Hippo DEX help users get better prices on their trades?",
+      "options": [
+        "By charging higher fees than other DEXes",
+        "By splitting orders across multiple liquidity sources to reduce slippage",
+        "By delaying trade execution until prices improve",
+        "By only allowing trades above a certain size"
+      ],
+      "correctAnswer": "By splitting orders across multiple liquidity sources to reduce slippage"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04o60l58p05",
+      "type": "quiz",
+      "title": "Smart Order Routing",
+      "description": "Learn how Hippo routes trades",
+      "question": "What is 'smart order routing' in the context of Hippo DEX?",
+      "options": [
+        "A manual process where traders select which DEX to use",
+        "An algorithm that calculates the most efficient path for trades across multiple DEXes",
+        "A feature that schedules trades for later execution",
+        "A special order type that only executes if the price reaches a certain level"
+      ],
+      "correctAnswer": "An algorithm that calculates the most efficient path for trades across multiple DEXes"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04o60l58p06",
+      "type": "quiz",
+      "title": "Token Support",
+      "description": "Understanding which tokens you can trade on Hippo",
+      "question": "What types of tokens can be traded on Hippo DEX?",
+      "options": [
+        "Only APT and stablecoins",
+        "Only tokens created by the Hippo team",
+        "Any token pairs that exist on the DEXes Hippo aggregates",
+        "Only tokens that have passed a rigorous verification process"
+      ],
+      "correctAnswer": "Any token pairs that exist on the DEXes Hippo aggregates"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04o60l58p07",
+      "type": "quiz",
+      "title": "Fee Structure",
+      "description": "Learn about how fees work on Hippo",
+      "question": "How does Hippo DEX handle fees?",
+      "options": [
+        "No fees are charged",
+        "Hippo charges fees in addition to the underlying DEX fees",
+        "Only a portion of trades incur fees",
+        "Fees are only charged for tokens created by Hippo"
+      ],
+      "correctAnswer": "Hippo charges fees in addition to the underlying DEX fees"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04o60l58p08",
+      "type": "quiz",
+      "title": "Slippage Protection",
+      "description": "Understanding how Hippo manages slippage",
+      "question": "How does Hippo DEX help users manage slippage?",
+      "options": [
+        "By requiring high slippage settings",
+        "By allowing users to set maximum slippage tolerance and finding optimal routes within that tolerance",
+        "By only allowing trades during low volatility periods",
+        "Slippage cannot be managed on DEX aggregators"
+      ],
+      "correctAnswer": "By allowing users to set maximum slippage tolerance and finding optimal routes within that tolerance"
+    },
+    {
+      "id": "k1m62o37-5m3n-49n4-j5p1-m04o60l58p09",
+      "type": "quiz",
+      "title": "Technical Implementation",
+      "description": "Learn how Hippo is built on Aptos",
+      "question": "How is Hippo DEX implemented on Aptos?",
+      "options": [
+        "As an off-chain service with on-chain settlement",
+        "Using Solidity smart contracts",
+        "As a fully centralized service",
+        "Using Move modules deployed on the Aptos blockchain"
+      ],
+      "correctAnswer": "Using Move modules deployed on the Aptos blockchain"
+    }
+  ]
+} 

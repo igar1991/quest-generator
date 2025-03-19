@@ -1,0 +1,159 @@
+{
+  "id": "t0v51x26-3u1v-17u1-r3x9-u82x48t36v10",
+  "title": "Concentrated Liquidity with Cetus",
+  "description": "Discover Cetus, a leading concentrated liquidity DEX on Aptos that enhances capital efficiency for liquidity providers through customizable price ranges and innovative trading features.",
+  "imageUrl": "/images/quests/cetus.jpg",
+  "projectName": "Cetus",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y11",
+      "type": "check-balance",
+      "title": "Prepare for DEX Activities",
+      "description": "Add at least 0.1 APT to your wallet to explore Cetus' trading features",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y12",
+      "type": "quiz",
+      "title": "Understanding Concentrated Liquidity",
+      "description": "Learn the key concept behind Cetus DEX",
+      "question": "What is concentrated liquidity in the context of Cetus DEX?",
+      "options": [
+        "Liquidity concentrated in a single token",
+        "Liquidity provided within specific price ranges rather than across the entire curve",
+        "Liquidity from only verified providers",
+        "Liquidity exclusively for stable assets"
+      ],
+      "correctAnswer": "Liquidity provided within specific price ranges rather than across the entire curve"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y13",
+      "type": "quiz",
+      "title": "Capital Efficiency",
+      "description": "Understanding the advantages of Cetus",
+      "question": "How does Cetus improve capital efficiency compared to traditional AMMs?",
+      "options": [
+        "By eliminating trading fees entirely",
+        "By allowing LPs to concentrate their capital in active price ranges",
+        "By restricting trading to certain hours",
+        "By requiring higher minimum deposits"
+      ],
+      "correctAnswer": "By allowing LPs to concentrate their capital in active price ranges"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y14",
+      "type": "quiz",
+      "title": "Price Ranges",
+      "description": "Learn about the LP experience on Cetus",
+      "question": "What happens to liquidity provided on Cetus when the market price moves outside the selected range?",
+      "options": [
+        "Liquidity is automatically adjusted to cover the new range",
+        "Liquidity becomes inactive and stops earning fees until price returns to range",
+        "Liquidity is automatically converted to the dominant token",
+        "Liquidity is returned to the provider immediately"
+      ],
+      "correctAnswer": "Liquidity becomes inactive and stops earning fees until price returns to range"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y15",
+      "type": "quiz",
+      "title": "Trading Options",
+      "description": "Explore Cetus trading capabilities",
+      "question": "What trading features does Cetus typically offer?",
+      "options": [
+        "Only market orders",
+        "Only limit orders",
+        "Spot trading, limit orders, and swap routing",
+        "Only cross-chain swaps"
+      ],
+      "correctAnswer": "Spot trading, limit orders, and swap routing"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y16",
+      "type": "quiz",
+      "title": "Token Pairs",
+      "description": "Understanding available markets on Cetus",
+      "question": "What types of token pairs can typically be traded on Cetus?",
+      "options": [
+        "Only APT to stablecoin pairs",
+        "Only stable pairs",
+        "Wide range of pairs including APT pairs, stablecoin pairs, and other token pairs",
+        "Only pre-approved tokens by governance"
+      ],
+      "correctAnswer": "Wide range of pairs including APT pairs, stablecoin pairs, and other token pairs"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y17",
+      "type": "quiz",
+      "title": "Fee Tiers",
+      "description": "Learn about trading economics on Cetus",
+      "question": "How are fee tiers typically structured on Cetus?",
+      "options": [
+        "Fixed fee of 0.3% for all pairs",
+        "Different fee tiers (e.g., 0.01%, 0.05%, 0.3%) for different volatility expectations",
+        "No fees for trading, only for withdrawing",
+        "Subscription-based model only"
+      ],
+      "correctAnswer": "Different fee tiers (e.g., 0.01%, 0.05%, 0.3%) for different volatility expectations"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y18",
+      "type": "quiz",
+      "title": "Limit Orders",
+      "description": "Understand advanced trading on Cetus",
+      "question": "How do limit orders work on Cetus?",
+      "options": [
+        "They don't exist on Cetus",
+        "They allow users to set a specific price at which they want to buy or sell",
+        "They are only available for stable pairs",
+        "They require special permissions to use"
+      ],
+      "correctAnswer": "They allow users to set a specific price at which they want to buy or sell"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y19",
+      "type": "quiz",
+      "title": "LP Positions",
+      "description": "Learn about liquidity provision on Cetus",
+      "question": "What is a unique feature of LP positions on Cetus?",
+      "options": [
+        "They can only be created with APT",
+        "They are represented as NFTs that can be transferred",
+        "They have a mandatory 7-day lock period",
+        "They can only be created by verified users"
+      ],
+      "correctAnswer": "They are represented as NFTs that can be transferred"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y20",
+      "type": "quiz",
+      "title": "Impermanent Loss",
+      "description": "Understanding risks in concentrated liquidity",
+      "question": "How does concentrated liquidity affect impermanent loss compared to traditional AMMs?",
+      "options": [
+        "It eliminates impermanent loss entirely",
+        "It can increase impermanent loss due to more extreme asset ratio changes within ranges",
+        "It has no effect on impermanent loss",
+        "It only applies impermanent loss to one side of the pair"
+      ],
+      "correctAnswer": "It can increase impermanent loss due to more extreme asset ratio changes within ranges"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v93y59u47y21",
+      "type": "quiz",
+      "title": "Integration Ecosystem",
+      "description": "Learn about Cetus in the broader Aptos ecosystem",
+      "question": "How does Cetus typically integrate with other Aptos protocols?",
+      "options": [
+        "It operates completely independently with no integrations",
+        "Through yield aggregators, other DeFi protocols, and wallet partners",
+        "Only through official Aptos partnerships",
+        "Only through CEX integrations"
+      ],
+      "correctAnswer": "Through yield aggregators, other DeFi protocols, and wallet partners"
+    }
+  ]
+} 

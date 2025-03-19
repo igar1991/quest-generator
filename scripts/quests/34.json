@@ -1,0 +1,145 @@
+{
+  "id": "o5q06s71-8p6q-62p6-m8s4-p37s93o81q60",
+  "title": "Exploring OKX Web3 Wallet for Aptos",
+  "description": "Learn about OKX Web3 Wallet, a multi-chain self-custodial wallet that offers seamless integration with the Aptos ecosystem, enabling users to store, send, receive assets and interact with dApps.",
+  "imageUrl": "/images/quests/okxwallet.jpg",
+  "projectName": "OKX Web3 Wallet",
+  "reward": 5,
+  "difficulty": "Easy",
+  "estimatedTime": "20 min",
+  "tasks": [
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q48t04p92t01",
+      "type": "check-balance",
+      "title": "Prepare Your Wallet",
+      "description": "Add at least 0.05 APT to your wallet to explore OKX Web3 Wallet features",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q48t04p92t02",
+      "type": "quiz",
+      "title": "OKX Web3 Wallet Basics",
+      "description": "Understanding what OKX Web3 Wallet offers",
+      "question": "What type of wallet is OKX Web3 Wallet?",
+      "options": [
+        "A hardware wallet device",
+        "A custodial exchange wallet only",
+        "A self-custodial multi-chain wallet",
+        "A paper wallet generator"
+      ],
+      "correctAnswer": "A self-custodial multi-chain wallet"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q48t04p92t03",
+      "type": "quiz",
+      "title": "Aptos Integration",
+      "description": "Learn about OKX's support for Aptos",
+      "question": "How does OKX Web3 Wallet support the Aptos ecosystem?",
+      "options": [
+        "It doesn't support Aptos yet",
+        "Only for viewing APT balances",
+        "Full integration including APT transfers, NFTs, and dApp connections",
+        "Only through a separate app"
+      ],
+      "correctAnswer": "Full integration including APT transfers, NFTs, and dApp connections"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q48t04p92t04",
+      "type": "quiz",
+      "title": "Security Features",
+      "description": "Understanding how OKX protects user assets",
+      "question": "What security feature is essential in OKX Web3 Wallet?",
+      "options": [
+        "Keeping your seed phrase secure and private",
+        "Sharing your private key with friends for backup",
+        "Using the same password across all websites",
+        "Keeping your wallet always connected to dApps"
+      ],
+      "correctAnswer": "Keeping your seed phrase secure and private"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q48t04p92t05",
+      "type": "quiz",
+      "title": "DApp Connection",
+      "description": "Learn how to connect to Aptos dApps",
+      "question": "How can you connect OKX Web3 Wallet to Aptos dApps?",
+      "options": [
+        "It's not possible to connect to dApps",
+        "By sharing your private key with the dApp",
+        "Through WalletConnect protocol or direct browser extension connections",
+        "Only by copying and pasting your address manually"
+      ],
+      "correctAnswer": "Through WalletConnect protocol or direct browser extension connections"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q48t04p92t06",
+      "type": "quiz",
+      "title": "Cross-Chain Capabilities",
+      "description": "Understanding multi-chain functionality",
+      "question": "Besides Aptos, what other blockchains does OKX Web3 Wallet support?",
+      "options": [
+        "Only Aptos",
+        "Only Ethereum and Bitcoin",
+        "Multiple chains including Ethereum, Solana, BNB Chain, and more",
+        "Only layer 2 solutions"
+      ],
+      "correctAnswer": "Multiple chains including Ethereum, Solana, BNB Chain, and more"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q48t04p92t07",
+      "type": "quiz",
+      "title": "NFT Support",
+      "description": "Learning about NFT features in OKX",
+      "question": "How does OKX Web3 Wallet handle Aptos NFTs?",
+      "options": [
+        "NFTs are not supported",
+        "It can display and manage Aptos NFTs",
+        "Only supports certain collections",
+        "Only shows NFT balances but not images"
+      ],
+      "correctAnswer": "It can display and manage Aptos NFTs"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q48t04p92t08",
+      "type": "quiz",
+      "title": "Wallet Recovery",
+      "description": "Understanding backup and recovery options",
+      "question": "How can you recover your OKX Web3 Wallet if you lose access to your device?",
+      "options": [
+        "It's impossible to recover",
+        "Only by contacting OKX support",
+        "By using your seed phrase (recovery phrase) to restore the wallet",
+        "Only if you have the original device"
+      ],
+      "correctAnswer": "By using your seed phrase (recovery phrase) to restore the wallet"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q48t04p92t09",
+      "type": "quiz",
+      "title": "Transaction Verification",
+      "description": "Learn about transaction safety",
+      "question": "What security feature does OKX Web3 Wallet provide for transaction signing?",
+      "options": [
+        "No verification needed",
+        "Transaction details verification before signing",
+        "Automatic signing for all transactions",
+        "Third-party verification service"
+      ],
+      "correctAnswer": "Transaction details verification before signing"
+    },
+    {
+      "id": "o5q06s71-9q7r-83r8-n9t5-q48t04p92t10",
+      "type": "quiz",
+      "title": "In-Wallet Features",
+      "description": "Discover additional functionality",
+      "question": "Which additional feature is available in OKX Web3 Wallet?",
+      "options": [
+        "Only basic transfers",
+        "Built-in DEX aggregator, Web3 browser, and cross-chain bridge",
+        "Only NFT viewing",
+        "Only staking options"
+      ],
+      "correctAnswer": "Built-in DEX aggregator, Web3 browser, and cross-chain bridge"
+    }
+  ]
+} 

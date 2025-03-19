@@ -1,0 +1,145 @@
+{
+  "id": "w3y84a59-6x4y-40x4-u6a2-x05a71w58y40",
+  "title": "Using AptosFaucets for Testing",
+  "description": "Learn about AptosFaucets, the resources available for developers to access testnet tokens for building and testing applications on Aptos, including official faucets, community tools, and best practices for test environments.",
+  "imageUrl": "/images/quests/aptosfaucets.jpg",
+  "projectName": "AptosFaucets",
+  "reward": 5,
+  "difficulty": "Easy",
+  "estimatedTime": "20 min",
+  "tasks": [
+    {
+      "id": "w3y84a59-7y5z-51z6-v7b3-y16a82x69b34",
+      "type": "check-balance",
+      "title": "Prepare for Testnet Exploration",
+      "description": "Add at least 0.05 APT to your wallet to begin learning about testnet faucets",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "w3y84a59-7y5z-51z6-v7b3-y16a82x69b35",
+      "type": "quiz",
+      "title": "Testnet Basics",
+      "description": "Understand what testnets are for",
+      "question": "What is the primary purpose of an Aptos testnet?",
+      "options": [
+        "To earn real APT tokens",
+        "To provide a simulation environment for development and testing without using real funds",
+        "To mine new APT tokens",
+        "To validate real transactions"
+      ],
+      "correctAnswer": "To provide a simulation environment for development and testing without using real funds"
+    },
+    {
+      "id": "w3y84a59-7y5z-51z6-v7b3-y16a82x69b36",
+      "type": "quiz",
+      "title": "Faucet Purpose",
+      "description": "Learn what faucets do",
+      "question": "What is the purpose of an Aptos testnet faucet?",
+      "options": [
+        "To distribute real APT tokens",
+        "To provide test APT tokens for development and testing",
+        "To sell test tokens",
+        "To store real APT tokens"
+      ],
+      "correctAnswer": "To provide test APT tokens for development and testing"
+    },
+    {
+      "id": "w3y84a59-7y5z-51z6-v7b3-y16a82x69b37",
+      "type": "quiz",
+      "title": "Testnet Types",
+      "description": "Understanding different test environments",
+      "question": "Which types of testnets might be available for Aptos developers?",
+      "options": [
+        "Only devnet",
+        "Only testnet",
+        "Devnet, testnet, and sometimes custom testnets",
+        "Only mainnet"
+      ],
+      "correctAnswer": "Devnet, testnet, and sometimes custom testnets"
+    },
+    {
+      "id": "w3y84a59-7y5z-51z6-v7b3-y16a82x69b38",
+      "type": "quiz",
+      "title": "Accessing Faucets",
+      "description": "Learn how to get testnet tokens",
+      "question": "How can developers typically access Aptos testnet faucets?",
+      "options": [
+        "Only through purchase",
+        "Through Discord bots, web interfaces, or API endpoints",
+        "Only through mining",
+        "Only through staking"
+      ],
+      "correctAnswer": "Through Discord bots, web interfaces, or API endpoints"
+    },
+    {
+      "id": "w3y84a59-7y5z-51z6-v7b3-y16a82x69b39",
+      "type": "quiz",
+      "title": "Faucet Limitations",
+      "description": "Understanding rate limits",
+      "question": "Why might faucets have rate limits or request restrictions?",
+      "options": [
+        "To generate more revenue",
+        "To prevent abuse and ensure fair distribution of test tokens",
+        "To make testnet faster",
+        "Faucets never have restrictions"
+      ],
+      "correctAnswer": "To prevent abuse and ensure fair distribution of test tokens"
+    },
+    {
+      "id": "w3y84a59-7y5z-51z6-v7b3-y16a82x69b40",
+      "type": "quiz",
+      "title": "Test Token Value",
+      "description": "Learn about token economics",
+      "question": "What is the real-world value of testnet APT tokens?",
+      "options": [
+        "Same as mainnet APT",
+        "Half the value of mainnet APT",
+        "No real-world value, used only for testing",
+        "Value depends on the testnet"
+      ],
+      "correctAnswer": "No real-world value, used only for testing"
+    },
+    {
+      "id": "w3y84a59-7y5z-51z6-v7b3-y16a82x69b41",
+      "type": "quiz",
+      "title": "Testnet Resets",
+      "description": "Understanding persistence",
+      "question": "What happens to testnet tokens during a network reset?",
+      "options": [
+        "They are converted to real APT",
+        "They maintain their value",
+        "They are all lost, as testnet data is reset",
+        "They are automatically transferred to mainnet"
+      ],
+      "correctAnswer": "They are all lost, as testnet data is reset"
+    },
+    {
+      "id": "w3y84a59-7y5z-51z6-v7b3-y16a82x69b42",
+      "type": "quiz",
+      "title": "Testing Smart Contracts",
+      "description": "Learn about development best practices",
+      "question": "Why is it best practice to test smart contracts on testnets before mainnet deployment?",
+      "options": [
+        "It's not necessary to test on testnets",
+        "To save real APT tokens",
+        "To identify and fix bugs/vulnerabilities without risking real funds",
+        "Only because testnets are faster"
+      ],
+      "correctAnswer": "To identify and fix bugs/vulnerabilities without risking real funds"
+    },
+    {
+      "id": "w3y84a59-7y5z-51z6-v7b3-y16a82x69b43",
+      "type": "quiz",
+      "title": "Local Development",
+      "description": "Understanding local testing options",
+      "question": "Besides public testnets, what other environment might developers use for testing?",
+      "options": [
+        "Only mainnet",
+        "Only public testnet",
+        "Local development networks that simulate Aptos blockchain",
+        "Only pen and paper"
+      ],
+      "correctAnswer": "Local development networks that simulate Aptos blockchain"
+    }
+  ]
+} 

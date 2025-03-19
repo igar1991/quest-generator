@@ -1,0 +1,145 @@
+{
+  "id": "t0v51x26-3u1v-17u1-r3x9-u02x48t25v10",
+  "title": "Social Networking with Aptosphere",
+  "description": "Explore Aptosphere, an innovative on-chain social protocol built on Aptos that enables decentralized social networking features like profiles, posts, follows, and interactions all secured by blockchain technology.",
+  "imageUrl": "/images/quests/aptosphere.jpg",
+  "projectName": "Aptosphere",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "25 min",
+  "tasks": [
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v13x59u47y01",
+      "type": "check-balance",
+      "title": "Prepare for Social Engagement",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring Aptosphere",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v13x59u47y02",
+      "type": "quiz",
+      "title": "Decentralized Social Basics",
+      "description": "Understand what on-chain social networking is",
+      "question": "What is a decentralized social protocol like Aptosphere?",
+      "options": [
+        "A traditional social network like Facebook",
+        "A protocol that enables social interactions to be recorded on a blockchain with user ownership of data",
+        "A private messaging app",
+        "A content subscription service"
+      ],
+      "correctAnswer": "A protocol that enables social interactions to be recorded on a blockchain with user ownership of data"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v13x59u47y03",
+      "type": "quiz",
+      "title": "User Profiles",
+      "description": "Learn about on-chain identity",
+      "question": "How are user profiles typically handled in Aptosphere?",
+      "options": [
+        "They are stored on centralized servers",
+        "They are represented as on-chain resources owned by the user's wallet",
+        "They can only be created by administrators",
+        "They don't exist - only anonymous posting is allowed"
+      ],
+      "correctAnswer": "They are represented as on-chain resources owned by the user's wallet"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v13x59u47y04",
+      "type": "quiz",
+      "title": "Content Creation",
+      "description": "Understanding how posts work",
+      "question": "How is content typically created and stored on Aptosphere?",
+      "options": [
+        "Content is only stored off-chain",
+        "Content is created through on-chain transactions and stored as resources",
+        "Content can only be created by the platform owners",
+        "Content is stored on traditional web servers unrelated to blockchain"
+      ],
+      "correctAnswer": "Content is created through on-chain transactions and stored as resources"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v13x59u47y05",
+      "type": "quiz",
+      "title": "Social Interactions",
+      "description": "Learn about engaging with other users",
+      "question": "What types of social interactions might Aptosphere support?",
+      "options": [
+        "Only posting content",
+        "Only private messages",
+        "Following users, liking, commenting, and reposting content",
+        "Only anonymous voting"
+      ],
+      "correctAnswer": "Following users, liking, commenting, and reposting content"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v13x59u47y06",
+      "type": "quiz",
+      "title": "Content Ownership",
+      "description": "Understanding who owns your content",
+      "question": "Who typically owns the content created on Aptosphere?",
+      "options": [
+        "The Aptosphere team",
+        "The content creator who posted it",
+        "The Aptos Foundation",
+        "No one owns the content"
+      ],
+      "correctAnswer": "The content creator who posted it"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v13x59u47y07",
+      "type": "quiz",
+      "title": "Monetization Features",
+      "description": "Learn about creator economics",
+      "question": "What monetization features might Aptosphere offer to creators?",
+      "options": [
+        "No monetization is possible",
+        "Only advertising revenue",
+        "Tips, creator coins, subscriptions, or NFT content",
+        "Only traditional off-platform payments"
+      ],
+      "correctAnswer": "Tips, creator coins, subscriptions, or NFT content"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v13x59u47y08",
+      "type": "quiz",
+      "title": "Censorship Resistance",
+      "description": "Understanding content moderation",
+      "question": "How does content moderation typically work in decentralized social platforms like Aptosphere?",
+      "options": [
+        "Complete censorship of any controversial content",
+        "No moderation whatsoever",
+        "Balance between censorship resistance and community standards through decentralized governance",
+        "Only government agencies can moderate content"
+      ],
+      "correctAnswer": "Balance between censorship resistance and community standards through decentralized governance"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v13x59u47y09",
+      "type": "quiz",
+      "title": "Cross-Platform Compatibility",
+      "description": "Learn about interoperability",
+      "question": "How might Aptosphere handle interoperability with other platforms?",
+      "options": [
+        "No interoperability is possible",
+        "Only with other Aptos applications",
+        "Through open standards and protocols that allow data portability",
+        "Only through manual exports and imports"
+      ],
+      "correctAnswer": "Through open standards and protocols that allow data portability"
+    },
+    {
+      "id": "t0v51x26-4v2w-38w3-s4y0-v13x59u47y10",
+      "type": "quiz",
+      "title": "Implementation Technology",
+      "description": "Understanding how Aptosphere is built",
+      "question": "How is Aptosphere implemented on the Aptos blockchain?",
+      "options": [
+        "Using Solidity smart contracts",
+        "As a centralized service with occasional blockchain integration",
+        "Using Move modules on Aptos for on-chain social features",
+        "Through a traditional database with blockchain verification"
+      ],
+      "correctAnswer": "Using Move modules on Aptos for on-chain social features"
+    }
+  ]
+} 

@@ -1,0 +1,112 @@
+{
+  "id": "c37e2d8f-1c4a-42b8-9d3e-4f6a89f27e30",
+  "title": "Mastering Liquidswap",
+  "description": "Learn how to use Liquidswap, the first decentralized exchange (DEX) on Aptos that allows you to swap tokens, provide liquidity, and earn rewards while helping secure the protocol.",
+  "imageUrl": "/images/quests/liquidswap.jpg",
+  "projectName": "Liquidswap",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "35 min",
+  "tasks": [
+    {
+      "id": "c37e2d8f-2e5b-4c9d-a8f7-3ed9c7182e01",
+      "type": "check-balance",
+      "title": "Prepare for Trading",
+      "description": "Add at least 0.1 APT to your wallet to prepare for DEX interactions",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "c37e2d8f-2e5b-4c9d-a8f7-3ed9c7182e02",
+      "type": "quiz",
+      "title": "Liquidswap Basics",
+      "description": "Understand the fundamental concepts of Liquidswap DEX",
+      "question": "What AMM (Automated Market Maker) model does Liquidswap use?",
+      "options": [
+        "Constant Product (x*y=k)",
+        "Stable Curve",
+        "Both Constant Product and Stable Curve",
+        "Order Book Model"
+      ],
+      "correctAnswer": "Both Constant Product and Stable Curve"
+    },
+    {
+      "id": "c37e2d8f-2e5b-4c9d-a8f7-3ed9c7182e03",
+      "type": "quiz",
+      "title": "Understanding Liquidity Pools",
+      "description": "Learn about liquidity provision on Liquidswap",
+      "question": "What do liquidity providers receive in return for adding liquidity?",
+      "options": [
+        "Fixed APT rewards",
+        "Trading fees only",
+        "LP tokens representing their share of the pool",
+        "Governance rights only"
+      ],
+      "correctAnswer": "LP tokens representing their share of the pool"
+    },
+    {
+      "id": "c37e2d8f-2e5b-4c9d-a8f7-3ed9c7182e04",
+      "type": "quiz",
+      "title": "Trading Mechanics",
+      "description": "Understanding how trading works on Liquidswap",
+      "question": "What is slippage in the context of Liquidswap?",
+      "options": [
+        "The fee paid to liquidity providers",
+        "The time delay between transaction submission and confirmation",
+        "The difference between expected and actual execution price",
+        "The minimum amount received in a swap"
+      ],
+      "correctAnswer": "The difference between expected and actual execution price"
+    },
+    {
+      "id": "c37e2d8f-2e5b-4c9d-a8f7-3ed9c7182e05",
+      "type": "quiz",
+      "title": "Pool Types",
+      "description": "Learn about different pool types on Liquidswap",
+      "question": "When would you use a Stable Curve pool instead of a Constant Product pool?",
+      "options": [
+        "For pairs of tokens with wildly different values",
+        "For any token pair with high volatility",
+        "For pairs of stablecoins or similarly priced assets",
+        "For low liquidity tokens only"
+      ],
+      "correctAnswer": "For pairs of stablecoins or similarly priced assets"
+    },
+    {
+      "id": "c37e2d8f-2e5b-4c9d-a8f7-3ed9c7182e06",
+      "type": "quiz",
+      "title": "Impermanent Loss",
+      "description": "Understand the risks of providing liquidity",
+      "question": "What is impermanent loss in liquidity provision?",
+      "options": [
+        "Transaction fees paid to validators",
+        "Value lost due to smart contract failures",
+        "The opportunity cost of not trading directly",
+        "The value difference between holding assets versus providing liquidity"
+      ],
+      "correctAnswer": "The value difference between holding assets versus providing liquidity"
+    },
+    {
+      "id": "c37e2d8f-2e5b-4c9d-a8f7-3ed9c7182e07",
+      "type": "quiz",
+      "title": "Liquidswap Architecture",
+      "description": "Understanding how Liquidswap is implemented on Aptos",
+      "question": "What programming language is Liquidswap built with?",
+      "options": ["Solidity", "Rust", "Move", "TypeScript"],
+      "correctAnswer": "Move"
+    },
+    {
+      "id": "c37e2d8f-2e5b-4c9d-a8f7-3ed9c7182e08",
+      "type": "quiz",
+      "title": "Security Considerations",
+      "description": "Learn about security best practices when using Liquidswap",
+      "question": "What should you do before approving a transaction on Liquidswap?",
+      "options": [
+        "Simply trust the interface and default settings",
+        "Check only the token symbols",
+        "Verify token addresses, amounts, and slippage settings",
+        "Only verify gas fees"
+      ],
+      "correctAnswer": "Verify token addresses, amounts, and slippage settings"
+    }
+  ]
+} 

@@ -1,0 +1,145 @@
+{
+  "id": "j0l51n26-3k1l-17k1-h3n9-k71n37j25k10",
+  "title": "Exploring Pontem Wallet for Aptos",
+  "description": "Discover Pontem Wallet, a user-friendly and feature-rich wallet for the Aptos blockchain that enables easy management of assets, NFTs, and seamless interaction with dApps in the ecosystem.",
+  "imageUrl": "/images/quests/pontem.jpg",
+  "projectName": "Pontem Wallet",
+  "reward": 5,
+  "difficulty": "Easy",
+  "estimatedTime": "20 min",
+  "tasks": [
+    {
+      "id": "j0l51n26-4l2m-28l2-i4o0-l82o48j36l01",
+      "type": "check-balance",
+      "title": "Prepare Your Wallet",
+      "description": "Add at least 0.05 APT to your wallet to explore Pontem Wallet features",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "j0l51n26-4l2m-28l2-i4o0-l82o48j36l02",
+      "type": "quiz",
+      "title": "Pontem Wallet Basics",
+      "description": "Understand what Pontem Wallet is",
+      "question": "What type of application is Pontem Wallet?",
+      "options": [
+        "A hardware wallet device",
+        "A decentralized exchange (DEX)",
+        "A non-custodial wallet for Aptos blockchain",
+        "A lending protocol"
+      ],
+      "correctAnswer": "A non-custodial wallet for Aptos blockchain"
+    },
+    {
+      "id": "j0l51n26-4l2m-28l2-i4o0-l82o48j36l03",
+      "type": "quiz",
+      "title": "Wallet Security",
+      "description": "Learn about securing your Pontem Wallet",
+      "question": "What is the most important thing to secure with your Pontem Wallet?",
+      "options": [
+        "Your email address",
+        "Your Pontem username",
+        "Your recovery phrase (seed phrase)",
+        "Your Pontem avatar"
+      ],
+      "correctAnswer": "Your recovery phrase (seed phrase)"
+    },
+    {
+      "id": "j0l51n26-4l2m-28l2-i4o0-l82o48j36l04",
+      "type": "quiz",
+      "title": "Wallet Features",
+      "description": "Understand the features of Pontem Wallet",
+      "question": "Which features are typically available in Pontem Wallet?",
+      "options": [
+        "Only sending and receiving APT",
+        "Sending APT, token swaps, and NFT viewing",
+        "Only NFT trading",
+        "Only staking functionality"
+      ],
+      "correctAnswer": "Sending APT, token swaps, and NFT viewing"
+    },
+    {
+      "id": "j0l51n26-4l2m-28l2-i4o0-l82o48j36l05",
+      "type": "quiz",
+      "title": "Wallet Platforms",
+      "description": "Learn where you can use Pontem Wallet",
+      "question": "On which platforms is Pontem Wallet available?",
+      "options": [
+        "Only as a mobile app",
+        "Only as a browser extension",
+        "Both as a browser extension and mobile app",
+        "Only as a desktop application"
+      ],
+      "correctAnswer": "Both as a browser extension and mobile app"
+    },
+    {
+      "id": "j0l51n26-4l2m-28l2-i4o0-l82o48j36l06",
+      "type": "quiz",
+      "title": "dApp Connections",
+      "description": "Understand how to use Pontem with decentralized applications",
+      "question": "How does Pontem Wallet interact with dApps?",
+      "options": [
+        "It doesn't support dApp connections",
+        "Through a secure connection protocol that lets you approve transactions",
+        "By automatically approving all transactions",
+        "Only through QR codes"
+      ],
+      "correctAnswer": "Through a secure connection protocol that lets you approve transactions"
+    },
+    {
+      "id": "j0l51n26-4l2m-28l2-i4o0-l82o48j36l07",
+      "type": "quiz",
+      "title": "Asset Management",
+      "description": "Learn about tokens in Pontem Wallet",
+      "question": "What types of assets can you manage with Pontem Wallet?",
+      "options": [
+        "Only APT",
+        "Only APT and stablecoins",
+        "APT, other tokens, and NFTs on Aptos",
+        "Only Bitcoin and Ethereum"
+      ],
+      "correctAnswer": "APT, other tokens, and NFTs on Aptos"
+    },
+    {
+      "id": "j0l51n26-4l2m-28l2-i4o0-l82o48j36l08",
+      "type": "quiz",
+      "title": "Token Swaps",
+      "description": "Understanding DEX integration in Pontem",
+      "question": "How can you swap tokens within Pontem Wallet?",
+      "options": [
+        "It's not possible to swap tokens in Pontem",
+        "Using the built-in swap feature that connects to DEXes",
+        "Only by sending tokens to a centralized exchange first",
+        "Only by using a separate application"
+      ],
+      "correctAnswer": "Using the built-in swap feature that connects to DEXes"
+    },
+    {
+      "id": "j0l51n26-4l2m-28l2-i4o0-l82o48j36l09",
+      "type": "quiz",
+      "title": "Address Book",
+      "description": "Learn about contact management",
+      "question": "What feature helps manage frequently used addresses in Pontem Wallet?",
+      "options": [
+        "There is no way to save addresses",
+        "The address book feature",
+        "Only QR code scanning",
+        "Only copy-paste functionality"
+      ],
+      "correctAnswer": "The address book feature"
+    },
+    {
+      "id": "j0l51n26-4l2m-28l2-i4o0-l82o48j36l10",
+      "type": "quiz",
+      "title": "Wallet Recovery",
+      "description": "Understanding how to recover access",
+      "question": "If you lose access to your device, how can you recover your Pontem Wallet?",
+      "options": [
+        "It's impossible to recover",
+        "By contacting Pontem support",
+        "By using your recovery phrase to restore the wallet on a new device",
+        "Only with your password"
+      ],
+      "correctAnswer": "By using your recovery phrase to restore the wallet on a new device"
+    }
+  ]
+} 

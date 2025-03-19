@@ -1,0 +1,145 @@
+{
+  "id": "i9k40m15-2j0k-06j0-g2m8-j81m37i14k00",
+  "title": "Cross-Chain with LayerZero",
+  "description": "Explore LayerZero on Aptos, an omnichain interoperability protocol that enables secure and efficient cross-chain messaging and asset transfers between Aptos and other major blockchains.",
+  "imageUrl": "/images/quests/layerzero.jpg",
+  "projectName": "LayerZero",
+  "reward": 8,
+  "difficulty": "Hard",
+  "estimatedTime": "40 min",
+  "tasks": [
+    {
+      "id": "i9k40m15-3k1l-27l2-h3n9-k92m48j36n01",
+      "type": "check-balance",
+      "title": "Prepare for Cross-Chain Operations",
+      "description": "Add at least 0.1 APT to your wallet to explore LayerZero's cross-chain capabilities",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "i9k40m15-3k1l-27l2-h3n9-k92m48j36n02",
+      "type": "quiz",
+      "title": "LayerZero Basics",
+      "description": "Understand what LayerZero is and how it works",
+      "question": "What is LayerZero's primary function in the blockchain ecosystem?",
+      "options": [
+        "A Layer 2 scaling solution for Aptos",
+        "A cross-chain messaging and interoperability protocol",
+        "A centralized bridge operator",
+        "A cryptocurrency exchange platform"
+      ],
+      "correctAnswer": "A cross-chain messaging and interoperability protocol"
+    },
+    {
+      "id": "i9k40m15-3k1l-27l2-h3n9-k92m48j36n03",
+      "type": "quiz",
+      "title": "Security Model",
+      "description": "Learn about LayerZero's security approach",
+      "question": "What security approach does LayerZero use for cross-chain communication?",
+      "options": [
+        "Centralized validators only",
+        "Ultra Light Nodes (ULN) with dual-prover model",
+        "Multi-signature wallets",
+        "Zero-knowledge proofs exclusively"
+      ],
+      "correctAnswer": "Ultra Light Nodes (ULN) with dual-prover model"
+    },
+    {
+      "id": "i9k40m15-3k1l-27l2-h3n9-k92m48j36n04",
+      "type": "quiz",
+      "title": "Aptos Integration",
+      "description": "Understanding how LayerZero works with Aptos",
+      "question": "How is LayerZero implemented on Aptos?",
+      "options": [
+        "As a sidechain",
+        "Through Move modules deployed on the Aptos blockchain",
+        "As a separate blockchain connected via API",
+        "Through a traditional wrapped token bridge only"
+      ],
+      "correctAnswer": "Through Move modules deployed on the Aptos blockchain"
+    },
+    {
+      "id": "i9k40m15-3k1l-27l2-h3n9-k92m48j36n05",
+      "type": "quiz",
+      "title": "Cross-Chain Asset Transfers",
+      "description": "Learn how assets move between chains",
+      "question": "How does LayerZero facilitate token transfers between Aptos and other blockchains?",
+      "options": [
+        "By creating wrapped versions of tokens on each chain",
+        "Through atomic swaps only",
+        "By using a shared liquidity pool between chains",
+        "Through a centralized custodian"
+      ],
+      "correctAnswer": "By creating wrapped versions of tokens on each chain"
+    },
+    {
+      "id": "i9k40m15-3k1l-27l2-h3n9-k92m48j36n06",
+      "type": "quiz",
+      "title": "Supported Chains",
+      "description": "Understanding which blockchains can connect with Aptos via LayerZero",
+      "question": "Which of these blockchains can connect with Aptos through LayerZero?",
+      "options": [
+        "Only Ethereum",
+        "Only Solana and BNB Chain",
+        "Multiple chains including Ethereum, Solana, BNB Chain, Avalanche, and more",
+        "No other blockchains yet"
+      ],
+      "correctAnswer": "Multiple chains including Ethereum, Solana, BNB Chain, Avalanche, and more"
+    },
+    {
+      "id": "i9k40m15-3k1l-27l2-h3n9-k92m48j36n07",
+      "type": "quiz",
+      "title": "Applications on LayerZero",
+      "description": "Learn about use cases for LayerZero on Aptos",
+      "question": "What applications can be built using LayerZero on Aptos?",
+      "options": [
+        "Only token bridges",
+        "Cross-chain lending, DEXes, NFT marketplaces, and more",
+        "Only gaming applications",
+        "Only DAO voting systems"
+      ],
+      "correctAnswer": "Cross-chain lending, DEXes, NFT marketplaces, and more"
+    },
+    {
+      "id": "i9k40m15-3k1l-27l2-h3n9-k92m48j36n08",
+      "type": "quiz",
+      "title": "Transaction Fees",
+      "description": "Understanding the cost of cross-chain transactions",
+      "question": "How are fees handled for cross-chain transactions on LayerZero?",
+      "options": [
+        "No fees are charged",
+        "Fees in APT only regardless of destination chain",
+        "Fees in the source chain's native token to cover gas on both source and destination chains",
+        "Subscription-based model with unlimited transactions"
+      ],
+      "correctAnswer": "Fees in the source chain's native token to cover gas on both source and destination chains"
+    },
+    {
+      "id": "i9k40m15-3k1l-27l2-h3n9-k92m48j36n09",
+      "type": "quiz",
+      "title": "Messaging Architecture",
+      "description": "Learn how LayerZero's cross-chain messaging works",
+      "question": "What is a key feature of LayerZero's messaging architecture?",
+      "options": [
+        "It relies on a central server to relay all messages",
+        "It can only send simple token transfer messages",
+        "It supports arbitrary messaging between smart contracts on different chains",
+        "It requires manual approval for each message"
+      ],
+      "correctAnswer": "It supports arbitrary messaging between smart contracts on different chains"
+    },
+    {
+      "id": "i9k40m15-3k1l-27l2-h3n9-k92m48j36n10",
+      "type": "quiz",
+      "title": "LayerZero Native Functionality",
+      "description": "Understanding LayerZero's native projects",
+      "question": "Which of these is a native cross-chain application built by the LayerZero team?",
+      "options": [
+        "PancakeSwap",
+        "Stargate Finance (cross-chain bridge)",
+        "Topaz NFT Marketplace",
+        "Aptos Name Service"
+      ],
+      "correctAnswer": "Stargate Finance (cross-chain bridge)"
+    }
+  ]
+} 

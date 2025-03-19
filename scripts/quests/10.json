@@ -1,0 +1,131 @@
+{
+  "id": "e5g06i71-8f6g-62f6-c8i4-f57i93e80g60",
+  "title": "Mastering Econia Order Book DEX",
+  "description": "Explore Econia, a high-performance on-chain central limit order book (CLOB) built on Aptos that offers advanced trading features like limit orders, order matching, and deep liquidity for serious traders.",
+  "imageUrl": "/images/quests/econia.jpg",
+  "projectName": "Econia",
+  "reward": 8,
+  "difficulty": "Hard",
+  "estimatedTime": "40 min",
+  "tasks": [
+    {
+      "id": "e5g06i71-9g7h-83h8-d9j5-g68i04f92j01",
+      "type": "check-balance",
+      "title": "Prepare for Advanced Trading",
+      "description": "Add at least 0.1 APT to your wallet to begin exploring Econia's order book",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "e5g06i71-9g7h-83h8-d9j5-g68i04f92j02",
+      "type": "quiz",
+      "title": "Order Book vs AMM",
+      "description": "Understanding the difference between order book and AMM models",
+      "question": "How does an order book DEX like Econia differ from an AMM DEX?",
+      "options": [
+        "Order books require centralized servers, AMMs are fully on-chain",
+        "AMMs use pools with fixed pricing curves, while order books match specific buy and sell orders at exact prices",
+        "Order books can only support limit orders, not market orders",
+        "AMMs are more capital efficient than order books"
+      ],
+      "correctAnswer": "AMMs use pools with fixed pricing curves, while order books match specific buy and sell orders at exact prices"
+    },
+    {
+      "id": "e5g06i71-9g7h-83h8-d9j5-g68i04f92j03",
+      "type": "quiz",
+      "title": "CLOB Architecture",
+      "description": "Learn about Central Limit Order Books",
+      "question": "What is a Central Limit Order Book (CLOB) in the context of Econia?",
+      "options": [
+        "A centralized server that processes trades",
+        "A matching engine that pairs buy and sell orders by price and time priority",
+        "A system that limits the size of trades",
+        "A type of liquidity pool with concentrated liquidity"
+      ],
+      "correctAnswer": "A matching engine that pairs buy and sell orders by price and time priority"
+    },
+    {
+      "id": "e5g06i71-9g7h-83h8-d9j5-g68i04f92j04",
+      "type": "quiz",
+      "title": "Limit Orders",
+      "description": "Understanding limit orders on Econia",
+      "question": "What is a limit order on Econia?",
+      "options": [
+        "An order that must be filled immediately or canceled",
+        "An order to buy/sell at a specific price or better that stays on the book until filled or canceled",
+        "An order that gets executed at the end of the trading day",
+        "A restriction on how much you can trade"
+      ],
+      "correctAnswer": "An order to buy/sell at a specific price or better that stays on the book until filled or canceled"
+    },
+    {
+      "id": "e5g06i71-9g7h-83h8-d9j5-g68i04f92j05",
+      "type": "quiz",
+      "title": "Market Orders",
+      "description": "Learn about market orders on Econia",
+      "question": "How does a market order work on Econia?",
+      "options": [
+        "It's placed in the order book at market price",
+        "It executes immediately against existing limit orders at the best available price",
+        "It's only executed if the price is better than the market",
+        "It requires approval from market makers"
+      ],
+      "correctAnswer": "It executes immediately against existing limit orders at the best available price"
+    },
+    {
+      "id": "e5g06i71-9g7h-83h8-d9j5-g68i04f92j06",
+      "type": "quiz",
+      "title": "Taker and Maker Fees",
+      "description": "Understanding fee structure on Econia",
+      "question": "What's the difference between maker and taker fees on Econia?",
+      "options": [
+        "Maker fees are always higher than taker fees",
+        "Taker fees apply when your order immediately matches with an existing order, maker fees apply when your order waits in the book",
+        "Maker fees are charged to market makers, taker fees to retail users",
+        "There's no difference, they are the same fee"
+      ],
+      "correctAnswer": "Taker fees apply when your order immediately matches with an existing order, maker fees apply when your order waits in the book"
+    },
+    {
+      "id": "e5g06i71-9g7h-83h8-d9j5-g68i04f92j07",
+      "type": "quiz",
+      "title": "Econia Engine Advantages",
+      "description": "Learn about Econia's performance benefits",
+      "question": "What makes Econia's order book implementation on Aptos potentially more efficient than on other blockchains?",
+      "options": [
+        "It's not on-chain, but uses a centralized component",
+        "Move's resource-oriented programming and Aptos's parallel execution engine",
+        "It executes trades in batches rather than individually",
+        "It doesn't support complex order types"
+      ],
+      "correctAnswer": "Move's resource-oriented programming and Aptos's parallel execution engine"
+    },
+    {
+      "id": "e5g06i71-9g7h-83h8-d9j5-g68i04f92j08",
+      "type": "quiz",
+      "title": "Market Making on Econia",
+      "description": "Understanding the role of market makers",
+      "question": "What role do market makers play on Econia?",
+      "options": [
+        "They set the rules for the platform",
+        "They maintain the technical infrastructure",
+        "They provide liquidity by placing limit orders on both sides of the order book",
+        "They inspect trades for compliance"
+      ],
+      "correctAnswer": "They provide liquidity by placing limit orders on both sides of the order book"
+    },
+    {
+      "id": "e5g06i71-9g7h-83h8-d9j5-g68i04f92j09",
+      "type": "quiz",
+      "title": "Econia Token",
+      "description": "Learn about Econia's tokenomics",
+      "question": "What is a primary purpose of the Econia (ECO) token?",
+      "options": [
+        "Not yet launched or announced",
+        "Required for all trades",
+        "Governance and protocol incentives",
+        "Only for fee payment"
+      ],
+      "correctAnswer": "Not yet launched or announced"
+    }
+  ]
+} 

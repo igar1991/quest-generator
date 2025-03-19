@@ -1,0 +1,131 @@
+{
+  "id": "d4f95h60-7e5f-51f5-b7g3-e46h82d79f50",
+  "title": "Pontem Network: Building with Move",
+  "description": "Learn about Pontem Network, a product studio building crucial infrastructure and development tools for the Aptos ecosystem, including the Move Playground IDE and ByteBabel compiler.",
+  "imageUrl": "/images/quests/pontem.jpg",
+  "projectName": "Pontem Network",
+  "reward": 6,
+  "difficulty": "Hard",
+  "estimatedTime": "45 min",
+  "tasks": [
+    {
+      "id": "d4f95h60-8f6g-72g7-c8i4-f67h93e81i01",
+      "type": "check-balance",
+      "title": "Prepare Your Development Wallet",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring Pontem's tools",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "d4f95h60-8f6g-72g7-c8i4-f67h93e81i02",
+      "type": "quiz",
+      "title": "Pontem Network Overview",
+      "description": "Learn about Pontem's role in the Aptos ecosystem",
+      "question": "What is Pontem Network's primary focus?",
+      "options": [
+        "Running Aptos validators",
+        "Creating consumer DApps like DEXes and wallets",
+        "Building developer infrastructure and tools for Move",
+        "Providing fiat on-ramps to Aptos"
+      ],
+      "correctAnswer": "Building developer infrastructure and tools for Move"
+    },
+    {
+      "id": "d4f95h60-8f6g-72g7-c8i4-f67h93e81i03",
+      "type": "quiz",
+      "title": "Move Playground",
+      "description": "Understanding Pontem's browser-based Move IDE",
+      "question": "What can developers do with Pontem's Move Playground?",
+      "options": [
+        "Only read Move code documentation",
+        "Write, compile, and test Move modules without local setup",
+        "Deploy directly to Aptos mainnet",
+        "Run full blockchain nodes"
+      ],
+      "correctAnswer": "Write, compile, and test Move modules without local setup"
+    },
+    {
+      "id": "d4f95h60-8f6g-72g7-c8i4-f67h93e81i04",
+      "type": "quiz",
+      "title": "Move Language Basics",
+      "description": "Learning the fundamentals of Move programming",
+      "question": "What is a key security feature of the Move language?",
+      "options": [
+        "Resources can be copied freely",
+        "Type safety and resource-oriented programming",
+        "Lack of compiler checks",
+        "Automatic memory management through garbage collection"
+      ],
+      "correctAnswer": "Type safety and resource-oriented programming"
+    },
+    {
+      "id": "d4f95h60-8f6g-72g7-c8i4-f67h93e81i05",
+      "type": "quiz",
+      "title": "ByteBabel Compiler",
+      "description": "Learn about Pontem's Move compiler infrastructure",
+      "question": "What is ByteBabel used for?",
+      "options": [
+        "Cross-chain asset transfers",
+        "Translating human languages in dApps",
+        "Converting Move code to other languages like Solidity",
+        "Compiling Move code for different blockchain VMs"
+      ],
+      "correctAnswer": "Compiling Move code for different blockchain VMs"
+    },
+    {
+      "id": "d4f95h60-8f6g-72g7-c8i4-f67h93e81i06",
+      "type": "quiz",
+      "title": "Move Standard Library",
+      "description": "Understanding the Move coding ecosystem",
+      "question": "What role does Pontem play with the Move Standard Library?",
+      "options": [
+        "They created the original implementation",
+        "They contribute modules and improvements to it",
+        "They don't work with the standard library",
+        "They exclusively maintain it"
+      ],
+      "correctAnswer": "They contribute modules and improvements to it"
+    },
+    {
+      "id": "d4f95h60-8f6g-72g7-c8i4-f67h93e81i07",
+      "type": "quiz",
+      "title": "Move Testing Framework",
+      "description": "Learn about testing Move smart contracts",
+      "question": "How can developers unit test Move modules with Pontem tools?",
+      "options": [
+        "Manual blockchain deployment only",
+        "Using Move's built-in testing framework in Move Playground",
+        "Only through third-party services",
+        "Only through command-line tools"
+      ],
+      "correctAnswer": "Using Move's built-in testing framework in Move Playground"
+    },
+    {
+      "id": "d4f95h60-8f6g-72g7-c8i4-f67h93e81i08",
+      "type": "quiz",
+      "title": "Liquidity Layer",
+      "description": "Understanding Pontem's historical contributions to Aptos DeFi",
+      "question": "What early DeFi infrastructure did Pontem help develop for Aptos?",
+      "options": [
+        "Nothing related to DeFi",
+        "Staking protocols only",
+        "Liquidity Layer including Liquidswap DEX",
+        "Lending markets"
+      ],
+      "correctAnswer": "Liquidity Layer including Liquidswap DEX"
+    },
+    {
+      "id": "d4f95h60-8f6g-72g7-c8i4-f67h93e81i09",
+      "type": "quiz",
+      "title": "Cross-Chain Development",
+      "description": "Learn about Pontem's multi-chain approach",
+      "question": "Besides Aptos, which other blockchain ecosystems has Pontem worked with?",
+      "options": [
+        "Only Aptos",
+        "Ethereum and Solana",
+        "Polkadot and Kusama",
+        "Sui and potentially other Move-based L1s"
+      ],
+      "correctAnswer": "Sui and potentially other Move-based L1s"
+    }
+  ]
+} 

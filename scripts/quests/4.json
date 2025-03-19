@@ -1,0 +1,117 @@
+{
+  "id": "d8a93f14-2e71-4fd9-9c67-58fb13e7d2a5",
+  "title": "Exploring Topaz NFT Marketplace",
+  "description": "Learn how to use Topaz, a leading NFT marketplace on Aptos where you can discover, trade, and collect unique digital assets from top creators in the ecosystem.",
+  "imageUrl": "/images/quests/topaz.jpg",
+  "projectName": "Topaz",
+  "reward": 6,
+  "difficulty": "Easy",
+  "estimatedTime": "20 min",
+  "tasks": [
+    {
+      "id": "d8a93f14-3f82-5ad6-8c78-69ec24f8e301",
+      "type": "check-balance",
+      "title": "Prepare for NFT Trading",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring NFT trading",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "d8a93f14-3f82-5ad6-8c78-69ec24f8e302",
+      "type": "quiz",
+      "title": "Topaz Basics",
+      "description": "Understand what Topaz is and how it works",
+      "question": "What is Topaz primarily used for in the Aptos ecosystem?",
+      "options": [
+        "Staking APT tokens",
+        "Trading fungible tokens",
+        "Trading and collecting NFTs",
+        "Lending and borrowing"
+      ],
+      "correctAnswer": "Trading and collecting NFTs"
+    },
+    {
+      "id": "d8a93f14-3f82-5ad6-8c78-69ec24f8e303",
+      "type": "quiz",
+      "title": "NFT Standards",
+      "description": "Learn about the NFT standards used on Topaz",
+      "question": "What NFT standard is most commonly used on the Aptos blockchain?",
+      "options": [
+        "ERC-721",
+        "ERC-1155",
+        "Metaplex",
+        "Aptos Token Standard"
+      ],
+      "correctAnswer": "Aptos Token Standard"
+    },
+    {
+      "id": "d8a93f14-3f82-5ad6-8c78-69ec24f8e304",
+      "type": "quiz",
+      "title": "Buying NFTs",
+      "description": "Understand the process of purchasing NFTs on Topaz",
+      "question": "What happens when you purchase an NFT on Topaz?",
+      "options": [
+        "You receive a copy of the digital file only",
+        "You get ownership recorded on the blockchain and the token is transferred to your wallet",
+        "You get a certificate of authenticity but not the NFT itself",
+        "You receive copyright ownership of the artwork"
+      ],
+      "correctAnswer": "You get ownership recorded on the blockchain and the token is transferred to your wallet"
+    },
+    {
+      "id": "d8a93f14-3f82-5ad6-8c78-69ec24f8e305",
+      "type": "quiz",
+      "title": "NFT Collections",
+      "description": "Learn about collections on Topaz",
+      "question": "What is an NFT collection on Topaz?",
+      "options": [
+        "A set of identical NFTs",
+        "A group of NFTs created by the same artist or project with shared themes",
+        "Any NFTs owned by a single wallet",
+        "NFTs that are bundled together for a discount"
+      ],
+      "correctAnswer": "A group of NFTs created by the same artist or project with shared themes"
+    },
+    {
+      "id": "d8a93f14-3f82-5ad6-8c78-69ec24f8e306",
+      "type": "quiz",
+      "title": "Topaz Fees",
+      "description": "Understanding the fee structure on Topaz",
+      "question": "What fee does Topaz typically charge on NFT sales?",
+      "options": [
+        "0% (free)",
+        "2-5%",
+        "10%",
+        "25%"
+      ],
+      "correctAnswer": "2-5%"
+    },
+    {
+      "id": "d8a93f14-3f82-5ad6-8c78-69ec24f8e307",
+      "type": "quiz",
+      "title": "NFT Minting",
+      "description": "Learn about creating NFTs on Topaz",
+      "question": "What does 'minting' an NFT mean?",
+      "options": [
+        "Purchasing an NFT from another user",
+        "Creating a new NFT and recording it on the blockchain",
+        "Selling an NFT you already own",
+        "Adding an NFT to your favorites list"
+      ],
+      "correctAnswer": "Creating a new NFT and recording it on the blockchain"
+    },
+    {
+      "id": "d8a93f14-3f82-5ad6-8c78-69ec24f8e308",
+      "type": "quiz",
+      "title": "NFT Metadata",
+      "description": "Understanding what makes an NFT valuable",
+      "question": "What is stored in an NFT's metadata?",
+      "options": [
+        "Only the image file",
+        "The APT price history",
+        "Properties, attributes, creator info, and links to media",
+        "The owner's personal information"
+      ],
+      "correctAnswer": "Properties, attributes, creator info, and links to media"
+    }
+  ]
+} 

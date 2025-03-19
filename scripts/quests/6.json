@@ -1,0 +1,117 @@
+{
+  "id": "a1c94e37-6b2d-48d3-b5f1-c32e79a68d20",
+  "title": "Exploring Tortuga Liquid Staking",
+  "description": "Learn about Tortuga, the first liquid staking protocol on Aptos that allows you to stake your APT while maintaining liquidity through stAPT tokens that you can use across DeFi.",
+  "imageUrl": "/images/quests/tortuga.jpg",
+  "projectName": "Tortuga",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "a1c94e37-7c3e-59e4-c6g2-d43f80b79f01",
+      "type": "check-balance",
+      "title": "Prepare for Staking",
+      "description": "Add at least 0.1 APT to your wallet to begin exploring Tortuga",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "a1c94e37-7c3e-59e4-c6g2-d43f80b79f02",
+      "type": "quiz",
+      "title": "Liquid Staking Basics",
+      "description": "Understand what liquid staking is and its benefits",
+      "question": "What is liquid staking?",
+      "options": [
+        "A way to earn interest by providing liquidity to DEXes",
+        "A staking model where rewards are paid in stablecoins",
+        "A mechanism to stake tokens while receiving a liquid token that represents your stake",
+        "A method to liquidate staked positions instantly without waiting"
+      ],
+      "correctAnswer": "A mechanism to stake tokens while receiving a liquid token that represents your stake"
+    },
+    {
+      "id": "a1c94e37-7c3e-59e4-c6g2-d43f80b79f03",
+      "type": "quiz",
+      "title": "Tortuga stAPT Token",
+      "description": "Learn about Tortuga's stAPT token",
+      "question": "What does the stAPT token represent?",
+      "options": [
+        "A stablecoin pegged to APT",
+        "A governance token for Tortuga protocol",
+        "Your staked APT position plus accumulated rewards",
+        "A derivative that tracks Aptos price movements"
+      ],
+      "correctAnswer": "Your staked APT position plus accumulated rewards"
+    },
+    {
+      "id": "a1c94e37-7c3e-59e4-c6g2-d43f80b79f04",
+      "type": "quiz",
+      "title": "Staking Mechanism",
+      "description": "Understand how staking works on Tortuga",
+      "question": "How does Tortuga stake APT tokens?",
+      "options": [
+        "Through a centralized service",
+        "Via smart contracts that delegate to validators",
+        "By running their own validators only",
+        "Through a bridge to other networks"
+      ],
+      "correctAnswer": "Via smart contracts that delegate to validators"
+    },
+    {
+      "id": "a1c94e37-7c3e-59e4-c6g2-d43f80b79f05",
+      "type": "quiz",
+      "title": "stAPT Utility",
+      "description": "Learn how stAPT can be used in the Aptos ecosystem",
+      "question": "What can you do with stAPT tokens while your APT is staked?",
+      "options": [
+        "Nothing until you withdraw",
+        "Only transfer them to other wallets",
+        "Use them in DeFi protocols for lending, liquidity, or additional yield",
+        "Only view your staking balance"
+      ],
+      "correctAnswer": "Use them in DeFi protocols for lending, liquidity, or additional yield"
+    },
+    {
+      "id": "a1c94e37-7c3e-59e4-c6g2-d43f80b79f06",
+      "type": "quiz",
+      "title": "Unstaking Process",
+      "description": "Understanding how to unstake on Tortuga",
+      "question": "What happens when you unstake APT on Tortuga?",
+      "options": [
+        "You receive APT instantly",
+        "Your stAPT is burned and you enter an unstaking period",
+        "You need to find someone willing to buy your stAPT",
+        "You are penalized with a fee"
+      ],
+      "correctAnswer": "Your stAPT is burned and you enter an unstaking period"
+    },
+    {
+      "id": "a1c94e37-7c3e-59e4-c6g2-d43f80b79f07",
+      "type": "quiz",
+      "title": "Security Model",
+      "description": "Learn about Tortuga's security measures",
+      "question": "How does Tortuga protect staked assets?",
+      "options": [
+        "Through centralized custody",
+        "Using Move's resource model and formal verification",
+        "By insuring all staked APT",
+        "With a multi-signature wallet"
+      ],
+      "correctAnswer": "Using Move's resource model and formal verification"
+    },
+    {
+      "id": "a1c94e37-7c3e-59e4-c6g2-d43f80b79f08",
+      "type": "quiz",
+      "title": "Yield Management",
+      "description": "Understanding rewards distribution on Tortuga",
+      "question": "How are staking rewards reflected in Tortuga?",
+      "options": [
+        "Direct APT payments to your wallet",
+        "Increase in stAPT tokens in your wallet",
+        "Increase in the redemption value of stAPT",
+        "Through a separate reward token"
+      ],
+      "correctAnswer": "Increase in the redemption value of stAPT"
+    }
+  ]
+} 

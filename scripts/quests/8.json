@@ -1,0 +1,131 @@
+{
+  "id": "c3e84g59-6d4f-50e5-a6g2-d45g71c78e40",
+  "title": "Exploring Thala Labs Ecosystem",
+  "description": "Discover Thala Labs, a native DeFi ecosystem on Aptos offering stablecoin infrastructure, decentralized exchange, and yield-generating products across multiple verticals.",
+  "imageUrl": "/images/quests/thala.jpg",
+  "projectName": "Thala Labs",
+  "reward": 8,
+  "difficulty": "Medium",
+  "estimatedTime": "35 min",
+  "tasks": [
+    {
+      "id": "c3e84g59-7e5f-61f6-b7h3-e56g92d80h01",
+      "type": "check-balance",
+      "title": "Prepare for DeFi Activities",
+      "description": "Add at least 0.1 APT to your wallet to begin exploring Thala's ecosystem",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "c3e84g59-7e5f-61f6-b7h3-e56g92d80h02",
+      "type": "quiz",
+      "title": "Thala Ecosystem Overview",
+      "description": "Learn about the main components of Thala Labs",
+      "question": "What are the main products in the Thala ecosystem?",
+      "options": [
+        "Just a DEX (decentralized exchange)",
+        "Move Dollar stablecoin and Move DEX",
+        "NFT marketplace and lending platform",
+        "APT staking service only"
+      ],
+      "correctAnswer": "Move Dollar stablecoin and Move DEX"
+    },
+    {
+      "id": "c3e84g59-7e5f-61f6-b7h3-e56g92d80h03",
+      "type": "quiz",
+      "title": "Move Dollar Stablecoin",
+      "description": "Understanding Thala's stablecoin offering",
+      "question": "What type of stablecoin is Move Dollar (MOD)?",
+      "options": [
+        "Fiat-backed with USD reserves",
+        "Algorithmic with no collateral",
+        "A hybrid partially-collateralized stablecoin",
+        "Gold-backed stablecoin"
+      ],
+      "correctAnswer": "A hybrid partially-collateralized stablecoin"
+    },
+    {
+      "id": "c3e84g59-7e5f-61f6-b7h3-e56g92d80h04",
+      "type": "quiz",
+      "title": "Move DEX Design",
+      "description": "Learn about Thala's decentralized exchange",
+      "question": "What Automated Market Maker (AMM) model does Move DEX use?",
+      "options": [
+        "Only constant product (like Uniswap v2)",
+        "Only stable swap (for stablecoins)",
+        "Multiple pool types optimized for different pair types",
+        "Order book model (not an AMM)"
+      ],
+      "correctAnswer": "Multiple pool types optimized for different pair types"
+    },
+    {
+      "id": "c3e84g59-7e5f-61f6-b7h3-e56g92d80h05",
+      "type": "quiz",
+      "title": "Thala Token (THL)",
+      "description": "Understanding Thala's native token",
+      "question": "What is the primary purpose of the THL token?",
+      "options": [
+        "Payment for transaction fees only",
+        "Governance, staking rewards, and fee sharing",
+        "Required for all trades on Move DEX",
+        "Exclusively used for collateralizing Move Dollar"
+      ],
+      "correctAnswer": "Governance, staking rewards, and fee sharing"
+    },
+    {
+      "id": "c3e84g59-7e5f-61f6-b7h3-e56g92d80h06",
+      "type": "quiz",
+      "title": "Security Features",
+      "description": "Learn about how Thala secures user funds",
+      "question": "How does Thala help ensure protocol security?",
+      "options": [
+        "By using centralized custodians",
+        "Through insurance policies only",
+        "By leveraging Move's security features and formal verification",
+        "By limiting transactions during market volatility"
+      ],
+      "correctAnswer": "By leveraging Move's security features and formal verification"
+    },
+    {
+      "id": "c3e84g59-7e5f-61f6-b7h3-e56g92d80h07",
+      "type": "quiz",
+      "title": "Liquidity Incentives",
+      "description": "Understanding liquidity mining on Thala",
+      "question": "How does Thala typically incentivize liquidity providers?",
+      "options": [
+        "No incentives are provided",
+        "Only through trading fees",
+        "Through THL emissions to specific liquidity pools",
+        "Only with stablecoin rewards"
+      ],
+      "correctAnswer": "Through THL emissions to specific liquidity pools"
+    },
+    {
+      "id": "c3e84g59-7e5f-61f6-b7h3-e56g92d80h08",
+      "type": "quiz",
+      "title": "Protocol Governance",
+      "description": "Learn how decisions are made in Thala protocol",
+      "question": "Who makes governance decisions for the Thala protocol?",
+      "options": [
+        "Only the Thala founding team",
+        "Aptos Foundation",
+        "THL token holders through voting",
+        "A centralized board of directors"
+      ],
+      "correctAnswer": "THL token holders through voting"
+    },
+    {
+      "id": "c3e84g59-7e5f-61f6-b7h3-e56g92d80h09",
+      "type": "quiz",
+      "title": "Composability",
+      "description": "Understanding Thala's integration with other Aptos DeFi",
+      "question": "How does Thala interact with other Aptos DeFi protocols?",
+      "options": [
+        "It doesn't - Thala works completely independently",
+        "Limited to specific partnership integrations",
+        "Through composable standards allowing MOD and LP tokens to be used across the ecosystem",
+        "Only through cross-chain bridges"
+      ],
+      "correctAnswer": "Through composable standards allowing MOD and LP tokens to be used across the ecosystem"
+    }
+  ]
+} 

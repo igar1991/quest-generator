@@ -68,9 +68,6 @@ const QuestGrid: React.FC = () => {
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
             Discover the most popular quests in the Aptos ecosystem
           </p>
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-            Data loaded from Redis
-          </p>
         </div>
 
         {loading && (
@@ -105,9 +102,7 @@ const QuestGrid: React.FC = () => {
                 projectName={quest.category}
                 reward={Number(quest.reward)}
                 difficulty={quest.difficulty}
-                estimatedTime={
-                  quest.totalUsers ? `${quest.totalUsers} users` : "New"
-                }
+                estimatedTime={`${Math.floor(Math.random() * (20 - 10 + 1)) + 10} minutes`}
               />
             ))}
           </div>

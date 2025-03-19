@@ -1,0 +1,117 @@
+{
+  "id": "b2d73f48-5c3e-49e4-a6g2-d34f70b68d30",
+  "title": "Understanding Ditto Stablecoin",
+  "description": "Learn about Ditto Money, a decentralized stablecoin protocol built on Aptos that allows users to mint stablecoins using APT as collateral with an over-collateralization model.",
+  "imageUrl": "/images/quests/ditto.jpg",
+  "projectName": "Ditto Money",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "25 min",
+  "tasks": [
+    {
+      "id": "b2d73f48-6d4f-50f5-b7h3-e45g81c79g01",
+      "type": "check-balance",
+      "title": "Prepare for Stablecoin Minting",
+      "description": "Add at least 0.05 APT to your wallet to explore Ditto Money",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "b2d73f48-6d4f-50f5-b7h3-e45g81c79g02",
+      "type": "quiz",
+      "title": "Ditto Stablecoin Basics",
+      "description": "Understand what Ditto's stablecoins are and how they work",
+      "question": "What type of stablecoin is Ditto $UST?",
+      "options": [
+        "Algorithmic (not collateralized)",
+        "Fiat-backed (1:1 reserves)",
+        "Crypto-collateralized (over-collateralized)",
+        "Commodity-backed"
+      ],
+      "correctAnswer": "Crypto-collateralized (over-collateralized)"
+    },
+    {
+      "id": "b2d73f48-6d4f-50f5-b7h3-e45g81c79g03",
+      "type": "quiz",
+      "title": "Collateralization Model",
+      "description": "Learn about Ditto's collateralization system",
+      "question": "What is the typical minimum collateralization ratio for minting Ditto stablecoins?",
+      "options": [
+        "100% (equal collateral)",
+        "At least 150%",
+        "At least 50%",
+        "No minimum (algorithmic)"
+      ],
+      "correctAnswer": "At least 150%"
+    },
+    {
+      "id": "b2d73f48-6d4f-50f5-b7h3-e45g81c79g04",
+      "type": "quiz",
+      "title": "Liquidation Process",
+      "description": "Understand when and how liquidations happen",
+      "question": "What happens if your collateralization ratio falls below the minimum threshold?",
+      "options": [
+        "Nothing, the system waits for you to add more collateral",
+        "Your position can be liquidated by others to maintain system stability",
+        "The protocol automatically sells just enough of your collateral",
+        "Your entire position is immediately frozen"
+      ],
+      "correctAnswer": "Your position can be liquidated by others to maintain system stability"
+    },
+    {
+      "id": "b2d73f48-6d4f-50f5-b7h3-e45g81c79g05",
+      "type": "quiz",
+      "title": "Stability Mechanisms",
+      "description": "Learn how Ditto maintains its peg",
+      "question": "How does Ditto primarily maintain its stablecoin peg?",
+      "options": [
+        "Through central bank reserves",
+        "Using over-collateralization and liquidation mechanisms",
+        "By burning tokens in a deflationary model",
+        "With algorithmic rebasing"
+      ],
+      "correctAnswer": "Using over-collateralization and liquidation mechanisms"
+    },
+    {
+      "id": "b2d73f48-6d4f-50f5-b7h3-e45g81c79g06",
+      "type": "quiz",
+      "title": "Price Oracles",
+      "description": "Understanding how asset prices are determined",
+      "question": "How does Ditto get price information for collateral assets?",
+      "options": [
+        "User-submitted prices",
+        "Central bank data feeds",
+        "Price oracles that aggregate data from multiple sources",
+        "Fixed prices set by governance"
+      ],
+      "correctAnswer": "Price oracles that aggregate data from multiple sources"
+    },
+    {
+      "id": "b2d73f48-6d4f-50f5-b7h3-e45g81c79g07",
+      "type": "quiz",
+      "title": "DITTO Token",
+      "description": "Learn about the DITTO governance token",
+      "question": "What is the primary function of the DITTO token?",
+      "options": [
+        "Used as collateral for stablecoins",
+        "Protocol governance and earning liquidation fees",
+        "Required for all transactions",
+        "It's the stablecoin itself"
+      ],
+      "correctAnswer": "Protocol governance and earning liquidation fees"
+    },
+    {
+      "id": "b2d73f48-6d4f-50f5-b7h3-e45g81c79g08",
+      "type": "quiz",
+      "title": "Risk Management",
+      "description": "Understanding risks in using Ditto",
+      "question": "What is a primary risk when using Ditto to mint stablecoins?",
+      "options": [
+        "Counterparty risk from central issuers",
+        "Smart contract vulnerabilities",
+        "Market volatility leading to liquidation",
+        "All of the above"
+      ],
+      "correctAnswer": "Market volatility leading to liquidation"
+    }
+  ]
+} 

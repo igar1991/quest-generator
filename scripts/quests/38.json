@@ -1,0 +1,159 @@
+{
+  "id": "s9u40w15-2t0u-06t0-q2w8-t71w37s25u00",
+  "title": "Cross-Chain with Merkle Bridge",
+  "description": "Explore Merkle, a cross-chain bridge protocol that enables secure asset transfers between Aptos and other major blockchains through a unique bridging architecture focused on security and efficiency.",
+  "imageUrl": "/images/quests/merkle.jpg",
+  "projectName": "Merkle",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "35 min",
+  "tasks": [
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x01",
+      "type": "check-balance",
+      "title": "Prepare for Cross-Chain Activities",
+      "description": "Add at least 0.1 APT to your wallet to explore Merkle's bridging capabilities",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x02",
+      "type": "quiz",
+      "title": "Merkle Basics",
+      "description": "Understand what Merkle is and what it offers",
+      "question": "What is Merkle's primary function?",
+      "options": [
+        "A Layer 2 scaling solution",
+        "A cross-chain bridge for transferring assets between blockchains",
+        "An NFT marketplace",
+        "A decentralized exchange"
+      ],
+      "correctAnswer": "A cross-chain bridge for transferring assets between blockchains"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x03",
+      "type": "quiz",
+      "title": "Bridging Architecture",
+      "description": "Learn about Merkle's technical approach",
+      "question": "What type of bridging architecture does Merkle use?",
+      "options": [
+        "Centralized bridging with a single validator",
+        "Lock and mint mechanism with secure verification",
+        "Only atomic swaps",
+        "Only supports one-way transfers"
+      ],
+      "correctAnswer": "Lock and mint mechanism with secure verification"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x04",
+      "type": "quiz",
+      "title": "Supported Chains",
+      "description": "Understanding which blockchains Merkle connects",
+      "question": "Which blockchains can typically be bridged to Aptos via Merkle?",
+      "options": [
+        "Only Ethereum",
+        "Only Solana",
+        "Multiple chains including Ethereum, Solana, BNB Chain, and more",
+        "No other blockchains"
+      ],
+      "correctAnswer": "Multiple chains including Ethereum, Solana, BNB Chain, and more"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x05",
+      "type": "quiz",
+      "title": "Token Types",
+      "description": "Learn about the assets that can be bridged",
+      "question": "What types of tokens can typically be bridged with Merkle?",
+      "options": [
+        "Only native coins like APT and ETH",
+        "Only stablecoins",
+        "Various tokens including native coins, stablecoins, and other tokens",
+        "Only NFTs"
+      ],
+      "correctAnswer": "Various tokens including native coins, stablecoins, and other tokens"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x06",
+      "type": "quiz",
+      "title": "Security Model",
+      "description": "Understanding how Merkle secures assets",
+      "question": "What security features does Merkle implement for its bridge?",
+      "options": [
+        "No specific security measures",
+        "Multi-signature security, validators, and secure proof verification",
+        "Only relies on blockchain security",
+        "Only manual verification by the team"
+      ],
+      "correctAnswer": "Multi-signature security, validators, and secure proof verification"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x07",
+      "type": "quiz",
+      "title": "Wrapped Tokens",
+      "description": "Learn about token representation across chains",
+      "question": "How do bridged tokens appear on the destination chain with Merkle?",
+      "options": [
+        "As the original tokens",
+        "As wrapped versions denoting they originated from another chain",
+        "As completely different tokens",
+        "They can only be viewed, not used"
+      ],
+      "correctAnswer": "As wrapped versions denoting they originated from another chain"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x08",
+      "type": "quiz",
+      "title": "Bridging Time",
+      "description": "Understanding transaction completion time",
+      "question": "What typically affects the completion time of a Merkle bridge transfer?",
+      "options": [
+        "Only the bridge's internal processing speed",
+        "Source and destination chain block confirmation times",
+        "The amount being transferred only",
+        "Random selection by validators"
+      ],
+      "correctAnswer": "Source and destination chain block confirmation times"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x09",
+      "type": "quiz",
+      "title": "Fee Structure",
+      "description": "Learn about the costs of using Merkle",
+      "question": "How are fees typically structured for Merkle bridge transfers?",
+      "options": [
+        "No fees, only gas costs",
+        "Fixed fee regardless of amount or destination",
+        "Variable fees based on transfer amount, gas costs, and destination chain",
+        "Subscription model only"
+      ],
+      "correctAnswer": "Variable fees based on transfer amount, gas costs, and destination chain"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x10",
+      "type": "quiz",
+      "title": "Wallet Compatibility",
+      "description": "Understanding how to interact with Merkle",
+      "question": "What wallets can typically be used with Merkle on Aptos?",
+      "options": [
+        "Only Petra Wallet",
+        "Only hardware wallets",
+        "Multiple wallets including Petra, Martian, and other Aptos-compatible wallets",
+        "No wallet connection is needed"
+      ],
+      "correctAnswer": "Multiple wallets including Petra, Martian, and other Aptos-compatible wallets"
+    },
+    {
+      "id": "s9u40w15-3u1v-27v2-r3x9-u82x48t36x11",
+      "type": "quiz",
+      "title": "Bridging Use Cases",
+      "description": "Learn about reasons to use cross-chain bridges",
+      "question": "What is a common use case for Merkle bridge transfers?",
+      "options": [
+        "Only for developers testing applications",
+        "Moving assets between chains to access different DeFi protocols or applications",
+        "Only for large institutional transfers",
+        "Only for permanent one-way transfers"
+      ],
+      "correctAnswer": "Moving assets between chains to access different DeFi protocols or applications"
+    }
+  ]
+} 

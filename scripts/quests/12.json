@@ -1,0 +1,131 @@
+{
+  "id": "g7i28k93-0h8i-84h8-e0k6-h69k15g92i80",
+  "title": "Exploring Aries Markets Lending",
+  "description": "Learn about Aries Markets, a lending and borrowing protocol on Aptos that allows users to earn interest on deposits and access liquidity by borrowing against their crypto assets.",
+  "imageUrl": "/images/quests/aries.jpg",
+  "projectName": "Aries Markets",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "g7i28k93-1i9j-05j0-f1l7-i80k26h14l01",
+      "type": "check-balance",
+      "title": "Prepare for Lending Activities",
+      "description": "Add at least 0.1 APT to your wallet to begin exploring Aries Markets",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "g7i28k93-1i9j-05j0-f1l7-i80k26h14l02",
+      "type": "quiz",
+      "title": "Aries Markets Basics",
+      "description": "Understand what Aries Markets offers in the Aptos ecosystem",
+      "question": "What is the primary function of Aries Markets?",
+      "options": [
+        "NFT trading platform",
+        "Decentralized exchange (DEX)",
+        "Lending and borrowing protocol",
+        "Options trading platform"
+      ],
+      "correctAnswer": "Lending and borrowing protocol"
+    },
+    {
+      "id": "g7i28k93-1i9j-05j0-f1l7-i80k26h14l03",
+      "type": "quiz",
+      "title": "Interest Rate Model",
+      "description": "Learn how interest rates work on Aries Markets",
+      "question": "How are interest rates determined on Aries Markets?",
+      "options": [
+        "Fixed rates set by the team",
+        "By user votes in governance",
+        "Dynamic rates based on supply and demand in each market",
+        "Based on central bank rates"
+      ],
+      "correctAnswer": "Dynamic rates based on supply and demand in each market"
+    },
+    {
+      "id": "g7i28k93-1i9j-05j0-f1l7-i80k26h14l04",
+      "type": "quiz",
+      "title": "Supplying Assets",
+      "description": "Understanding how lending works on Aries",
+      "question": "What happens when you supply assets to Aries Markets?",
+      "options": [
+        "Your assets are locked for a fixed period",
+        "You receive aToken receipts representing your deposit that earn interest",
+        "Your assets are converted to stablecoins",
+        "Your assets are used to buy the protocol's governance token"
+      ],
+      "correctAnswer": "You receive aToken receipts representing your deposit that earn interest"
+    },
+    {
+      "id": "g7i28k93-1i9j-05j0-f1l7-i80k26h14l05",
+      "type": "quiz",
+      "title": "Borrowing Mechanism",
+      "description": "Learn how borrowing works on Aries",
+      "question": "How does borrowing on Aries Markets work?",
+      "options": [
+        "Unsecured loans based on credit score",
+        "Overcollateralized loans where you deposit more value than you borrow",
+        "Fixed-term loans with mandatory repayment dates",
+        "Loans directly from other users without protocol involvement"
+      ],
+      "correctAnswer": "Overcollateralized loans where you deposit more value than you borrow"
+    },
+    {
+      "id": "g7i28k93-1i9j-05j0-f1l7-i80k26h14l06",
+      "type": "quiz",
+      "title": "Health Factor",
+      "description": "Understanding borrowing risks on Aries",
+      "question": "What is the health factor in Aries Markets?",
+      "options": [
+        "A rating of the protocol's overall security",
+        "A measure of a user's credit worthiness",
+        "A ratio showing how close a position is to liquidation",
+        "The APY rate for deposits"
+      ],
+      "correctAnswer": "A ratio showing how close a position is to liquidation"
+    },
+    {
+      "id": "g7i28k93-1i9j-05j0-f1l7-i80k26h14l07",
+      "type": "quiz",
+      "title": "Liquidation Process",
+      "description": "Learning about liquidations on Aries",
+      "question": "What happens during a liquidation on Aries Markets?",
+      "options": [
+        "The user's account is permanently restricted",
+        "A portion of the collateral is sold to repay the loan and bring the position back to safety",
+        "The entire loan is forgiven",
+        "The user is given a warning and 7 days to add more collateral"
+      ],
+      "correctAnswer": "A portion of the collateral is sold to repay the loan and bring the position back to safety"
+    },
+    {
+      "id": "g7i28k93-1i9j-05j0-f1l7-i80k26h14l08",
+      "type": "quiz",
+      "title": "Risk Levels",
+      "description": "Understanding asset risk on Aries",
+      "question": "How does Aries Markets manage different asset risks?",
+      "options": [
+        "All assets have the same risk parameters",
+        "By requiring KYC for riskier assets",
+        "By assigning different loan-to-value ratios and liquidation thresholds based on asset volatility",
+        "By only listing stablecoins"
+      ],
+      "correctAnswer": "By assigning different loan-to-value ratios and liquidation thresholds based on asset volatility"
+    },
+    {
+      "id": "g7i28k93-1i9j-05j0-f1l7-i80k26h14l09",
+      "type": "quiz",
+      "title": "Protocol Governance",
+      "description": "Learn about decision-making in Aries",
+      "question": "How are important protocol changes decided in Aries Markets?",
+      "options": [
+        "Solely by the founding team",
+        "By a vote of ARX token holders",
+        "By Aptos Foundation",
+        "By major liquidity providers only"
+      ],
+      "correctAnswer": "By a vote of ARX token holders"
+    }
+  ]
+} 

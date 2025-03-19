@@ -1,0 +1,145 @@
+{
+  "id": "r8t39v04-1s9t-95s9-p1v7-s10v26r03t90",
+  "title": "Understanding MoveVM Architecture",
+  "description": "Explore the MoveVM, the virtual machine that powers the Aptos blockchain, designed for secure resource management with a focus on safety, verifiability, and performance for smart contract execution.",
+  "imageUrl": "/images/quests/movevm.jpg",
+  "projectName": "MoveVM",
+  "reward": 9,
+  "difficulty": "Hard",
+  "estimatedTime": "40 min",
+  "tasks": [
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t11v37s25w01",
+      "type": "check-balance",
+      "title": "Prepare for Technical Exploration",
+      "description": "Add at least 0.05 APT to your wallet to begin exploring MoveVM concepts",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t11v37s25w02",
+      "type": "quiz",
+      "title": "MoveVM Basics",
+      "description": "Understand what the MoveVM is",
+      "question": "What is the MoveVM?",
+      "options": [
+        "A hardware device for storing cryptocurrencies",
+        "The virtual machine that executes Move bytecode on the Aptos blockchain",
+        "A cryptocurrency exchange",
+        "A software wallet for Aptos"
+      ],
+      "correctAnswer": "The virtual machine that executes Move bytecode on the Aptos blockchain"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t11v37s25w03",
+      "type": "quiz",
+      "title": "Resource-Oriented Programming",
+      "description": "Learn about MoveVM's key innovation",
+      "question": "What is 'resource-oriented programming' in the context of MoveVM?",
+      "options": [
+        "Managing computer hardware resources",
+        "A programming model where resources (special data types) cannot be copied or implicitly destroyed, only moved between storage locations",
+        "Optimizing code for minimal resource usage",
+        "Programming with minimal developer resources"
+      ],
+      "correctAnswer": "A programming model where resources (special data types) cannot be copied or implicitly destroyed, only moved between storage locations"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t11v37s25w04",
+      "type": "quiz",
+      "title": "Bytecode Verification",
+      "description": "Understanding MoveVM safety",
+      "question": "What is bytecode verification in MoveVM?",
+      "options": [
+        "Manual checking of code by auditors",
+        "A compile-time process only",
+        "Static analysis performed by the VM to ensure code safety before execution",
+        "Verification of transaction signatures"
+      ],
+      "correctAnswer": "Static analysis performed by the VM to ensure code safety before execution"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t11v37s25w05",
+      "type": "quiz",
+      "title": "MoveVM vs. EVM",
+      "description": "Learn how MoveVM differs from Ethereum's VM",
+      "question": "What is a key difference between MoveVM and the Ethereum Virtual Machine (EVM)?",
+      "options": [
+        "MoveVM is slower than EVM",
+        "MoveVM uses resource-oriented programming model while EVM uses an account-based model",
+        "MoveVM can only execute simple transactions",
+        "EVM is more secure by design"
+      ],
+      "correctAnswer": "MoveVM uses resource-oriented programming model while EVM uses an account-based model"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t11v37s25w06",
+      "type": "quiz",
+      "title": "Type Safety",
+      "description": "Understanding MoveVM's type system",
+      "question": "How does MoveVM's type system contribute to security?",
+      "options": [
+        "It doesn't - types are only for documentation",
+        "By enforcing strict rules about what operations can be performed on which data types",
+        "By making all data publicly accessible",
+        "By restricting smart contracts to simple operations only"
+      ],
+      "correctAnswer": "By enforcing strict rules about what operations can be performed on which data types"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t11v37s25w07",
+      "type": "quiz",
+      "title": "Execution Pipeline",
+      "description": "Learn about how transactions are processed",
+      "question": "What is the typical execution pipeline in MoveVM?",
+      "options": [
+        "Random execution of any available code",
+        "Compilation, verification, and execution of Move bytecode",
+        "Direct execution of human-readable code",
+        "Conversion of Move to Solidity before execution"
+      ],
+      "correctAnswer": "Compilation, verification, and execution of Move bytecode"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t11v37s25w08",
+      "type": "quiz",
+      "title": "Formal Verification",
+      "description": "Understanding mathematical proofs of correctness",
+      "question": "What is formal verification in the context of MoveVM?",
+      "options": [
+        "Manual testing of code",
+        "Mathematical techniques to prove properties of programs, which Move is designed to support",
+        "Verification by a central authority",
+        "Checking that code has proper formatting"
+      ],
+      "correctAnswer": "Mathematical techniques to prove properties of programs, which Move is designed to support"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t11v37s25w09",
+      "type": "quiz",
+      "title": "Gas Model",
+      "description": "Learn about transaction pricing",
+      "question": "How does the gas model work in MoveVM?",
+      "options": [
+        "Gas is not used in MoveVM",
+        "Every operation has a cost, and transaction senders pay gas fees based on the computational resources used",
+        "Gas is only charged for failed transactions",
+        "Gas is fixed at a constant price regardless of operation complexity"
+      ],
+      "correctAnswer": "Every operation has a cost, and transaction senders pay gas fees based on the computational resources used"
+    },
+    {
+      "id": "r8t39v04-2t0u-16u1-q2w8-t11v37s25w10",
+      "type": "quiz",
+      "title": "Parallel Execution",
+      "description": "Understanding MoveVM's performance features",
+      "question": "How does Aptos leverage MoveVM for parallel transaction execution?",
+      "options": [
+        "It doesn't - all transactions are executed sequentially",
+        "By identifying non-conflicting transactions that can be executed in parallel based on the resources they access",
+        "By limiting the complexity of allowed transactions",
+        "By using multiple blockchains simultaneously"
+      ],
+      "correctAnswer": "By identifying non-conflicting transactions that can be executed in parallel based on the resources they access"
+    }
+  ]
+} 
