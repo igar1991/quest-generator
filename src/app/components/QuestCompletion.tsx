@@ -24,16 +24,8 @@ const QuestCompletion: React.FC<QuestCompletionProps> = ({
 }) => {
   const [confettiWidth, setConfettiWidth] = useState(0);
   const [confettiHeight, setConfettiHeight] = useState(0);
-  const [copied, setCopied] = useState(false);
-
-  // Store the promo code in state so it doesn't change on re-renders
-  const [promoCode] = useState(() => {
-    return `APT-${questTitle.slice(0, 3).toUpperCase()}-${reward}-${Math.floor(
-      Math.random() * 10000,
-    )
-      .toString()
-      .padStart(4, "0")}`;
-  });
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [isClaimed, setIsClaimed] = useState(false);
 
   useEffect(() => {
     // Set confetti dimensions to window size
@@ -54,13 +46,15 @@ const QuestCompletion: React.FC<QuestCompletionProps> = ({
   }, []);
 
   /**
-   * Handles copying the promo code to clipboard
+   * Handles claiming the reward
    */
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(promoCode).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+  const handleClaimReward = () => {
+    setIsProcessing(true);
+
+    setTimeout(() => {
+      setIsProcessing(false);
+      setIsClaimed(true);
+    }, 2000);
   };
 
   return (
@@ -105,63 +99,102 @@ const QuestCompletion: React.FC<QuestCompletionProps> = ({
       </div>
 
       <div className="max-w-md mx-auto mb-8">
-        <div className="bg-gray-50 dark:bg-dark-200 rounded-lg p-5 text-center">
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-            Your reward promo code
-          </p>
-
-          <div className="mb-4">
-            <div className="relative bg-white dark:bg-dark-300 py-4 px-6 rounded border border-gray-200 dark:border-dark-400 mx-auto">
-              <code className="block font-mono text-2xl text-primary text-center">
-                {promoCode}
-              </code>
-              <button
-                onClick={handleCopyCode}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary/10 hover:bg-primary/20 text-primary p-2 rounded-md transition-colors"
-                aria-label="Copy promo code"
-              >
-                {copied ? (
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
+        <div className="text-center relative">
+          <button
+            onClick={handleClaimReward}
+            disabled={isClaimed || isProcessing}
+            className={`w-full bg-blue-600 hover:bg-blue-700 text-white min-h-[48px] font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary px-6 py-3 text-base ${
+              isClaimed
+                ? "bg-green-600 hover:bg-green-600 cursor-not-allowed"
+                : ""
+            } ${isProcessing ? "cursor-wait" : ""}`}
+          >
+            <div className="flex items-center justify-center">
+              {isProcessing && (
+                <svg
+                  className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
                     stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 6h12a2 2 0 012 2v10a2 2 0 01-2 2h-8a2 2 0 01-2-2v-8z"
-                    />
-                  </svg>
-                )}
-              </button>
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              )}
+              {!isProcessing && !isClaimed && (
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              )}
+              {isClaimed && (
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+              )}
+              {isClaimed ? "Claimed" : "Claim Reward"}
             </div>
-          </div>
+          </button>
 
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            Use this code on our rewards page to claim your APT.
-          </p>
+          {isProcessing && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-dark-200/80 rounded-lg">
+              <div className="flex flex-col items-center">
+                <svg
+                  className="animate-spin h-10 w-10 text-primary mb-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                <p className="text-primary font-medium">Processing...</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
