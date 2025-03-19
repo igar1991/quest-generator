@@ -57,6 +57,13 @@ export default function SuccessModal({
   };
 
   /**
+   * Navigate to the home page
+   */
+  const goToHome = () => {
+    router.push("/");
+  };
+
+  /**
    * Copy quest link to clipboard with animation
    */
   const copyQuestLink = () => {
@@ -82,7 +89,7 @@ export default function SuccessModal({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} preventOutsideClose={true}>
       <div className="text-center mb-6">
         <div
           className={`mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4 transition-all duration-500 ease-out ${getAnimationClass(1)}`}
@@ -191,10 +198,10 @@ export default function SuccessModal({
           View Quest
         </button>
         <button
-          onClick={onClose}
-          className="px-4 py-3 border border-gray-300 rounded-md hover:bg-gray-100 w-full transition-colors duration-200"
+          onClick={goToHome}
+          className="px-4 py-3 bg-gray-600 text-white rounded-md hover:bg-gray-700 font-medium w-full transition-colors duration-200"
         >
-          Create Another
+          Go Home
         </button>
       </div>
     </Modal>

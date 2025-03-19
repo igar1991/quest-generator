@@ -6,6 +6,7 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  preventOutsideClose?: boolean;
 }
 
 /**
@@ -13,9 +14,15 @@ interface ModalProps {
  * @param isOpen - Whether the modal is open
  * @param onClose - Function to call when the modal is closed
  * @param children - Content to display in the modal
+ * @param preventOutsideClose - If true, clicking outside the modal won't close it
  * @returns Modal component
  */
-export default function Modal({ isOpen, onClose, children }: ModalProps) {
+export default function Modal({
+  isOpen,
+  onClose,
+  children,
+  preventOutsideClose = false,
+}: ModalProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
 
@@ -43,7 +50,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
         ${isAnimating ? "bg-opacity-50 backdrop-blur-sm" : "bg-opacity-0"}`}
       onClick={(e) => {
         // Close modal when clicking the backdrop, not when clicking the modal content
-        if (e.target === e.currentTarget) {
+        if (!preventOutsideClose && e.target === e.currentTarget) {
           onClose();
         }
       }}
