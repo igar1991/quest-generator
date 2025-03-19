@@ -74,7 +74,7 @@ const QuestCard: React.FC<QuestCardProps> = ({
 
   return (
     <div
-      className="group bg-white dark:bg-dark-100 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] flex flex-col h-full cursor-pointer relative"
+      className="group bg-white dark:bg-dark-100 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] flex flex-col h-full cursor-pointer relative border border-gray-100"
       onClick={handleCardClick}
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
@@ -89,6 +89,7 @@ const QuestCard: React.FC<QuestCardProps> = ({
         </div>
       )}
 
+      {/* Image section at the top */}
       <div className="relative h-40 w-full bg-gradient-to-r from-primary/20 to-aptos/20">
         <div className="relative h-full w-full">
           <Image
@@ -106,6 +107,7 @@ const QuestCard: React.FC<QuestCardProps> = ({
         </div>
       </div>
 
+      {/* Card content - styled consistently with CardTemplate */}
       <div className="p-5 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2">
           <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
@@ -116,7 +118,7 @@ const QuestCard: React.FC<QuestCardProps> = ({
           </span>
         </div>
 
-        <h3 className="font-bold text-xl mb-2 text-gray-900 dark:text-white line-clamp-2">
+        <h3 className="font-bold text-xl text-gray-900 dark:text-white line-clamp-2 mb-2">
           {title}
         </h3>
 
@@ -125,8 +127,22 @@ const QuestCard: React.FC<QuestCardProps> = ({
         </p>
 
         <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-100 dark:border-dark-200">
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            ⏱️ {estimatedTime}
+          <span className="text-xs text-gray-500 dark:text-gray-400 flex items-center">
+            <svg
+              className="w-4 h-4 mr-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            {estimatedTime}
           </span>
 
           <button

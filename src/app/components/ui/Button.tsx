@@ -111,4 +111,9 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
+// Export common button styles to use across the app
+export const buttonStyles = {
+  questAction: "w-full bg-blue-600 hover:bg-blue-700 text-white min-h-[48px]",
+};
+
 export default Button;

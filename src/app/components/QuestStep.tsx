@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import ConnectButton from "./ConnectButton";
 import { useWallet } from "../context/WalletContext";
-import Button from "./ui/Button";
+import Button, { buttonStyles } from "./ui/Button";
+import CardTemplate from "./ui/CardTemplate";
 import { QuestStepUI } from "../types/quest";
 
 interface QuestStepProps {
@@ -94,21 +95,24 @@ const QuestStep: React.FC<QuestStepProps> = ({
    * Handles validation and completion of check-balance task
    */
   const handleCheckBalanceComplete = () => {
-    // Always show the animation and complete the step
-    console.log("Checking balance increase (demo mode - auto success)");
-
-    // Show animation
+    // Show loading animation first
+    console.log("Checking balance increase (demo mode)...");
     setIsSubmitting(true);
 
-    // Immediately show success animation
-    setShowSuccessAnimation(true);
-
-    // Wait for animation to be visible before proceeding
+    // Simulate API verification for 2 seconds
     setTimeout(() => {
-      // Complete the step which will trigger navigation to next step
-      onComplete(step.id, true);
-      setIsSubmitting(false);
-    }, 1500);
+      console.log("Balance verification successful");
+
+      // Then show success animation
+      setShowSuccessAnimation(true);
+
+      // Wait for animation to be visible before proceeding
+      setTimeout(() => {
+        // Complete the step which will trigger navigation to next step
+        onComplete(step.id, true);
+        setIsSubmitting(false);
+      }, 1500);
+    }, 2000); // Show loading for 2 seconds
   };
 
   /**
@@ -190,7 +194,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
           <div className="mb-6">
             <ConnectButton
               onSuccess={() => {}} // Handled by useEffect
-              className="w-full bg-blue-600 hover:bg-blue-700"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white min-h-[48px]"
             />
 
             {isConnected && (
@@ -303,7 +307,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
                     size="lg"
                     fullWidth
                     disabled={isSubmitting}
-                    className="bg-blue-600 hover:bg-blue-700 text-white min-h-[48px]"
+                    className={buttonStyles.questAction}
                     icon={
                       <svg
                         className="w-5 h-5"
@@ -345,10 +349,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
                       Please connect your wallet first to check balance.
                     </span>
                   </div>
-                  <ConnectButton
-                    className="w-full bg-blue-600 hover:bg-blue-700"
-                    onSuccess={() => {}}
-                  />
+                  <ConnectButton onSuccess={() => {}} />
                 </div>
               )}
             </div>
@@ -461,7 +462,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
                       variant="primary"
                       size="lg"
                       fullWidth
-                      className="bg-blue-600 hover:bg-blue-700 text-white min-h-[48px]"
+                      className={buttonStyles.questAction}
                       disabled={
                         selectedOption === null ||
                         selectedOption === undefined ||
@@ -526,98 +527,38 @@ const QuestStep: React.FC<QuestStepProps> = ({
     }
   };
 
+  /**
+   * Gets the appropriate icon for the current step type
+   */
+  const getStepIcon = () => {
+    switch (step.type) {
+      case "connect-wallet":
+        return <span className="text-2xl">👛</span>;
+      case "check-balance":
+        return <span className="text-2xl">💰</span>;
+      case "quiz":
+        return <span className="text-2xl">🎓</span>;
+      default:
+        return <span className="text-2xl">📝</span>;
+    }
+  };
+
   return (
-    <div
-      className={`bg-white dark:bg-dark-100 rounded-xl shadow-lg hover:shadow-xl p-6 w-full max-w-lg mx-auto relative transition-all duration-300 ${
-        showSuccessAnimation
-          ? "ring-4 ring-green-400"
-          : isSubmitting
-            ? "ring-2 ring-gray-400"
-            : "border border-gray-100"
-      }`}
+    <CardTemplate
+      title={step.title}
+      description={step.description}
+      icon={getStepIcon()}
+      indicator={
+        totalSteps > 0
+          ? `Task ${currentStepIndex + 1} of ${totalSteps}`
+          : undefined
+      }
+      showSuccess={showSuccessAnimation}
+      isLoading={isSubmitting && !showSuccessAnimation}
     >
-      {/* Success animation overlay */}
-      {showSuccessAnimation && (
-        <div className="absolute inset-0 bg-green-400/10 rounded-xl flex items-center justify-center z-10">
-          <div className="bg-white dark:bg-dark-200 rounded-full p-4 shadow-lg">
-            <svg
-              className="w-12 h-12 text-green-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              ></path>
-            </svg>
-          </div>
-        </div>
-      )}
-
-      {/* Processing overlay */}
-      {isSubmitting && !showSuccessAnimation && (
-        <div className="absolute inset-0 bg-gray-400/10 rounded-xl flex items-center justify-center z-10">
-          <div className="bg-white dark:bg-dark-200 rounded-full p-4 shadow-lg">
-            <svg
-              className="w-12 h-12 text-gray-500 animate-spin"
-              fill="none"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-          </div>
-        </div>
-      )}
-
-      {/* Progress indicator - integrated into the card header */}
-      <div className="flex flex-wrap items-center justify-between mb-5 gap-2">
-        <div className="flex items-center">
-          <div className="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mr-4 shadow-sm">
-            {step.type === "connect-wallet" && (
-              <span className="text-2xl">👛</span>
-            )}
-            {step.type === "check-balance" && (
-              <span className="text-2xl">💰</span>
-            )}
-            {step.type === "quiz" && <span className="text-2xl">🎓</span>}
-            {!step.type && <span className="text-2xl">📝</span>}
-          </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-            {step.title}
-          </h2>
-        </div>
-
-        {totalSteps > 0 && (
-          <div className="px-3 py-1.5 bg-gray-100 dark:bg-dark-200 rounded-full text-sm text-gray-600 dark:text-gray-400 font-medium shadow-sm">
-            Task {currentStepIndex + 1} of {totalSteps}
-          </div>
-        )}
-      </div>
-
-      <p className="text-gray-600 dark:text-gray-300 mb-6 text-base sm:text-lg">
-        {step.description}
-      </p>
-
       {/* Task-specific UI */}
       {renderTaskUI()}
-    </div>
+    </CardTemplate>
   );
 };
 
