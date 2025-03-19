@@ -14,7 +14,7 @@ interface Quest {
   totalUsers: string;
   category: string;
   difficulty: string;
-  estimatedTime?: string;
+  estimatedTime: string;
   tasks: {
     id: string;
     type: string;
@@ -43,9 +43,18 @@ const QuestGrid: React.FC = () => {
         }
 
         const data = await response.json();
-        setQuests(
-          data.quests !== undefined && data.quests !== null ? data.quests : [],
-        );
+
+        // Map quest data and ensure estimatedTime is set
+        const questsWithTimes =
+          data.quests?.map((quest) => {
+            // Set default estimatedTime if not provided
+            return {
+              ...quest,
+              estimatedTime: quest.estimatedTime || "15 min",
+            };
+          }) || [];
+
+        setQuests(questsWithTimes);
       } catch (error) {
         console.error("Failed to fetch quests:", error);
         setError(

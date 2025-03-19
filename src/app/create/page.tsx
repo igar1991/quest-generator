@@ -69,7 +69,6 @@ interface QuestData {
   category: string;
   difficulty: string;
   tasks: Task[];
-  estimatedTime?: string;
 }
 
 /**
@@ -716,10 +715,10 @@ export default function CreateQuestPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
+            <div className="col-span-6 sm:col-span-3">
               <label
                 htmlFor="category"
-                className="block text-sm font-medium mb-1"
+                className="block text-sm font-medium text-gray-700"
               >
                 Category
               </label>
@@ -727,9 +726,10 @@ export default function CreateQuestPage() {
                 id="category"
                 name="category"
                 value={questData.category}
-                onChange={handleQuestDataChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                required
+                onChange={(e) =>
+                  setQuestData({ ...questData, category: e.target.value })
+                }
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               >
                 <option value="learning">Learning</option>
                 <option value="defi">DeFi</option>
@@ -740,10 +740,10 @@ export default function CreateQuestPage() {
               </select>
             </div>
 
-            <div>
+            <div className="col-span-6 sm:col-span-3">
               <label
                 htmlFor="difficulty"
-                className="block text-sm font-medium mb-1"
+                className="block text-sm font-medium text-gray-700"
               >
                 Difficulty
               </label>
@@ -751,9 +751,10 @@ export default function CreateQuestPage() {
                 id="difficulty"
                 name="difficulty"
                 value={questData.difficulty}
-                onChange={handleQuestDataChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                required
+                onChange={(e) =>
+                  setQuestData({ ...questData, difficulty: e.target.value })
+                }
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               >
                 <option value="beginner">Beginner</option>
                 <option value="intermediate">Intermediate</option>
@@ -1059,7 +1060,7 @@ export default function CreateQuestPage() {
                     difficulty={convertDifficultyToDisplay(
                       questData.difficulty,
                     )}
-                    estimatedTime={questData.estimatedTime || "15 min"}
+                    estimatedTime="15 min"
                     tasks={questData.tasks || []}
                   />
                 </div>
