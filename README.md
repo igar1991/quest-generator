@@ -1,5 +1,7 @@
 # Quest Generator
 
+![Quest Generator Banner](/public/banner.jpg)
+
 A platform for creating educational quests that reward users for learning about and using Aptos ecosystem with AI-powered quiz generation.
 
 ## Problem & Solution
