@@ -1,8 +1,4 @@
-import {
-  getRedisClient,
-  connectToRedis,
-  closeRedisConnection,
-} from "./redis";
+import { getRedisClient, connectToRedis, closeRedisConnection } from "./redis";
 import readline from "readline";
 import fs from "fs";
 import path from "path";
@@ -13,17 +9,18 @@ import path from "path";
  */
 function readQuestFiles() {
   const questsDir = path.join(__dirname, "../../scripts/quests");
-  const questFiles = fs.readdirSync(questsDir)
-    .filter(file => file.endsWith('.json'))
+  const questFiles = fs
+    .readdirSync(questsDir)
+    .filter((file) => file.endsWith(".json"))
     .sort((a, b) => {
       // Sort numerically by filename (1.json, 2.json, etc.)
-      const numA = parseInt(a.split('.')[0]!, 10);
-      const numB = parseInt(b.split('.')[0]!, 10);
+      const numA = parseInt(a.split(".")[0]!, 10);
+      const numB = parseInt(b.split(".")[0]!, 10);
       return numA - numB;
     });
 
   const questsData: any[] = [];
-  
+
   for (const file of questFiles) {
     const filePath = path.join(questsDir, file);
     try {
@@ -35,12 +32,12 @@ function readQuestFiles() {
         console.error(`Error parsing JSON in file ${file}:`);
         console.error((parseError as Error).message);
         // Log a snippet of the file content to help identify the issue
-        const contentPreview = fileContent.slice(0, 100) + '...';
+        const contentPreview = fileContent.slice(0, 100) + "...";
         console.error(`File content preview: ${contentPreview}`);
         throw new Error(`Invalid JSON in file: ${file}`);
       }
     } catch (readError) {
-      if ((readError as Error).message.startsWith('Invalid JSON')) {
+      if ((readError as Error).message.startsWith("Invalid JSON")) {
         throw readError; // Rethrow our custom error
       }
       console.error(`Error reading file ${file}:`);
@@ -48,7 +45,7 @@ function readQuestFiles() {
       throw new Error(`Error reading file: ${file}`);
     }
   }
-  
+
   return questsData;
 }
 
@@ -197,7 +194,4 @@ async function clearQuestsFromRedis() {
   }
 }
 
-export {
-  importQuestsToRedis,
-  clearQuestsFromRedis,
-};
+export { importQuestsToRedis, clearQuestsFromRedis };

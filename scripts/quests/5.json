@@ -49,12 +49,7 @@
       "title": "Swap Mechanics",
       "description": "Learn how token swaps work on PancakeSwap Aptos",
       "question": "What is the maximum slippage setting recommended for most trades on PancakeSwap?",
-      "options": [
-        "0.1%",
-        "0.5%",
-        "1%",
-        "5%"
-      ],
+      "options": ["0.1%", "0.5%", "1%", "5%"],
       "correctAnswer": "0.5%"
     },
     {
@@ -91,12 +86,7 @@
       "title": "Syrup Pools",
       "description": "Understand Syrup Pools on PancakeSwap Aptos",
       "question": "What token do you stake in Syrup Pools on PancakeSwap?",
-      "options": [
-        "CAKE",
-        "APT",
-        "LP tokens",
-        "Various project tokens"
-      ],
+      "options": ["CAKE", "APT", "LP tokens", "Various project tokens"],
       "correctAnswer": "CAKE"
     },
     {
@@ -119,13 +109,8 @@
       "title": "PancakeSwap Architecture on Aptos",
       "description": "Understanding the technical implementation",
       "question": "What programming language is PancakeSwap built with on Aptos?",
-      "options": [
-        "Solidity",
-        "Move",
-        "Rust",
-        "JavaScript"
-      ],
+      "options": ["Solidity", "Move", "Rust", "JavaScript"],
       "correctAnswer": "Move"
     }
   ]
-} 
+}

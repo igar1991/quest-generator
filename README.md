@@ -4,6 +4,8 @@
 
 A platform for creating educational quests that reward users for learning about and using Aptos ecosystem with AI-powered quiz generation.
 
+Demo: https://web3-quest-generator.vercel.app
+
 ## Problem & Solution
 
 Many users find blockchain projects difficult to understand and use. Quest Generator lets projects create interactive learning experiences that:
@@ -26,6 +28,7 @@ Our analysis shows a potential market of 500+ projects seeking better user onboa
 ## How It Works
 
 ### For Projects
+
 - Create step-by-step quests to demonstrate your platform
 - Set token rewards for completion
 - Track user engagement and completion metrics
@@ -33,6 +36,7 @@ Our analysis shows a potential market of 500+ projects seeking better user onboa
 - Generate comprehensive quizzes on any topic instantly with our AI integration
 
 ### For Users
+
 - Complete tasks to learn practical blockchain skills
 - Earn tokens for successful completion
 - Build knowledge through hands-on experience
@@ -60,18 +64,20 @@ Our analysis shows a potential market of 500+ projects seeking better user onboa
 ## Development Roadmap
 
 1. **Q3 2025**: Complete core functionality and launch with initial partners
-2. **Q4 2025**: Enhance verification system and create quest templates
+2. **Q4 2025**: Enhance verification system, create quest templates, and add mobile wallets support
 3. **Q1 2026**: Expand AI capabilities with personalized learning paths and adaptive difficulty
 
 ## Post-Hackathon Implementation
 
 Quest Generator is designed for immediate production deployment with:
+
 - Scalable infrastructure ready for 50,000+ concurrent users
 - Go-to-market strategy targeting developer communities
 
 ## Development Team
 
 Quest Generator is being developed by a seasoned web3 developer with extensive experience in:
+
 - Building and scaling production dApps used by thousands of users
 - Delivering successful projects on multiple blockchain ecosystems
 - Creating intuitive web3 onboarding experiences

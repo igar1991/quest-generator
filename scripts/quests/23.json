@@ -142,4 +142,4 @@
       "correctAnswer": "By identifying non-conflicting transactions that can be executed in parallel based on the resources they access"
     }
   ]
-} 
+}

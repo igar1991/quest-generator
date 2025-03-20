@@ -84,11 +84,11 @@ async function getRedisClient(): Promise<Redis> {
   if (!redisClient || redisClient.status !== "ready") {
     await connectToRedis();
   }
-  
+
   if (!redisClient) {
     throw new Error("Failed to establish Redis connection");
   }
-  
+
   return redisClient;
 }
 
@@ -105,8 +105,4 @@ async function closeRedisConnection(): Promise<void> {
   }
 }
 
-export {
-  connectToRedis,
-  getRedisClient,
-  closeRedisConnection,
-};
+export { connectToRedis, getRedisClient, closeRedisConnection };

@@ -2,7 +2,7 @@
 const Redis = require("ioredis");
 const fs = require("fs");
 const path = require("path");
-require('dotenv').config();
+require("dotenv").config();
 
 // Create Redis client
 const redisClient = new Redis(
@@ -15,17 +15,18 @@ const redisClient = new Redis(
  */
 function readQuestFiles() {
   const questsDir = path.join(__dirname, "quests");
-  const questFiles = fs.readdirSync(questsDir)
-    .filter(file => file.endsWith('.json'))
+  const questFiles = fs
+    .readdirSync(questsDir)
+    .filter((file) => file.endsWith(".json"))
     .sort((a, b) => {
       // Sort numerically by filename (1.json, 2.json, etc.)
-      const numA = parseInt(a.split('.')[0], 10);
-      const numB = parseInt(b.split('.')[0], 10);
+      const numA = parseInt(a.split(".")[0], 10);
+      const numB = parseInt(b.split(".")[0], 10);
       return numA - numB;
     });
 
   const questsData = [];
-  
+
   for (const file of questFiles) {
     const filePath = path.join(questsDir, file);
     try {
@@ -37,12 +38,12 @@ function readQuestFiles() {
         console.error(`Error parsing JSON in file ${file}:`);
         console.error(parseError.message);
         // Log a snippet of the file content to help identify the issue
-        const contentPreview = fileContent.slice(0, 100) + '...';
+        const contentPreview = fileContent.slice(0, 100) + "...";
         console.error(`File content preview: ${contentPreview}`);
         throw new Error(`Invalid JSON in file: ${file}`);
       }
     } catch (readError) {
-      if (readError.message.startsWith('Invalid JSON')) {
+      if (readError.message.startsWith("Invalid JSON")) {
         throw readError; // Rethrow our custom error
       }
       console.error(`Error reading file ${file}:`);
@@ -50,7 +51,7 @@ function readQuestFiles() {
       throw new Error(`Error reading file: ${file}`);
     }
   }
-  
+
   return questsData;
 }
 
@@ -60,7 +61,7 @@ function readQuestFiles() {
 async function importQuestsToRedis() {
   try {
     console.log("Starting import of quest data to Redis...");
-    
+
     // Read all quest files
     const questsData = readQuestFiles();
 
