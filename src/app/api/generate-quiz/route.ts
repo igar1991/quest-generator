@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { v4 as uuidv4 } from "uuid";
-import { AgentRuntime, LocalSigner } from 'move-agent-kit'
+import { AgentRuntime, LocalSigner } from "move-agent-kit";
 import {
   Account,
   Aptos,
   AptosConfig,
   Ed25519PrivateKey,
-  Network
-} from '@aptos-labs/ts-sdk'
+  Network,
+} from "@aptos-labs/ts-sdk";
 
 /**
  * Interface for the response from the OpenAI API
@@ -64,7 +64,10 @@ export async function POST(request: NextRequest) {
     });
 
     const aptos = new Aptos(aptosConfig);
-    const account = Account.fromPrivateKey({ privateKey: Ed25519PrivateKey.generate(), legacy: false });
+    const account = Account.fromPrivateKey({
+      privateKey: Ed25519PrivateKey.generate(),
+      legacy: false,
+    });
     const signer = new LocalSigner(account, Network.MAINNET);
     /**
      * MoveAgent will be the primary source of transactions and AI requests after the missing functions are implemented.
@@ -72,7 +75,7 @@ export async function POST(request: NextRequest) {
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const agent = new AgentRuntime(signer, aptos, {
-      OPENAI_API_KEY: apiKey
+      OPENAI_API_KEY: apiKey,
     });
 
     // Initialize OpenAI client
