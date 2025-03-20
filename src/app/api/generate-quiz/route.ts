@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { v4 as uuidv4 } from "uuid";
+import { AgentRuntime, LocalSigner } from 'move-agent-kit'
+import {
+  Account,
+  Aptos,
+  AptosConfig,
+  Ed25519PrivateKey,
+  Network
+} from '@aptos-labs/ts-sdk'
 
 /**
  * Interface for the response from the OpenAI API
@@ -50,6 +58,22 @@ export async function POST(request: NextRequest) {
         { status: 500 },
       );
     }
+
+    const aptosConfig = new AptosConfig({
+      network: Network.MAINNET,
+    });
+
+    const aptos = new Aptos(aptosConfig);
+    const account = Account.fromPrivateKey({ privateKey: Ed25519PrivateKey.generate(), legacy: false });
+    const signer = new LocalSigner(account, Network.MAINNET);
+    /**
+     * MoveAgent will be the primary source of transactions and AI requests after the missing functions are implemented.
+     * For now, an instance is created to specify the instance's location.
+     */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const agent = new AgentRuntime(signer, aptos, {
+      OPENAI_API_KEY: apiKey
+    });
 
     // Initialize OpenAI client
     const openai = new OpenAI({
