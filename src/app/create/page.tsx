@@ -179,9 +179,9 @@ export default function CreateQuestPage() {
 
     // Set default title and description for check-balance-increment tasks
     if (currentTaskType === "check-balance-increment") {
-      newTask.title = "Add APT to your wallet";
+      newTask.title = "Add SUI to your wallet";
       newTask.description =
-        "Transfer APT to your wallet to complete this task. The system will verify that your balance has increased by the required amount.";
+        "Transfer SUI to your wallet to complete this task. Make sure to use the correct wallet address.";
     }
 
     setQuestData((prev) => ({
@@ -444,8 +444,8 @@ export default function CreateQuestPage() {
     setCreatedQuestId("");
   };
 
-  // Calculate total APT
-  const calculateTotalAPT = () => {
+  // Calculate total SUI
+  const calculateTotalSUI = () => {
     if (!questData.reward || !questData.totalUsers) return 0;
 
     const rewardValue = parseFloat(questData.reward);
@@ -702,7 +702,7 @@ export default function CreateQuestPage() {
                 htmlFor="reward"
                 className="block text-sm font-medium mb-1"
               >
-                Reward (in APT)
+                Reward (in SUI)
               </label>
               <input
                 type="number"
@@ -742,10 +742,10 @@ export default function CreateQuestPage() {
             </div>
           </div>
 
-          {/* Total APT calculation - always visible */}
+          {/* Total SUI calculation - always visible */}
           <div className="mt-4 p-3 bg-purple-50 rounded-md border border-purple-200">
             <p className="text-purple-800 font-medium">
-              Total APT to fund: {calculateTotalAPT()} APT
+              Total SUI to fund: {calculateTotalSUI()} SUI
             </p>
           </div>
 
@@ -1013,7 +1013,7 @@ export default function CreateQuestPage() {
                         type="hidden"
                         id={`task-${task.id}-title`}
                         name="title"
-                        value={task.title || "Add APT to your wallet"}
+                        value={task.title || "Add SUI to your wallet"}
                         onChange={(e) => handleTaskChange(task.id, e)}
                       />
                       <input
@@ -1022,7 +1022,7 @@ export default function CreateQuestPage() {
                         name="description"
                         value={
                           task.description ||
-                          "Transfer APT to your wallet to complete this task. The system will verify that your balance has increased by the required amount."
+                          "Transfer SUI to your wallet to complete this task. Make sure to use the correct wallet address."
                         }
                         onChange={(e) => handleTaskChange(task.id, e)}
                       />
@@ -1044,7 +1044,7 @@ export default function CreateQuestPage() {
                           htmlFor={`task-${task.id}-required-amount`}
                           className="block text-sm font-medium mb-1"
                         >
-                          Required APT Amount
+                          Required SUI Amount
                         </label>
                         <input
                           type="number"
@@ -1059,8 +1059,8 @@ export default function CreateQuestPage() {
                           step="0.000001"
                         />
                         <p className="text-sm text-gray-500 mt-1">
-                          The amount of APT that user must send to their wallet
-                          to complete this task
+                          The amount of SUI that user must send to complete this
+                          task
                         </p>
                       </div>
                     </>

@@ -31,7 +31,7 @@ describe("validateQuest", () => {
         id: "3",
         type: "check-balance",
         title: "Add Funds to Your Wallet",
-        description: "Add some APT to your wallet to continue",
+        description: "Add some SUI to your wallet to continue",
         requiredAmount: "0.01",
       },
     ],

@@ -376,7 +376,7 @@ export default function QuestDetail() {
                 : "Community Quest"}
             </span>
             <span className="bg-gray-100 dark:bg-dark-200 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-medium">
-              Reward: {quest.reward} APT
+              Reward: {quest.reward} SUI
             </span>
             {(() => {
               const difficulty = quest.difficulty || "Beginner";

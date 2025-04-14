@@ -101,7 +101,7 @@ export function validateQuest(questJson: string | object): ValidationResult {
   if (!quest.reward) {
     return {
       isValid: false,
-      error: "Reward (in APT) is required",
+      error: "Reward (in SUI) is required",
       field: "reward",
     };
   }
@@ -142,7 +142,7 @@ export function validateQuest(questJson: string | object): ValidationResult {
   if (isNaN(Number(quest.reward))) {
     return {
       isValid: false,
-      error: "Reward (in APT) must be a number",
+      error: "Reward (in SUI) must be a number",
       field: "reward",
     };
   }
@@ -152,7 +152,7 @@ export function validateQuest(questJson: string | object): ValidationResult {
   if (rewardNum < REWARD_MIN || rewardNum > REWARD_MAX) {
     return {
       isValid: false,
-      error: `Reward (in APT) must be between ${REWARD_MIN} and ${REWARD_MAX}`,
+      error: `Reward (in SUI) must be between ${REWARD_MIN} and ${REWARD_MAX}`,
       field: "reward",
     };
   }

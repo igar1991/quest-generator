@@ -65,7 +65,7 @@ describe("CreateQuestPage", () => {
     fireEvent.change(screen.getByLabelText("Description") as HTMLElement, {
       target: { value: "A test quest description" },
     });
-    fireEvent.change(screen.getByLabelText("Reward (in APT)") as HTMLElement, {
+    fireEvent.change(screen.getByLabelText("Reward (in SUI)") as HTMLElement, {
       target: { value: "100" },
     });
     fireEvent.change(screen.getByLabelText("Total users") as HTMLElement, {
@@ -77,7 +77,7 @@ describe("CreateQuestPage", () => {
     expect(screen.getByLabelText("Description")).toHaveValue(
       "A test quest description",
     );
-    expect(screen.getByLabelText("Reward (in APT)")).toHaveValue(100);
+    expect(screen.getByLabelText("Reward (in SUI)")).toHaveValue(100);
     expect(screen.getByLabelText("Total users")).toHaveValue(10);
   });
 
@@ -221,7 +221,7 @@ describe("CreateQuestPage", () => {
           "This is a test quest description that is long enough to be valid.",
       },
     });
-    fireEvent.change(screen.getByLabelText("Reward (in APT)") as HTMLElement, {
+    fireEvent.change(screen.getByLabelText("Reward (in SUI)") as HTMLElement, {
       target: { value: "100" },
     });
     fireEvent.change(screen.getByLabelText("Total users") as HTMLElement, {
@@ -378,21 +378,21 @@ describe("CreateQuestPage", () => {
 
     // Verify the title and description are displayed
     expect(
-      within(taskSection).getByText(/Add APT to your wallet/),
+      within(taskSection).getByText(/Add SUI to your wallet/),
     ).toBeInTheDocument();
     expect(
       within(taskSection).getByText(
-        /Transfer APT to your wallet to complete this task/,
+        /Transfer SUI to your wallet to complete this task/,
       ),
     ).toBeInTheDocument();
 
-    // Verify the Required APT Amount field is shown
+    // Verify the Required SUI Amount field is shown
     const amountInput = within(taskSection).getByLabelText(
-      "Required APT Amount",
+      "Required SUI Amount",
     ) as HTMLInputElement;
     expect(amountInput).toBeInTheDocument();
 
-    // Fill out the Required APT Amount
+    // Fill out the Required SUI Amount
     fireEvent.change(amountInput, { target: { value: "0.5" } });
     expect(amountInput.value).toBe("0.5");
   });

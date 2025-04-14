@@ -207,7 +207,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
                       {address.substring(address.length - 8)}
                     </span>
                     {balance !== undefined && (
-                      <div className="mt-1">Balance: {balance} APT</div>
+                      <div className="mt-1">Balance: {balance} SUI</div>
                     )}
                   </>
                 ) : (
@@ -245,7 +245,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
                           <p className="text-sm font-medium text-blue-700">
                             Initial balance:{" "}
                             <span className="font-mono">
-                              {initialBalance} APT
+                              {initialBalance} SUI
                             </span>
                           </p>
                         </div>
@@ -270,7 +270,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
                           Current balance:{" "}
                           <span className="font-mono">
                             {balance !== undefined
-                              ? `${balance} APT`
+                              ? `${balance} SUI`
                               : "Unknown"}
                           </span>
                         </p>
@@ -294,7 +294,7 @@ const QuestStep: React.FC<QuestStepProps> = ({
                         <p className="text-sm font-medium text-purple-700">
                           Required increase:{" "}
                           <span className="font-mono font-bold">
-                            {step.requiredAmount} APT
+                            {step.requiredAmount} SUI
                           </span>
                         </p>
                       </div>

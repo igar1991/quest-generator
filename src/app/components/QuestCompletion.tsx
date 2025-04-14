@@ -94,7 +94,7 @@ const QuestCompletion: React.FC<QuestCompletionProps> = ({
         </h2>
         <p className="text-gray-600 dark:text-gray-300 mb-8">
           You have successfully completed all steps in &quot;{questTitle}&quot;
-          and earned {reward} APT.
+          and earned {reward} SUI.
         </p>
       </div>
 
