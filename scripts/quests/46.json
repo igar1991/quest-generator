@@ -1,0 +1,116 @@
+{
+  "id": "g3h71h8f-67i2-84j9-g0h8-l5k793m10j0f",
+  "title": "Mastering Suins (Sui Name Service)",
+  "description": "Learn about Suins, the domain name service for the Sui blockchain that allows you to register and manage .sui domains to replace long wallet addresses with human-readable names.",
+  "imageUrl": "/images/quests/suins.jpg",
+  "projectName": "Suins",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "g3h71h8f-79j3-95k0-h1i9-m6l804n21k01",
+      "type": "check-balance",
+      "title": "Prepare for Domain Registration",
+      "description": "Add at least 0.05 SUI to your wallet to prepare for domain service usage",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "g3h71h8f-79j3-95k0-h1i9-m6l804n21k02",
+      "type": "quiz",
+      "title": "Suins Basics",
+      "description": "Learn the fundamentals of the Sui Name Service",
+      "question": "What is the primary purpose of Suins?",
+      "options": [
+        "Create NFT collections",
+        "Secure wallet private keys",
+        "Replace wallet addresses with human-readable names",
+        "Track transaction history"
+      ],
+      "correctAnswer": "Replace wallet addresses with human-readable names"
+    },
+    {
+      "id": "g3h71h8f-79j3-95k0-h1i9-m6l804n21k03",
+      "type": "quiz",
+      "title": "Domain Extensions",
+      "description": "Understanding domain extensions on Suins",
+      "question": "What is the standard domain extension used by Suins?",
+      "options": [".suio", ".sui", ".mysui", ".move"],
+      "correctAnswer": ".sui"
+    },
+    {
+      "id": "g3h71h8f-79j3-95k0-h1i9-m6l804n21k04",
+      "type": "quiz",
+      "title": "Domain Registration",
+      "description": "Learn about the domain registration process",
+      "question": "What is the minimum registration period for a Suins domain?",
+      "options": ["1 month", "3 months", "1 year", "2 years"],
+      "correctAnswer": "1 year"
+    },
+    {
+      "id": "g3h71h8f-79j3-95k0-h1i9-m6l804n21k05",
+      "type": "quiz",
+      "title": "Domain Functionality",
+      "description": "Understanding what you can do with a Suins domain",
+      "question": "Which of the following is NOT a feature of Suins domains?",
+      "options": [
+        "Use as your username across Sui dApps",
+        "Receive tokens to your domain name instead of address",
+        "Automatic staking rewards",
+        "Link to your social media profiles"
+      ],
+      "correctAnswer": "Automatic staking rewards"
+    },
+    {
+      "id": "g3h71h8f-79j3-95k0-h1i9-m6l804n21k06",
+      "type": "quiz",
+      "title": "Subdomain Support",
+      "description": "Learn about subdomains in the Suins ecosystem",
+      "question": "What is a benefit of creating subdomains?",
+      "options": [
+        "They're always free",
+        "They provide higher transaction speeds",
+        "They allow domain owners to create specialized addresses under their domain",
+        "They automatically connect to Ethereum"
+      ],
+      "correctAnswer": "They allow domain owners to create specialized addresses under their domain"
+    },
+    {
+      "id": "g3h71h8f-79j3-95k0-h1i9-m6l804n21k07",
+      "type": "quiz",
+      "title": "Technical Implementation",
+      "description": "Understanding the technical details of Suins",
+      "question": "How are Suins domains stored on the Sui blockchain?",
+      "options": [
+        "As Move resources with owner rights",
+        "As NFTs (non-fungible tokens)",
+        "As regular database entries",
+        "As fungible tokens"
+      ],
+      "correctAnswer": "As NFTs (non-fungible tokens)"
+    },
+    {
+      "id": "g3h71h8f-79j3-95k0-h1i9-m6l804n21k08",
+      "type": "quiz",
+      "title": "Reverse Resolution",
+      "description": "Learn about reverse resolution in domain services",
+      "question": "What does 'reverse resolution' refer to in Suins?",
+      "options": [
+        "Transferring a domain back to the marketplace",
+        "Converting a domain name back to a wallet address",
+        "Displaying your domain when someone looks up your wallet address",
+        "Canceling a domain registration"
+      ],
+      "correctAnswer": "Displaying your domain when someone looks up your wallet address"
+    },
+    {
+      "id": "g3h71h8f-79j3-95k0-h1i9-m6l804n21k09",
+      "type": "quiz",
+      "title": "Domain Integration",
+      "description": "Understanding how Suins integrates with other services",
+      "question": "Which of these wallets has native support for Suins?",
+      "options": ["MetaMask", "Sui Wallet", "Phantom", "Trust Wallet"],
+      "correctAnswer": "Sui Wallet"
+    }
+  ]
+} 

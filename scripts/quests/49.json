@@ -1,0 +1,131 @@
+{
+  "id": "j6k04k1i-90l5-17m2-j3k1-q1p359r76o3i",
+  "title": "Exploring Ethos Wallet",
+  "description": "Get familiar with Ethos Wallet, a popular non-custodial wallet for the Sui blockchain designed with a focus on user experience, security features, and seamless dApp interactions.",
+  "imageUrl": "/images/quests/ethos-wallet.jpg",
+  "projectName": "Ethos Wallet",
+  "reward": 5,
+  "difficulty": "Easy",
+  "estimatedTime": "25 min",
+  "tasks": [
+    {
+      "id": "j6k04k1i-02m6-28n3-k4l2-r2q470s87p01",
+      "type": "check-balance",
+      "title": "Fund Your Ethos Wallet",
+      "description": "Add at least 0.01 SUI to your wallet to begin the quest",
+      "requiredAmount": "0.01"
+    },
+    {
+      "id": "j6k04k1i-02m6-28n3-k4l2-r2q470s87p02",
+      "type": "quiz",
+      "title": "Ethos Basics",
+      "description": "Test your knowledge about Ethos Wallet fundamentals",
+      "question": "What type of wallet is Ethos?",
+      "options": [
+        "Custodial wallet managed by a company",
+        "Non-custodial wallet where users control their keys",
+        "Hybrid wallet with shared control",
+        "Hardware wallet requiring a physical device"
+      ],
+      "correctAnswer": "Non-custodial wallet where users control their keys"
+    },
+    {
+      "id": "j6k04k1i-02m6-28n3-k4l2-r2q470s87p03",
+      "type": "quiz",
+      "title": "Wallet Security",
+      "description": "Understanding the security features of Ethos Wallet",
+      "question": "How does Ethos Wallet secure user funds?",
+      "options": [
+        "By storing keys on centralized servers",
+        "Through biometric authentication and local key storage",
+        "By requiring multiple signatures for each transaction",
+        "By limiting transactions to certain hours"
+      ],
+      "correctAnswer": "Through biometric authentication and local key storage"
+    },
+    {
+      "id": "j6k04k1i-02m6-28n3-k4l2-r2q470s87p04",
+      "type": "quiz",
+      "title": "Wallet Features",
+      "description": "Explore the features available in Ethos Wallet",
+      "question": "Which of the following is a key feature of Ethos Wallet?",
+      "options": [
+        "Built-in crypto exchange",
+        "NFT marketplace",
+        "Multi-chain support focusing on Sui ecosystem",
+        "Mandatory KYC verification"
+      ],
+      "correctAnswer": "Multi-chain support focusing on Sui ecosystem"
+    },
+    {
+      "id": "j6k04k1i-02m6-28n3-k4l2-r2q470s87p05",
+      "type": "quiz",
+      "title": "Recovery Options",
+      "description": "Learn about wallet recovery methods in Ethos",
+      "question": "What is the primary method to recover an Ethos Wallet?",
+      "options": [
+        "Contacting customer support",
+        "Using your seed phrase",
+        "Social recovery through trusted contacts",
+        "Government ID verification"
+      ],
+      "correctAnswer": "Using your seed phrase"
+    },
+    {
+      "id": "j6k04k1i-02m6-28n3-k4l2-r2q470s87p06",
+      "type": "quiz",
+      "title": "dApp Connections",
+      "description": "Understanding how Ethos connects with decentralized applications",
+      "question": "How does Ethos Wallet interact with dApps on Sui?",
+      "options": [
+        "Through direct code integration only",
+        "Using the Sui Wallet Standard for secure connections",
+        "Only with pre-approved partner applications",
+        "Through a centralized gateway"
+      ],
+      "correctAnswer": "Using the Sui Wallet Standard for secure connections"
+    },
+    {
+      "id": "j6k04k1i-02m6-28n3-k4l2-r2q470s87p07",
+      "type": "quiz",
+      "title": "Transaction Experience",
+      "description": "Learn about the transaction process in Ethos",
+      "question": "What happens when you confirm a transaction in Ethos Wallet?",
+      "options": [
+        "The transaction is reviewed by Ethos team before submission",
+        "The transaction is signed with your private key and submitted to the network",
+        "A third-party validator must approve the transaction",
+        "The transaction is queued and processed in batches"
+      ],
+      "correctAnswer": "The transaction is signed with your private key and submitted to the network"
+    },
+    {
+      "id": "j6k04k1i-02m6-28n3-k4l2-r2q470s87p08",
+      "type": "quiz",
+      "title": "Asset Management",
+      "description": "Understanding how assets are displayed in Ethos",
+      "question": "How does Ethos Wallet handle NFT display?",
+      "options": [
+        "NFTs are not visible in the wallet",
+        "NFTs are shown with metadata and images in a dedicated gallery",
+        "NFTs are only displayed as text addresses",
+        "NFTs require a separate app to view"
+      ],
+      "correctAnswer": "NFTs are shown with metadata and images in a dedicated gallery"
+    },
+    {
+      "id": "j6k04k1i-02m6-28n3-k4l2-r2q470s87p09",
+      "type": "quiz",
+      "title": "Unique Features",
+      "description": "Learn about what makes Ethos Wallet unique",
+      "question": "What is a distinguishing feature of Ethos compared to other Sui wallets?",
+      "options": [
+        "Built-in fiat on-ramps",
+        "Focus on simplified user experience",
+        "Mandatory multisig for all transactions",
+        "Required staking of tokens"
+      ],
+      "correctAnswer": "Focus on simplified user experience"
+    }
+  ]
+} 

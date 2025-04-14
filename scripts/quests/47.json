@@ -1,0 +1,145 @@
+{
+  "id": "h4i82i9g-78j3-95k0-h1i9-n7m915o32l1g",
+  "title": "Understanding Sui Architecture",
+  "description": "Explore the unique architectural features of the Sui blockchain, including its object-centric model, Byzantine Fault Tolerance consensus, and horizontal scalability.",
+  "imageUrl": "/images/quests/sui-architecture.jpg",
+  "projectName": "Sui Blockchain",
+  "reward": 8,
+  "difficulty": "Hard",
+  "estimatedTime": "40 min",
+  "tasks": [
+    {
+      "id": "h4i82i9g-80k4-06l1-i2j0-o8n026p43m01",
+      "type": "check-balance",
+      "title": "Prepare Your Exploration",
+      "description": "Add at least 0.02 SUI to your wallet to prepare for technical exploration",
+      "requiredAmount": "0.02"
+    },
+    {
+      "id": "h4i82i9g-80k4-06l1-i2j0-o8n026p43m02",
+      "type": "quiz",
+      "title": "Sui Design Philosophy",
+      "description": "Learn about the core design principles of Sui",
+      "question": "What was the primary design goal of Sui blockchain?",
+      "options": [
+        "Maximum decentralization",
+        "Horizontal scalability with high throughput",
+        "Compatibility with Ethereum",
+        "Minimal energy consumption"
+      ],
+      "correctAnswer": "Horizontal scalability with high throughput"
+    },
+    {
+      "id": "h4i82i9g-80k4-06l1-i2j0-o8n026p43m03",
+      "type": "quiz",
+      "title": "Consensus Mechanism",
+      "description": "Understanding Sui's consensus approach",
+      "question": "What consensus mechanism does Sui use?",
+      "options": [
+        "Proof of Work (PoW)",
+        "Delegated Proof of Stake (DPoS)",
+        "Narwhal and Bullshark (DAG-based BFT)",
+        "Proof of Authority (PoA)"
+      ],
+      "correctAnswer": "Narwhal and Bullshark (DAG-based BFT)"
+    },
+    {
+      "id": "h4i82i9g-80k4-06l1-i2j0-o8n026p43m04",
+      "type": "quiz",
+      "title": "Object Model",
+      "description": "Learn about Sui's object-centric model",
+      "question": "How does Sui's object model differ from account-based models?",
+      "options": [
+        "Objects can't hold state",
+        "Objects are immutable once created",
+        "Objects are owned directly rather than through global state",
+        "Objects can only represent NFTs"
+      ],
+      "correctAnswer": "Objects are owned directly rather than through global state"
+    },
+    {
+      "id": "h4i82i9g-80k4-06l1-i2j0-o8n026p43m05",
+      "type": "quiz",
+      "title": "Transaction Types",
+      "description": "Understanding different transaction types in Sui",
+      "question": "What is a unique feature of Sui's transaction processing?",
+      "options": [
+        "All transactions must go through full consensus",
+        "Simple transactions that don't affect shared objects can bypass consensus",
+        "All transactions must be approved by the Sui Foundation",
+        "Transactions can only be submitted through validators"
+      ],
+      "correctAnswer": "Simple transactions that don't affect shared objects can bypass consensus"
+    },
+    {
+      "id": "h4i82i9g-80k4-06l1-i2j0-o8n026p43m06",
+      "type": "quiz",
+      "title": "Scalability Approach",
+      "description": "Learn how Sui achieves scalability",
+      "question": "How does Sui achieve horizontal scalability?",
+      "options": [
+        "By increasing block size",
+        "Through sharding and parallel transaction processing",
+        "By limiting the number of validators",
+        "By executing all transactions sequentially but faster"
+      ],
+      "correctAnswer": "Through sharding and parallel transaction processing"
+    },
+    {
+      "id": "h4i82i9g-80k4-06l1-i2j0-o8n026p43m07",
+      "type": "quiz",
+      "title": "Storage Model",
+      "description": "Understanding how data is stored on Sui",
+      "question": "What storage model does Sui use for maintaining state?",
+      "options": [
+        "UTXO model like Bitcoin",
+        "Merkle Patricia Trie like Ethereum",
+        "Object-centric model with ownership",
+        "Centralized database with blockchain validation"
+      ],
+      "correctAnswer": "Object-centric model with ownership"
+    },
+    {
+      "id": "h4i82i9g-80k4-06l1-i2j0-o8n026p43m08",
+      "type": "quiz",
+      "title": "Causal Order vs. Total Order",
+      "description": "Understanding transaction ordering in Sui",
+      "question": "What ordering approach does Sui use for transactions?",
+      "options": [
+        "Strict total ordering of all transactions",
+        "Random ordering for maximum efficiency",
+        "Causal ordering when possible for better performance",
+        "Time-based ordering using a global clock"
+      ],
+      "correctAnswer": "Causal ordering when possible for better performance"
+    },
+    {
+      "id": "h4i82i9g-80k4-06l1-i2j0-o8n026p43m09",
+      "type": "quiz",
+      "title": "Gas Model",
+      "description": "Learn about Sui's gas fee model",
+      "question": "What unique approach does Sui take with gas fees?",
+      "options": [
+        "Gas fees are fixed regardless of network congestion",
+        "Gas fees are distributed to regular users",
+        "Gas fees have a storage rebate mechanism",
+        "Gas fees are paid in a stablecoin"
+      ],
+      "correctAnswer": "Gas fees have a storage rebate mechanism"
+    },
+    {
+      "id": "h4i82i9g-80k4-06l1-i2j0-o8n026p43m10",
+      "type": "quiz",
+      "title": "Validator Requirements",
+      "description": "Understanding Sui's validator infrastructure",
+      "question": "What is required to become a validator on Sui?",
+      "options": [
+        "Own at least 1 million SUI tokens",
+        "Run specialized hardware with TPM module",
+        "Have a business license",
+        "Stake SUI and run validator software"
+      ],
+      "correctAnswer": "Stake SUI and run validator software"
+    }
+  ]
+} 

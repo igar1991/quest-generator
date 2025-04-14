@@ -1,0 +1,126 @@
+{
+  "id": "c9e37d4b-23e8-50f5-c6b4-e8d905e32f6b",
+  "title": "Mastering Sui Move Programming",
+  "description": "Learn about Sui Move, the programming language used to develop smart contracts on the Sui blockchain, with key differences from the original Move language and specific features optimized for Sui's object-centric model.",
+  "imageUrl": "/images/quests/sui-move.jpg",
+  "projectName": "Sui Move",
+  "reward": 8,
+  "difficulty": "Hard",
+  "estimatedTime": "45 min",
+  "tasks": [
+    {
+      "id": "c9e37d4b-35f9-51f5-d7c5-f9e016f43e01",
+      "type": "check-balance",
+      "title": "Prepare Your Development Environment",
+      "description": "Add at least 0.05 SUI to your wallet to prepare for development and testing",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "c9e37d4b-35f9-51f5-d7c5-f9e016f43e02",
+      "type": "quiz",
+      "title": "Sui Move Basics",
+      "description": "Test your knowledge about Sui Move fundamentals",
+      "question": "What is the main programming paradigm of Sui Move?",
+      "options": [
+        "Functional programming",
+        "Object-oriented programming",
+        "Resource-oriented programming",
+        "Procedural programming"
+      ],
+      "correctAnswer": "Resource-oriented programming"
+    },
+    {
+      "id": "c9e37d4b-35f9-51f5-d7c5-f9e016f43e03",
+      "type": "quiz",
+      "title": "Sui Object Model",
+      "description": "Understanding Sui's object-centric approach",
+      "question": "Which of the following best describes a key feature of Sui's object model?",
+      "options": [
+        "Objects are temporary and deleted after each transaction",
+        "Objects are globally shared and can be modified by anyone",
+        "Objects have ownership and can be transferred between addresses",
+        "Objects are static and cannot be modified after creation"
+      ],
+      "correctAnswer": "Objects have ownership and can be transferred between addresses"
+    },
+    {
+      "id": "c9e37d4b-35f9-51f5-d7c5-f9e016f43e04",
+      "type": "quiz",
+      "title": "Abilities in Sui Move",
+      "description": "Learn about the different abilities in Sui Move",
+      "question": "Which ability allows an object to be transferred between addresses in Sui Move?",
+      "options": ["copy", "drop", "store", "key"],
+      "correctAnswer": "store"
+    },
+    {
+      "id": "c9e37d4b-35f9-51f5-d7c5-f9e016f43e05",
+      "type": "quiz",
+      "title": "Dynamic Fields",
+      "description": "Understanding dynamic fields in Sui Move",
+      "question": "What is the primary purpose of dynamic fields in Sui Move?",
+      "options": [
+        "To create temporary variables",
+        "To add properties to objects after creation",
+        "To increase gas efficiency",
+        "To connect to external APIs"
+      ],
+      "correctAnswer": "To add properties to objects after creation"
+    },
+    {
+      "id": "c9e37d4b-35f9-51f5-d7c5-f9e016f43e06",
+      "type": "quiz",
+      "title": "Ownership Models",
+      "description": "Learn about different ownership models in Sui Move",
+      "question": "Which of the following is NOT a valid ownership model in Sui?",
+      "options": [
+        "Owned by an address",
+        "Shared object",
+        "Immutable object",
+        "Temporary object"
+      ],
+      "correctAnswer": "Temporary object"
+    },
+    {
+      "id": "c9e37d4b-35f9-51f5-d7c5-f9e016f43e07",
+      "type": "quiz",
+      "title": "Sui Move vs Core Move",
+      "description": "Understanding the differences between Sui Move and Core Move",
+      "question": "What is a key difference between Sui Move and Core Move?",
+      "options": [
+        "Sui Move doesn't use abilities",
+        "Sui Move uses an object-centric model instead of global storage",
+        "Sui Move is written in Rust while Core Move is in C++",
+        "Sui Move doesn't support modules"
+      ],
+      "correctAnswer": "Sui Move uses an object-centric model instead of global storage"
+    },
+    {
+      "id": "c9e37d4b-35f9-51f5-d7c5-f9e016f43e08",
+      "type": "quiz",
+      "title": "Transaction Execution",
+      "description": "Learn about Sui's parallel transaction execution model",
+      "question": "What enables Sui to execute transactions in parallel?",
+      "options": [
+        "The use of a specialized VM",
+        "Explicit object ownership and references",
+        "The absence of global state",
+        "Sharding of the blockchain"
+      ],
+      "correctAnswer": "Explicit object ownership and references"
+    },
+    {
+      "id": "c9e37d4b-35f9-51f5-d7c5-f9e016f43e09",
+      "type": "quiz",
+      "title": "Development Workflow",
+      "description": "Understanding the Sui Move development workflow",
+      "question": "Which command is used to compile a Sui Move package?",
+      "options": [
+        "sui move build",
+        "sui build",
+        "move compile",
+        "sui compile"
+      ],
+      "correctAnswer": "sui move build"
+    }
+  ]
+} 

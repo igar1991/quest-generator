@@ -1,0 +1,126 @@
+{
+  "id": "e1f59f6d-45g0-62h7-e8d6-h1g349i76g8d",
+  "title": "Sui Staking & Governance",
+  "description": "Learn about Sui's staking system and governance mechanisms, including validator selection, delegation, rewards, and how to participate in the network's decision-making processes.",
+  "imageUrl": "/images/quests/sui-staking.jpg",
+  "projectName": "Sui Staking",
+  "reward": 7,
+  "difficulty": "Medium",
+  "estimatedTime": "35 min",
+  "tasks": [
+    {
+      "id": "e1f59f6d-57h1-73i8-f9g7-i2h460j87f01",
+      "type": "check-balance",
+      "title": "Prepare for Staking",
+      "description": "Add at least 0.1 SUI to your wallet to prepare for staking interactions",
+      "requiredAmount": "0.1"
+    },
+    {
+      "id": "e1f59f6d-57h1-73i8-f9g7-i2h460j87f02",
+      "type": "quiz",
+      "title": "Staking Basics",
+      "description": "Learn the fundamentals of staking on the Sui blockchain",
+      "question": "What is the primary purpose of staking SUI tokens?",
+      "options": [
+        "To earn interest like a savings account",
+        "To secure the network by selecting and incentivizing validators",
+        "To reduce the circulating supply of SUI",
+        "To qualify for NFT airdrops"
+      ],
+      "correctAnswer": "To secure the network by selecting and incentivizing validators"
+    },
+    {
+      "id": "e1f59f6d-57h1-73i8-f9g7-i2h460j87f03",
+      "type": "quiz",
+      "title": "Validator Selection",
+      "description": "Understanding how validators are selected on Sui",
+      "question": "How are validators selected in the Sui network?",
+      "options": [
+        "Random selection from all node operators",
+        "Based on amount of SUI staked with them",
+        "Through a committee vote by the Sui Foundation",
+        "First-come, first-served basis"
+      ],
+      "correctAnswer": "Based on amount of SUI staked with them"
+    },
+    {
+      "id": "e1f59f6d-57h1-73i8-f9g7-i2h460j87f04",
+      "type": "quiz",
+      "title": "Staking Rewards",
+      "description": "Learn about staking rewards on Sui",
+      "question": "How are staking rewards distributed on Sui?",
+      "options": [
+        "Fixed amounts daily",
+        "Proportionally based on stake amount and validator performance",
+        "Only to validators, not delegators",
+        "Through a lottery system"
+      ],
+      "correctAnswer": "Proportionally based on stake amount and validator performance"
+    },
+    {
+      "id": "e1f59f6d-57h1-73i8-f9g7-i2h460j87f05",
+      "type": "quiz",
+      "title": "Delegation Process",
+      "description": "Understanding how to delegate SUI tokens",
+      "question": "What happens when you delegate SUI to a validator?",
+      "options": [
+        "You transfer ownership of your SUI to the validator",
+        "You receive delegation tokens representing your staked SUI",
+        "Your SUI is locked for a fixed period of 21 days",
+        "You become a validator yourself"
+      ],
+      "correctAnswer": "You receive delegation tokens representing your staked SUI"
+    },
+    {
+      "id": "e1f59f6d-57h1-73i8-f9g7-i2h460j87f06",
+      "type": "quiz",
+      "title": "Governance Participation",
+      "description": "Learn how to participate in Sui governance",
+      "question": "How can SUI holders participate in governance?",
+      "options": [
+        "Only through running a validator node",
+        "By voting on proposals with their staked SUI",
+        "By joining the Sui Foundation",
+        "Governance is centralized and not open to token holders"
+      ],
+      "correctAnswer": "By voting on proposals with their staked SUI"
+    },
+    {
+      "id": "e1f59f6d-57h1-73i8-f9g7-i2h460j87f07",
+      "type": "quiz",
+      "title": "Unstaking Process",
+      "description": "Understanding how to unstake your SUI",
+      "question": "What happens when you request to unstake your SUI?",
+      "options": [
+        "Your SUI is returned immediately",
+        "Your SUI enters a warming period before becoming available",
+        "You must pay a fee to unstake",
+        "You can only unstake at designated times each month"
+      ],
+      "correctAnswer": "Your SUI enters a warming period before becoming available"
+    },
+    {
+      "id": "e1f59f6d-57h1-73i8-f9g7-i2h460j87f08",
+      "type": "quiz",
+      "title": "Validator Performance",
+      "description": "Learn about validator performance metrics",
+      "question": "Which factor does NOT affect a validator's rewards on Sui?",
+      "options": [
+        "Total amount of SUI delegated to them",
+        "Uptime and reliability",
+        "Gas fees from transactions they process",
+        "Their social media popularity"
+      ],
+      "correctAnswer": "Their social media popularity"
+    },
+    {
+      "id": "e1f59f6d-57h1-73i8-f9g7-i2h460j87f09",
+      "type": "quiz",
+      "title": "Sui Tokenomics",
+      "description": "Understanding Sui's token economics",
+      "question": "What percentage of the initial Sui token supply was allocated to the community reserve?",
+      "options": ["10%", "20%", "30%", "40%"],
+      "correctAnswer": "40%"
+    }
+  ]
+} 

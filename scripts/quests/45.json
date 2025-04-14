@@ -1,0 +1,131 @@
+{
+  "id": "f2g60g7e-56h1-73i8-f9g7-j3i571k98h9e",
+  "title": "Trading on Cetus DEX",
+  "description": "Explore Cetus, one of the leading decentralized exchanges on the Sui blockchain, featuring concentrated liquidity, multiple pool types, and cross-chain capabilities.",
+  "imageUrl": "/images/quests/cetus-dex.jpg",
+  "projectName": "Cetus",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "f2g60g7e-68i2-84j9-g0h8-k4j682l09i01",
+      "type": "check-balance",
+      "title": "Prepare for Trading",
+      "description": "Add at least 0.05 SUI to your wallet to prepare for trading interactions",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "f2g60g7e-68i2-84j9-g0h8-k4j682l09i02",
+      "type": "quiz",
+      "title": "Cetus Basics",
+      "description": "Learn the fundamentals of the Cetus DEX",
+      "question": "What type of automated market maker (AMM) does Cetus primarily use?",
+      "options": [
+        "Constant Product AMM (like Uniswap v2)",
+        "Concentrated Liquidity AMM (like Uniswap v3)",
+        "Stableswap AMM (like Curve)",
+        "Order book model (like traditional exchanges)"
+      ],
+      "correctAnswer": "Concentrated Liquidity AMM (like Uniswap v3)"
+    },
+    {
+      "id": "f2g60g7e-68i2-84j9-g0h8-k4j682l09i03",
+      "type": "quiz",
+      "title": "Liquidity Provision",
+      "description": "Understanding how to provide liquidity on Cetus",
+      "question": "What is an advantage of concentrated liquidity on Cetus?",
+      "options": [
+        "It requires less gas for transactions",
+        "It allows liquidity providers to specify price ranges for their capital",
+        "It automatically compounds rewards",
+        "It protects against impermanent loss"
+      ],
+      "correctAnswer": "It allows liquidity providers to specify price ranges for their capital"
+    },
+    {
+      "id": "f2g60g7e-68i2-84j9-g0h8-k4j682l09i04",
+      "type": "quiz",
+      "title": "Trading Fees",
+      "description": "Learn about the fee structure on Cetus",
+      "question": "How are trading fees distributed on Cetus?",
+      "options": [
+        "All fees go to the Cetus Treasury",
+        "Fees are split between liquidity providers and the protocol",
+        "Fees are burned to reduce token supply",
+        "Fees are distributed to SUI stakers"
+      ],
+      "correctAnswer": "Fees are split between liquidity providers and the protocol"
+    },
+    {
+      "id": "f2g60g7e-68i2-84j9-g0h8-k4j682l09i05",
+      "type": "quiz",
+      "title": "Pool Types",
+      "description": "Understanding different pool types on Cetus",
+      "question": "Which pool type on Cetus is optimized for assets with similar values?",
+      "options": [
+        "Volatile pools",
+        "Stable pools",
+        "Cross-chain pools",
+        "Flash loan pools"
+      ],
+      "correctAnswer": "Stable pools"
+    },
+    {
+      "id": "f2g60g7e-68i2-84j9-g0h8-k4j682l09i06",
+      "type": "quiz",
+      "title": "CEX vs DEX",
+      "description": "Learn about the differences between centralized and decentralized exchanges",
+      "question": "What is a key advantage of using Cetus DEX over a centralized exchange?",
+      "options": [
+        "Lower trading fees",
+        "Higher trading volume",
+        "Self-custody of assets",
+        "Faster transaction speeds"
+      ],
+      "correctAnswer": "Self-custody of assets"
+    },
+    {
+      "id": "f2g60g7e-68i2-84j9-g0h8-k4j682l09i07",
+      "type": "quiz",
+      "title": "Impermanent Loss",
+      "description": "Understanding the risks of providing liquidity",
+      "question": "What is impermanent loss in the context of liquidity provision?",
+      "options": [
+        "The risk of smart contract bugs",
+        "The risk of the DEX being shut down",
+        "A temporary loss due to network congestion",
+        "A potential loss compared to holding when asset prices change"
+      ],
+      "correctAnswer": "A potential loss compared to holding when asset prices change"
+    },
+    {
+      "id": "f2g60g7e-68i2-84j9-g0h8-k4j682l09i08",
+      "type": "quiz",
+      "title": "Cetus Tokenomics",
+      "description": "Learn about the CETUS token and its utility",
+      "question": "What is a primary utility of the CETUS token?",
+      "options": [
+        "It's required to pay for gas fees",
+        "It provides governance rights and fee sharing",
+        "It's used to mint NFTs on Sui",
+        "It's pegged to the US dollar as a stablecoin"
+      ],
+      "correctAnswer": "It provides governance rights and fee sharing"
+    },
+    {
+      "id": "f2g60g7e-68i2-84j9-g0h8-k4j682l09i09",
+      "type": "quiz",
+      "title": "Cross-chain Features",
+      "description": "Understanding Cetus's cross-chain capabilities",
+      "question": "What technology does Cetus use for cross-chain functionality?",
+      "options": [
+        "Wormhole",
+        "LayerZero",
+        "Chainlink",
+        "Polkadot"
+      ],
+      "correctAnswer": "Wormhole"
+    }
+  ]
+} 

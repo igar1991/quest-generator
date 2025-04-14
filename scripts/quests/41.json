@@ -1,0 +1,107 @@
+{
+  "id": "b8f26c3a-12d7-49e4-b5a3-f7c894d21e5a",
+  "title": "Exploring Sui Wallet",
+  "description": "Get familiar with Sui Wallet, the official wallet for the Sui blockchain that allows you to manage your assets, interact with dApps, and explore the Sui ecosystem.",
+  "imageUrl": "/images/quests/sui-wallet.jpg",
+  "projectName": "Sui Wallet",
+  "reward": 5,
+  "difficulty": "Easy",
+  "estimatedTime": "25 min",
+  "tasks": [
+    {
+      "id": "b8f26c3a-24e8-48f4-a3d5-c6e945f32e01",
+      "type": "check-balance",
+      "title": "Fund Your Sui Wallet",
+      "description": "Add at least 0.01 SUI to your wallet to begin the quest",
+      "requiredAmount": "0.01"
+    },
+    {
+      "id": "b8f26c3a-24e8-48f4-a3d5-c6e945f32e02",
+      "type": "quiz",
+      "title": "Sui Wallet Basics",
+      "description": "Test your knowledge about Sui Wallet fundamentals",
+      "question": "What organization developed Sui Wallet?",
+      "options": ["Binance", "Mysten Labs", "Solana Foundation", "Coinbase"],
+      "correctAnswer": "Mysten Labs"
+    },
+    {
+      "id": "b8f26c3a-24e8-48f4-a3d5-c6e945f32e03",
+      "type": "quiz",
+      "title": "Wallet Security",
+      "description": "Understanding the security features of Sui Wallet",
+      "question": "What is the best practice for securing your recovery phrase?",
+      "options": [
+        "Store it in a password manager",
+        "Take a screenshot of it",
+        "Write it down and store it in a secure location",
+        "Share it with trusted friends as backup"
+      ],
+      "correctAnswer": "Write it down and store it in a secure location"
+    },
+    {
+      "id": "b8f26c3a-24e8-48f4-a3d5-c6e945f32e04",
+      "type": "quiz",
+      "title": "Network Configuration",
+      "description": "Learn about the networks supported by Sui Wallet",
+      "question": "Which networks does Sui Wallet support?",
+      "options": [
+        "Only Sui Mainnet",
+        "Sui Mainnet and Testnet only",
+        "Sui Mainnet, Testnet, and Devnet",
+        "Sui and Ethereum networks"
+      ],
+      "correctAnswer": "Sui Mainnet, Testnet, and Devnet"
+    },
+    {
+      "id": "b8f26c3a-24e8-48f4-a3d5-c6e945f32e05",
+      "type": "quiz",
+      "title": "Wallet Features",
+      "description": "Explore the features available in Sui Wallet",
+      "question": "Which of the following is NOT a feature of Sui Wallet?",
+      "options": [
+        "NFT support",
+        "dApp connections",
+        "Built-in DEX for trading",
+        "Transaction history"
+      ],
+      "correctAnswer": "Built-in DEX for trading"
+    },
+    {
+      "id": "b8f26c3a-24e8-48f4-a3d5-c6e945f32e06",
+      "type": "quiz",
+      "title": "Transaction Fees",
+      "description": "Understanding gas fees on Sui using Sui Wallet",
+      "question": "What currency are transaction fees paid in on Sui?",
+      "options": ["ETH", "SUI", "USDC", "MYSTN"],
+      "correctAnswer": "SUI"
+    },
+    {
+      "id": "b8f26c3a-24e8-48f4-a3d5-c6e945f32e07",
+      "type": "quiz",
+      "title": "Integration Capabilities",
+      "description": "Learn how Sui Wallet integrates with the Sui ecosystem",
+      "question": "Which API standard does Sui Wallet implement for dApp connections?",
+      "options": [
+        "Web3.js",
+        "Sui Wallet Standard",
+        "MetaMask API",
+        "EIP-1193"
+      ],
+      "correctAnswer": "Sui Wallet Standard"
+    },
+    {
+      "id": "b8f26c3a-24e8-48f4-a3d5-c6e945f32e08",
+      "type": "quiz",
+      "title": "Object Model",
+      "description": "Understanding Sui's unique object model",
+      "question": "What makes Sui's object-centric model different from other blockchains?",
+      "options": [
+        "Objects can't be transferred between users",
+        "Objects can be owned and modified directly by users",
+        "Objects only exist temporarily",
+        "Objects can only be NFTs"
+      ],
+      "correctAnswer": "Objects can be owned and modified directly by users"
+    }
+  ]
+} 

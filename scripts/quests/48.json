@@ -1,0 +1,126 @@
+{
+  "id": "i5j93j0h-89k4-06l1-i2j0-o9n137p54m2h",
+  "title": "Trading on Turbos DEX",
+  "description": "Explore Turbos, an innovative decentralized exchange on the Sui blockchain focused on concentrated liquidity, leveraged trading, and a unique liquidity provider experience.",
+  "imageUrl": "/images/quests/turbos-dex.jpg",
+  "projectName": "Turbos",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "i5j93j0h-91l5-17m2-j3k1-p0o248q65n01",
+      "type": "check-balance",
+      "title": "Prepare for Trading",
+      "description": "Add at least 0.05 SUI to your wallet to prepare for trading interactions",
+      "requiredAmount": "0.05"
+    },
+    {
+      "id": "i5j93j0h-91l5-17m2-j3k1-p0o248q65n02",
+      "type": "quiz",
+      "title": "Turbos Basics",
+      "description": "Learn the fundamentals of the Turbos DEX",
+      "question": "What type of liquidity model does Turbos primarily use?",
+      "options": [
+        "Constant Product AMM (like Uniswap v2)",
+        "Concentrated Liquidity (like Uniswap v3)",
+        "Order book model",
+        "Hybrid AMM-Order book"
+      ],
+      "correctAnswer": "Concentrated Liquidity (like Uniswap v3)"
+    },
+    {
+      "id": "i5j93j0h-91l5-17m2-j3k1-p0o248q65n03",
+      "type": "quiz",
+      "title": "Leveraged Trading",
+      "description": "Understanding leveraged trading on Turbos",
+      "question": "What is leveraged trading on Turbos?",
+      "options": [
+        "Trading with borrowed funds for amplified exposure",
+        "Trading exclusively with stablecoins",
+        "Trading only with SUI token",
+        "Trading only during market uptrends"
+      ],
+      "correctAnswer": "Trading with borrowed funds for amplified exposure"
+    },
+    {
+      "id": "i5j93j0h-91l5-17m2-j3k1-p0o248q65n04",
+      "type": "quiz",
+      "title": "Liquidity Provision",
+      "description": "Learn about providing liquidity on Turbos",
+      "question": "What is a key feature of Turbos' liquidity provision system?",
+      "options": [
+        "Fixed 0.3% fees for all pairs",
+        "Only whole token amounts can be provided",
+        "Custom price ranges for better capital efficiency",
+        "Liquidity must be provided in SUI only"
+      ],
+      "correctAnswer": "Custom price ranges for better capital efficiency"
+    },
+    {
+      "id": "i5j93j0h-91l5-17m2-j3k1-p0o248q65n05",
+      "type": "quiz",
+      "title": "Fee Structure",
+      "description": "Understanding the fee structure on Turbos",
+      "question": "How are trading fees distributed on Turbos?",
+      "options": [
+        "All fees go to the Treasury",
+        "Fees are split between liquidity providers and protocol",
+        "Fees are burned to reduce token supply",
+        "Fees are distributed to all SUI holders"
+      ],
+      "correctAnswer": "Fees are split between liquidity providers and protocol"
+    },
+    {
+      "id": "i5j93j0h-91l5-17m2-j3k1-p0o248q65n06",
+      "type": "quiz",
+      "title": "Impermanent Loss Protection",
+      "description": "Learn about risk management for liquidity providers",
+      "question": "How does Turbos help liquidity providers manage impermanent loss?",
+      "options": [
+        "By offering insurance against losses",
+        "Through concentrated liquidity in custom ranges",
+        "By guaranteeing minimum returns",
+        "By automatically diversifying assets"
+      ],
+      "correctAnswer": "Through concentrated liquidity in custom ranges"
+    },
+    {
+      "id": "i5j93j0h-91l5-17m2-j3k1-p0o248q65n07",
+      "type": "quiz",
+      "title": "Trading Pairs",
+      "description": "Understanding trading pairs on Turbos",
+      "question": "Which token is commonly used as the base pair for many trading pools on Turbos?",
+      "options": ["USDC", "SUI", "ETH", "BTC"],
+      "correctAnswer": "SUI"
+    },
+    {
+      "id": "i5j93j0h-91l5-17m2-j3k1-p0o248q65n08",
+      "type": "quiz",
+      "title": "Turbos Tokenomics",
+      "description": "Learn about the Turbos token and its utility",
+      "question": "What is a primary utility of the TURBOS token?",
+      "options": [
+        "Required for gas fees",
+        "Governance rights and fee discounts",
+        "Used to mint NFTs",
+        "Functions as a stablecoin"
+      ],
+      "correctAnswer": "Governance rights and fee discounts"
+    },
+    {
+      "id": "i5j93j0h-91l5-17m2-j3k1-p0o248q65n09",
+      "type": "quiz",
+      "title": "Price Oracle",
+      "description": "Understanding price oracles in DEXes",
+      "question": "What role does a price oracle play in Turbos DEX?",
+      "options": [
+        "It determines gas fees",
+        "It provides accurate price data for leveraged trading",
+        "It prevents trading during high volatility",
+        "It controls which tokens can be listed"
+      ],
+      "correctAnswer": "It provides accurate price data for leveraged trading"
+    }
+  ]
+} 

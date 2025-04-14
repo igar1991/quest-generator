@@ -1,0 +1,126 @@
+{
+  "id": "d0f48e5c-34f9-51g6-d7c5-f9e127g54f7c",
+  "title": "Exploring Sui NFTs",
+  "description": "Discover the NFT ecosystem on Sui blockchain, including marketplaces, collections, and the unique features that make Sui NFTs different from those on other chains.",
+  "imageUrl": "/images/quests/sui-nfts.jpg",
+  "projectName": "Sui NFTs",
+  "reward": 6,
+  "difficulty": "Medium",
+  "estimatedTime": "30 min",
+  "tasks": [
+    {
+      "id": "d0f48e5c-46g9-62h7-e8d6-g0f238h65e01",
+      "type": "check-balance",
+      "title": "Prepare for NFT Exploration",
+      "description": "Add at least 0.03 SUI to your wallet to prepare for NFT interactions",
+      "requiredAmount": "0.03"
+    },
+    {
+      "id": "d0f48e5c-46g9-62h7-e8d6-g0f238h65e02",
+      "type": "quiz",
+      "title": "Sui NFT Basics",
+      "description": "Learn the fundamentals of NFTs on the Sui blockchain",
+      "question": "How are NFTs represented in Sui's architecture?",
+      "options": [
+        "As ERC-721 tokens",
+        "As special shared objects",
+        "As owned objects with unique IDs",
+        "As temporary transaction receipts"
+      ],
+      "correctAnswer": "As owned objects with unique IDs"
+    },
+    {
+      "id": "d0f48e5c-46g9-62h7-e8d6-g0f238h65e03",
+      "type": "quiz",
+      "title": "NFT Marketplaces",
+      "description": "Explore the top NFT marketplaces on Sui",
+      "question": "Which of the following is a popular NFT marketplace on Sui?",
+      "options": ["OpenSea", "BlueMove", "Magic Eden", "All of the above"],
+      "correctAnswer": "BlueMove"
+    },
+    {
+      "id": "d0f48e5c-46g9-62h7-e8d6-g0f238h65e04",
+      "type": "quiz",
+      "title": "Unique Features",
+      "description": "Understanding what makes Sui NFTs unique",
+      "question": "What is a distinctive feature of NFTs on Sui compared to other blockchains?",
+      "options": [
+        "NFTs can be fractionalized by default",
+        "NFTs can't be transferred once minted",
+        "NFTs can have dynamic fields added after minting",
+        "NFTs must be staked to earn rewards"
+      ],
+      "correctAnswer": "NFTs can have dynamic fields added after minting"
+    },
+    {
+      "id": "d0f48e5c-46g9-62h7-e8d6-g0f238h65e05",
+      "type": "quiz",
+      "title": "Sui NFT Standards",
+      "description": "Learn about NFT standards on Sui",
+      "question": "What module is commonly used for NFT creation on Sui?",
+      "options": [
+        "sui::erc721",
+        "sui::nft",
+        "sui::token",
+        "sui::digital_asset"
+      ],
+      "correctAnswer": "sui::nft"
+    },
+    {
+      "id": "d0f48e5c-46g9-62h7-e8d6-g0f238h65e06",
+      "type": "quiz",
+      "title": "Royalties",
+      "description": "Understanding royalty mechanisms for Sui NFTs",
+      "question": "How are creator royalties typically handled for NFTs on Sui?",
+      "options": [
+        "Through automatic blockchain enforcement",
+        "Through marketplace policies that respect royalty metadata",
+        "Royalties aren't supported on Sui",
+        "Through smart contract locks that prevent sales without royalties"
+      ],
+      "correctAnswer": "Through marketplace policies that respect royalty metadata"
+    },
+    {
+      "id": "d0f48e5c-46g9-62h7-e8d6-g0f238h65e07",
+      "type": "quiz",
+      "title": "Minting Process",
+      "description": "Learn about the NFT minting process on Sui",
+      "question": "Which of the following best describes the minting process on Sui?",
+      "options": [
+        "All NFTs must be minted through centralized marketplaces",
+        "NFT minting requires staking SUI tokens",
+        "NFTs are created as objects with various display attributes",
+        "NFTs can only be minted in predefined collections"
+      ],
+      "correctAnswer": "NFTs are created as objects with various display attributes"
+    },
+    {
+      "id": "d0f48e5c-46g9-62h7-e8d6-g0f238h65e08",
+      "type": "quiz",
+      "title": "Display Standard",
+      "description": "Understanding how NFTs are displayed in wallets and marketplaces",
+      "question": "What is used to make NFTs properly display in Sui wallets?",
+      "options": [
+        "JSON metadata stored off-chain",
+        "The Display standard which links objects to display properties",
+        "SVG images embedded in the NFT code",
+        "A centralized registry of NFT appearances"
+      ],
+      "correctAnswer": "The Display standard which links objects to display properties"
+    },
+    {
+      "id": "d0f48e5c-46g9-62h7-e8d6-g0f238h65e09",
+      "type": "quiz",
+      "title": "NFT Use Cases",
+      "description": "Explore different use cases for NFTs on Sui",
+      "question": "Which of the following is a popular use case for NFTs on Sui?",
+      "options": [
+        "Governance tokens",
+        "Gaming assets and collectibles",
+        "Stablecoin backing",
+        "Order books for DEXes"
+      ],
+      "correctAnswer": "Gaming assets and collectibles"
+    }
+  ]
+} 

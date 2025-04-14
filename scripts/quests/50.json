@@ -1,0 +1,126 @@
+{
+  "id": "k7l15l2j-01m6-28n3-k4l2-s3r581t98q4j",
+  "title": "Exploring Capy NFTs",
+  "description": "Discover Capy, one of the first and most popular NFT collections on the Sui blockchain, featuring cute capybara characters with unique traits and breeding mechanics.",
+  "imageUrl": "/images/quests/capy-nfts.jpg",
+  "projectName": "Capy NFTs",
+  "reward": 5,
+  "difficulty": "Easy",
+  "estimatedTime": "25 min",
+  "tasks": [
+    {
+      "id": "k7l15l2j-13n7-39o4-l5m3-t4s692u09r01",
+      "type": "check-balance",
+      "title": "Prepare for Capy NFTs",
+      "description": "Add at least 0.03 SUI to your wallet to prepare for NFT interactions",
+      "requiredAmount": "0.03"
+    },
+    {
+      "id": "k7l15l2j-13n7-39o4-l5m3-t4s692u09r02",
+      "type": "quiz",
+      "title": "Capy Basics",
+      "description": "Learn the fundamentals of the Capy NFT collection",
+      "question": "What animal is featured in the Capy NFT collection?",
+      "options": ["Cats", "Capybaras", "Crocodiles", "Chameleons"],
+      "correctAnswer": "Capybaras"
+    },
+    {
+      "id": "k7l15l2j-13n7-39o4-l5m3-t4s692u09r03",
+      "type": "quiz",
+      "title": "Capy Significance",
+      "description": "Understanding why Capy is important in the Sui ecosystem",
+      "question": "Why is the Capy collection significant in Sui's history?",
+      "options": [
+        "It's the most expensive NFT collection on Sui",
+        "It was one of the first NFT collections on Sui mainnet",
+        "It was created by the Sui Foundation",
+        "It's the only deflationary NFT on Sui"
+      ],
+      "correctAnswer": "It was one of the first NFT collections on Sui mainnet"
+    },
+    {
+      "id": "k7l15l2j-13n7-39o4-l5m3-t4s692u09r04",
+      "type": "quiz",
+      "title": "Capy Traits",
+      "description": "Learn about the traits and attributes of Capy NFTs",
+      "question": "What determines the rarity and uniqueness of individual Capy NFTs?",
+      "options": [
+        "Only the issuance number",
+        "Various traits like accessories, colors, and backgrounds",
+        "The amount of SUI used to mint them",
+        "The wallet address that minted them"
+      ],
+      "correctAnswer": "Various traits like accessories, colors, and backgrounds"
+    },
+    {
+      "id": "k7l15l2j-13n7-39o4-l5m3-t4s692u09r05",
+      "type": "quiz",
+      "title": "Breeding Mechanics",
+      "description": "Understanding the unique breeding feature of Capy NFTs",
+      "question": "What is special about Capy's breeding system?",
+      "options": [
+        "Breeding is not possible with Capy NFTs",
+        "Breeding creates new NFTs with traits inherited from parent Capys",
+        "Breeding only works during full moons",
+        "Breeding requires paying fees to the developers"
+      ],
+      "correctAnswer": "Breeding creates new NFTs with traits inherited from parent Capys"
+    },
+    {
+      "id": "k7l15l2j-13n7-39o4-l5m3-t4s692u09r06",
+      "type": "quiz",
+      "title": "Marketplace Integration",
+      "description": "Learn about trading Capy NFTs",
+      "question": "Where can Capy NFTs be traded?",
+      "options": [
+        "Only on the official Capy website",
+        "On various Sui NFT marketplaces like BlueMove",
+        "Only through direct peer-to-peer transactions",
+        "They cannot be traded once minted"
+      ],
+      "correctAnswer": "On various Sui NFT marketplaces like BlueMove"
+    },
+    {
+      "id": "k7l15l2j-13n7-39o4-l5m3-t4s692u09r07",
+      "type": "quiz",
+      "title": "Technical Implementation",
+      "description": "Understanding how Capy NFTs are implemented on Sui",
+      "question": "How are Capy NFTs stored on the Sui blockchain?",
+      "options": [
+        "As simple tokens with metadata",
+        "As Move objects with dynamic fields for attributes",
+        "As off-chain data with only hashes on-chain",
+        "As simple images without on-chain attributes"
+      ],
+      "correctAnswer": "As Move objects with dynamic fields for attributes"
+    },
+    {
+      "id": "k7l15l2j-13n7-39o4-l5m3-t4s692u09r08",
+      "type": "quiz",
+      "title": "Community Engagement",
+      "description": "Learn about the Capy community",
+      "question": "How does the Capy project engage with its community?",
+      "options": [
+        "There is no community engagement",
+        "Through social media, events, and governance proposals",
+        "Only through paid memberships",
+        "By requiring holders to stake SUI"
+      ],
+      "correctAnswer": "Through social media, events, and governance proposals"
+    },
+    {
+      "id": "k7l15l2j-13n7-39o4-l5m3-t4s692u09r09",
+      "type": "quiz",
+      "title": "Utility and Future",
+      "description": "Understanding the utility and roadmap of Capy NFTs",
+      "question": "What potential utility do Capy NFTs have beyond collectibility?",
+      "options": [
+        "They function as governance tokens",
+        "They provide discounts on Sui gas fees",
+        "They may be used in future games and metaverse experiences",
+        "They automatically earn SUI rewards"
+      ],
+      "correctAnswer": "They may be used in future games and metaverse experiences"
+    }
+  ]
+} 
