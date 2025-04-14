@@ -2,7 +2,7 @@
 
 ![Quest Generator Banner](/public/banner.jpg)
 
-An educational platform that combines AI-powered quiz creation with Move-powered transaction automation, rewarding users as they learn to navigate and utilize the Aptos ecosystem.
+An educational platform that combines AI-powered quiz creation with Move-powered transaction automation, rewarding users as they learn to navigate and utilize the ecosystem.
 
 Demo: https://web3-quest-generator.vercel.app
 
