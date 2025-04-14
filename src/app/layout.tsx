@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Quest Generator | Learn Aptos Through Interactive Quests",
+  title: "Quest Generator | Learn Web3 Through Interactive Quests",
   description:
-    "A platform for creating educational crypto quests that reward users for learning about and using new projects in the Aptos ecosystem.",
+    "A platform for creating educational crypto quests that reward users for learning about and using new projects in the blockchain ecosystem.",
 };
 
 export default function RootLayout({

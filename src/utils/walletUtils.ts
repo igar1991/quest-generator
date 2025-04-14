@@ -1,5 +1,5 @@
 /**
- * Utility functions for interacting with Aptos wallet extensions
+ * Utility functions for interacting with blockchain wallet extensions
  */
 
 /**
@@ -22,7 +22,7 @@ export class WalletError extends Error {
 }
 
 /**
- * Checks if any Aptos wallet extensions are available in the browser
+ * Checks if any blockchain wallet extensions are available in the browser
  * @returns Boolean indicating if wallet extension is available
  */
 export const isWalletAvailable = (): boolean => {
@@ -49,13 +49,13 @@ export const detectWallet = (): string | null => {
   if (window.pontem) return "Pontem";
   if (window.fewcha) return "Fewcha";
   if (window.rise) return "Rise";
-  if (window.aptos) return "Aptos";
+  if (window.aptos) return "Chain";
 
   return null;
 };
 
 /**
- * Connects to an Aptos wallet and returns the address
+ * Connects to a blockchain wallet and returns the address
  * @returns The wallet info including address and connection status
  * @throws WalletError if connection fails or no wallet is found
  */
@@ -76,7 +76,7 @@ export const connectWallet = async (): Promise<WalletInfo> => {
 
     if (!wallet) {
       throw new WalletError(
-        "No Aptos wallet extension found. Please install Petra, Martian, or another Aptos wallet.",
+        "No blockchain wallet extension found. Please install a compatible wallet.",
       );
     }
 
@@ -145,8 +145,8 @@ export const disconnectWallet = async (): Promise<boolean> => {
 };
 
 /**
- * Gets the APT balance of the wallet
- * @returns The wallet balance in APT
+ * Gets the token balance of the wallet
+ * @returns The wallet balance in tokens
  * @throws WalletError if balance check fails
  */
 export const getWalletBalance = async (): Promise<number> => {
@@ -166,12 +166,12 @@ export const getWalletBalance = async (): Promise<number> => {
 
     if (!wallet) {
       throw new WalletError(
-        "No Aptos wallet extension found. Please install Petra, Martian, or another Aptos wallet.",
+        "No blockchain wallet extension found. Please install a compatible wallet.",
       );
     }
 
     // For demo/testing purposes, we'll return a mock balance in the format of 10.123456
-    // In a real implementation, you would use the wallet API or Aptos API to get the real balance
+    // In a real implementation, you would use the wallet API to get the real balance
     const mockBalance = Math.random() * 10 + 0.5;
     return Number(mockBalance.toFixed(6));
 
@@ -184,11 +184,7 @@ export const getWalletBalance = async (): Promise<number> => {
     //     return Number(balance);
     //   }
     //
-    //   // Alternatively, you might need to use the Aptos SDK or an API
-    //   // const response = await fetch(`https://fullnode.mainnet.aptoslabs.com/v1/accounts/${address}/resources`);
-    //   // const resources = await response.json();
-    //   // const coinResource = resources.find(r => r.type === '0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>');
-    //   // return Number(coinResource.data.coin.value) / 100000000; // Convert from octas to APT
+    //   // Alternatively, you might need to use the blockchain SDK or an API
     // } catch (error) {
     //   console.error("Error getting wallet balance:", error);
     //   throw new WalletError("Failed to get wallet balance");

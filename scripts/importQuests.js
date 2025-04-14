@@ -89,7 +89,7 @@ async function importQuestsToRedis() {
         description: quest.description,
         reward: quest.reward.toString(),
         totalUsers: "0", // Default value
-        category: quest.projectName || "Aptos", // Default value
+        category: quest.projectName || "Blockchain", // Default value
         difficulty: quest.difficulty,
         tasks: quest.tasks.map((task) => ({
           id: task.id,

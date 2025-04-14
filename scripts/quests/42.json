@@ -114,13 +114,8 @@
       "title": "Development Workflow",
       "description": "Understanding the Sui Move development workflow",
       "question": "Which command is used to compile a Sui Move package?",
-      "options": [
-        "sui move build",
-        "sui build",
-        "move compile",
-        "sui compile"
-      ],
+      "options": ["sui move build", "sui build", "move compile", "sui compile"],
       "correctAnswer": "sui move build"
     }
   ]
-} 
+}

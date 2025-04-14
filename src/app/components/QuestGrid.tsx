@@ -4,6 +4,32 @@ import React, { useState, useEffect } from "react";
 import QuestCard from "./QuestCard";
 
 /**
+ * Format a date string to a more readable format
+ * @param dateString ISO date string
+ * @returns Formatted date string (e.g., "2 days ago" or "Jan 15, 2023")
+ */
+const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffInMs = now.getTime() - date.getTime();
+  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+  if (diffInDays < 1) {
+    return "Today";
+  } else if (diffInDays === 1) {
+    return "Yesterday";
+  } else if (diffInDays < 7) {
+    return `${diffInDays} days ago`;
+  } else {
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  }
+};
+
+/**
  * Interface for quest data structure
  */
 interface Quest {
@@ -86,10 +112,10 @@ const QuestGrid: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Popular Quests
+            Latest Quests
           </h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-            Discover the most popular quests in the Aptos ecosystem
+            Discover the newest quests in the blockchain ecosystem
           </p>
         </div>
 
@@ -116,18 +142,22 @@ const QuestGrid: React.FC = () => {
         {!loading && error === null && quests.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {quests.map((quest) => (
-              <QuestCard
-                key={quest.id}
-                id={quest.id}
-                title={quest.title}
-                description={quest.description}
-                imageUrl={`/images/quests/${quest.title.toLowerCase().replace(/\s+/g, "-")}.jpg`}
-                projectName={quest.category}
-                reward={Number(quest.reward)}
-                difficulty={quest.difficulty}
-                estimatedTime={quest.estimatedTime || "15 min"}
-                tasks={quest.tasks}
-              />
+              <div key={quest.id} className="flex flex-col">
+                <QuestCard
+                  id={quest.id}
+                  title={quest.title}
+                  description={quest.description}
+                  imageUrl={`/images/quests/${quest.title.toLowerCase().replace(/\s+/g, "-")}.jpg`}
+                  projectName={quest.category}
+                  reward={Number(quest.reward)}
+                  difficulty={quest.difficulty}
+                  estimatedTime={quest.estimatedTime || "15 min"}
+                  tasks={quest.tasks}
+                />
+                <div className="text-xs text-gray-500 mt-1 ml-1">
+                  Added {formatDate(quest.createdAt)}
+                </div>
+              </div>
             ))}
           </div>
         )}

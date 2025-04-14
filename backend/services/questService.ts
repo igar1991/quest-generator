@@ -93,7 +93,7 @@ export async function getQuestById(questId: string): Promise<Quest | null> {
  * Gets all quests
  * @param limit - Maximum number of quests to return
  * @param offset - Number of quests to skip
- * @returns Array of quests
+ * @returns Array of quests sorted by creation date (newest first)
  */
 export async function getAllQuests(limit = 100, offset = 0): Promise<Quest[]> {
   const client = await getRedisClient();
@@ -101,19 +101,26 @@ export async function getAllQuests(limit = 100, offset = 0): Promise<Quest[]> {
   // Get all quest IDs
   const questIds = await client.smembers("quests:all");
 
-  // Apply pagination
-  const paginatedIds = questIds.slice(offset, offset + limit);
-
   // If no quests, return empty array
-  if (paginatedIds.length === 0) {
+  if (questIds.length === 0) {
     return [];
   }
 
   // Get all quests in parallel
   const quests = await Promise.all(
-    paginatedIds.map((id: string) => getQuestById(id)),
+    questIds.map((id: string) => getQuestById(id)),
   );
 
   // Filter out any null values (in case a quest was deleted)
-  return quests.filter((quest): quest is Quest => quest !== null);
+  const validQuests = quests.filter((quest): quest is Quest => quest !== null);
+
+  // Sort quests by createdAt in descending order (newest first)
+  validQuests.sort((a, b) => {
+    const dateA = new Date(a.createdAt).getTime();
+    const dateB = new Date(b.createdAt).getTime();
+    return dateB - dateA; // Descending order
+  });
+
+  // Apply pagination after sorting
+  return validQuests.slice(offset, offset + limit);
 }

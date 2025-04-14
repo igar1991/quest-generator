@@ -232,7 +232,7 @@ const ProjectsPage: React.FC = () => {
       },
       {
         id: 7,
-        name: "Aptos Connect",
+        name: "Chain Connect",
         description:
           "Keyless wallet with social login and no downloads required.",
         icon: (
@@ -251,7 +251,7 @@ const ProjectsPage: React.FC = () => {
       {
         id: 8,
         name: "Petra Wallet",
-        description: "A web3 wallet to explore Aptos by Aptos Labs",
+        description: "A web3 wallet to explore blockchain ecosystems",
         icon: (
           <AbstractIcon
             color="#EC4899"
@@ -390,8 +390,9 @@ const ProjectsPage: React.FC = () => {
       },
       {
         id: 16,
-        name: "Aptos Art Museum",
-        description: "The first metaverse art gallery in the Aptos ecosystem",
+        name: "Digital Art Museum",
+        description:
+          "The first metaverse art gallery in the blockchain ecosystem",
         icon: (
           <AbstractIcon
             color="#EC4899"
@@ -424,8 +425,8 @@ const ProjectsPage: React.FC = () => {
       },
       {
         id: 18,
-        name: "Aptos Assistant",
-        description: "AI-powered companion for the Aptos network.",
+        name: "Blockchain Assistant",
+        description: "AI-powered companion for blockchain networks.",
         icon: (
           <AbstractIcon
             color="#A855F7"
@@ -441,8 +442,8 @@ const ProjectsPage: React.FC = () => {
       },
       {
         id: 19,
-        name: "Aptos Explorer",
-        description: "Blockchain explorer by Aptos Labs",
+        name: "Chain Explorer",
+        description: "Blockchain explorer for viewing on-chain data",
         icon: (
           <AbstractIcon
             color="#6366F1"
@@ -459,7 +460,7 @@ const ProjectsPage: React.FC = () => {
       {
         id: 20,
         name: "PancakeSwap",
-        description: "Multichain on BNB Chain, ETH & Aptos",
+        description: "Multichain DEX on BNB Chain, ETH & multiple blockchains",
         icon: (
           <AbstractIcon
             color="#D946EF"
@@ -521,10 +522,10 @@ const ProjectsPage: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10">
             <div className="mb-6 md:mb-0">
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-                Aptos Ecosystem Projects
+                Blockchain Ecosystem Projects
               </h1>
               <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
-                Discover top projects building on the Aptos blockchain
+                Discover top projects building on various blockchains
               </p>
             </div>
           </div>

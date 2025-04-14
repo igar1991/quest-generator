@@ -119,7 +119,7 @@ const QuestCard: React.FC<QuestCardProps> = ({
       )}
 
       {/* Image section at the top */}
-      <div className="relative h-40 w-full bg-gradient-to-r from-primary/20 to-aptos/20">
+      <div className="relative h-40 w-full bg-gradient-to-r from-primary/20 to-chain/20">
         <div className="relative h-full w-full">
           <Image
             src={imageSource}
@@ -132,7 +132,7 @@ const QuestCard: React.FC<QuestCardProps> = ({
           />
         </div>
         <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm font-medium z-10">
-          {reward} APT
+          {reward} Tokens
         </div>
       </div>
 

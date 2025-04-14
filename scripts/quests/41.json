@@ -81,12 +81,7 @@
       "title": "Integration Capabilities",
       "description": "Learn how Sui Wallet integrates with the Sui ecosystem",
       "question": "Which API standard does Sui Wallet implement for dApp connections?",
-      "options": [
-        "Web3.js",
-        "Sui Wallet Standard",
-        "MetaMask API",
-        "EIP-1193"
-      ],
+      "options": ["Web3.js", "Sui Wallet Standard", "MetaMask API", "EIP-1193"],
       "correctAnswer": "Sui Wallet Standard"
     },
     {
@@ -104,4 +99,4 @@
       "correctAnswer": "Objects can be owned and modified directly by users"
     }
   ]
-} 
+}

@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
                 y="0"
                 width="4"
                 height="4"
-                className="text-aptos opacity-50"
+                className="text-chain opacity-50"
                 fill="currentColor"
               />
             </pattern>
@@ -74,15 +74,15 @@ const Hero: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
               <span className="block">
-                Learn <span className="text-primary">Aptos</span> by
+                Learn <span className="text-primary">Web3</span> by
               </span>
               <span className="block mt-1">
-                Completing <span className="text-aptos">Quests</span>
+                Completing <span className="text-chain">Quests</span>
               </span>
             </h1>
             <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Explore educational quests that reward you with tokens for
-              learning about and using new projects in the Aptos ecosystem.
+              learning about and using new projects in the blockchain ecosystem.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
               <Link

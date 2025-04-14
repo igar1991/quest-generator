@@ -101,8 +101,7 @@ export default function QuestDetail() {
         {
           id: `${questId}-connect-wallet`,
           title: "Connect Your Wallet",
-          description:
-            "Connect your Aptos-compatible wallet to begin the quest.",
+          description: "Connect your wallet to begin the quest.",
           type: "connect-wallet",
         },
         ...tasks,

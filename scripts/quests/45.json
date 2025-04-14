@@ -119,13 +119,8 @@
       "title": "Cross-chain Features",
       "description": "Understanding Cetus's cross-chain capabilities",
       "question": "What technology does Cetus use for cross-chain functionality?",
-      "options": [
-        "Wormhole",
-        "LayerZero",
-        "Chainlink",
-        "Polkadot"
-      ],
+      "options": ["Wormhole", "LayerZero", "Chainlink", "Polkadot"],
       "correctAnswer": "Wormhole"
     }
   ]
-} 
+}

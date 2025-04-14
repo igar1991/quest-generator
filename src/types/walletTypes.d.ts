@@ -1,17 +1,17 @@
 /**
- * TypeScript declarations for Aptos wallet extensions
+ * TypeScript declarations for blockchain wallet extensions
  */
 
-interface AptosAccount {
+interface BlockchainAccount {
   address: string;
   publicKey?: string;
   [key: string]: string | boolean | number | undefined;
 }
 
-interface AptosWallet {
+interface BlockchainWallet {
   connect: () => Promise<unknown>;
   disconnect?: () => Promise<void>;
-  account: () => Promise<AptosAccount>;
+  account: () => Promise<BlockchainAccount>;
   signTransaction?: (transaction: unknown) => Promise<unknown>;
   signAndSubmitTransaction?: (transaction: unknown) => Promise<unknown>;
   isConnected: () => Promise<boolean>;
@@ -22,12 +22,12 @@ interface AptosWallet {
 
 declare global {
   interface Window {
-    aptos?: AptosWallet;
-    petra?: AptosWallet;
-    martian?: AptosWallet;
-    pontem?: AptosWallet;
-    fewcha?: AptosWallet;
-    rise?: AptosWallet;
+    aptos?: BlockchainWallet;
+    petra?: BlockchainWallet;
+    martian?: BlockchainWallet;
+    pontem?: BlockchainWallet;
+    fewcha?: BlockchainWallet;
+    rise?: BlockchainWallet;
   }
 }
 

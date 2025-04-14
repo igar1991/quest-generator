@@ -62,7 +62,7 @@ const FAQPage: React.FC = () => {
     {
       question: "Which blockchains are supported?",
       answer:
-        "Quest Generator currently supports Ethereum, Solana, Aptos, and several other major blockchains. We&apos;re continuously adding support for more chains based on community demand.",
+        "Quest Generator currently supports Ethereum, Solana, and several other major blockchains. We&apos;re continuously adding support for more chains based on community demand.",
       category: "technical",
     },
     {

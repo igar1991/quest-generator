@@ -11,7 +11,7 @@ interface ConnectButtonProps {
 }
 
 /**
- * Button component for connecting to Aptos wallet
+ * Button component for connecting to blockchain wallet
  * @param props Component props
  * @returns Connect button component
  */

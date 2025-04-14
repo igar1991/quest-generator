@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         primary: "#3B82F6",
         secondary: "#10B981",
-        aptos: "#2DD6A0",
+        chain: "#2DD6A0",
         dark: {
           100: "#1E293B",
           200: "#0F172A",
